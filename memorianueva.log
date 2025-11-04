@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  2 NOV 2025 12:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  4 NOV 2025 09:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1071,21 +1071,11 @@ LaTeX Info: Redefining \% on input line 1.
 [8
 
 ]
---------------------
- Dedicatory
---------------------
-
-
-[9]
-
-[10
-
-]
 \openout2 = `Chapters/Chapter1.aux'.
 
  (Chapters/Chapter1.tex
 Cap\'{\i }tulo 1.
-<./Figures/diagBloques.png, id=215, 971.63pt x 329.23pt>
+<./Figures/diagBloques.png, id=205, 971.63pt x 329.23pt>
 File: ./Figures/diagBloques.png Graphic file (type png)
 <use ./Figures/diagBloques.png>
 Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 33.
@@ -1120,12 +1110,12 @@ LaTeX Info: Redefining \. on input line 83.
 LaTeX Info: Redefining \% on input line 83.
 [3]
 
-LaTeX Info: Redefining \. on input line 137.
-LaTeX Info: Redefining \% on input line 137.
+LaTeX Info: Redefining \. on input line 138.
+LaTeX Info: Redefining \% on input line 138.
 [4])
 
-LaTeX Info: Redefining \. on input line 118.
-LaTeX Info: Redefining \% on input line 118.
+LaTeX Info: Redefining \. on input line 112.
+LaTeX Info: Redefining \% on input line 112.
 [5]
 \openout2 = `Chapters/Chapter2.aux'.
 
@@ -1189,7 +1179,7 @@ Cap\'{\i }tulo 5.
 
 [13]
 
-LaTeX Warning: Empty bibliography on input line 140.
+LaTeX Warning: Empty bibliography on input line 134.
 
 (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
@@ -1208,11 +1198,11 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30765 strings out of 468221
- 668668 string characters out of 5432892
+ 30758 strings out of 468221
+ 668599 string characters out of 5432892
  1399479 words of memory out of 5000000
- 58868 multiletter control sequences out of 15000+600000
- 683320 words of font info for 100 fonts, out of 8000000 for 9000
+ 58866 multiletter control sequences out of 15000+600000
+ 680835 words of font info for 97 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,20n,94p,1971b,1928s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a
@@ -1221,13 +1211,12 @@ bo8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
 /uhvr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helve
 tic/uhvro8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/p
 alatino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1
+w/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1
 /urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts
-/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (25 pages, 221625 bytes).
+pe1/urw/palatino/uplri8a.pfb>
+Output written on memorianueva.pdf (23 pages, 207346 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
+ 310 PDF objects out of 1000 (max. 8388607)
+ 54 named destinations out of 1000 (max. 500000)
  235 words of extra memory for PDF output out of 10000 (max. 10000000)
 
