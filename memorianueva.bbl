@@ -1,0 +1,277 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global/global}
+  \entry{BOOK:4}{book}{}{}
+    \name{author}{4}{}{%
+      {{hash=BGEP}{%
+         family={Box},
+         familyi={B\bibinitperiod},
+         given={George E.\bibnamedelima P.},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim
+  P\bibinitperiod},
+      }}%
+      {{hash=JGM}{%
+         family={Jenkins},
+         familyi={J\bibinitperiod},
+         given={Gwilym\bibnamedelima M.},
+         giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=RGC}{%
+         family={Reinsel},
+         familyi={R\bibinitperiod},
+         given={Gregory\bibnamedelima C.},
+         giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=LGM}{%
+         family={Ljung},
+         familyi={L\bibinitperiod},
+         given={Greta\bibnamedelima M.},
+         giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley}%
+    }
+    \strng{namehash}{BGEP+1}
+    \strng{fullhash}{BGEPJGMRGCLGM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{5th}
+    \field{title}{Time Series Analysis: Forecasting and Control}
+    \field{year}{2015}
+  \endentry
+
+  \entry{BOOK:3}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=HRJ}{%
+         family={Hyndman},
+         familyi={H\bibinitperiod},
+         given={Rob\bibnamedelima J},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=AG}{%
+         family={Athanasopoulos},
+         familyi={A\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {OTexts}%
+    }
+    \strng{namehash}{HRJAG1}
+    \strng{fullhash}{HRJAG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{2nd}
+    \field{title}{Forecasting: principles and practice}
+    \verb{url}
+    \verb https://otexts.com/fpp3/
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{hochreiter1997lstm}{inproceedings}{}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hochreiter},
+         familyi={H\bibinitperiod},
+         given={Sepp},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Schmidhuber},
+         familyi={S\bibinitperiod},
+         given={Jürgen},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{HSSJ1}
+    \strng{fullhash}{HSSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Neural Computation}
+    \field{number}{8}
+    \field{pages}{1735\bibrangedash 1780}
+    \field{title}{Long short-term memory}
+    \field{volume}{9}
+    \field{year}{1997}
+  \endentry
+
+  \entry{goodfellow2016deep}{book}{}{}
+    \name{author}{3}{}{%
+      {{hash=GI}{%
+         family={Goodfellow},
+         familyi={G\bibinitperiod},
+         given={Ian},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Courville},
+         familyi={C\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{GIBYCA1}
+    \strng{fullhash}{GIBYCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Deep Learning}
+    \verb{url}
+    \verb https://www.deeplearningbook.org/
+    \endverb
+    \field{year}{2016}
+  \endentry
+
+  \entry{breiman2001random}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=BL}{%
+         family={Breiman},
+         familyi={B\bibinitperiod},
+         given={Leo},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{BL1}
+    \strng{fullhash}{BL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{5\bibrangedash 32}
+    \field{title}{Random forests}
+    \field{volume}{45}
+    \field{journaltitle}{Machine Learning}
+    \field{year}{2001}
+  \endentry
+
+  \entry{bandara2020forecast}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=BK}{%
+         family={Bandara},
+         familyi={B\bibinitperiod},
+         given={Kasun},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=BC}{%
+         family={Bergmeir},
+         familyi={B\bibinitperiod},
+         given={Christoph},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Smyl},
+         familyi={S\bibinitperiod},
+         given={Slawek},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{BKBCSS1}
+    \strng{fullhash}{BKBCSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Forecasting sales with machine learning in e-commerce}
+    \field{journaltitle}{International Journal of Forecasting}
+    \field{year}{2020}
+  \endentry
+
+  \entry{shopify}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://shopify.dev/api}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Shopify API}
+  \endentry
+
+  \entry{triplewhale}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://triplewhale.com/api}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Triple Whale API}
+  \endentry
+
+  \entry{amazonforecast}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://aws.amazon.com/forecast/}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Amazon Forecast}
+  \endentry
+
+  \entry{aws}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://aws.amazon.com/}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Amazon Web Services (AWS)}
+  \endentry
+
+  \entry{taylor2018forecasting}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=TSJ}{%
+         family={Taylor},
+         familyi={T\bibinitperiod},
+         given={Sean\bibnamedelima J},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=LB}{%
+         family={Letham},
+         familyi={L\bibinitperiod},
+         given={Ben},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Taylor \& Francis}%
+    }
+    \strng{namehash}{TSJLB1}
+    \strng{fullhash}{TSJLB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{37\bibrangedash 45}
+    \field{title}{Forecasting at scale}
+    \field{volume}{72}
+    \field{journaltitle}{The American Statistician}
+    \field{year}{2018}
+  \endentry
+
+  \entry{meta}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://developers.facebook.com/}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Meta for Developers}
+  \endentry
+\enddatalist
+\endinput

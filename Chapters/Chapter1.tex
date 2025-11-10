@@ -18,38 +18,32 @@ En este capítulo se presenta el contexto general del trabajo y la problemática
 \newcommand{\grados}{$^{\circ}$}
 
 %----------------------------------------------------------------------------------------
-\section{Contexto del Trabajo}
+\section{Contexto y motivación}
 
 El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo de inteligencia artificial capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech.
 La empresa fabrica y comercializa barritas alimenticias en distintos sabores, lo que requiere una planificación de producción precisa para evitar tanto faltantes como excedentes de stock. En este contexto, contar con pronósticos confiables de ventas constituye un factor estratégico clave para la toma de decisiones operativas y comerciales.
 
-El trabajo se desarrolló con financiamiento de la empresa Latech y tuvo un presupuesto estimado de 684 horas y un costo aproximado de \$12.825.000, con fecha de inicio el 24 de junio de 2025 y presentación pública prevista para abril de 2026.
+La ausencia de un sistema de pronóstico confiable generaba dificultades en la planificación estratégica y operativa de la empresa. En particular, cuando una campaña de marketing resultaba exitosa y aumentaban significativamente las visitas y las compras, la capacidad de producción no siempre lograba adaptarse con la suficiente rapidez, lo que en ocasiones derivaba en falta de stock. Esta situación ya se había presentado previamente, generando retrasos en la entrega de pedidos y afectando la experiencia del cliente.
+
 
 Para la elaboración del modelo se dispuso del acceso a la API de Shopify, plataforma en la nube que aloja la tienda del cliente, y a la API de Triple Whale, una herramienta especializada en la gestión y análisis de inversión publicitaria. Estas fuentes de datos permitieron obtener información histórica de aproximadamente dos años sobre ventas e inversión en publicidad digital.
 
+El sistema desarrollado se integró dentro del entorno interno del cliente, denominado Inventory Tracker, a fin de generar pronósticos de ventas a partir de los datos recopilados. En la Figura 1 se presenta el diagrama en bloques del sistema, donde se observa el flujo de información desde las APIs externas hasta la generación de los resultados.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1\textwidth]{./Figures/diagBloques.png}
-	\caption{Diagrama en bloques.}
+	\caption{Flujo general del sistema: los datos Shopify y de Triple Whale se integran en un conjunto de datos unificado dentro del sistema Inventory Tracker. Dicho conjunto alimenta el modelo que genera el pronóstico de ventas.}
+
 	\label{fig:texmaker}
 \end{figure}
 
+La integración de las APIs permite centralizar información obtenida desde diversos canales de difusión. Entre ellas se encuentran TikTok, Instagram, Facebook y Google. Esta diversidad de fuentes permite identificar qué plataformas participan en el proceso de conversión y servirá como base para estimar aspectos como la proporción de usuarios nuevos y recurrentes, así como las variaciones en el volumen de ventas según el canal.
+Además, en el sitio de ventas los usuarios pueden suscribirse a compras mensuales, lo que permite analizar la actividad de las suscripciones: identificar cuándo los usuarios mantienen sus suscripciones activas y cuándo las cancelan. Esta información adicional resulta valiosa para comprender patrones de compra recurrentes y estimar la demanda futura de manera más precisa.
 
-El sistema desarrollado se integró dentro del entorno interno del cliente, denominado Inventory Tracker, a fin de generar pronósticos de ventas a partir de los datos recopilados. En la Figura 1 se presenta el diagrama en bloques del sistema, donde se observa el flujo de información desde las APIs externas hasta la generación de los resultados.
+La incorporación conjunta de datos históricos de ventas (Shopify) y de inversión publicitaria (Triple Whale) proporciona un insumo clave para el entrenamiento del modelo de predicción de ventas. Contar con estas dos fuentes permite relacionar la inversión realizada en cada plataforma con los resultados obtenidos en términos de ventas, lo que contribuye a la construcción de un modelo más preciso y contextualizado.
 
-
-\section{Motivación}
-
-El desarrollo de este trabajo surge de la necesidad de la empresa Latech de disponer de una herramienta que le permita anticipar el comportamiento de las ventas de su tienda en línea y, de esta manera, mejorar la planificación de la producción y la gestión del stock.
-
-La falta de un sistema de pronóstico confiable generaba dificultades en la toma de decisiones estratégicas y operativas, esto afectaba tanto la disponibilidad de productos como la eficiencia de las campañas de marketing. Por ello, se consideró necesario diseñar una solución basada en técnicas de inteligencia artificial que proporcionara predicciones con un alto grado de precisión y permitiera analizar la evolución de las ventas en el tiempo.
-
-Asimismo, se buscó analizar el comportamiento de los usuarios. Se observó la cantidad de clientes recurrentes y los canales de venta utilizados. Los datos indicaron que las compras se realizaban a través de diferentes plataformas: Skio, un servicio que gestiona pagos y ventas adicionales en la tienda; TikTok, Facebook, Instagram y la propia tienda alojada en Shopify. Esta información resultó fundamental para comprender los patrones de compra y optimizar las predicciones del modelo.
-
-Además, el uso de fuentes de datos integradas, como Shopify y Triple Whale, posibilitó aprovechar información histórica de ventas, inversión publicitaria y comportamiento de los usuarios, lo que resultó esencial para la construcción de un modelo predictivo robusto y adaptable a las necesidades del cliente.
-
-En este sentido, el trabajo buscó no solo resolver una problemática específica de la empresa, sino también demostrar el potencial del aprendizaje automático aplicado al comercio electrónico como herramienta de apoyo a la toma de decisiones empresariales.
+De este modo, el trabajo apunta a desarrollar un sistema que utilice aprendizaje automático como herramienta de apoyo a la planificación comercial y a la toma de decisiones basadas en datos.
 
 
 
@@ -57,20 +51,20 @@ En este sentido, el trabajo buscó no solo resolver una problemática específic
 
 En la actualidad, el pronóstico de ventas mediante técnicas de inteligencia artificial constituye un área de creciente interés en el ámbito del comercio electrónico. Los avances en el análisis de datos y en el aprendizaje automático han permitido el desarrollo de modelos capaces de anticipar la demanda con altos niveles de precisión. Esto contribuye a una mejor planificación de la producción, la gestión de inventarios y la toma de decisiones estratégicas.
 
-Entre los enfoques más utilizados se encuentran los modelos de series temporales clásicos, como ARIMA, SARIMA y \textit{Exponential Smoothing}, que permiten capturar patrones estacionales y tendencias a lo largo del tiempo. Sin embargo, estos métodos suelen presentar limitaciones cuando los datos incluyen múltiples factores externos, como campañas publicitarias, canales de venta o comportamiento del usuario.
+Entre los enfoques más utilizados se encuentran los modelos de series temporales clásicos, como ARIMA \citep{BOOK:4}, SARIMA y \textit{Exponential Smoothing}, que permiten capturar patrones estacionales y tendencias a lo largo del tiempo \citep{BOOK:3}. Sin embargo, estos métodos suelen presentar limitaciones cuando los datos incluyen múltiples factores externos, como campañas publicitarias, canales de venta o comportamiento del usuario.
 
-En respuesta a esas limitaciones, en los últimos años se ha incrementado el uso de técnicas de aprendizaje profundo (\textit{Deep Learning}) y aprendizaje automático (\textit{Machine Learning}), que ofrecen una mayor capacidad para modelar relaciones no lineales y para integrar múltiples fuentes de información. Modelos como Redes Neuronales Recurrentes (RNN), LSTM (\textit{Long Short-Term Memory}) y \textit{Random Forest Regressor} se han aplicado con éxito en la predicción de ventas en entornos de comercio electrónico, debido a su habilidad para capturar dependencias temporales y correlaciones entre variables.
+En respuesta a esas limitaciones, en los últimos años se ha incrementado el uso de técnicas de aprendizaje profundo (\textit{Deep Learning}) y aprendizaje automático (\textit{Machine Learning}), que ofrecen una mayor capacidad para modelar relaciones no lineales y para integrar múltiples fuentes de información. Modelos como Redes Neuronales Recurrentes (RNN), LSTM (\textit{Long Short-Term Memory}) y \textit{Random Forest Regressor} se han aplicado con éxito en la predicción de ventas en entornos de comercio electrónico, debido a su habilidad para capturar dependencias temporales y correlaciones entre variables \cite{hochreiter1997lstm, goodfellow2016deep, breiman2001random, bandara2020forecast}.
 
-Asimismo, el uso de plataformas integradas de datos, tales como Shopify y Triple Whale, ha impulsado el desarrollo de soluciones personalizadas que combinan información transaccional, métricas de marketing y comportamiento de los usuarios. Estas herramientas permiten no solo mejorar la precisión de los modelos de pronóstico, sino también ofrecer una visión integral del desempeño comercial y de la efectividad de las campañas publicitarias.
+Asimismo, el uso de plataformas integradas de datos, tales como Shopify \citep{shopify} y Triple Whale \citep{triplewhale}, ha impulsado el desarrollo de soluciones personalizadas que combinan información transaccional, métricas de marketing y comportamiento de los usuarios. Estas herramientas permiten no solo mejorar la precisión de los modelos de pronóstico, sino también ofrecer una visión integral del desempeño comercial y de la efectividad de las campañas publicitarias.
 
-Entre las soluciones comerciales más reconocidas se destacan Amazon Forecast, un servicio basado en redes neuronales desarrollado por Amazon Web Services que automatiza la creación de modelos de predicción de demanda, y Prophet, una herramienta de código abierto creada por Meta (Facebook) que utiliza un enfoque aditivo para modelar tendencias y estacionalidades de manera flexible. Ambas herramientas representan referencias relevantes en el campo del pronóstico de series temporales con datos de negocios.
+Entre las soluciones comerciales más reconocidas se destacan Amazon Forecast \citep{amazonforecast}, un servicio basado en redes neuronales desarrollado por Amazon Web Services \citep{aws} que automatiza la creación de modelos de predicción de demanda, y Prophet \citep{taylor2018forecasting}, una herramienta de código abierto creada por Meta (Facebook) \citep{meta} que utiliza un enfoque aditivo para modelar tendencias y estacionalidades de manera flexible. Ambas herramientas representan referencias relevantes en el campo del pronóstico de series temporales con datos de negocios.
 
 La tendencia actual en el campo apunta hacia el desarrollo de modelos híbridos, que combinan la capacidad de las redes neuronales para capturar relaciones no lineales y complejas con la robustez e interpretabilidad de las técnicas tradicionales (como ARIMA o SARIMA). Esta combinación permite alcanzar una mayor precisión y robustez en los pronósticos. El sector minorista ha sido el principal adoptante de estos enfoques, ya que sus ventas están muy influenciadas por factores externos como la publicidad digital, las promociones y la estacionalidad.
 
 En este marco, el trabajo desarrollado se apoyó en los enfoques actuales de predicción de demanda mediante aprendizaje automático, datos históricos de ventas, inversión publicitaria y comportamiento del usuario. El objetivo fue construir un modelo que reflejara las tendencias reales del negocio y sirviera como herramienta de apoyo para la toma de decisiones estratégicas en la empresa Latech.
 
 
-\section{Objetivo y Alcance}
+\section{Objetivo y alcance}
 
 En esta sección se mencionan los propósitos principales del trabajo y los límites de su implementación.
 
@@ -83,7 +77,7 @@ eficiencia operativa y comercial.
 
 \subsection{Alcance del trabajo}
 
-A continuación, se enuncia los items que incluye el trabajo:
+A continuación, se enuncian los items que incluye el trabajo:
 
 \begin{itemize}
     \item Relevamiento y análisis de los datos históricos de ventas de la tienda en línea obtenidos mediante la API de Shopify.
@@ -112,7 +106,7 @@ empresa, que permita realizar predicciones de ventas para períodos futuros.
      
 \end{itemize}
 
-A modo de limitaciones en la implementación se enuncian loa items que no incluye el trabajo:
+Por otra parte, quedan excluidas del alcance las siguientes actividades:
 
 \begin{itemize}
     \item Implementaciones en tiempo real del modelo, es decir, sistemas que actualicen las
@@ -128,20 +122,3 @@ inferido de los análisis de datos.
 
 \end{itemize}
 
-\subsection{Condiciones del trabajo}
-
-El desarrollo del presente trabajo se realizó bajo las siguientes condiciones:
-
-
-\begin{itemize}
-    \item La empresa Latech proporcionó acceso completo y continuo a las APIs externas de Shopify y Triple Whale, lo que permitió obtener datos históricos y actualizados.
-
-    \item Se contó con acceso al repositorio de código y a la infraestructura necesaria para integrar el módulo de predicción en el sistema existente Inventory Tracker.
-
-    \item La calidad, integridad y consistencia de los datos obtenidos desde las plataformas externas fue suficiente para entrenar y validar los modelos de predicción.
-
-    \item Durante el período de desarrollo no se produjeron cambios significativos en las políticas de acceso ni en la estructura de datos de las APIs utilizadas.
-
-    \item No existieron restricciones legales o contractuales que impidieran el uso de los datos necesarios para el trabajo.
-
-\end{itemize}
