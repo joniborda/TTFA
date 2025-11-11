@@ -204,5 +204,66 @@ Para cumplir con este requerimiento se implementaron las siguientes funcionalida
 
 \section{Modelos de inteligencia artificial utilizados}
 
+Para abordar el trabajo se evaluaron y aplicaron diversos modelos de inteligencia artificial, dado que el comportamiento de la demanda no responde a un único patrón fijo ni puede ser capturado adecuadamente por un solo tipo de modelo. También, se consideró seleccionar aquel que ofreciera el mejor equilibrio entre precisión, interpretabilidad y capacidad de generalización.
+
+A continuación, se describen los tipos de modelos aplicados:
+
+	\begin{itemize}
+		\item Random Forest Regressor: Se utilizó por su robustez frente a sobreajuste y su capacidad para capturar relaciones no lineales entre variables. Este modelo resulta especialmente útil cuando se integran múltiples fuentes de datos, como ventas históricas e inversión publicitaria.
+
+		\item Gradient Boosting Machines (XGBoost, LightGBM): Se evaluaron por su alto rendimiento en competencias de ciencia de datos y su eficiencia computacional. Estos modelos permiten optimizar la función de pérdida de manera iterativa, mejorando la precisión en la predicción de series temporales con características externas.
+
+	\item SARIMA (Seasonal Autoregressive Integrated Moving Average): Se aplicó para modelar la estacionalidad y tendencia presentes en los datos de ventas. SARIMA es especialmente efectivo cuando el comportamiento temporal es predominante y estable a lo largo del tiempo.
+
+	\item Exponential Smoothing (ETS): Se consideró como alternativa para capturar patrones estacionales y de tendencia con un enfoque más intuitivo y menos paramétrico que SARIMA.
+
+	\item LSTM (Long Short-Term Memory): Se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
+
+	\item GRU (Gated Recurrent Unit): También se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
+
+	\item Enfoque híbrido:
+Se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
+
+	\item Prophet
+Se incluyó el modelo Prophet, desarrollado por Meta, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
+	\end{itemize}
+
+Cada uno de estos modelos fue entrenado y validado utilizando el conjunto de datos consolidado de ventas e inversión publicitaria, y se compararon mediante métricas como MAE (Error Absoluto Medio), RMSE (Raíz del Error Cuadrático Medio) y MAPE (Error Porcentual Absoluto Medio), con el fin de seleccionar el que mejor se adaptara a las necesidades de pronóstico de Latech.
+
+
 \section{Tratamiento de datos (herramientas)}
 
+En este a sección se describen los procesos y herramientas utilizadas para la limpieza, transformación y análisis de los datos, así como los recursos externos desarrollados por terceros que resultaron fundamentales para la obtención y procesamiento de la información.
+
+
+
+
+Librerías para procesamiento y análisis de datos
+\begin{itemize}
+		\item Pandas: Para la manipulación y transformación de datos tabulares, incluyendo operaciones de filtrado, agrupamiento y combinación de datasets.
+
+	\item NumPy: Utilizado para operaciones numéricas y manejo eficiente de arreglos multidimensionales.
+
+	\item Scikit-learn: Empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de machine learning.
+
+\end{itemize}
+
+
+Librerías para visualización
+
+\begin{itemize}
+		\item Matplotlib y Seaborn: Para la generación de gráficos estáticos que facilitaron la identificación de patrones, tendencias y valores atípicos.
+
+\item Plotly: Utilizado para la creación de visualizaciones interactivas dentro de los notebooks.
+\end{itemize}
+
+
+Plataformas y APIs externas
+
+\begin{itemize}
+		\item Shopify API: Para la extracción automatizada de datos históricos de ventas, productos y transacciones.
+
+\item Triple Whale API: Para la obtención de datos de inversión publicitaria desglosados por plataforma y campaña.
+
+\item PostgreSQL: Sistema de gestión de bases de datos utilizado para el almacenamiento estructurado de los datos consolidados.
+\end{itemize}

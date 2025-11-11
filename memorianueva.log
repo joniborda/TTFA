@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  9 NOV 2025 21:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  11 NOV 2025 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1285,14 +1285,25 @@ LaTeX Info: Redefining \% on input line 169.
 
 LaTeX Info: Redefining \. on input line 201.
 LaTeX Info: Redefining \% on input line 201.
-[9])
+[9]
+
+LaTeX Info: Redefining \. on input line 229.
+LaTeX Info: Redefining \% on input line 229.
+[10])
 
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
-[10]
+[11]
 \openout2 = `Chapters/Chapter3.aux'.
 
  (Chapters/Chapter3.tex
+
+[12
+
+
+
+
+]
 Cap\'{\i }tulo 3.
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
@@ -1301,17 +1312,12 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 ))
 
-[11
-
-
-
-
-]
+[13]
 \openout2 = `Chapters/Chapter4.aux'.
 
  (Chapters/Chapter4.tex
 
-[12
+[14
 
 
 
@@ -1320,12 +1326,12 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 Cap\'{\i }tulo 4.
 )
 
-[13]
+[15]
 \openout2 = `Chapters/Chapter5.aux'.
 
  (Chapters/Chapter5.tex
 
-[14
+[16
 
 
 
@@ -1334,9 +1340,9 @@ Cap\'{\i }tulo 4.
 Cap\'{\i }tulo 5.
 )
 
-[15]
+[17]
 
-[16
+[18
 
 
 
@@ -1360,7 +1366,7 @@ Fo-re-cas-ting sa-les with
 
 
 
-[17] (memorianueva.aux (portada.aux)
+[19] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -1387,9 +1393,9 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31119 strings out of 468221
- 675982 string characters out of 5432892
- 1408436 words of memory out of 5000000
+ 31121 strings out of 468221
+ 676390 string characters out of 5432892
+ 1408472 words of memory out of 5000000
  59194 multiletter control sequences out of 15000+600000
  681456 words of font info for 99 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1404,9 +1410,9 @@ vetic/uhvro8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw
 urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (27 pages, 251021 bytes).
+Output written on memorianueva.pdf (29 pages, 256778 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 83 named destinations out of 1000 (max. 500000)
  299 words of extra memory for PDF output out of 10000 (max. 10000000)
 

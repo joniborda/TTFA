@@ -17,21 +17,21 @@
 \contentsline {subsubsection}{Requerimiento funcional 6}{9}{section*.13}%
 \contentsline {subsubsection}{Requerimiento funcional 7}{9}{section*.14}%
 \contentsline {section}{\numberline {2.2}Modelos de inteligencia artificial utilizados}{10}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Tratamiento de datos (herramientas)}{10}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Diseño e implementación}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Arquitectura del sistema}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Análisis de datos}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{11}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{11}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{11}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Condiciones del trabajo}{11}{subsection.3.5.1}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos de modelos}{13}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño del modelo}{13}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{13}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{13}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{13}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{15}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados obtenidos}{15}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Trabajo futuro}{15}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{17}{appendix*.16}%
+\contentsline {section}{\numberline {2.3}Tratamiento de datos (herramientas)}{11}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Diseño e implementación}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Arquitectura del sistema}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Análisis de datos}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{13}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{13}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Condiciones del trabajo}{13}{subsection.3.5.1}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ensayos de modelos}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Desempeño del modelo}{15}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{15}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{15}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{15}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados obtenidos}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Trabajo futuro}{17}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{19}{appendix*.16}%
