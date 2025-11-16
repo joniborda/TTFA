@@ -126,7 +126,7 @@ Para satisfacer este requerimiento se desarrolló un proceso de consolidación q
     \item Se generó un único \textit{dataset} en el que las ventas diarias y la inversión total diaria se vinculan a través del campo de fecha.
     \item Se realizó el alineamiento temporal de las fechas, y se tuvo en cuenta posibles diferencias de zona horaria entre ambas plataformas.
     \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente utilizando valores nulos para evitar la pérdida de información histórica.
-    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha}, \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
+    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
     \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
     \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
     \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.

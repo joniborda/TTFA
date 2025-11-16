@@ -273,5 +273,12 @@
     \field{note}{Accedido: 2025-11-09}
     \field{title}{Meta for Developers}
   \endentry
+
+  \entry{microsoft_etl}{misc}{}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://azure.microsoft.com/es-es/resources/cloud-computing-dictionary/what-is-etl/}}
+    \field{note}{Consultado: \today.}
+    \field{title}{¿Qué es el proceso ETL?}
+  \endentry
 \enddatalist
 \endinput

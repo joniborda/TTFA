@@ -3,5 +3,6 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Flujo general del sistema: los datos Shopify y de Triple Whale se integran en un conjunto de datos unificado dentro del sistema Inventory Tracker. Dicho conjunto alimenta el modelo que genera el pronóstico de ventas.}}{2}{figure.caption.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama Entidad-Relación (DER) de la base de datos. Muestra la relación entre las tablas principales y las columnas derivadas utilizadas en el análisis diario.}}{15}{figure.caption.15}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

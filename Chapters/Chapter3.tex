@@ -2,8 +2,6 @@
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
-
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
@@ -40,11 +38,262 @@ Todos los capítulos deben comenzar con un breve párrafo introductorio que indi
   morecomment=[s]{/*}{*/}
 }
 
+En este capítulo se describen los criterios utilizados para la construcción del desarrollo y la arquitectura definida para la solución. Se presenta la estructura general del sistema, las decisiones de diseño adoptadas y los componentes que permiten integrar fuentes de datos externas, procesarlas y generar pronósticos confiables de ventas.
+
 \section{Arquitectura del sistema}
-\section{Análisis de datos}
-\section{Desarrollo de modelos}
-\section{Desarrollo de un framework modular}
-\section{Despliegue con microservicios e integración con bases de datos}
+
+La arquitectura diseñada para el sistema de predicción de ventas se basa en un flujo de procesamiento secuencial y automatizado que conecta las fuentes de datos externas con el entorno interno del cliente. El diseño se orientó por tres criterios principales:
+
+\begin{itemize}
+
+
+\item Centralización y coherencia de datos, se priorizó la unificación de múltiples fuentes (ventas, comportamiento de usuarios, inversión en publicidad).
+
+\item Escalabilidad operativa que permita que el sistema integre nuevos canales, nuevas métricas o nuevos modelos sin alterar la estructura existente.
+
+\item Procesos reproducibles y auditables para asegurar que cada etapa sea trazable y que el sistema pueda ser mantenido o ampliado por equipos técnicos futuros.
+
+\end{itemize}
+
+\subsection{Visión general de la arquitectura}
+
+El sistema se organiza en una arquitectura por capas que separa claramente las responsabilidades, desde la obtención de los datos hasta la entrega del pronóstico al usuario final. Estas capas son:
+
+\begin{enumerate}
+
+\item Capa de recolección de datos (Data Ingestion Layer)
+
+\item Capa de procesamiento y transformación (ETL)
+
+\item Capa de almacenamiento estructurado (Data Storage Layer)
+
+\item Capa de modelado predictivo (Modeling Layer)
+
+\item Capa de integración operativa mediante microservicios
+
+\item Capa de visualización y consumo dentro de Inventory Tracker
+
+\end{enumerate}
+
+Cada una de estas capas se comunica de manera acotada mediante APIs internas o a través de la base de datos para garantizar un bajo acoplamiento.
+
+
+\subsection{Capa de recolección de datos}
+
+Esta capa se encarga de conectarse periódicamente a APIs externas para obtener la información necesaria para entrenar y actualizar los modelos. La primera fuente es Shopify, que funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas, incluyendo detalles como estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
+
+La segunda fuente de datos es Triple Whale, una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads, Instagram Ads, Facebook Ads y Google Ads. En este caso, su API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad considerando todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
+
+
+\subsection{Capa de procesamiento y transformación}
+
+Una vez obtenidos los datos desde las APIs externas, se realiza un proceso de transformación que normaliza y estructura la información. Las principales tareas incluyen:
+
+\begin{itemize}
+
+\item Limpieza de campos inconsistentes o incompletos.
+
+\item Conversión de formatos de fechas, monedas y valores numéricos.
+
+\item Enriquecimiento de datos combinando ventas, comportamiento de usuarios y gasto publicitario.
+
+\item Integración de información transaccional con métricas de suscripción.
+
+\item Control de duplicados y estandarización de claves primarias.
+\end{itemize}
+
+Dado que Shopify y Triple Whale estructuran sus datos de manera diferente, se construyó un esquema interno unificado que respeta la granularidad diaria necesaria para los modelos de predicción.
+
+
+\subsection{Capa de almacenamiento estructurado}
+
+Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQL diseñada específicamente para consultas analíticas y para servir como fuente unificada de información durante el entrenamiento y evaluación de los modelos. Dentro de esta capa se construye la tabla principal denominada orders, en la cual se almacena la información proveniente de Shopify ya depurada y enriquecida. Esta tabla contiene las columnas fundamentales para caracterizar el comportamiento de compra de los usuarios:
+created, que registra la fecha de creación de cada orden; totalPrice, correspondiente al monto total pagado; customerId, que identifica al cliente; lineItems, donde se detalla cada producto incluido en la compra junto con sus cantidades; channel, que indica el canal por el cual ingresó la orden; tags, que permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify; orderNumberForCustomer, que señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo); y diffWeeksFromFirstPurchase, que expresa la cantidad de semanas transcurridas desde la primera compra del usuario, permitiendo analizar patrones de frecuencia y retención.
+
+A partir de esta tabla estructurada, se generan columnas derivadas mediante procesos de enriquecimiento en Python, con el objetivo de facilitar el análisis y preparar los datos para su uso en modelos predictivos. Entre estas variables se incluyen created\_weekday, que identifica el día de la semana de cada orden; created\_month, que permite estudiar estacionalidades mensuales; unique\_customers, que calcula la cantidad de clientes distintos por día; new\_customers, que contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha; y returning\_customers, que contabiliza cuántos usuarios realizaron más de una compra. Estas nuevas columnas permiten construir vistas agregadas y analizar la evolución del comportamiento de los clientes en el tiempo.
+
+Finalmente, otra tabla denominada forecast consolida la información diaria extraida de TripleWhale. Esta tabla incorpora, entre otras variables, el monto de inversión publicitaria bajo la columna ad\_spend. La tabla contiene además otros campos utilizados por el sistema Inventory Tracker, derivados de los datos ya existentes; sin embargo, dichas columnas no forman parte del alcance del presente trabajo, ya que responden a necesidades operativas específicas del cliente y no intervienen en el proceso de modelado.
+
+Este diseño facilita tanto el acceso para entrenamiento de modelos como la consulta rápida desde Inventory Tracker. En la figura \ref{fig:der} se muestran las dos tablas principales del trabajo con las columnas que se tomaron en cuenta para este proceso de almacenamiento.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Figures/der.png}
+    \caption{Diagrama Entidad-Relación (DER) de la base de datos. Muestra la relación entre las tablas principales y las columnas derivadas utilizadas en el análisis diario.}
+    \label{fig:der}
+\end{figure}
+
+
+\subsection{Capa de modelado predictivo}
+
+La arquitectura da soporte al entrenamiento de modelos diversos, tales como:
+
+ARIMA, SARIMA, Exponential Smoothing.
+
+Random Forest Regressor.
+
+Redes Neuronales Recurrentes (RNN) y LSTM.
+
+Prophet, Amazon Forecast u otros modelos externos si se decide integrar en el futuro.
+
+El sistema permite la ejecución programada de entrenamientos y evaluaciones periódicas, manteniendo versiones de modelos y métricas de desempeño para auditoría.
+
+
+
+
+
+\subsection{Integración operativa con microservicios}
+
+El sistema se despliega mediante microservicios independientes, cada uno con su función específica:
+
+Servicio de ingestión (cronjobs + conectores API).
+
+Servicio de ETL.
+
+Servicio de predicción.
+
+Servicio de API interna para Inventory Tracker.
+
+La comunicación se realiza mediante endpoints REST internos y colas de mensajería cuando se requieren procesos asincrónicos.
+
+Este enfoque facilita:
+
+Actualizaciones de componentes sin afectar el sistema completo.
+
+Escalado independiente de módulos según su carga (por ejemplo, ingestión vs. predicción).
+
+Aislamiento de fallas.
+
+
+\subsection{Integración en Inventory Tracker}
+
+El resultado final —las predicciones de ventas— se expone dentro de Inventory Tracker mediante una interfaz que permite:
+
+Solicitar pronósticos para distintos horizontes temporales.
+
+Visualizar ventas históricas junto con proyecciones.
+
+Combinar la predicción con datos operativos del cliente (stock, producción, etc.).
+
+Este componente cierra el ciclo de valor: la información generada por el sistema se transforma en una herramienta de apoyo para la gestión diaria.
+
+
+\subsection{Justificación global de la arquitectura}
+
+La arquitectura fue diseñada bajo los siguientes principios:
+
+Modularidad, para permitir reemplazar o actualizar partes sin reestructurar toda la solución.
+
+Escalabilidad, considerando el crecimiento en volumen de datos y potencial incorporación de nuevas plataformas.
+
+Trazabilidad, indispensable para un sistema basado en machine learning.
+
+Flexibilidad, permitiendo combinar modelos clásicos, modelos de ML y eventualmente servicios administrados en la nube.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Capa de adquisición}
+
+El sistema obtiene información desde dos fuentes principales:
+
+Shopify, que provee datos históricos de las ventas a través de sus endpoints de órdenes. Cada orden incluye información detallada como fecha, cantidad, monto, productos vendidos y etiquetas que permiten identificar si corresponde a un usuario nuevo o recurrente. Estas etiquetas son esenciales para analizar el comportamiento de los clientes, ya que permiten distinguir patrones de compra, detectar cohortes, evaluar la retención y comprender la proporción de usuarios que realizan compras únicas versus compras repetidas.
+
+Triple Whale, que entrega el monto de inversión publicitaria de las plataformas (Meta Ads, TikTok Ads, Google Ads, etc.) agrupadas por día.
+
+Ambas integraciones se realizan mediante un proceso automatizado que consulta las APIs diariamente y almacena la información en una base de datos PostgreSQL\citep{postgresql_docs} interna. Este proceso opera bajo un módulo ETL \citep{microsoft_etl} donde se llevan a cabo tareas de validación, normalización y estandarización para garantizar la coherencia entre fuentes heterogéneas.
+
+
+
+\subsection{Capa de procesamiento y generación del dataset final}
+
+Sobre la base de datos unificada se aplica un módulo de procesamiento donde se construye el dataset de entrenamiento. Aquí se realizan:
+
+agregaciones temporales (diarias o semanales),
+
+creación de variables derivadas (lags, medias móviles, ratios de inversión),
+
+identificación de picos de campañas,
+
+señalización de eventos especiales (promociones, feriados, lanzamientos),
+
+integración del estado de suscripciones activas e inactivas.
+
+Este módulo permite encapsular toda la lógica de preparación del dataset, manteniéndolo desacoplado del motor de predicción para que se pueda actualizar fácilmente.
+
+3.1.4 Motor de predicción
+
+El motor de predicción está compuesto por un conjunto de modelos que pueden ejecutarse de manera flexible según los requerimientos. La arquitectura permite evaluar y comparar distintos enfoques:
+
+Modelos clásicos: ARIMA, SARIMA, ETS.
+
+Modelos basados en aprendizaje automático: Random Forest Regressor, Gradient Boosting.
+
+Modelos basados en redes neuronales: RNN y LSTM.
+
+Herramientas externas opcionales: Prophet, Amazon Forecast.
+
+El diseño modular permite cambiar o actualizar el modelo sin afectar los demás componentes del sistema. El modelo seleccionado genera pronósticos sobre la demanda futura considerando tanto el historial de ventas como la inversión publicitaria y la dinámica de suscripciones.
+
+3.1.5 API interna y visualización en Inventory Tracker
+
+Los resultados del modelo se publican a través de una API interna utilizada por la plataforma Inventory Tracker.
+Esta API expone endpoints que permiten:
+
+consultar los pronósticos generados,
+
+obtener métricas auxiliares,
+
+visualizar la contribución de variables,
+
+actualizar manualmente ciertos parámetros.
+
+Los pronósticos son mostrados en una vista dedicada dentro de Inventory Tracker, donde el personal de marketing y operaciones puede utilizarlos directamente para la planificación de producción y campañas.
+
+3.1.6 Automatización mediante cronjobs
+
+Para garantizar el funcionamiento continuo del sistema, se implementaron tareas programadas que ejecutan:
+
+extracción de datos diaria,
+
+actualización del dataset,
+
+reentrenamiento periódico del modelo,
+
+generación de nuevas predicciones,
+
+invalidación y regeneración de caché en Inventory Tracker.
+
+Esto asegura que el cliente cuente siempre con información actualizada sin intervención manual.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Base de datos unificada}
+
+Una vez obtenidos los datos, el sistema los almacena en una base de datos PostgreSQL diseñada específicamente para consultas analíticas. En esta etapa, se generan tablas fact y dimensiones que permiten relacionar ventas, campañas publicitarias, comportamiento de usuarios y dinámica de suscripciones.
+Este almacenamiento estructurado es fundamental tanto para la exploración inicial como para el entrenamiento del modelo, dado que provee consultas optimizadas y consistencia histórica.
+
+
+
+
+
+
+
 
 
 \subsection{Condiciones del trabajo}
@@ -64,3 +313,9 @@ El desarrollo del presente trabajo se realizó bajo las siguientes condiciones:
     \item No existieron restricciones legales o contractuales que impidieran el uso de los datos necesarios para el trabajo.
 
 \end{itemize}
+
+
+\section{Análisis de datos}
+\section{Desarrollo de modelos}
+\section{Desarrollo de un framework modular}
+\section{Despliegue con microservicios e integración con bases de datos}
