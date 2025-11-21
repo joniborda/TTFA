@@ -20,20 +20,16 @@ En este capítulo se presenta el contexto general del trabajo y la problemática
 %----------------------------------------------------------------------------------------
 \section{Contexto y motivación}
 
-El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo de inteligencia artificial capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech.
+El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech.
 La empresa fabrica y comercializa barritas alimenticias en distintos sabores, lo que requiere una planificación de producción precisa para evitar tanto faltantes como excedentes de stock. En este contexto, contar con pronósticos confiables de ventas constituye un factor estratégico clave para la toma de decisiones operativas y comerciales.
 
-La ausencia de un sistema de pronóstico confiable generaba dificultades en la planificación estratégica y operativa de la empresa. En particular, cuando una campaña de marketing resultaba exitosa y aumentaban significativamente las visitas y las compras, la capacidad de producción no siempre lograba adaptarse con la suficiente rapidez, lo que en ocasiones derivaba en falta de stock. Esta situación ya se había presentado previamente, generando retrasos en la entrega de pedidos y afectando la experiencia del cliente.
+La ausencia de un sistema de pronóstico confiable generaba dificultades en la planificación estratégica y operativa de la empresa. En particular, cuando una campaña de marketing resultaba exitosa y aumentaban significativamente las visitas y las compras, la capacidad de producción no siempre lograba adaptarse con la suficiente rapidez, lo que en ocasiones derivaba en falta de stock. Esta situación ya se había presentado previamente y había generado retrasos en la entrega de pedidos y afectado la experiencia del cliente.
 
-
-Para la elaboración del modelo se dispuso del acceso a la API de Shopify, plataforma en la nube que aloja la tienda del cliente, y a la API de Triple Whale, una herramienta especializada en la gestión y análisis de inversión publicitaria. Estas fuentes de datos permitieron obtener información histórica de aproximadamente dos años sobre ventas e inversión en publicidad digital.
-
-El sistema desarrollado se integró dentro del entorno interno del cliente, denominado Inventory Tracker, a fin de generar pronósticos de ventas a partir de los datos recopilados. En la Figura 1 se presenta el diagrama en bloques del sistema, donde se observa el flujo de información desde las APIs externas hasta la generación de los resultados.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1\textwidth]{./Figures/diagBloques.png}
-	\caption{Flujo general del sistema: los datos Shopify y de Triple Whale se integran en un conjunto de datos unificado dentro del sistema Inventory Tracker. Dicho conjunto alimenta el modelo que genera el pronóstico de ventas.}
+	\caption{Flujo general del sistema para generar el pronóstico de ventas.}
 
 	\label{fig:texmaker}
 \end{figure}

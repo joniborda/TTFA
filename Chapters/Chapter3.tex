@@ -55,8 +55,6 @@ La arquitectura diseñada para el sistema de predicción de ventas se basa en un
 
 \end{itemize}
 
-\subsection{Visión general de la arquitectura}
-
 El sistema se organiza en una arquitectura por capas que separa claramente las responsabilidades, desde la obtención de los datos hasta la entrega del pronóstico al usuario final. Estas capas son:
 
 \begin{enumerate}
@@ -119,25 +117,28 @@ Este diseño facilita tanto el acceso para entrenamiento de modelos como la cons
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{./Figures/der.png}
-    \caption{Diagrama Entidad-Relación (DER) de la base de datos. Muestra la relación entre las tablas principales y las columnas derivadas utilizadas en el análisis diario.}
+    \caption{Diagrama Entidad-Relación (DER). Muestra la relación entre las tablas principales.}
     \label{fig:der}
 \end{figure}
 
 
 \subsection{Capa de modelado predictivo}
 
-La arquitectura da soporte al entrenamiento de modelos diversos, tales como:
+Esta capa es responsable del entrenamiento, evaluación y selección de los modelos de pronóstico de ventas. Se implementa un enfoque comparativo donde se ejecutan simultáneamente los modelos mencionados en el Capítulo 2.2 (SARIMA, \textit{Exponential Smoothing}, \textit{Random Forest}, XGBoost, LightGBM, LSTM y \textit{Prophet}), con el objetivo de identificar el que ofrezca el mejor desempeño predictivo según las métricas definidas.
 
-ARIMA, SARIMA, Exponential Smoothing.
+El proceso de modelado sigue las siguientes etapas:
 
-Random Forest Regressor.
+Entrenamiento múltiple: todos los modelos son entrenados utilizando el mismo conjunto de datos históricos consolidado y enriquecido.
 
-Redes Neuronales Recurrentes (RNN) y LSTM.
+Evaluación y métricas: cada modelo es evaluado con la métrica RMSE (Raíz del Error Cuadrático Medio)  para penalizar errores grandes que impactan significativamente en la planificación financiera y de producción.
 
-Prophet, Amazon Forecast u otros modelos externos si se decide integrar en el futuro.
+Selección automática: el modelo que obtiene el menor valor de RMSE en el conjunto de validación es seleccionado automáticamente para su uso en producción.
 
-El sistema permite la ejecución programada de entrenamientos y evaluaciones periódicas, manteniendo versiones de modelos y métricas de desempeño para auditoría.
+Persistencia del modelo: una vez seleccionado, el modelo ganador es serializado y almacenado en un registro de modelos donde queda disponible para su uso en las predicciones futuras.
 
+Exposición mediante API: el modelo guardado es integrado en un endpoint REST que forma parte del sistema de microservicios para que el sistema Inventory Tracker consulte las predicciones de ventas en tiempo real.
+
+Este diseño no solo asegura que siempre se esté utilizando el modelo más preciso disponible, sino que también facilita la actualización periódica del mismo mediante reentrenamientos programados. Con cada actualización se mantiene la capacidad predictiva del sistema ante cambios en el comportamiento de las ventas o en las dinámicas de mercado.
 
 
 

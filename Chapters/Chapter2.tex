@@ -2,204 +2,24 @@
 
 \label{Chapter2}
 
-
+En este capítulo se presentan los requerimientos más importantes, los modelos de inteligencia artificial utilizados y las herramientos usadas para el tratamiento de datos.
 
 \section{Requerimientos}
 
-En esta sección se presentan y describen de manera ordenada los requerimientos establecidos para el trabajo. En cada requerimiento se detalla su objetivo, alcance y relevancia, con el fin de precisar las condiciones necesarias para el desarrollo y la correcta implementación del modelo propuesto.
+En esta sección se presentan algunos requerimientos establecidos para el trabajo. En cada requerimiento se detalla su objetivo y alcance, con el fin de precisar las condiciones necesarias para el desarrollo y la correcta implementación del modelo propuesto.
 
 
+	\begin{itemize}
+		\item Importación de datos de ventas desde Shopify: el sistema debe permitir la obtención de datos históricos y actualizados de ventas desde la plataforma Shopify, con el objetivo de utilizarlos en el proceso de entrenamiento del modelo de predicción de demanda.
+		\item Importación de datos de inversión publicitaria desde Triple Whale: el sistema debe permitir la incorporación de datos de inversión publicitaria provenientes de la plataforma Triple Whale, con el propósito de integrar esta variable en el análisis y modelado de ventas.
+		\item Consolidación de datos provenientes de Shopify y Triple Whale: el sistema debe unificar la información de ventas y de inversión publicitaria en un único conjunto de datos, con el fin de preparar una base consistente para el entrenamiento del modelo de predicción.
+		\item Entrenamiento del modelo de predicción de ventas: el objetivo de este requerimiento fue desarrollar y entrenar un modelo de predicción que permita anticipar el comportamiento de las ventas futuras utilizando como base el \textit{dataset} consolidado.
+		\item Visualización de predicciones de ventas en Inventory Tracker: el objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker consultar y analizar las predicciones de ventas generadas por el modelo, integrándolas con los datos históricos disponibles para facilitar la planificación de la producción.
+
+		\item Descarga de predicciones de ventas en formato CSV: el objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker exportar las predicciones de ventas a un archivo CSV para su análisis externo o integración con otras herramientas de planificación.
+	\end{itemize}
 
 
-\begin{table}[h!]
-\centering
-\begin{tabularx}{\textwidth}{|p{3.2cm}|X|}
-\hline
-\textbf{Requerimiento} & \textbf{Descripción} \\
-\hline
-Requerimiento Funcional 1: Importación de datos de ventas desde Shopify
-&
-El sistema debe permitir la obtención de datos históricos y actualizados de ventas desde la plataforma Shopify, con el objetivo de utilizarlos en el proceso de entrenamiento del modelo de predicción de demanda.
-
-\\
-\hline
-Requerimiento Funcional 2: Importación de datos de inversión publicitaria desde Triple Whale
-&
-El sistema debe permitir la incorporación de datos de inversión publicitaria provenientes de la plataforma Triple Whale, con el propósito de integrar esta variable en el análisis y modelado de ventas.
-
-\\
-\hline
-Requerimiento Funcional 3: Consolidación de datos provenientes de Shopify y Triple Whale
-&
-El sistema debe unificar la información de ventas y de inversión publicitaria en un único conjunto de datos, con el fin de preparar una base consistente para el entrenamiento del modelo de predicción.
-
-\\
-\hline
-Requerimiento Funcional 4: Entrenamiento del modelo de predicción de ventas
-&
-El objetivo de este requerimiento fue desarrollar y entrenar un modelo de predicción que permita anticipar el comportamiento de las ventas futuras utilizando como base el \textit{dataset} consolidado.
-
-\\
-\hline
-Requerimiento Funcional 5: Visualización de predicciones de ventas en Inventory Tracker
-
-&
-El objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker consultar y analizar las predicciones de ventas generadas por el modelo, integrándolas con los datos históricos disponibles para facilitar la planificación de la producción.
-
-\\
-\hline
-\end{tabularx}
-\caption{Requerimientos}
-\end{table}
-
-
-\begin{table}[h!]
-\centering
-\begin{tabularx}{\textwidth}{|p{3cm}|X|}
-\hline
-\textbf{Requerimiento} & \textbf{Descripción} \\
-\hline
-
-Requerimiento Funcional 6: Descarga de predicciones de ventas en formato CSV
-
-&
-El objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker exportar las predicciones de ventas a un archivo CSV para su análisis externo o integración con otras herramientas de planificación.
-
-\\
-\hline
-Requerimiento Funcional 7: Alertas por datos faltantes en el sistema
-
-&
-El objetivo de este requerimiento fue garantizar que los responsables del sistema puedan identificar oportunamente la falta de datos críticos en el \textit{dataset}, de manera que la precisión de las predicciones no se vea comprometida.
-\\
-\hline
-\end{tabularx}
-\caption{Requerimientos}
-\end{table}
-
-
-
-
-
-
-\subsection{Descripción técnica y alcances}
-
-A continuación se detalla la descripción técnica y alcance correspondientes a cada uno de los requerimientos especificados anteriormente.
-
-
-\subsubsection{Requerimiento funcional 1}
-
-Para cumplir este requerimiento, se desarrolló un módulo de integración que:
-
-\begin{itemize}
-    \item Establece conexión con la API de Shopify mediante credenciales \textit{API Key} y \textit{Access Token}.
-    \item Obtiene y procesa los siguientes atributos mínimos: fecha de compra, identificador de producto, cantidad vendida, precio unitario y canal de venta.
-    \item Permite especificar intervalos de fechas para la descarga de datos.
-    \item Almacena los datos importados en una base de datos PostgreSQL destinada a su posterior uso en el modelado.
-    \item Implementa validaciones y manejo de errores en caso de fallos de autenticación, pérdida de conexión o respuestas vacías.
-    \item Registra la trazabilidad del proceso de importación mediante un archivo de log, incluyendo volumen de datos procesados y errores detectados.
-    \item Verifica duplicidades para evitar el doble procesamiento de registros previamente importados.
-\end{itemize}
-
-\subsubsection{Requerimiento funcional 2}
-
-Para satisfacer este requerimiento se desarrolló un módulo de integración que:
-
-\begin{itemize}
-    \item Establece conexión con la API de Triple Whale con una clave de acceso provista por la organización.
-    \item Recupera la información de inversión por fecha, campaña y plataforma publicitaria.
-    \item Permite seleccionar y configurar el intervalo temporal de los datos a importar.
-    \item Almacena los datos obtenidos en una base de datos PostgreSQL, manteniendo una estructura consistente con el modelo de análisis utilizado.
-    \item Implementa mecanismos de manejo de errores ante fallos de autenticación, interrupciones en la conexión o respuestas inválidas provenientes de la API.
-    \item Registra el detalle del proceso mediante un archivo de log, incluyendo la cantidad de registros importados y los errores detectados durante la ejecución.
-    \item Permite ejecutar el proceso de importación tanto de forma manual como programada mediante tareas periódicas.
-    \item Incluye validaciones para evitar la duplicación de registros en caso de importaciones sobre el mismo rango de fechas.
-\end{itemize}
-
-
-
-\subsubsection{Requerimiento funcional 3}
-
-Para satisfacer este requerimiento se desarrolló un proceso de consolidación que integra los datos provenientes de Shopify (ventas) y Triple Whale (inversión publicitaria), y garantiza la correcta correspondencia temporal entre ambas fuentes. En particular:
-
-\begin{itemize}
-    \item Se generó un único \textit{dataset} en el que las ventas diarias y la inversión total diaria se vinculan a través del campo de fecha.
-    \item Se realizó el alineamiento temporal de las fechas, y se tuvo en cuenta posibles diferencias de zona horaria entre ambas plataformas.
-    \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente utilizando valores nulos para evitar la pérdida de información histórica.
-    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
-    \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
-    \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
-    \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.
-    \item Se registraron las operaciones del proceso mediante archivos de log, incluyendo la cantidad total de registros consolidados y cualquier incidencia detectada durante la ejecución.
-\end{itemize}
-
-
-
-\subsubsection{Requerimiento funcional 4}
-
-
-Para cumplir con este requerimiento se implementó un proceso de modelado y entrenamiento estructurado que incluyó las siguientes etapas:
-
-\begin{itemize}
-    \item Se empleó el \textit{dataset} consolidado, compuesto por variables de ventas y de inversión publicitaria, como fuente principal para el entrenamiento del modelo.
-    \item El conjunto de datos fue dividido en subconjuntos de entrenamiento y validación, siguiendo una proporción aproximada de 80\% para entrenamiento y 20\% para validación.
-    \item Se evaluaron distintos modelos de predicción utilizando métricas de error adecuadas para series temporales, tales como MAE, RMSE y MAPE, con el fin de comparar su desempeño.
-    \item Se seleccionó como modelo final aquel que presentó el mejor desempeño sobre el conjunto de validación.
-    \item El modelo entrenado quedó habilitado para generar predicciones futuras a partir de valores recientes de entrada.
-    \item Se garantizó la reproducibilidad del proceso mediante la definición de un \textit{pipeline} de entrenamiento que permite repetir la ejecución bajo las mismas configuraciones.
-    \item El modelo seleccionado y sus parámetros finales fueron almacenados para su posterior uso dentro del sistema Inventory Tracker.
-    \item Se documentó el proceso de entrenamiento de manera detallada, incluyendo la selección de variables, las técnicas de preprocesamiento aplicadas y los métodos de evaluación utilizados.
-    \item Se realizó una validación visual comparando las predicciones generadas frente a los valores reales observados, mediante gráficos que permitieron analizar la coherencia del modelo respecto a la dinámica histórica de las ventas.
-\end{itemize}
-
-
-\subsubsection{Requerimiento funcional 5}
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item Las predicciones de ventas se muestran en la interfaz de Inventory Tracker junto a las fechas correspondientes.
-    \item La visualización integra tanto las predicciones como los datos históricos de ventas para comparaciones temporales y análisis de tendencias.
-    \item La información se presenta de manera clara y entendible, utilizando gráficos de líneas y tablas según corresponda.
-    \item Los usuarios pueden seleccionar rangos de fechas específicos para observar predicciones detalladas de periodos concretos.
-    \item Las predicciones se actualizan automáticamente al entrenarse un nuevo modelo o al actualizarse los datos de entrada y se garantiza que la información refleje siempre el estado más reciente.
-    \item La interfaz muestra un indicador visual de la fecha y hora de generación de la última predicción.
-    \item Se distingue claramente entre valores predichos y datos históricos que evitan confusiones en el análisis.
-    \item La integración de las predicciones no afecta la funcionalidad ni el rendimiento general de la interfaz del módulo Inventory Tracker.
-    \item El rendimiento de la interfaz se mantiene aceptable incluso cuando se manejan conjuntos de datos de gran tamaño.
-\end{itemize}
-
-
-\subsubsection{Requerimiento funcional 6}
-
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item Se incorporó un botón o enlace claramente identificado que permite la descarga de las predicciones en formato CSV.
-    \item El archivo CSV generado incluye las fechas y los valores de predicción correspondientes.
-    \item De manera opcional, el archivo puede incluir los datos históricos de ventas para permitir la comparación con las predicciones.
-    \item El formato del CSV es compatible con herramientas comunes de análisis, con valores separados por comas y codificación UTF-8.
-    \item El nombre del archivo contiene la fecha y hora de generación que lo identifica.
-    \item La descarga se realiza correctamente en navegadores modernos, incluyendo Chrome y Firefox.
-    \item El contenido del archivo refleja exactamente la información presentada en la interfaz del módulo de predicción.
-    \item Si aún no existen predicciones generadas, el botón de descarga se muestra deshabilitado.
-\end{itemize}
-
-\subsubsection{Requerimiento funcional 7}
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item El sistema verifica automáticamente la integridad del \textit{dataset} antes de cada entrenamiento del modelo.
-    \item Si se detectan datos faltantes críticos como fechas sin registros de ventas o de inversión publicitaria se genera una alerta.
-    \item La alerta incluye información detallada sobre el tipo de dato faltante (ventas, inversión, o ambos), el rango de fechas afectado y el nivel de severidad del impacto estimado.
-    \item La alerta se muestra de forma visible dentro del sistema para que los responsables puedan tomar conocimiento inmediato.
-    \item Se envía una notificación por correo electrónico al responsable del sistema, en caso de estar configurada esta opción.
-    \item El sistema no bloquea el entrenamiento del modelo, pero advierte que la precisión de las predicciones puede verse afectada.
-    \item La alerta desaparece únicamente cuando los datos faltantes son completados o cuando se marca como revisada manualmente.
-    \item Se registra un log de todas las alertas emitidas, accesible desde una sección de administración o monitoreo del sistema.
-\end{itemize}
 
 
 \section{Modelos de inteligencia artificial utilizados}
@@ -209,23 +29,21 @@ Para abordar el trabajo se evaluaron y aplicaron diversos modelos de inteligenci
 A continuación, se describen los tipos de modelos aplicados:
 
 	\begin{itemize}
-		\item Random Forest Regressor: Se utilizó por su robustez frente a sobreajuste y su capacidad para capturar relaciones no lineales entre variables. Este modelo resulta especialmente útil cuando se integran múltiples fuentes de datos, como ventas históricas e inversión publicitaria.
+		\item \textit{Random Forest Regressor}: se utilizó por su robustez frente a sobreajuste y su capacidad para capturar relaciones no lineales entre variables. Este modelo resulta especialmente útil cuando se integran múltiples fuentes de datos, como ventas históricas e inversión publicitaria.
 
-		\item Gradient Boosting Machines (XGBoost, LightGBM): Se evaluaron por su alto rendimiento en competencias de ciencia de datos y su eficiencia computacional. Estos modelos permiten optimizar la función de pérdida de manera iterativa, mejorando la precisión en la predicción de series temporales con características externas.
+		\item \textit{Gradient Boosting Machines} (XGBoost, LightGBM): se evaluaron por su alto rendimiento en competencias de ciencia de datos y su eficiencia computacional. Estos modelos permiten optimizar la función de pérdida de manera iterativa, mejorando la precisión en la predicción de series temporales con características externas.
 
-	\item SARIMA (Seasonal Autoregressive Integrated Moving Average): Se aplicó para modelar la estacionalidad y tendencia presentes en los datos de ventas. SARIMA es especialmente efectivo cuando el comportamiento temporal es predominante y estable a lo largo del tiempo.
+	\item SARIMA (\textit{Seasonal Autoregressive Integrated Moving Average}): se aplicó para modelar la estacionalidad y tendencia presentes en los datos de ventas. SARIMA es especialmente efectivo cuando el comportamiento temporal es predominante y estable a lo largo del tiempo.
 
-	\item Exponential Smoothing (ETS): Se consideró como alternativa para capturar patrones estacionales y de tendencia con un enfoque más intuitivo y menos paramétrico que SARIMA.
+	\item \textit{Exponential Smoothing} (ETS): se consideró como alternativa para capturar patrones estacionales y de tendencia con un enfoque más intuitivo y menos paramétrico que SARIMA.
 
-	\item LSTM (Long Short-Term Memory): Se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
+	\item LSTM (\textit{Long Short-Term Memory}): se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
 
-	\item GRU (Gated Recurrent Unit): También se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
+	\item GRU (\textit{Gated Recurrent Unit}): se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
 
-	\item Enfoque híbrido:
-Se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
+	\item Enfoque híbrido: se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
 
-	\item Prophet
-Se incluyó el modelo Prophet, desarrollado por Meta, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
+	\item Prophet: se incluyó el modelo Prophet, desarrollado por Meta, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
 	\end{itemize}
 
 Cada uno de estos modelos fue entrenado y validado utilizando el conjunto de datos consolidado de ventas e inversión publicitaria, y se compararon mediante métricas como MAE (Error Absoluto Medio), RMSE (Raíz del Error Cuadrático Medio) y MAPE (Error Porcentual Absoluto Medio), con el fin de seleccionar el que mejor se adaptara a las necesidades de pronóstico de Latech.
@@ -238,32 +56,32 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 
 
 
-Librerías para procesamiento y análisis de datos
+Bibliotecas para procesamiento y análisis de datos
 \begin{itemize}
-		\item Pandas: Para la manipulación y transformación de datos tabulares, incluyendo operaciones de filtrado, agrupamiento y combinación de datasets.
+		\item Pandas: para la manipulación y transformación de datos tabulares, incluyendo operaciones de filtrado, agrupamiento y combinación de datasets.
 
-	\item NumPy: Utilizado para operaciones numéricas y manejo eficiente de arreglos multidimensionales.
+	\item NumPy: utilizado para operaciones numéricas y manejo eficiente de arreglos multidimensionales.
 
-	\item Scikit-learn: Empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de machine learning.
+	\item Scikit-learn: empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de machine learning.
 
 \end{itemize}
 
 
-Librerías para visualización
+Bibliotecas para visualización
 
 \begin{itemize}
-		\item Matplotlib y Seaborn: Para la generación de gráficos estáticos que facilitaron la identificación de patrones, tendencias y valores atípicos.
+		\item Matplotlib y Seaborn: para la generación de gráficos estáticos que facilitaron la identificación de patrones, tendencias y valores atípicos.
 
-\item Plotly: Utilizado para la creación de visualizaciones interactivas dentro de los notebooks.
+\item Plotly: utilizado para la creación de visualizaciones interactivas dentro de los notebooks.
 \end{itemize}
 
 
 Plataformas y APIs externas
 
 \begin{itemize}
-		\item Shopify API: Para la extracción automatizada de datos históricos de ventas, productos y transacciones.
+		\item Shopify API: para la extracción automatizada de datos históricos de ventas, productos y transacciones.
 
-\item Triple Whale API: Para la obtención de datos de inversión publicitaria desglosados por plataforma y campaña.
+\item Triple Whale API: para la obtención de datos de inversión publicitaria desglosados por plataforma y campaña.
 
-\item PostgreSQL: Sistema de gestión de bases de datos utilizado para el almacenamiento estructurado de los datos consolidados.
+\item PostgreSQL: sistema de gestión de bases de datos utilizado para el almacenamiento estructurado de los datos consolidados.
 \end{itemize}

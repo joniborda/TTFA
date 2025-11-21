@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  16 NOV 2025 20:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  21 NOV 2025 18:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -994,7 +994,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 
 pdfTeX warning: pdflatex (file ./Figures/fondo.pdf): PDF inclusion: found PDF v
 ersion <1.6>, but at most version <1.5> allowed
-<Figures/fondo.pdf, id=191, 597.55246pt x 845.07718pt>
+<Figures/fondo.pdf, id=183, 597.55246pt x 845.07718pt>
 File: Figures/fondo.pdf Graphic file (type pdf)
 <use Figures/fondo.pdf>
 Package pdftex.def Info: Figures/fondo.pdf  used on input line 51.
@@ -1076,10 +1076,10 @@ LaTeX Info: Redefining \% on input line 1.
 
  (Chapters/Chapter1.tex
 Cap\'{\i }tulo 1.
-<./Figures/diagBloques.png, id=311, 971.63pt x 329.23pt>
+<./Figures/diagBloques.png, id=293, 971.63pt x 329.23pt>
 File: ./Figures/diagBloques.png Graphic file (type png)
 <use ./Figures/diagBloques.png>
-Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 35.
+Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 31.
 (pdftex.def)             Requested size: 389.80269pt x 132.0815pt.
 
 
@@ -1088,26 +1088,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 
+l.39 
       [1
 
 
-]
+ <./Figures/diagBloques.png>]
 
-LaTeX Info: Redefining \. on input line 57.
-LaTeX Info: Redefining \% on input line 57.
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported  on input line 57.
+(babel)             Reported  on input line 56.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 
-      [2 <./Figures/diagBloques.png>]
+l.56 E
+      ntre las soluciones comerciales mÃ¡s reconocidas se destacan Amazon Fo...
+[2]
 
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
+LaTeX Info: Redefining \. on input line 89.
+LaTeX Info: Redefining \% on input line 89.
 [3])
 
 LaTeX Info: Redefining \. on input line 118.
@@ -1118,139 +1119,6 @@ LaTeX Info: Redefining \% on input line 118.
  (Chapters/Chapter2.tex
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 5133) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 Fun-cio-nal 1: Im-
- []
-
-
-Underfull \hbox (badness 7133) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 de ven-tas des-de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 5133) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 Fun-cio-nal 2: Im-
- []
-
-
-Underfull \hbox (badness 4072) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 de in-ver-sión pu-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 bli-ci-ta-ria des-de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 so-li-da-ción de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 da-tos pro-ve-nien-
- []
-
-
-Underfull \hbox (badness 2165) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 tes de Sho-pify y
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 5504) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 Fun-cio-nal 4: En-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 tre-na-mien-to del
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 Fun-cio-nal 5: Vi-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 sua-li-za-ción de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 pre-dic-cio-nes de
- []
-
-
-Underfull \hbox (badness 3701) in paragraph at lines 51--51
-\T1/ppl/m/n/10.95 ven-tas en In-ven-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-\T1/ppl/m/n/10.95 Fun-cio-nal 6:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-\T1/ppl/m/n/10.95 Des-car-ga de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-\T1/ppl/m/n/10.95 pre-dic-cio-nes de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-[]|\T1/ppl/m/n/10.95 Requerimiento
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-\T1/ppl/m/n/10.95 Fun-cio-nal 7:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-\T1/ppl/m/n/10.95 fal-tan-tes en el
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 
 [5
 
@@ -1259,46 +1127,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ]
 
-LaTeX Info: Redefining \. on input line 113.
-LaTeX Info: Redefining \% on input line 113.
-[6]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 12
-9.
- (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-Overfull \hbox (47.96642pt too wide) in paragraph at lines 129--130
-[]\T1/ppl/m/n/10.95 El con-jun-to de da-tos fi-nal in-clu-ye las si-guien-tes c
-o-lum-nas: \T1/pcr/m/n/10.95 fecha\T1/ppl/m/n/10.95 , \T1/pcr/m/n/10.95 ventas_
-diarias\T1/ppl/m/n/10.95 ,
- []
-
-
-
-LaTeX Info: Redefining \. on input line 146.
-LaTeX Info: Redefining \% on input line 146.
-[7]
-
-LaTeX Info: Redefining \. on input line 169.
-LaTeX Info: Redefining \% on input line 169.
-[8]
-
-LaTeX Info: Redefining \. on input line 201.
-LaTeX Info: Redefining \% on input line 201.
-[9]
-
-LaTeX Info: Redefining \. on input line 229.
-LaTeX Info: Redefining \% on input line 229.
-[10])
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+[6])
 
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
-[11]
+[7]
 \openout2 = `Chapters/Chapter3.aux'.
 
  (Chapters/Chapter3.tex
 
-[12
+[8
 
 
 
@@ -1312,61 +1152,93 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 
-[13]
+[9]
 
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
-[14]
-<./Figures/der.png, id=403, 703.62875pt x 288.07625pt>
+LaTeX Info: Redefining \. on input line 110.
+LaTeX Info: Redefining \% on input line 110.
+[10]
+<./Figures/der.png, id=368, 703.62875pt x 288.07625pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
-Package pdftex.def Info: ./Figures/der.png  used on input line 121.
+Package pdftex.def Info: ./Figures/der.png  used on input line 119.
 (pdftex.def)             Requested size: 311.84334pt x 127.67262pt.
 
 
-LaTeX Info: Redefining \. on input line 131.
-LaTeX Info: Redefining \% on input line 131.
-[15 <./Figures/der.png>]
+LaTeX Info: Redefining \. on input line 128.
+LaTeX Info: Redefining \% on input line 128.
+[11 <./Figures/der.png>]
 
-LaTeX Info: Redefining \. on input line 187.
-LaTeX Info: Redefining \% on input line 187.
-[16]
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
+[12]
 
-LaTeX Warning: Citation 'postgresql_docs' on page 17 undefined on input line 21
-1.
+LaTeX Warning: Citation 'postgresql_docs' on page 13 undefined on input line 21
+2.
 
 
-Overfull \hbox (84.60123pt too wide) in paragraph at lines 211--212
+Overfull \hbox (84.60123pt too wide) in paragraph at lines 212--213
 \T1/ppl/m/n/10.95 las APIs dia-ria-men-te y al-ma-ce-na la in-for-ma-ción en un
 a ba-se de da-tos PostgreSQL[[]]
  []
 
 
 
-LaTeX Info: Redefining \. on input line 239.
-LaTeX Info: Redefining \% on input line 239.
-[17]
+LaTeX Info: Redefining \. on input line 226.
+LaTeX Info: Redefining \% on input line 226.
+[13]
 
-LaTeX Info: Redefining \. on input line 306.
-LaTeX Info: Redefining \% on input line 306.
-[18])
+LaTeX Info: Redefining \. on input line 287.
+LaTeX Info: Redefining \% on input line 287.
+[14])
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
-[19]
+[15]
 \openout2 = `Chapters/Chapter4.aux'.
 
  (Chapters/Chapter4.tex
 
-[20
+[16
 
 
 
 
 ]
 Cap\'{\i }tulo 4.
-)
 
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 25.
+
+
+
+[17]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 64
+.
+ (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Overfull \hbox (47.96642pt too wide) in paragraph at lines 64--65
+[]\T1/ppl/m/n/10.95 El con-jun-to de da-tos fi-nal in-clu-ye las si-guien-tes c
+o-lum-nas: \T1/pcr/m/n/10.95 fecha\T1/ppl/m/n/10.95 , \T1/pcr/m/n/10.95 ventas_
+diarias\T1/ppl/m/n/10.95 ,
+ []
+
+
+
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+[18]
+
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
+[19]
+
+LaTeX Info: Redefining \. on input line 131.
+LaTeX Info: Redefining \% on input line 131.
+[20])
+
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
 [21]
 \openout2 = `Chapters/Chapter5.aux'.
 
@@ -1423,7 +1295,7 @@ L3 programming layer <2025-06-09>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: F531C4DC4E3D8F8EAED2EADCA9E42A09;9196.
+(rerunfilecheck)             Checksum: E1C88F47018709359C741A061E970DFF;8684.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1434,10 +1306,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31177 strings out of 468221
- 677130 string characters out of 5432892
- 1410878 words of memory out of 5000000
- 59225 multiletter control sequences out of 15000+600000
+ 31163 strings out of 468221
+ 677233 string characters out of 5432892
+ 1410258 words of memory out of 5000000
+ 59215 multiletter control sequences out of 15000+600000
  681456 words of font info for 99 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1451,9 +1323,9 @@ vetic/uhvro8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw
 urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (35 pages, 310520 bytes).
+Output written on memorianueva.pdf (35 pages, 308063 bytes).
 PDF statistics:
- 526 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 392 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 376 words of extra memory for PDF output out of 10000 (max. 10000000)
 
