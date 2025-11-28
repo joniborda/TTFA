@@ -36,6 +36,48 @@
     \field{year}{2024}
   \endentry
 
+  \entry{tiktokAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.tiktok.com/en/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{TikTok for Business}
+  \endentry
+
+  \entry{InstagramAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.instagram.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Instagram for Business}
+  \endentry
+
+  \entry{FacebookAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.facebook.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Facebook for Business}
+  \endentry
+
+  \entry{GoogleAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://ads.google.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Google Ads}
+  \endentry
+
+  \entry{triplewhale}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://triplewhale.com/api}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Triple Whale API}
+  \endentry
+
+  \entry{shopify}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://shopify.dev/api}}
+    \field{note}{Accedido: 2025-11-09}
+    \field{title}{Shopify API}
+  \endentry
+
   \entry{BOOK:4}{book}{}{}
     \name{author}{4}{}{%
       {{hash=BGEP}{%
@@ -228,18 +270,183 @@
     \field{year}{2020}
   \endentry
 
-  \entry{shopify}{misc}{}{}
+  \entry{lim2021temporal}{article}{}{}
+    \name{author}{4}{}{%
+      {{hash=LB}{%
+         family={Lim},
+         familyi={L\bibinitperiod},
+         given={Bryan},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=ASO}{%
+         family={Arik},
+         familyi={A\bibinitperiod},
+         given={Sercan\bibnamedelima O},
+         giveni={S\bibinitperiod\bibinitdelim O\bibinitperiod},
+      }}%
+      {{hash=LN}{%
+         family={Loeff},
+         familyi={L\bibinitperiod},
+         given={Nicolas},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PT}{%
+         family={Pfister},
+         familyi={P\bibinitperiod},
+         given={Tomas},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{LB+1}
+    \strng{fullhash}{LBASOLNPT1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://shopify.dev/api}}
-    \field{note}{Accedido: 2025-11-09}
-    \field{title}{Shopify API}
+    \field{number}{4}
+    \field{pages}{1748\bibrangedash 1764}
+    \field{title}{Temporal Fusion Transformers for interpretable multi-horizon
+  time series forecasting}
+    \verb{url}
+    \verb https://www.sciencedirect.com/science/article/pii/S0169207021000637
+    \endverb
+    \field{volume}{37}
+    \field{journaltitle}{International Journal of Forecasting}
+    \field{year}{2021}
   \endentry
 
-  \entry{triplewhale}{misc}{}{}
+  \entry{zhou2021informer}{article}{}{}
+    \name{author}{7}{}{%
+      {{hash=ZH}{%
+         family={Zhou},
+         familyi={Z\bibinitperiod},
+         given={Haoyi},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=ZS}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Shanghang},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={Peng},
+         familyi={P\bibinitperiod},
+         given={Jieqi},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=ZS}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Shuai},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Jianxin},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=XH}{%
+         family={Xiong},
+         familyi={X\bibinitperiod},
+         given={Hui},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=ZW}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Wancai},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZH+1}
+    \strng{fullhash}{ZHZSPJZSLJXHZW1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://triplewhale.com/api}}
-    \field{note}{Accedido: 2025-11-09}
-    \field{title}{Triple Whale API}
+    \field{number}{12}
+    \field{pages}{11106\bibrangedash 11115}
+    \field{title}{Informer: Beyond efficient transformer for long sequence
+  time-series forecasting}
+    \field{volume}{35}
+    \field{journaltitle}{Proceedings of the AAAI Conference on Artificial
+  Intelligence}
+    \field{year}{2021}
+  \endentry
+
+  \entry{oreshkin2019nbeats}{article}{}{}
+    \name{author}{4}{}{%
+      {{hash=OBN}{%
+         family={Oreshkin},
+         familyi={O\bibinitperiod},
+         given={Boris\bibnamedelima N},
+         giveni={B\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Carpov},
+         familyi={C\bibinitperiod},
+         given={Dmitri},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=CN}{%
+         family={Chapados},
+         familyi={C\bibinitperiod},
+         given={Nicolas},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{OBN+1}
+    \strng{fullhash}{OBNCDCNBY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{N-BEATS: Neural basis expansion analysis for interpretable
+  time series forecasting}
+    \field{journaltitle}{arXiv preprint arXiv:1905.10437}
+    \field{year}{2019}
+  \endentry
+
+  \entry{makridakis2020m5}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=MS}{%
+         family={Makridakis},
+         familyi={M\bibinitperiod},
+         given={Spyros},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SE}{%
+         family={Spiliotis},
+         familyi={S\bibinitperiod},
+         given={Evangelos},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=AV}{%
+         family={Assimakopoulos},
+         familyi={A\bibinitperiod},
+         given={Vassilios},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{MSSEAV1}
+    \strng{fullhash}{MSSEAV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{4}
+    \field{pages}{1451\bibrangedash 1457}
+    \field{title}{The M5 competition: Background, organization, and
+  implementation}
+    \field{volume}{36}
+    \field{journaltitle}{International Journal of Forecasting}
+    \field{year}{2020}
   \endentry
 
   \entry{amazonforecast}{misc}{}{}
@@ -798,6 +1005,42 @@
     \field{year}{2011}
   \endentry
 
+  \entry{pytorch}{misc}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{3}{}{%
+      {{hash=PA}{%
+         family={Paszke},
+         familyi={P\bibinitperiod},
+         given={Adam},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gross},
+         familyi={G\bibinitperiod},
+         given={Sam},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=MF}{%
+         family={Massa},
+         familyi={M\bibinitperiod},
+         given={Francisco},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {PyTorch Foundation}%
+    }
+    \strng{namehash}{PAGSMF+1}
+    \strng{fullhash}{PAGSMF+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://pytorch.org/}}
+    \field{note}{Accedido: 2025-02-13}
+    \field{title}{PyTorch: An Open Source Machine Learning Framework}
+    \field{year}{2025}
+  \endentry
+
   \entry{matplotlib}{book}{}{}
     \name{author}{1}{}{%
       {{hash=HJD}{%
@@ -888,6 +1131,55 @@
     \field{year}{2024}
   \endentry
 
+  \entry{cron_docs}{misc}{}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://man7.org/linux/man-pages/man5/crontab.5.html}}
+    \field{note}{Accedido: 2025-02-13}
+    \field{title}{Cron Manual}
+  \endentry
+
+  \entry{aws_s3}{manual}{}{}
+    \list{organization}{1}{%
+      {Amazon Web Services}%
+    }
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://docs.aws.amazon.com/s3/}}
+    \field{note}{Accedido: 2025-02-13}
+    \field{title}{Amazon Simple Storage Service (S3) Documentation}
+    \field{year}{2025}
+  \endentry
+
+  \entry{git_pro}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=CS}{%
+         family={Chacon},
+         familyi={C\bibinitperiod},
+         given={Scott},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SB}{%
+         family={Straub},
+         familyi={S\bibinitperiod},
+         given={Ben},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Apress}%
+    }
+    \strng{namehash}{CSSB1}
+    \strng{fullhash}{CSSB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{2}
+    \field{note}{Accedido: 2025-02-13}
+    \field{title}{Pro Git}
+    \verb{url}
+    \verb https://git-scm.com/book/en/v2
+    \endverb
+    \field{year}{2014}
+  \endentry
+
   \entry{asgi}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=A}{%
@@ -895,8 +1187,8 @@
          familyi={A\bibinitperiod},
       }}%
     }
-    \strng{namehash}{A1}
-    \strng{fullhash}{A1}
+    \strng{namehash}{A2}
+    \strng{fullhash}{A2}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{howpublished}{\url{https://asgi.readthedocs.io/en/latest/}}
@@ -939,32 +1231,66 @@
     \field{year}{2024}
   \endentry
 
-  \entry{tiktokAds}{misc}{}{}
+  \entry{docker}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=D}{%
+         family={{Docker, Inc.}},
+         familyi={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{D1}
+    \strng{fullhash}{D1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://business.tiktok.com/en/}}
-    \field{note}{Accedido: 2025-11-23}
-    \field{title}{TikTok for Business}
+    \field{howpublished}{\url{https://docs.docker.com/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{Docker Documentation}
+    \field{year}{2024}
   \endentry
 
-  \entry{InstagramAds}{misc}{}{}
+  \entry{docker_compose}{misc}{}{}
+    \list{organization}{1}{%
+      {Docker, Inc.}%
+    }
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://business.instagram.com/}}
-    \field{note}{Accedido: 2025-11-23}
-    \field{title}{Instagram for Business}
+    \field{howpublished}{\url{https://docs.docker.com/compose/}}
+    \field{note}{Accedido: 2025-02-13}
+    \field{title}{Docker Compose Documentation}
+    \field{year}{2025}
   \endentry
 
-  \entry{FacebookAds}{misc}{}{}
+  \entry{metaflow}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=M}{%
+         family={{Metaflow Team, Netflix}},
+         familyi={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{M1}
+    \strng{fullhash}{M1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://business.facebook.com/}}
-    \field{note}{Accedido: 2025-11-23}
-    \field{title}{Facebook for Business}
+    \field{howpublished}{\url{https://docs.metaflow.org/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{Metaflow: Human-Centric Framework for Data Science}
+    \field{year}{2024}
   \endentry
 
-  \entry{GoogleAds}{misc}{}{}
+  \entry{airflow}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={{Apache Software Foundation}},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://ads.google.com/}}
-    \field{note}{Accedido: 2025-11-23}
-    \field{title}{Google Ads}
+    \field{howpublished}{\url{https://airflow.apache.org/docs/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{Apache Airflow Documentation}
+    \field{year}{2024}
   \endentry
 
   \entry{microsoft_etl}{misc}{}{}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  28 NOV 2025 05:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  28 NOV 2025 11:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1087,19 +1087,6 @@ l.30
 
 ]
 
-LaTeX Warning: Citation 'lim2021temporal' on page 2 undefined on input line 67.
-
-
-
-LaTeX Warning: Citation 'zhou2021informer' on page 2 undefined on input line 67
-.
-
-
-LaTeX Warning: Citation 'oreshkin2019nbeats' on page 2 undefined on input line 
-67.
-
-
-
 LaTeX Info: Redefining \. on input line 73.
 LaTeX Info: Redefining \% on input line 73.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
@@ -1111,11 +1098,6 @@ been already used, duplicate ignored
                    \relax 
 l.73 
       [2]
-
-LaTeX Warning: Citation 'makridakis2020m5' on page 3 undefined on input line 75
-.
-
-
 
 LaTeX Info: Redefining \. on input line 123.
 LaTeX Info: Redefining \% on input line 123.
@@ -1143,35 +1125,36 @@ Cap\'{\i }tulo 2.
 
 [7]
 
-LaTeX Info: Redefining \. on input line 52.
-LaTeX Info: Redefining \% on input line 52.
+LaTeX Info: Redefining \. on input line 48.
+LaTeX Info: Redefining \% on input line 48.
 [8]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\citep' on input line 88.
-
-
-
-LaTeX Info: Redefining \. on input line 95.
-LaTeX Info: Redefining \% on input line 95.
+LaTeX Info: Redefining \. on input line 94.
+LaTeX Info: Redefining \% on input line 94.
 [9]
 
-LaTeX Warning: Citation 'docker' on page 10 undefined on input line 100.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\citep' on input line 100.
 
 
-LaTeX Warning: Citation 'metaflow' on page 10 undefined on input line 103.
 
-
-LaTeX Warning: Citation 'airflow' on page 10 undefined on input line 105.
-
-)
+LaTeX Info: Redefining \. on input line 124.
+LaTeX Info: Redefining \% on input line 124.
+[10])
 
 LaTeX Info: Redefining \. on input line 119.
 LaTeX Info: Redefining \% on input line 119.
-[10]
+[11]
 \openout2 = `Chapters/Chapter3.aux'.
 
  (Chapters/Chapter3.tex
+
+[12
+
+
+
+
+]
 Cap\'{\i }tulo 3.
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
@@ -1180,17 +1163,12 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
 
-[11
-
-
-
-
-]
+[13]
 
 LaTeX Info: Redefining \. on input line 110.
 LaTeX Info: Redefining \% on input line 110.
-[12]
-<./Figures/der.png, id=449, 703.62875pt x 288.07625pt>
+[14]
+<./Figures/der.png, id=481, 703.62875pt x 288.07625pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
 Package pdftex.def Info: ./Figures/der.png  used on input line 119.
@@ -1199,20 +1177,20 @@ Package pdftex.def Info: ./Figures/der.png  used on input line 119.
 
 LaTeX Info: Redefining \. on input line 128.
 LaTeX Info: Redefining \% on input line 128.
-[13 <./Figures/der.png>]
+[15 <./Figures/der.png>]
 
 LaTeX Info: Redefining \. on input line 173.
 LaTeX Info: Redefining \% on input line 173.
-[14]
+[16]
 
 LaTeX Info: Redefining \. on input line 226.
 LaTeX Info: Redefining \% on input line 226.
-[15]
+[17]
 
 LaTeX Info: Redefining \. on input line 287.
 LaTeX Info: Redefining \% on input line 287.
-[16]
-<./Figures/diagBloques.png, id=472, 971.63pt x 329.23pt>
+[18]
+<./Figures/diagBloques.png, id=504, 971.63pt x 329.23pt>
 File: ./Figures/diagBloques.png Graphic file (type png)
 <use ./Figures/diagBloques.png>
 Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 326.
@@ -1221,11 +1199,11 @@ Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 326.
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
-[17]
+[19]
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
-[18 <./Figures/diagBloques.png>]
+[20 <./Figures/diagBloques.png>]
 \openout2 = `Chapters/Chapter4.aux'.
 
  (Chapters/Chapter4.tex
@@ -1236,7 +1214,7 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 
 
-[19
+[21
 
 
 
@@ -1257,24 +1235,24 @@ diarias\T1/ppl/m/n/10.95 ,
 
 LaTeX Info: Redefining \. on input line 68.
 LaTeX Info: Redefining \% on input line 68.
-[20]
+[22]
 
 LaTeX Info: Redefining \. on input line 99.
 LaTeX Info: Redefining \% on input line 99.
-[21]
+[23]
 
 LaTeX Info: Redefining \. on input line 131.
 LaTeX Info: Redefining \% on input line 131.
-[22])
+[24])
 
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
-[23]
+[25]
 \openout2 = `Chapters/Chapter5.aux'.
 
  (Chapters/Chapter5.tex
 
-[24
+[26
 
 
 
@@ -1283,9 +1261,9 @@ LaTeX Info: Redefining \% on input line 121.
 Cap\'{\i }tulo 5.
 )
 
-[25]
+[27]
 
-[26
+[28
 
 
 
@@ -1315,7 +1293,13 @@ domForestRegressor .
 
 
 
-[27]
+[29]
+Overfull \hbox (9.30952pt too wide) in paragraph at lines 140--140
+[]\T1/ppl/m/it/10.95 Amazon Sim-ple Sto-ra-ge Ser-vi-ce (S3) Do-cu-men-ta-tion\
+T1/ppl/m/n/10.95 . Ac-ce-di-do: 2025-02-13. Ama-
+ []
+
+
 Overfull \hbox (1.85997pt too wide) in paragraph at lines 140--140
 []\T1/ppl/m/n/10.95 Pydantic Team. \T1/ppl/m/it/10.95 Py-dan-tic Do-cu-men-ta-t
 ion\T1/ppl/m/n/10.95 . [][]$https : / / docs . pydantic . dev / latest/$[][].
@@ -1329,9 +1313,19 @@ Overfull \hbox (4.92946pt too wide) in paragraph at lines 140--140
 
 
 
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
+[30]
+Overfull \hbox (6.19641pt too wide) in paragraph at lines 140--140
+[]\T1/ppl/m/n/10.95 Apache Soft-wa-re Foun-da-tion. \T1/ppl/m/it/10.95 Apa-che 
+Air-flow Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / air^^]ow .
+ []
+
+
+
 LaTeX Info: Redefining \. on input line 142.
 LaTeX Info: Redefining \% on input line 142.
-[28] (memorianueva.aux (portada.aux)
+[31] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -1346,6 +1340,9 @@ L3 programming layer <2025-06-09>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
 (rerunfilecheck)             Checksum: B74A28D515BB32366A3FB9B107C8ABF2;10204.
 
@@ -1358,11 +1355,11 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31270 strings out of 468221
- 680620 string characters out of 5432892
- 1422610 words of memory out of 5000000
- 59296 multiletter control sequences out of 15000+600000
- 678600 words of font info for 97 fonts, out of 8000000 for 9000
+ 31336 strings out of 468221
+ 682995 string characters out of 5432892
+ 1430105 words of memory out of 5000000
+ 59347 multiletter control sequences out of 15000+600000
+ 679531 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,3257s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.
@@ -1374,9 +1371,9 @@ atino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/u
 rw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type
 1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (38 pages, 333423 bytes).
+Output written on memorianueva.pdf (41 pages, 346751 bytes).
 PDF statistics:
- 635 PDF objects out of 1000 (max. 8388607)
- 132 named destinations out of 1000 (max. 500000)
+ 685 PDF objects out of 1000 (max. 8388607)
+ 147 named destinations out of 1000 (max. 500000)
  424 words of extra memory for PDF output out of 10000 (max. 10000000)
 

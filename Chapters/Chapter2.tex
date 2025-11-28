@@ -13,10 +13,9 @@ En esta sección se presentan algunos requerimientos establecidos para el trabaj
 		\item Importación de datos de ventas desde Shopify: el sistema debe permitir la obtención de datos históricos y actualizados de ventas desde la plataforma Shopify, con el objetivo de utilizarlos en el proceso de entrenamiento del modelo de predicción de demanda.
 		\item Importación de datos de inversión publicitaria desde Triple Whale: el sistema debe permitir la incorporación de datos de inversión publicitaria provenientes de la plataforma Triple Whale, con el propósito de integrar esta variable en el análisis y modelado de ventas.
 		\item Consolidación de datos provenientes de Shopify y Triple Whale: el sistema debe unificar la información de ventas y de inversión publicitaria en un único conjunto de datos, con el fin de preparar una base consistente para el entrenamiento del modelo de predicción.
-		\item Entrenamiento del modelo de predicción de ventas: el objetivo de este requerimiento fue desarrollar y entrenar un modelo de predicción que permita anticipar el comportamiento de las ventas futuras utilizando como base el \textit{dataset} consolidado.
-		\item Visualización de predicciones de ventas en Inventory Tracker: el objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker consultar y analizar las predicciones de ventas generadas por el modelo, integrándolas con los datos históricos disponibles para facilitar la planificación de la producción.
-
-		\item Descarga de predicciones de ventas en formato CSV: el objetivo de este requerimiento fue permitir a los usuarios de Inventory Tracker exportar las predicciones de ventas a un archivo CSV para su análisis externo o integración con otras herramientas de planificación.
+		\item Desarrollo y entrenamiento del modelo predictivo: el sistema debe implementar y entrenar un modelo de inteligencia artificial capaz de generar predicciones de ventas precisas sobre los datos históricos consolidados.
+		\item Visualización de predicciones de ventas en Inventory Tracker: el sistema debe presentar las predicciones de ventas generadas por el modelo dentro de la plataforma Inventory Tracker, integradas con los datos históricos para facilitar el análisis y la planificación de producción.
+		\item Descarga de predicciones de ventas en formato CSV: el sistema debe permitir la exportación de las predicciones de ventas a archivos CSV para su análisis externo o integración con otras herramientas de planificación.
 	\end{itemize}
 
 
@@ -41,7 +40,9 @@ A continuación, se describen los tipos de modelos aplicados:
 
 	\item GRU (\textit{Gated Recurrent Unit}) \citep{cho2014gru}: se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
 
-	\item Enfoque híbrido: se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
+	\item \textit{Temporal Fusion Transformer} (TFT): Se implementó este modelo de vanguardia por su capacidad de atención interpretable, que permite identificar qué variables exógenas y qué períodos históricos influyen en cada predicción. El TFT resulta particularmente adecuado para el contexto de Latech, donde es crucial entender el impacto de las inversiones publicitarias en diferentes horizontes temporales.
+
+	\item Enfoque híbrido: se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM o TFT), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
 
 	\item Prophet: se incluyó el modelo Prophet, desarrollado por Meta \citep{meta}, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
 	\end{itemize}
@@ -63,6 +64,8 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 	\item NumPy \citep{numpy}: ofrece operaciones numéricas y manejo eficiente de arreglos multidimensionales.
 
 	\item Scikit-learn \citep{sklearn}: empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de \textit{machine learning}.
+	
+	\item Pytorch \citep{pytorch}: framework que permite definir arquitecturas personalizadas, calcular gradientes automáticamente y realizar entrenamientos acelerados mediante GPU. Su integración con bibliotecas como NumPy, Pandas y Matplotlib facilita incorporarlo a flujos de trabajo existentes y explorar modelos predictivos más sofisticados que los basados únicamente en series temporales clásicas.
 
 \end{itemize}
 
@@ -81,9 +84,18 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 \subsection{Plataformas y APIs externas}
 \begin{itemize}
 	\item Shopify API \citep{shopify}: proporciona acceso automatizado a datos históricos de ventas, productos y transacciones.
+	
 	\item Triple Whale API \citep{triplewhale}: ofrece datos de inversión publicitaria desglosados por plataforma y campaña.
+	
 	\item PostgreSQL \citep{postgresql_docs}: funciona como sistema de gestión de bases de datos destinado al almacenamiento estructurado de los datos consolidados.
+
+	\item Cron \citep{cron_docs}: permite ejecutar tareas programadas a horas, fechas o intervalos fijos periódicos para automatización de \textit{pipelines}.
+	
+	\item AWS S3 \citep{aws_s3}: ofrece un servicio de almacenamiento de objetos en la nube de AWS que con alta escalabilidad, disponibilidad, durabilidad y seguridad necesario para guardar los modelos y datos intermedios.
+	
+	\item Git \citep{git_pro}: sistema de control de versiones distribuido que mantiene un registro histórico de cambios en archivos de código, configuraciones y documentación, esencial para el desarrollo colaborativo y la reproducibilidad de experimentos.
 \end{itemize}
+
 
 \subsection{Exposición de servicios: FastAPI \citep{fastapi}}
 Para exponer endpoints que permiten consumir resultados, ejecutar procesos o servir modelos se utiliza FastAPI. Este framework destaca por su alto rendimiento y por su arquitectura asíncrona basada en ASGI \citep{asgi}.
@@ -97,10 +109,16 @@ Las características más relevantes para este proyecto son:
 
 
 \subsection{Contenerización: Docker}
-\textbf{Docker} \citep{docker} permite definir entornos de ejecución consistentes para los servicios del proyecto. Sus contenedores aseguran reproducibilidad, aislamiento y portabilidad entre distintos entornos.
+\begin{itemize}
+	\item Docker \citep{docker}: permite definir entornos de ejecución consistentes para los servicios del proyecto. Sus contenedores aseguran reproducibilidad, aislamiento y portabilidad entre distintos entornos.
+	
+	\item Docker compose \citep{docker_compose}: herramienta que simplifica la orquestación de múltiples contenedores Docker mediante archivos de configuración en formato YAML. Permite la definición y ejecución de aplicaciones multi-servicio de manera coordinada, lo que facilita la puesta en marcha de entornos complejos que incluyen la API de FastAPI, la base de datos PostgreSQL y servicios auxiliares de forma integrada. Docker Compose maneja automáticamente las dependencias entre servicios, las redes virtuales y los volúmenes de persistencia.
+\end{itemize}
 
 \subsection{Orquestación y pipelines: Metaflow y Airflow}
-\textbf{Metaflow} \citep{metaflow} se utiliza como herramienta principal para estructurar y ejecutar pipelines de datos y experimentos, con registro automático de artefactos y trazabilidad.
+\begin{itemize}
+	\item Metaflow \citep{metaflow}: se utiliza como herramienta principal para estructurar y ejecutar pipelines de datos y experimentos, con registro automático de artefactos y trazabilidad.
 
-\textbf{Airflow} \citep{airflow} se considera una alternativa válida para tareas recurrentes o programaciones complejas, pero no se adopta en esta etapa del proyecto debido a su mayor complejidad operativa.
-
+	\item Apache Airflow \citep{airflow}: framework de orquestación que define flujos de trabajo como DAGs (\textit{Directed Acyclic Graphs}) y permite programar ejecuciones periódicas, manejar dependencias entre tareas y monitorizar el estado de los procesos de datos.
+	
+\end{itemize}
