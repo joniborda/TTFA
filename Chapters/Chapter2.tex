@@ -2,7 +2,7 @@
 
 \label{Chapter2}
 
-En este capítulo se presentan los requerimientos más importantes, los modelos de inteligencia artificial utilizados y las herramientos usadas para el tratamiento de datos.
+En este capítulo se presentan los requerimientos más importantes, los modelos de inteligencia artificial utilizados y las herramientas usadas para el tratamiento de datos.
 
 \section{Requerimientos}
 
@@ -38,7 +38,7 @@ A continuación, se describen los tipos de modelos aplicados:
 
 	\item \textit{Long Short-Term Memory} (LSTM): se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
 
-	\item GRU (\textit{Gated Recurrent Unit}) \citep{cho2014gru}: se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
+	\item GRU (\textit{Gated Recurrent Unit}) \citep{cho2014gru}: se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados. Además, mantienen la capacidad esencial de capturar dependencias temporales a largo plazo y manejar el problema del gradiente \textit{vanishing}, que en ocasiones demuestra un desempeño comparable al de las LSTM.
 
 	\item \textit{Temporal Fusion Transformer} (TFT): Se implementó este modelo de vanguardia por su capacidad de atención interpretable, que permite identificar qué variables exógenas y qué períodos históricos influyen en cada predicción. El TFT resulta particularmente adecuado para el contexto de Latech, donde es crucial entender el impacto de las inversiones publicitarias en diferentes horizontes temporales.
 
@@ -119,6 +119,6 @@ Las características más relevantes para este proyecto son:
 \begin{itemize}
 	\item Metaflow \citep{metaflow}: se utiliza como herramienta principal para estructurar y ejecutar pipelines de datos y experimentos, con registro automático de artefactos y trazabilidad.
 
-	\item Apache Airflow \citep{airflow}: framework de orquestación que define flujos de trabajo como DAGs (\textit{Directed Acyclic Graphs}) y permite programar ejecuciones periódicas, manejar dependencias entre tareas y monitorizar el estado de los procesos de datos.
+	\item Apache Airflow \citep{airflow}: framework de orquestación que define flujos de trabajo como DAGs (\textit{Directed Acyclic Graphs}) \citep{airflow_dags} y permite programar ejecuciones periódicas, manejar dependencias entre tareas y monitorizar el estado de los procesos de datos.
 	
 \end{itemize}

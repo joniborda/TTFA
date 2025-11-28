@@ -47,7 +47,7 @@ La arquitectura diseñada para el sistema de predicción de ventas se basa en un
 \begin{itemize}
 
 
-\item Centralización y coherencia de datos, se priorizó la unificación de múltiples fuentes (ventas, comportamiento de usuarios, inversión en publicidad).
+\item Centralización y coherencia de datos. Se priorizó la unificación de múltiples fuentes (ventas, comportamiento de usuarios, inversión en publicidad).
 
 \item Escalabilidad operativa que permita que el sistema integre nuevos canales, nuevas métricas o nuevos modelos sin alterar la estructura existente.
 
@@ -59,17 +59,17 @@ El sistema se organiza en una arquitectura por capas que separa claramente las r
 
 \begin{enumerate}
 
-\item Capa de recolección de datos (Data Ingestion Layer)
+\item Capa de recolección de datos (Data Ingestion Layer).
 
-\item Capa de procesamiento y transformación (ETL)
+\item Capa de procesamiento y transformación (ETL).
 
-\item Capa de almacenamiento estructurado (Data Storage Layer)
+\item Capa de almacenamiento estructurado (Data Storage Layer).
 
-\item Capa de modelado predictivo (Modeling Layer)
+\item Capa de modelado predictivo (Modeling Layer).
 
-\item Capa de integración operativa mediante microservicios
+\item Capa de integración operativa mediante microservicios.
 
-\item Capa de visualización y consumo dentro de Inventory Tracker
+\item Capa de visualización y consumo dentro de Inventory Tracker.
 
 \end{enumerate}
 
@@ -105,12 +105,31 @@ Dado que Shopify y Triple Whale estructuran sus datos de manera diferente, se co
 
 \subsection{Capa de almacenamiento estructurado}
 
-Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQL diseñada específicamente para consultas analíticas y para servir como fuente unificada de información durante el entrenamiento y evaluación de los modelos. Dentro de esta capa se construye la tabla principal denominada orders, en la cual se almacena la información proveniente de Shopify ya depurada y enriquecida. Esta tabla contiene las columnas fundamentales para caracterizar el comportamiento de compra de los usuarios:
-created, que registra la fecha de creación de cada orden; totalPrice, correspondiente al monto total pagado; customerId, que identifica al cliente; lineItems, donde se detalla cada producto incluido en la compra junto con sus cantidades; channel, que indica el canal por el cual ingresó la orden; tags, que permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify; orderNumberForCustomer, que señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo); y diffWeeksFromFirstPurchase, que expresa la cantidad de semanas transcurridas desde la primera compra del usuario, permitiendo analizar patrones de frecuencia y retención.
+Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQL diseñada específicamente para consultas analíticas y para servir como fuente unificada de información durante el entrenamiento y evaluación de los modelos. Dentro de esta capa se construye la tabla principal denominada \textit{orders}, en la que se almacena la información proveniente de Shopify ya depurada y enriquecida. Esta tabla contiene las columnas fundamentales para caracterizar el comportamiento de compra de los usuarios:
+\begin{itemize}
+	\item created: que registra la fecha de creación de cada orden.
+	\item totalPrice: correspondiente al monto total pagado.
+	\item customerId: que identifica al cliente.
+	\item lineItems: donde se detalla cada producto incluido en la compra junto con sus cantidades.
+	\item channel: que indica el canal por el cual ingresó la orden.
+	\item tags: que permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
+	\item orderNumberForCustomer: que señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
+	\item diffWeeksFromFirstPurchase: que expresa la cantidad de semanas transcurridas desde la primera compra del usuario, permitiendo analizar patrones de frecuencia y retención.
+	
+\end{itemize}
 
-A partir de esta tabla estructurada, se generan columnas derivadas mediante procesos de enriquecimiento en Python, con el objetivo de facilitar el análisis y preparar los datos para su uso en modelos predictivos. Entre estas variables se incluyen created\_weekday, que identifica el día de la semana de cada orden; created\_month, que permite estudiar estacionalidades mensuales; unique\_customers, que calcula la cantidad de clientes distintos por día; new\_customers, que contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha; y returning\_customers, que contabiliza cuántos usuarios realizaron más de una compra. Estas nuevas columnas permiten construir vistas agregadas y analizar la evolución del comportamiento de los clientes en el tiempo.
+A partir de esta tabla estructurada, se generan columnas derivadas mediante procesos de enriquecimiento en Python, con el objetivo de facilitar el análisis y preparar los datos para su uso en modelos predictivos. Entre estas variables se incluyen:
+\begin{itemize}
+	\item created\_weekday: que identifica el día de la semana de cada orden.
+	\item created\_month: que permite estudiar estacionalidades mensuales. 
+	\item unique\_customers: que calcula la cantidad de clientes distintos por día.
+	\item new\_customers: que contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha.
+	\item returning\_customers: que contabiliza cuántos usuarios realizaron más de una compra. 
+\end{itemize}
 
-Finalmente, otra tabla denominada forecast consolida la información diaria extraida de TripleWhale. Esta tabla incorpora, entre otras variables, el monto de inversión publicitaria bajo la columna ad\_spend. La tabla contiene además otros campos utilizados por el sistema Inventory Tracker, derivados de los datos ya existentes; sin embargo, dichas columnas no forman parte del alcance del presente trabajo, ya que responden a necesidades operativas específicas del cliente y no intervienen en el proceso de modelado.
+Estas nuevas columnas permiten construir vistas agregadas y analizar la evolución del comportamiento de los clientes en el tiempo.
+
+Finalmente, otra tabla denominada \textit{forecast} consolida la información diaria extraida de TripleWhale. Esta tabla incorpora, entre otras variables, el monto de inversión publicitaria bajo la columna textit{ad\_spend}. La tabla contiene además otros campos utilizados por el sistema Inventory Tracker, derivados de los datos ya existentes. Sin embargo, dichas columnas no forman parte del alcance del presente trabajo, ya que responden a necesidades operativas específicas del cliente y no intervienen en el proceso de modelado.
 
 Este diseño facilita tanto el acceso para entrenamiento de modelos como la consulta rápida desde Inventory Tracker. En la figura \ref{fig:der} se muestran las dos tablas principales del trabajo con las columnas que se tomaron en cuenta para este proceso de almacenamiento.
 

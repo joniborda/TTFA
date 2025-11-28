@@ -26,13 +26,13 @@
 \contentsline {subsection}{\numberline {3.1.6}Integración en Inventory Tracker}{17}{subsection.3.1.6}%
 \contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{17}{subsection.3.1.7}%
 \contentsline {subsection}{\numberline {3.1.8}Capa de adquisición}{17}{subsection.3.1.8}%
-\contentsline {subsection}{\numberline {3.1.9}Capa de procesamiento y generación del dataset final}{17}{subsection.3.1.9}%
+\contentsline {subsection}{\numberline {3.1.9}Capa de procesamiento y generación del dataset final}{18}{subsection.3.1.9}%
 \contentsline {subsection}{\numberline {3.1.10}Base de datos unificada}{19}{subsection.3.1.10}%
 \contentsline {subsection}{\numberline {3.1.11}Condiciones del trabajo}{19}{subsection.3.1.11}%
-\contentsline {section}{\numberline {3.2}Análisis de datos}{19}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{19}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{19}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{19}{section.3.5}%
+\contentsline {section}{\numberline {3.2}Análisis de datos}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{20}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{20}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{20}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{21}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{21}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Desempeño del modelo}{21}{section.4.2}%

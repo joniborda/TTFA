@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  28 NOV 2025 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  28 NOV 2025 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1129,17 +1129,20 @@ LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
 [8]
 
-LaTeX Info: Redefining \. on input line 94.
-LaTeX Info: Redefining \% on input line 94.
+LaTeX Info: Redefining \. on input line 92.
+LaTeX Info: Redefining \% on input line 92.
 [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\citep' on input line 100.
 
 
+LaTeX Warning: Citation 'airflow_dags' on page 10 undefined on input line 122.
 
-LaTeX Info: Redefining \. on input line 124.
-LaTeX Info: Redefining \% on input line 124.
+
+
+LaTeX Info: Redefining \. on input line 123.
+LaTeX Info: Redefining \% on input line 123.
 [10])
 
 LaTeX Info: Redefining \. on input line 119.
@@ -1165,41 +1168,46 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 
 [13]
 
-LaTeX Info: Redefining \. on input line 110.
-LaTeX Info: Redefining \% on input line 110.
+LaTeX Info: Redefining \. on input line 109.
+LaTeX Info: Redefining \% on input line 109.
 [14]
+Overfull \hbox (5.33679pt too wide) in paragraph at lines 126--127
+[]\T1/ppl/m/n/10.95 new_customers: que con-ta-bi-li-za cuán-tos usua-rios rea-l
+i-za-ron su pri-me-ra com-
+ []
+
 <./Figures/der.png, id=481, 703.62875pt x 288.07625pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
-Package pdftex.def Info: ./Figures/der.png  used on input line 119.
+Package pdftex.def Info: ./Figures/der.png  used on input line 138.
 (pdftex.def)             Requested size: 311.84334pt x 127.67262pt.
 
 
-LaTeX Info: Redefining \. on input line 128.
-LaTeX Info: Redefining \% on input line 128.
-[15 <./Figures/der.png>]
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
+[15]
 
-LaTeX Info: Redefining \. on input line 173.
-LaTeX Info: Redefining \% on input line 173.
-[16]
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
+[16 <./Figures/der.png>]
 
-LaTeX Info: Redefining \. on input line 226.
-LaTeX Info: Redefining \% on input line 226.
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
 [17]
 
-LaTeX Info: Redefining \. on input line 287.
-LaTeX Info: Redefining \% on input line 287.
+LaTeX Info: Redefining \. on input line 282.
+LaTeX Info: Redefining \% on input line 282.
 [18]
 <./Figures/diagBloques.png, id=504, 971.63pt x 329.23pt>
 File: ./Figures/diagBloques.png Graphic file (type png)
 <use ./Figures/diagBloques.png>
-Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 326.
+Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 345.
 (pdftex.def)             Requested size: 389.80269pt x 132.0815pt.
-)
 
-LaTeX Info: Redefining \. on input line 120.
-LaTeX Info: Redefining \% on input line 120.
-[19]
+
+LaTeX Info: Redefining \. on input line 349.
+LaTeX Info: Redefining \% on input line 349.
+[19])
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
@@ -1340,9 +1348,6 @@ L3 programming layer <2025-06-09>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
 (rerunfilecheck)             Checksum: B74A28D515BB32366A3FB9B107C8ABF2;10204.
 
@@ -1357,7 +1362,7 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 Here is how much of TeX's memory you used:
  31336 strings out of 468221
  682995 string characters out of 5432892
- 1430105 words of memory out of 5000000
+ 1430164 words of memory out of 5000000
  59347 multiletter control sequences out of 15000+600000
  679531 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1371,7 +1376,7 @@ atino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/u
 rw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type
 1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (41 pages, 346751 bytes).
+Output written on memorianueva.pdf (41 pages, 347232 bytes).
 PDF statistics:
  685 PDF objects out of 1000 (max. 8388607)
  147 named destinations out of 1000 (max. 500000)
