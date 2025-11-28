@@ -29,24 +29,24 @@ Para abordar el trabajo se evaluaron y aplicaron diversos modelos de inteligenci
 A continuación, se describen los tipos de modelos aplicados:
 
 	\begin{itemize}
-		\item \textit{Random Forest Regressor}: se utilizó por su robustez frente a sobreajuste y su capacidad para capturar relaciones no lineales entre variables. Este modelo resulta especialmente útil cuando se integran múltiples fuentes de datos, como ventas históricas e inversión publicitaria.
+		\item Random Forest Regressor \citep{randomforestregressor}: se utilizó por su robustez frente a sobreajuste y su capacidad para capturar relaciones no lineales entre variables. Este modelo resulta especialmente útil cuando se integran múltiples fuentes de datos, como ventas históricas e inversión publicitaria.
 
-		\item \textit{Gradient Boosting Machines} (XGBoost, LightGBM): se evaluaron por su alto rendimiento en competencias de ciencia de datos y su eficiencia computacional. Estos modelos permiten optimizar la función de pérdida de manera iterativa, mejorando la precisión en la predicción de series temporales con características externas.
+		\item Gradient Boosting Machines \cite{friedman2001gbm} (XGBoost, LightGBM): se evaluaron por su alto rendimiento en competencias de ciencia de datos y su eficiencia computacional. Estos modelos permiten optimizar la función de pérdida de manera iterativa, mejorando la precisión en la predicción de series temporales con características externas.
 
 	\item SARIMA (\textit{Seasonal Autoregressive Integrated Moving Average}): se aplicó para modelar la estacionalidad y tendencia presentes en los datos de ventas. SARIMA es especialmente efectivo cuando el comportamiento temporal es predominante y estable a lo largo del tiempo.
 
-	\item \textit{Exponential Smoothing} (ETS): se consideró como alternativa para capturar patrones estacionales y de tendencia con un enfoque más intuitivo y menos paramétrico que SARIMA.
+	\item \textit{Exponential Smoothing} (ETS) \citep{hyndman2008forecasting}: se consideró como alternativa para capturar patrones estacionales y de tendencia con un enfoque más intuitivo y menos paramétrico que SARIMA.
 
-	\item LSTM (\textit{Long Short-Term Memory}): se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
+	\item \textit{Long Short-Term Memory} (LSTM): se implementaron redes LSTM debido a su habilidad para retener información a largo plazo y modelar dependencias temporales complejas. Este tipo de red es adecuado para series temporales con patrones no lineales y múltiples variables exógenas, como la inversión publicitaria por plataforma.
 
-	\item GRU (\textit{Gated Recurrent Unit}): se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
+	\item GRU (\textit{Gated Recurrent Unit}) \citep{cho2014gru}: se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados.
 
 	\item Enfoque híbrido: se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
 
-	\item Prophet: se incluyó el modelo Prophet, desarrollado por Meta, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
+	\item Prophet: se incluyó el modelo Prophet, desarrollado por Meta \citep{meta}, por su facilidad de uso y capacidad para manejar estacionalidades múltiples, días festivos y cambios en la tendencia. Este modelo resultó de interés para validar la estructura temporal de los datos antes de aplicar modelos más complejos.
 	\end{itemize}
 
-Cada uno de estos modelos fue entrenado y validado utilizando el conjunto de datos consolidado de ventas e inversión publicitaria, y se compararon mediante métricas como MAE (Error Absoluto Medio), RMSE (Raíz del Error Cuadrático Medio) y MAPE (Error Porcentual Absoluto Medio), con el fin de seleccionar el que mejor se adaptara a las necesidades de pronóstico de Latech.
+Cada uno de estos modelos fue entrenado y validado utilizando el conjunto de datos consolidado de ventas e inversión publicitaria, y se compararon mediante métricas como MAE (error absoluto medio), RMSE (raíz del error cuadrático medio) y MAPE (error porcentual absoluto medio), con el fin de seleccionar el que mejor se adaptara a las necesidades de pronóstico de Latech.
 
 
 \section{Tratamiento de datos (herramientas)}
@@ -56,32 +56,51 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 
 
 
-Bibliotecas para procesamiento y análisis de datos
+\subsection{Bibliotecas para procesamiento y análisis de datos}
 \begin{itemize}
-		\item Pandas: para la manipulación y transformación de datos tabulares, incluyendo operaciones de filtrado, agrupamiento y combinación de datasets.
+	\item Pandas \citep{pandas}: permite manipular y transformar datos tabulares, incluidas operaciones de filtrado, agrupamiento y combinación de datasets.
 
-	\item NumPy: utilizado para operaciones numéricas y manejo eficiente de arreglos multidimensionales.
+	\item NumPy \citep{numpy}: ofrece operaciones numéricas y manejo eficiente de arreglos multidimensionales.
 
-	\item Scikit-learn: empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de machine learning.
+	\item Scikit-learn \citep{sklearn}: empleada para el preprocesamiento de datos (escalado, codificación de variables categóricas) y la implementación de modelos clásicos de \textit{machine learning}.
 
 \end{itemize}
 
 
-Bibliotecas para visualización
+\subsection{Bibliotecas para visualización}
 
 \begin{itemize}
-		\item Matplotlib y Seaborn: para la generación de gráficos estáticos que facilitaron la identificación de patrones, tendencias y valores atípicos.
+		\item Matplotlib \citep{matplotlib} y Seaborn \citep{seaborn}: permiten generar gráficos estáticos que facilitan la identificación de patrones, tendencias y valores atípicos.
+		
+		
 
-\item Plotly: utilizado para la creación de visualizaciones interactivas dentro de los notebooks.
+\item Plotly \citep{plotly}: utilizado para la creación de visualizaciones interactivas dentro de los notebooks.
 \end{itemize}
 
 
-Plataformas y APIs externas
-
+\subsection{Plataformas y APIs externas}
 \begin{itemize}
-		\item Shopify API: para la extracción automatizada de datos históricos de ventas, productos y transacciones.
-
-\item Triple Whale API: para la obtención de datos de inversión publicitaria desglosados por plataforma y campaña.
-
-\item PostgreSQL: sistema de gestión de bases de datos utilizado para el almacenamiento estructurado de los datos consolidados.
+	\item Shopify API \citep{shopify}: proporciona acceso automatizado a datos históricos de ventas, productos y transacciones.
+	\item Triple Whale API \citep{triplewhale}: ofrece datos de inversión publicitaria desglosados por plataforma y campaña.
+	\item PostgreSQL \citep{postgresql_docs}: funciona como sistema de gestión de bases de datos destinado al almacenamiento estructurado de los datos consolidados.
 \end{itemize}
+
+\subsection{Exposición de servicios: FastAPI \citep{fastapi}}
+Para exponer endpoints que permiten consumir resultados, ejecutar procesos o servir modelos se utiliza FastAPI. Este framework destaca por su alto rendimiento y por su arquitectura asíncrona basada en ASGI \citep{asgi}.
+
+Las características más relevantes para este proyecto son:
+\begin{itemize}
+	\item Alto rendimiento: maneja múltiples solicitudes de manera eficiente gracias a su soporte nativo para operaciones asíncronas.
+	\item Validación y documentación automática: incorpora Pydantic  \citep{pydantic} para validar estructuras de entrada y genera documentación OpenAPI/Swagger \citep{swagger} sin requerir configuraciones adicionales.
+	\item Flexibilidad: permite definir endpoints destinados al consumo de modelos, consultas filtradas, refresco de datos o ejecución de procesos administrativos.
+\end{itemize}
+
+
+\subsection{Contenerización: Docker}
+\textbf{Docker} \citep{docker} permite definir entornos de ejecución consistentes para los servicios del proyecto. Sus contenedores aseguran reproducibilidad, aislamiento y portabilidad entre distintos entornos.
+
+\subsection{Orquestación y pipelines: Metaflow y Airflow}
+\textbf{Metaflow} \citep{metaflow} se utiliza como herramienta principal para estructurar y ejecutar pipelines de datos y experimentos, con registro automático de artefactos y trazabilidad.
+
+\textbf{Airflow} \citep{airflow} se considera una alternativa válida para tareas recurrentes o programaciones complejas, pero no se adopta en esta etapa del proyecto debido a su mayor complejidad operativa.
+

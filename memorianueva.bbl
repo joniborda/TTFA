@@ -17,6 +17,25 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global/global}
+  \entry{fastapi}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=RS}{%
+         family={Ramírez},
+         familyi={R\bibinitperiod},
+         given={Sebastián},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RS1}
+    \strng{fullhash}{RS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://fastapi.tiangolo.com/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{FastAPI Documentation}
+    \field{year}{2024}
+  \endentry
+
   \entry{BOOK:4}{book}{}{}
     \name{author}{4}{}{%
       {{hash=BGEP}{%
@@ -272,6 +291,680 @@
     \field{howpublished}{\url{https://developers.facebook.com/}}
     \field{note}{Accedido: 2025-11-09}
     \field{title}{Meta for Developers}
+  \endentry
+
+  \entry{randomforestregressor}{misc}{}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{RandomForestRegressor — scikit-learn documentation}
+  \endentry
+
+  \entry{friedman2001gbm}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=FJH}{%
+         family={Friedman},
+         familyi={F\bibinitperiod},
+         given={Jerome\bibnamedelima H.},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FJH1}
+    \strng{fullhash}{FJH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1214/aos/1013203451
+    \endverb
+    \field{howpublished}{\url{https://jerryfriedman.su.domains/ftp/trebst.pdf}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{number}{5}
+    \field{pages}{1189\bibrangedash 1232}
+    \field{title}{Greedy Function Approximation: A Gradient Boosting Machine}
+    \field{volume}{29}
+    \field{journaltitle}{The Annals of Statistics}
+    \field{year}{2001}
+  \endentry
+
+  \entry{hyndman2008forecasting}{misc}{}{}
+    \name{author}{4}{}{%
+      {{hash=HRJ}{%
+         family={Hyndman},
+         familyi={H\bibinitperiod},
+         given={Rob\bibnamedelima J.},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=KAB}{%
+         family={Koehler},
+         familyi={K\bibinitperiod},
+         given={Anne\bibnamedelima B.},
+         giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=OJK}{%
+         family={Ord},
+         familyi={O\bibinitperiod},
+         given={J.\bibnamedelima Keith},
+         giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=SRD}{%
+         family={Snyder},
+         familyi={S\bibinitperiod},
+         given={Ralph\bibnamedelima D.},
+         giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{HRJ+1}
+    \strng{fullhash}{HRJKABOJKSRD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{isbn}{978-3-540-71916-8}
+    \field{note}{Accedido: 2025-11-23}
+    \field{series}{Springer Series in Statistics}
+    \field{title}{Forecasting with Exponential Smoothing: The State Space
+  Approach}
+    \verb{url}
+    \verb https://www.academia.edu/76833440/Forecasting_with_Exponential_Smooth
+    \verb ing_The_State_Space_Approach_by_Rob_J_Hyndman_Anne_B_Koehler_J_Keith_
+    \verb Ord_Ralph_D_Snyder
+    \endverb
+    \field{year}{2008}
+  \endentry
+
+  \entry{cho2014gru}{inproceedings}{}{}
+    \name{author}{4}{}{%
+      {{hash=CK}{%
+         family={Cho},
+         familyi={C\bibinitperiod},
+         given={Kyunghyun},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=vMB}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Merrienboer},
+         familyi={M\bibinitperiod},
+         given={Bart},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Bahdanau},
+         familyi={B\bibinitperiod},
+         given={Dzmitry},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BY}{%
+         family={Bengio},
+         familyi={B\bibinitperiod},
+         given={Yoshua},
+         giveni={Y\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACL}%
+    }
+    \strng{namehash}{CK+1}
+    \strng{fullhash}{CKMBvBDBY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 2014 Conference on Empirical Methods
+  in Natural Language Processing (EMNLP)}
+    \field{note}{Accedido: 2025-11-23}
+    \field{pages}{1724\bibrangedash 1734}
+    \field{title}{Learning Phrase Representations using RNN Encoder–Decoder
+  for Statistical Machine Translation}
+    \verb{url}
+    \verb https://arxiv.org/abs/1406.1078
+    \endverb
+    \field{year}{2014}
+  \endentry
+
+  \entry{pandas}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=RJ}{%
+         family={Reback},
+         familyi={R\bibinitperiod},
+         given={Jeff},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MW}{%
+         family={McKinney},
+         familyi={M\bibinitperiod},
+         given={Wes},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=j}{%
+         family={jbrockmendel},
+         familyi={j\bibinitperiod},
+      }}%
+      {{hash=BTA}{%
+         family={Bossche},
+         familyi={B\bibinitperiod},
+         given={Tom\bibnamedelima Augspurger},
+         giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=CP}{%
+         family={Cloud},
+         familyi={C\bibinitperiod},
+         given={Phillip},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={Hawkins},
+         familyi={H\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Gfyoung},
+         familyi={G\bibinitperiod},
+         given={Javier},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SN}{%
+         family={Sinhrks},
+         familyi={S\bibinitperiod},
+         given={Nathan},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Roeschke},
+         familyi={R\bibinitperiod},
+         given={Adam},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Klein},
+         familyi={K\bibinitperiod},
+         given={Aric},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RJ+1}
+    \strng{fullhash}{RJMWjBTACPHMGJSNRAKA+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.5281/zenodo.3509134
+    \endverb
+    \field{title}{pandas: powerful Python data analysis toolkit}
+    \verb{url}
+    \verb https://pandas.pydata.org/
+    \endverb
+    \field{journaltitle}{Zenodo}
+    \field{year}{2020}
+  \endentry
+
+  \entry{numpy}{article}{}{}
+    \name{author}{26}{}{%
+      {{hash=HCR}{%
+         family={Harris},
+         familyi={H\bibinitperiod},
+         given={Charles\bibnamedelima R.},
+         giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=MKJ}{%
+         family={Millman},
+         familyi={M\bibinitperiod},
+         given={K.\bibnamedelima Jarrod},
+         giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=vdWSJ}{%
+         prefix={van\bibnamedelima der},
+         prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={Walt},
+         familyi={W\bibinitperiod},
+         given={St{\'e}fan\bibnamedelima J.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=GR}{%
+         family={Gommers},
+         familyi={G\bibinitperiod},
+         given={Ralf},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=VP}{%
+         family={Virtanen},
+         familyi={V\bibinitperiod},
+         given={Pauli},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Cournapeau},
+         familyi={C\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wieser},
+         familyi={W\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=TJ}{%
+         family={Taylor},
+         familyi={T\bibinitperiod},
+         given={Julian},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Berg},
+         familyi={B\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SNJ}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Nathaniel\bibnamedelima J.},
+         giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=KR}{%
+         family={Kern},
+         familyi={K\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Picus},
+         familyi={P\bibinitperiod},
+         given={Matti},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Hoyer},
+         familyi={H\bibinitperiod},
+         given={Stephan},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=vKMH}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Kerkwijk},
+         familyi={K\bibinitperiod},
+         given={Marten\bibnamedelima H.},
+         giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Brett},
+         familyi={B\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Haldane},
+         familyi={H\bibinitperiod},
+         given={Allan},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=FdRJ}{%
+         prefix={Fern{\'a}ndez\bibnamedelima del},
+         prefixi={F\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={R{\'\i}o},
+         familyi={R\bibinitperiod},
+         given={Jaime},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=WM}{%
+         family={Wiebe},
+         familyi={W\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={Peterson},
+         familyi={P\bibinitperiod},
+         given={Pearu},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=GMP}{%
+         family={G{\'e}rard-Marchant},
+         familyi={G\bibinithyphendelim M\bibinitperiod},
+         given={Pierre},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=SK}{%
+         family={Sheppard},
+         familyi={S\bibinitperiod},
+         given={Kevin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=RT}{%
+         family={Reddy},
+         familyi={R\bibinitperiod},
+         given={Tyler},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=WW}{%
+         family={Weckesser},
+         familyi={W\bibinitperiod},
+         given={Warren},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=AH}{%
+         family={Abbasi},
+         familyi={A\bibinitperiod},
+         given={Hameer},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=GC}{%
+         family={Gohlke},
+         familyi={G\bibinitperiod},
+         given={Christoph},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=OTE}{%
+         family={Oliphant},
+         familyi={O\bibinitperiod},
+         given={Travis\bibnamedelima E.},
+         giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Nature Publishing Group}%
+    }
+    \strng{namehash}{HCR+1}
+  \strng{fullhash}{HCRMKJWSJvdGRVPCDWETJBSSNJKRPMHSKMHvBMHARJFdWMPPGMPSKRTWWAHGCOTE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1038/s41586-020-2649-2
+    \endverb
+    \field{number}{7825}
+    \field{pages}{357\bibrangedash 362}
+    \field{title}{Array programming with NumPy}
+    \verb{url}
+    \verb https://numpy.org/doc/stable/
+    \endverb
+    \field{volume}{585}
+    \field{journaltitle}{Nature}
+    \field{year}{2020}
+  \endentry
+
+  \entry{sklearn}{article}{}{}
+    \name{author}{16}{}{%
+      {{hash=PF}{%
+         family={Pedregosa},
+         familyi={P\bibinitperiod},
+         given={Fabian},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=VG}{%
+         family={Varoquaux},
+         familyi={V\bibinitperiod},
+         given={Ga{\"e}l},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=GA}{%
+         family={Gramfort},
+         familyi={G\bibinitperiod},
+         given={Alexandre},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MV}{%
+         family={Michel},
+         familyi={M\bibinitperiod},
+         given={Vincent},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=TB}{%
+         family={Thirion},
+         familyi={T\bibinitperiod},
+         given={Bertrand},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=GO}{%
+         family={Grisel},
+         familyi={G\bibinitperiod},
+         given={Olivier},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Blondel},
+         familyi={B\bibinitperiod},
+         given={Mathieu},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={Prettenhofer},
+         familyi={P\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=WR}{%
+         family={Weiss},
+         familyi={W\bibinitperiod},
+         given={Ron},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=DV}{%
+         family={Dubourg},
+         familyi={D\bibinitperiod},
+         given={Vincent},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={Vanderplas},
+         familyi={V\bibinitperiod},
+         given={Jake},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=PA}{%
+         family={Passos},
+         familyi={P\bibinitperiod},
+         given={Alexandre},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Cournapeau},
+         familyi={C\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Brucher},
+         familyi={B\bibinitperiod},
+         given={Matthieu},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Perrot},
+         familyi={P\bibinitperiod},
+         given={Marc},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DE}{%
+         family={Duchesnay},
+         familyi={D\bibinitperiod},
+         given={{\'E}douard},
+         giveni={{\'E}\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PF+1}
+    \strng{fullhash}{PFVGGAMVTBGOBMPPWRDVVJPACDBMPMDE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{2825\bibrangedash 2830}
+    \field{title}{Scikit-learn: Machine learning in Python}
+    \verb{url}
+    \verb https://scikit-learn.org/stable/
+    \endverb
+    \field{volume}{12}
+    \field{journaltitle}{Journal of Machine Learning Research}
+    \field{year}{2011}
+  \endentry
+
+  \entry{matplotlib}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=HJD}{%
+         family={Hunter},
+         familyi={H\bibinitperiod},
+         given={John\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HJD1}
+    \strng{fullhash}{HJD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{90\bibrangedash 95}
+    \field{title}{Matplotlib: A 2D graphics environment}
+    \verb{url}
+    \verb https://matplotlib.org/
+    \endverb
+    \field{volume}{9}
+    \field{journaltitle}{Computing in Science \& Engineering}
+    \field{year}{2007}
+  \endentry
+
+  \entry{seaborn}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=WML}{%
+         family={Waskom},
+         familyi={W\bibinitperiod},
+         given={Michael\bibnamedelima L.},
+         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WML1}
+    \strng{fullhash}{WML1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.21105/joss.03021
+    \endverb
+    \field{number}{60}
+    \field{pages}{3021}
+    \field{title}{Seaborn: statistical data visualization}
+    \verb{url}
+    \verb https://seaborn.pydata.org/
+    \endverb
+    \field{volume}{6}
+    \field{journaltitle}{Journal of Open Source Software}
+    \field{year}{2021}
+  \endentry
+
+  \entry{plotly}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=IPT}{%
+         family={Inc.},
+         familyi={I\bibinitperiod},
+         given={Plotly\bibnamedelima Technologies},
+         giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IPT1}
+    \strng{fullhash}{IPT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://plotly.com/python/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Plotly Python Open Source Graphing Library}
+    \field{year}{2015}
+  \endentry
+
+  \entry{postgresql_docs}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=T}{%
+         family={{The PostgreSQL Global Development Group}},
+         familyi={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{T1}
+    \strng{fullhash}{T1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://www.postgresql.org/docs/current/}}
+    \field{note}{Consultado: \today}
+    \field{title}{PostgreSQL Documentation}
+    \field{year}{2024}
+  \endentry
+
+  \entry{asgi}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={{ASGI Community}},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://asgi.readthedocs.io/en/latest/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{ASGI: Asynchronous Server Gateway Interface}
+    \field{year}{2024}
+  \endentry
+
+  \entry{pydantic}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=P}{%
+         family={{Pydantic Team}},
+         familyi={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{P1}
+    \strng{fullhash}{P1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://docs.pydantic.dev/latest/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{Pydantic Documentation}
+    \field{year}{2024}
+  \endentry
+
+  \entry{swagger}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=S}{%
+         family={{Swagger API}},
+         familyi={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{S1}
+    \strng{fullhash}{S1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://swagger.io/}}
+    \field{note}{Acceso: 2025-11-27}
+    \field{title}{Swagger: API Design Tools and Documentation}
+    \field{year}{2024}
+  \endentry
+
+  \entry{tiktokAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.tiktok.com/en/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{TikTok for Business}
+  \endentry
+
+  \entry{InstagramAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.instagram.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Instagram for Business}
+  \endentry
+
+  \entry{FacebookAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://business.facebook.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Facebook for Business}
+  \endentry
+
+  \entry{GoogleAds}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://ads.google.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{Google Ads}
   \endentry
 
   \entry{microsoft_etl}{misc}{}{}

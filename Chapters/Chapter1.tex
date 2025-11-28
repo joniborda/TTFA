@@ -20,44 +20,97 @@ En este capítulo se presenta el contexto general del trabajo y la problemática
 %----------------------------------------------------------------------------------------
 \section{Contexto y motivación}
 
-El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech.
-La empresa fabrica y comercializa barritas alimenticias en distintos sabores, lo que requiere una planificación de producción precisa para evitar tanto faltantes como excedentes de stock. En este contexto, contar con pronósticos confiables de ventas constituye un factor estratégico clave para la toma de decisiones operativas y comerciales.
+El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech. Esta compañía fabrica y comercializa barritas alimenticias en distintos sabores, lo que exige una planificación de producción precisa para evitar tanto faltantes como excedentes de stock. En este contexto, disponer de pronósticos confiables de ventas representa un factor estratégico para las decisiones operativas y comerciales.
 
-La ausencia de un sistema de pronóstico confiable generaba dificultades en la planificación estratégica y operativa de la empresa. En particular, cuando una campaña de marketing resultaba exitosa y aumentaban significativamente las visitas y las compras, la capacidad de producción no siempre lograba adaptarse con la suficiente rapidez, lo que en ocasiones derivaba en falta de stock. Esta situación ya se había presentado previamente y había generado retrasos en la entrega de pedidos y afectado la experiencia del cliente.
+La empresa ofrece siete sabores considerados productos base, disponibles de forma permanente, y además introduce ediciones limitadas que agregan entre dos y cuatro variantes nuevas por año. Estas ediciones dependen del nivel de aceptación del público y permanecen activas solo mientras alcanzan un volumen de ventas satisfactorio. El producto se vende en paquetes de 10, 20 y 30 unidades, con un precio por unidad que disminuye a medida que aumenta el tamaño del paquete. Asimismo, el sitio ofrece al usuario la opción de suscribirse, lo que permite recibir el producto mensualmente con un descuento aproximado del 10\%. Este sistema facilita la construcción de patrones de demanda asociados a consumos recurrentes y posibilita el análisis del ciclo de vida de las suscripciones, incluyendo altas, bajas y reactivaciones.
 
+Latech lanza cada nueva variante de sabor mediante campañas simultáneas en sus canales de comunicación, como TikTok \citep{tiktokAds}, Instagram \citep{InstagramAds}, Facebook \citep{FacebookAds} y Google \citep{GoogleAds}. Estos lanzamientos producen un aumento significativo en la actividad comercial y suelen duplicar las ventas de la nueva variante en comparación con los productos restantes. Un comportamiento similar aparece durante eventos promocionales, como \\\textit{Black Friday}, donde la aplicación de descuentos generales genera un incremento promedio cercano al 20\% en las ventas totales. Estas fluctuaciones introducen picos marcados en la demanda, cuya anticipación resulta crucial para coordinar producción, logística y abastecimiento.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\textwidth]{./Figures/diagBloques.png}
-	\caption{Flujo general del sistema para generar el pronóstico de ventas.}
+Antes del desarrollo de este sistema, la empresa no contaba con un mecanismo de pronóstico capaz de anticipar estos cambios de manera sistemática. Las variaciones abruptas en la demanda, especialmente las derivadas de campañas exitosas, superaban en ocasiones la capacidad inmediata de producción. En consecuencia, la organización registraba episodios de quiebre de stock, retrasos en las entregas y deterioro en la experiencia del cliente. La falta de previsión reducía la capacidad de planificar compras de insumos, organizar turnos de producción y definir niveles óptimos de inventario.
 
-	\label{fig:texmaker}
-\end{figure}
+La incorporación de datos provenientes de múltiples fuentes permite construir una visión integral del proceso comercial. 
+La empresa utiliza la API de Triple Whale \citep{triplewhale} para concentrar la información de inversión publicitaria de TikTok, Instagram, Facebook y Google.
+Esta información permite identificar qué canales influyen en la conversión, la proporción de usuarios nuevos y recurrentes, 
+y las variaciones en el volumen de ventas según la estrategia de difusión. 
+Por su parte, los datos históricos de ventas extraídos desde Shopify \citep{shopify} permiten reconstruir la evolución temporal de la demanda, medir el impacto de las ediciones limitadas, cuantificar el efecto de las promociones y analizar patrones estacionales. La combinación de ambas fuentes constituye un insumo esencial para entrenar un modelo de predicción de ventas robusto y contextualizado.
 
-La integración de las APIs permite centralizar información obtenida desde diversos canales de difusión. Entre ellas se encuentran TikTok, Instagram, Facebook y Google. Esta diversidad de fuentes permite identificar qué plataformas participan en el proceso de conversión y servirá como base para estimar aspectos como la proporción de usuarios nuevos y recurrentes, así como las variaciones en el volumen de ventas según el canal.
-Además, en el sitio de ventas los usuarios pueden suscribirse a compras mensuales, lo que permite analizar la actividad de las suscripciones: identificar cuándo los usuarios mantienen sus suscripciones activas y cuándo las cancelan. Esta información adicional resulta valiosa para comprender patrones de compra recurrentes y estimar la demanda futura de manera más precisa.
-
-La incorporación conjunta de datos históricos de ventas (Shopify) y de inversión publicitaria (Triple Whale) proporciona un insumo clave para el entrenamiento del modelo de predicción de ventas. Contar con estas dos fuentes permite relacionar la inversión realizada en cada plataforma con los resultados obtenidos en términos de ventas, lo que contribuye a la construcción de un modelo más preciso y contextualizado.
-
-De este modo, el trabajo apunta a desarrollar un sistema que utilice aprendizaje automático como herramienta de apoyo a la planificación comercial y a la toma de decisiones basadas en datos.
-
+En conjunto, este trabajo apunta a desarrollar un sistema basado en aprendizaje automático que proporcione estimaciones confiables de demanda y que funcione como herramienta de apoyo a la planificación comercial. Su objetivo final consiste en mejorar la toma de decisiones en áreas como producción, abastecimiento, definición de inventarios, activación de campañas y análisis del comportamiento del cliente, que favorezca una gestión más eficiente y orientada a datos.
 
 
 \section{Estado del arte}
 
-En la actualidad, el pronóstico de ventas mediante técnicas de inteligencia artificial constituye un área de creciente interés en el ámbito del comercio electrónico. Los avances en el análisis de datos y en el aprendizaje automático han permitido el desarrollo de modelos capaces de anticipar la demanda con altos niveles de precisión. Esto contribuye a una mejor planificación de la producción, la gestión de inventarios y la toma de decisiones estratégicas.
+En la actualidad, el pronóstico de ventas mediante técnicas de inteligencia 
+artificial constituye un área de creciente interés en el ámbito del comercio electrónico. 
+Los avances en el análisis de datos y en el aprendizaje automático han permitido 
+la aparición de modelos capaces de anticipar la demanda con altos niveles de 
+precisión, lo que contribuye a una mejor planificación de la producción,
+ la gestión de inventarios y la toma de decisiones estratégicas.
 
-Entre los enfoques más utilizados se encuentran los modelos de series temporales clásicos, como ARIMA \citep{BOOK:4}, SARIMA y \textit{Exponential Smoothing}, que permiten capturar patrones estacionales y tendencias a lo largo del tiempo \citep{BOOK:3}. Sin embargo, estos métodos suelen presentar limitaciones cuando los datos incluyen múltiples factores externos, como campañas publicitarias, canales de venta o comportamiento del usuario.
+Entre los enfoques más utilizados se encuentran los modelos de series temporales
+ clásicos, como ARIMA \citep{BOOK:4}, SARIMA y \textit{Exponential Smoothing}, 
+ que permiten capturar patrones estacionales y tendencias a lo largo del tiempo
+  \citep{BOOK:3}. Sin embargo, estos métodos presentan limitaciones cuando los 
+  datos incluyen múltiples factores externos, tales como campañas publicitarias,
+   variaciones en los precios, promociones o comportamiento del usuario.
 
-En respuesta a esas limitaciones, en los últimos años se ha incrementado el uso de técnicas de aprendizaje profundo (\textit{Deep Learning}) y aprendizaje automático (\textit{Machine Learning}), que ofrecen una mayor capacidad para modelar relaciones no lineales y para integrar múltiples fuentes de información. Modelos como Redes Neuronales Recurrentes (RNN), LSTM (\textit{Long Short-Term Memory}) y \textit{Random Forest Regressor} se han aplicado con éxito en la predicción de ventas en entornos de comercio electrónico, debido a su habilidad para capturar dependencias temporales y correlaciones entre variables \cite{hochreiter1997lstm, goodfellow2016deep, breiman2001random, bandara2020forecast}.
+En los últimos años se ha observado un aumento significativo en la adopción de
+ técnicas de aprendizaje profundo (\textit{Deep Learning}) y aprendizaje 
+ automático (\textit{Machine Learning}), que ofrecen una mayor capacidad
+  para modelar relaciones no lineales y para integrar información proveniente de
+   diversas fuentes. Modelos como Redes Neuronales Recurrentes (RNN), LSTM 
+   (\textit{Long Short-Term Memory}) y \textit{Random Forest Regressor} se han 
+   aplicado con éxito en la predicción de ventas en entornos de comercio 
+   electrónico, debido a su habilidad para capturar dependencias temporales y 
+   correlaciones entre variables \citep{hochreiter1997lstm, goodfellow2016deep, breiman2001random, bandara2020forecast}.
 
-Asimismo, el uso de plataformas integradas de datos, tales como Shopify \citep{shopify} y Triple Whale \citep{triplewhale}, ha impulsado el desarrollo de soluciones personalizadas que combinan información transaccional, métricas de marketing y comportamiento de los usuarios. Estas herramientas permiten no solo mejorar la precisión de los modelos de pronóstico, sino también ofrecer una visión integral del desempeño comercial y de la efectividad de las campañas publicitarias.
+De forma más reciente, la literatura destaca los modelos basados en 
+transformadores, como \textit{Temporal Fusion Transformer} (TFT) \citep{lim2021temporal}, Informer \citep{zhou2021informer} y N-BEATS \citep{oreshkin2019nbeats}, que alcanzaron resultados competitivos en competencias 
+internacionales de series temporales y en aplicaciones industriales.
+ Estos modelos incorporan mecanismos de atención que permiten identificar qué 
+ variables externas influyen en la demanda y en qué momentos lo hacen, lo que 
+ resulta especialmente relevante en contextos con campañas publicitarias, 
+ promociones o cambios abruptos en la visibilidad de los productos.
 
-Entre las soluciones comerciales más reconocidas se destacan Amazon Forecast \citep{amazonforecast}, un servicio basado en redes neuronales desarrollado por Amazon Web Services \citep{aws} que automatiza la creación de modelos de predicción de demanda, y Prophet \citep{taylor2018forecasting}, una herramienta de código abierto creada por Meta (Facebook) \citep{meta} que utiliza un enfoque aditivo para modelar tendencias y estacionalidades de manera flexible. Ambas herramientas representan referencias relevantes en el campo del pronóstico de series temporales con datos de negocios.
+El interés por evaluar rigurosamente estas técnicas ha impulsado la creación de 
+competencias a gran escala, como M4 y M5 \citep{makridakis2020m5}, organizadas por la comunidad académica
+ y la industria. Estas competencias demostraron que la combinación de enfoques 
+ tradicionales con métodos basados en aprendizaje profundo permite alcanzar 
+ mejoras significativas en la precisión de los pronósticos, especialmente 
+ cuando los datos provienen de entornos comerciales reales.
 
-La tendencia actual en el campo apunta hacia el desarrollo de modelos híbridos, que combinan la capacidad de las redes neuronales para capturar relaciones no lineales y complejas con la robustez e interpretabilidad de las técnicas tradicionales (como ARIMA o SARIMA). Esta combinación permite alcanzar una mayor precisión y robustez en los pronósticos. El sector minorista ha sido el principal adoptante de estos enfoques, ya que sus ventas están muy influenciadas por factores externos como la publicidad digital, las promociones y la estacionalidad.
+ Asimismo, el uso de plataformas integradas de datos, tales como Shopify 
+ \citep{shopify} y Triple Whale \citep{triplewhale}, permite el desarrollo de 
+ soluciones personalizadas que combinan información transaccional, métricas de 
+ marketing y comportamiento del usuario. La integración de estas fuentes 
+ facilita la incorporación de variables exógenas, como inversión publicitaria, 
+ características de los productos, descuentos, actividad de suscripciones o 
+ lanzamientos de nuevas variantes; estas variables contribuyen a mejorar la 
+ capacidad predictiva de los modelos.
 
-En este marco, el trabajo desarrollado se apoyó en los enfoques actuales de predicción de demanda mediante aprendizaje automático, datos históricos de ventas, inversión publicitaria y comportamiento del usuario. El objetivo fue construir un modelo que reflejara las tendencias reales del negocio y sirviera como herramienta de apoyo para la toma de decisiones estratégicas en la empresa Latech.
+Entre las soluciones comerciales más reconocidas se destacan Amazon Forecast 
+\citep{amazonforecast}, un servicio basado en redes neuronales desarrollado por 
+Amazon Web Services \citep{aws} que automatiza la creación de modelos de 
+predicción de demanda, y Prophet \citep{taylor2018forecasting}, una herramienta 
+de código abierto creada por Meta \citep{meta} que utiliza un enfoque aditivo 
+para modelar tendencias y estacionalidades de manera flexible. Ambas 
+herramientas representan referencias relevantes en el campo del pronóstico de 
+series temporales con datos de negocios.
+
+La tendencia actual apunta hacia el desarrollo de modelos híbridos que combinan 
+la capacidad de las redes neuronales para capturar relaciones complejas con la 
+interpretabilidad y la robustez de los métodos tradicionales. Esta combinación 
+permite enfrentar entornos caracterizados por factores externos altamente 
+variables, como campañas digitales, promociones estacionales, descuentos 
+temporales o lanzamientos de productos.
+
+En este marco, el trabajo desarrollado se apoya en los enfoques actuales de 
+predicción de demanda mediante aprendizaje automático, datos históricos de 
+ventas, inversión publicitaria y comportamiento del usuario. El objetivo 
+consiste en construir un modelo que represente de forma adecuada las 
+tendencias reales del negocio y que funcione como herramienta de apoyo 
+para la toma de decisiones estratégicas en la empresa Latech.
+
+
 
 
 \section{Objetivo y alcance}
@@ -66,10 +119,17 @@ En esta sección se mencionan los propósitos principales del trabajo y los lím
 
 \subsection{Objetivo del trabajo}
 
-El propósito de este trabajo es desarrollar un modelo de inteligencia artificial que permita predecir con precisión las ventas del producto alimenticio de la empresa Latech, a partir de datos de ventas y de inversión publicitaria. Esto permitirá a la empresa: anticipar sus necesidades de
-producción, optimizar la planificación del inventario y tomar decisiones estratégicas basadas
-en datos. Asimismo, podrá reducir el riesgo de faltantes o excesos de inventario, y mejorar la
-eficiencia operativa y comercial.
+El propósito de este trabajo es desarrollar un modelo de inteligencia artificial que permita predecir con precisión las ventas del producto alimenticio de la empresa Latech, a partir de datos históricos de ventas y de inversión publicitaria. 
+
+Los objetivos específicos incluyen:
+
+\begin{itemize}
+\item Construir un sistema predictivo que anticipe la demanda para horizontes de pronóstico corto (1 a 6 meses), período crítico para la planificación operativa de la empresa.
+\item Identificar y cuantificar el impacto de las campañas publicitarias en las ventas mediante mecanismos de atención interpretable.
+\item Proporcionar a la empresa herramientas para optimizar la planificación de inventario y producción.
+\item Reducir los riesgos de faltantes y excesos de stock mediante predicciones confiables.
+\item Establecer una base técnica para la toma de decisiones estratégicas basada en datos.
+\end{itemize}
 
 \subsection{Alcance del trabajo}
 
@@ -113,7 +173,7 @@ para actualizar las predicciones de manera regular.
 calidad y estabilidad de los datos futuros y de factores externos no controlables.
 	\item Acciones o recomendaciones específicas sobre estrategias de marketing más allá de lo
 inferido de los análisis de datos.
-
+	\item Re-ingeniería de procesos operativos internos de producción o logística.
 	\item Optimización de procesos internos de producción o logística, salvo en lo que respecta a la estimación de demanda.
 
 \end{itemize}

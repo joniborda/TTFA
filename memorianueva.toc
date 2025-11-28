@@ -4,43 +4,49 @@
 \contentsline {section}{\numberline {1.1}Contexto y motivación}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Estado del arte}{2}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Objetivo y alcance}{3}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Objetivo del trabajo}{3}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Alcance del trabajo}{3}{subsection.1.3.2}%
-\contentsline {chapter}{\numberline {2}Introducción específica}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Requerimientos}{5}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Modelos de inteligencia artificial utilizados}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Tratamiento de datos (herramientas)}{7}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Diseño e implementación}{9}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Arquitectura del sistema}{9}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Capa de recolección de datos}{10}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Capa de procesamiento y transformación}{10}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Capa de almacenamiento estructurado}{10}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Capa de modelado predictivo}{12}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Integración operativa con microservicios}{12}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Integración en Inventory Tracker}{13}{subsection.3.1.6}%
-\contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{13}{subsection.3.1.7}%
-\contentsline {subsection}{\numberline {3.1.8}Capa de adquisición}{13}{subsection.3.1.8}%
-\contentsline {subsection}{\numberline {3.1.9}Capa de procesamiento y generación del dataset final}{13}{subsection.3.1.9}%
-\contentsline {subsection}{\numberline {3.1.10}Base de datos unificada}{15}{subsection.3.1.10}%
-\contentsline {subsection}{\numberline {3.1.11}Condiciones del trabajo}{15}{subsection.3.1.11}%
-\contentsline {section}{\numberline {3.2}Análisis de datos}{15}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{15}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{15}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{15}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos de modelos}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño del modelo}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{17}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{17}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{17}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{17}{section*.7}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{18}{section*.8}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{18}{section*.9}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{19}{section*.10}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{19}{section*.11}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{20}{section*.12}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{20}{section*.13}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{23}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados obtenidos}{23}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Trabajo futuro}{23}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{25}{appendix*.15}%
+\contentsline {subsection}{\numberline {1.3.1}Objetivo del trabajo}{4}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Alcance del trabajo}{4}{subsection.1.3.2}%
+\contentsline {chapter}{\numberline {2}Introducción específica}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Requerimientos}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Modelos de inteligencia artificial utilizados}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Tratamiento de datos (herramientas)}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Bibliotecas para procesamiento y análisis de datos}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Bibliotecas para visualización}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Plataformas y APIs externas}{9}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Exposición de servicios: FastAPI \citep {fastapi}}{9}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Contenerización: Docker}{10}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Orquestación y pipelines: Metaflow y Airflow}{10}{subsection.2.3.6}%
+\contentsline {chapter}{\numberline {3}Diseño e implementación}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Arquitectura del sistema}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Capa de recolección de datos}{12}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Capa de procesamiento y transformación}{12}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Capa de almacenamiento estructurado}{12}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Capa de modelado predictivo}{14}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Integración operativa con microservicios}{14}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Integración en Inventory Tracker}{15}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{15}{subsection.3.1.7}%
+\contentsline {subsection}{\numberline {3.1.8}Capa de adquisición}{15}{subsection.3.1.8}%
+\contentsline {subsection}{\numberline {3.1.9}Capa de procesamiento y generación del dataset final}{15}{subsection.3.1.9}%
+\contentsline {subsection}{\numberline {3.1.10}Base de datos unificada}{17}{subsection.3.1.10}%
+\contentsline {subsection}{\numberline {3.1.11}Condiciones del trabajo}{17}{subsection.3.1.11}%
+\contentsline {section}{\numberline {3.2}Análisis de datos}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Desarrollo de modelos}{17}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Desarrollo de un framework modular}{17}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Despliegue con microservicios e integración con bases de datos}{17}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ensayos de modelos}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Desempeño del modelo}{19}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{19}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{19}{section.4.5}%
+\contentsline {subsubsection}{Requerimiento funcional 1}{19}{section*.7}%
+\contentsline {subsubsection}{Requerimiento funcional 2}{20}{section*.8}%
+\contentsline {subsubsection}{Requerimiento funcional 3}{20}{section*.9}%
+\contentsline {subsubsection}{Requerimiento funcional 4}{21}{section*.10}%
+\contentsline {subsubsection}{Requerimiento funcional 5}{21}{section*.11}%
+\contentsline {subsubsection}{Requerimiento funcional 6}{22}{section*.12}%
+\contentsline {subsubsection}{Requerimiento funcional 7}{22}{section*.13}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados obtenidos}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Trabajo futuro}{25}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{27}{appendix*.15}%

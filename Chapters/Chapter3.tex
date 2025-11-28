@@ -80,7 +80,7 @@ Cada una de estas capas se comunica de manera acotada mediante APIs internas o a
 
 Esta capa se encarga de conectarse periódicamente a APIs externas para obtener la información necesaria para entrenar y actualizar los modelos. La primera fuente es Shopify, que funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas, incluyendo detalles como estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
 
-La segunda fuente de datos es Triple Whale, una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads, Instagram Ads, Facebook Ads y Google Ads. En este caso, su API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad considerando todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
+La segunda fuente de datos es Triple Whale, una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads \citep{tiktokAds}, Instagram Ads \citep{InstagramAds}, Facebook Ads \citep{FacebookAds} y Google Ads \citep{GoogleAds}. En este caso, su API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad considerando todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
 
 
 \subsection{Capa de procesamiento y transformación}
@@ -117,7 +117,7 @@ Este diseño facilita tanto el acceso para entrenamiento de modelos como la cons
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{./Figures/der.png}
-    \caption{Diagrama Entidad-Relación (DER). Muestra la relación entre las tablas principales.}
+    \caption{Diagrama Entidad-Relación. Muestra las dos tablas principales.}
     \label{fig:der}
 \end{figure}
 
@@ -320,3 +320,11 @@ El desarrollo del presente trabajo se realizó bajo las siguientes condiciones:
 \section{Desarrollo de modelos}
 \section{Desarrollo de un framework modular}
 \section{Despliegue con microservicios e integración con bases de datos}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\textwidth]{./Figures/diagBloques.png}
+	\caption{Flujo general del sistema para generar el pronóstico de ventas.}
+
+	\label{fig:texmaker}
+\end{figure}
