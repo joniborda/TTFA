@@ -90,7 +90,7 @@ Ambas integraciones están preparadas para ejecutarse en un proceso automatizado
 La decisión de almacenar localmente los datos en PostgreSQL responde a tres objetivos principales:
 
 \begin{itemize}
-    \item Autonomía del sistema: aunque se dispone de acceso a las APIs de Shopify y Triple Whale, estas pueden presentar interrupciones temporales, límites de tasa de consulta (\textit{rate limits}) o cambios no anunciados en su estructura. Al mantener una copia local de los datos, el sistema de pronóstico continúa funcionando incluso durante caídas de las APIs externas, garantizando disponibilidad continua.
+    \item Autonomía del sistema: aunque se dispone de acceso a las APIs de Shopify y Triple Whale, estas pueden presentar interrupciones temporales, límites de tasa de consulta (\textit{rate limits}) o cambios no anunciados en su estructura. Al mantener una copia local de los datos, el sistema de pronóstico continúa funcionando incluso durante caídas de las APIs externas. Esto garantiza la disponibilidad continua del sistema.
 
     \item Rendimiento y velocidad: consultar datos históricos desde una base de datos local es significativamente más rápido que realizar múltiples solicitudes HTTP a APIs externas, especialmente cuando se procesan grandes volúmenes de datos durante el entrenamiento de modelos o la generación de informes.
 
@@ -109,7 +109,7 @@ Una vez obtenidos los datos desde las APIs externas, se realiza un proceso de tr
 
 \item Conversión de formatos de fechas, monedas y valores numéricos.
 
-\item Enriquecimiento de datos combinando ventas, comportamiento de usuarios y gasto publicitario.
+\item Enriquecimiento de datos que combine ventas, comportamiento de usuarios y gasto publicitario.
 
 \item Integración de información transaccional con métricas de suscripción.
 
@@ -230,7 +230,7 @@ Los principales beneficios de esta capa de microservicios son:
 \begin{itemize}
 	\item Actualizaciones incrementales: cada servicio puede ser actualizado, modificado o reemplazado sin impactar en el funcionamiento de los demás, lo que facilita la incorporación de mejoras o nuevas fuentes de datos.
 
-	\item Escalabilidad selectiva: los módulos con mayor carga computacional, como el servicio de predicción o de ingestión, pueden escalarse horizontalmente de forma independiente, optimizando el uso de recursos.
+	\item Escalabilidad selectiva: los módulos con mayor carga computacional, como el servicio de predicción o de ingestión, pueden escalarse horizontalmente de forma independiente para optimizar el uso de recursos.
 
 	\item Aislamiento de fallos: un fallo en un servicio (por ejemplo, la indisponibilidad temporal de una API externa) no propaga su error al resto del sistema, gracias al desacoplamiento y a los mecanismos de tolerancia a fallos implementados.
 

@@ -32,7 +32,7 @@ Para cumplir este requerimiento, se desarrolló un módulo de integración que:
     \item Permite especificar intervalos de fechas para la descarga de datos.
     \item Almacena los datos importados en una base de datos PostgreSQL destinada a su posterior uso en el modelado.
     \item Implementa validaciones y manejo de errores en caso de fallos de autenticación, pérdida de conexión o respuestas vacías.
-    \item Registra la trazabilidad del proceso de importación mediante un archivo de log, incluyendo volumen de datos procesados y errores detectados.
+    \item Registra la trazabilidad del proceso de importación mediante un archivo de log que incluye el volumen de datos procesados y errores detectados.
     \item Verifica duplicidades para evitar el doble procesamiento de registros previamente importados.
 \end{itemize}
 
@@ -44,9 +44,9 @@ Para satisfacer este requerimiento se desarrolló un módulo de integración que
     \item Establece conexión con la API de Triple Whale con una clave de acceso provista por la organización.
     \item Recupera la información de inversión por fecha, campaña y plataforma publicitaria.
     \item Permite seleccionar y configurar el intervalo temporal de los datos a importar.
-    \item Almacena los datos obtenidos en una base de datos PostgreSQL, manteniendo una estructura consistente con el modelo de análisis utilizado.
+    \item Almacena los datos obtenidos en una base de datos PostgreSQL y mantiene una estructura consistente con el modelo de análisis utilizado.
     \item Implementa mecanismos de manejo de errores ante fallos de autenticación, interrupciones en la conexión o respuestas inválidas provenientes de la API.
-    \item Registra el detalle del proceso mediante un archivo de log, incluyendo la cantidad de registros importados y los errores detectados durante la ejecución.
+    \item Registra el detalle del proceso mediante un archivo de log que incluya la cantidad de registros importados y los errores detectados durante la ejecución.
     \item Permite ejecutar el proceso de importación tanto de forma manual como programada mediante tareas periódicas.
     \item Incluye validaciones para evitar la duplicación de registros en caso de importaciones sobre el mismo rango de fechas.
 \end{itemize}
@@ -65,7 +65,7 @@ Para satisfacer este requerimiento se desarrolló un proceso de consolidación q
     \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
     \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
     \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.
-    \item Se registraron las operaciones del proceso mediante archivos de log, incluyendo la cantidad total de registros consolidados y cualquier incidencia detectada durante la ejecución.
+    \item Se registraron las operaciones del proceso mediante archivos de log que incluye la cantidad total de registros consolidados y cualquier incidencia detectada durante la ejecución.
 \end{itemize}
 
 
@@ -77,13 +77,13 @@ Para cumplir con este requerimiento se implementó un proceso de modelado y entr
 
 \begin{itemize}
     \item Se empleó el \textit{dataset} consolidado, compuesto por variables de ventas y de inversión publicitaria, como fuente principal para el entrenamiento del modelo.
-    \item El conjunto de datos fue dividido en subconjuntos de entrenamiento y validación, siguiendo una proporción aproximada de 80\% para entrenamiento y 20\% para validación.
+    \item El conjunto de datos fue dividido en subconjuntos de entrenamiento y validación con una proporción aproximada de 80\% para entrenamiento y 20\% para validación.
     \item Se evaluaron distintos modelos de predicción utilizando métricas de error adecuadas para series temporales, tales como MAE, RMSE y MAPE, con el fin de comparar su desempeño.
     \item Se seleccionó como modelo final aquel que presentó el mejor desempeño sobre el conjunto de validación.
     \item El modelo entrenado quedó habilitado para generar predicciones futuras a partir de valores recientes de entrada.
     \item Se garantizó la reproducibilidad del proceso mediante la definición de un \textit{pipeline} de entrenamiento que permite repetir la ejecución bajo las mismas configuraciones.
     \item El modelo seleccionado y sus parámetros finales fueron almacenados para su posterior uso dentro del sistema Inventory Tracker.
-    \item Se documentó el proceso de entrenamiento de manera detallada, incluyendo la selección de variables, las técnicas de preprocesamiento aplicadas y los métodos de evaluación utilizados.
+    \item Se documentó el proceso de entrenamiento de manera detallada donde se incluye la selección de variables, las técnicas de preprocesamiento aplicadas y los métodos de evaluación utilizados.
     \item Se realizó una validación visual comparando las predicciones generadas frente a los valores reales observados, mediante gráficos que permitieron analizar la coherencia del modelo respecto a la dinámica histórica de las ventas.
 \end{itemize}
 
