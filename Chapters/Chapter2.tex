@@ -22,6 +22,7 @@ En esta sección se presentan algunos requerimientos establecidos para el trabaj
 
 
 \section{Modelos de inteligencia artificial utilizados}
+\label{sec:modelo-ia}
 
 Para abordar el trabajo se evaluaron y aplicaron diversos modelos de inteligencia artificial, dado que el comportamiento de la demanda no responde a un único patrón fijo ni puede ser capturado adecuadamente por un solo tipo de modelo. También, se consideró seleccionar aquel que ofreciera el mejor equilibrio entre precisión, interpretabilidad y capacidad de generalización.
 
@@ -91,13 +92,13 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 
 	\item Cron \citep{cron_docs}: permite ejecutar tareas programadas a horas, fechas o intervalos fijos periódicos para automatización de \textit{pipelines}.
 	
-	\item AWS S3 \citep{aws_s3}: ofrece un servicio de almacenamiento de objetos en la nube de AWS que con alta escalabilidad, disponibilidad, durabilidad y seguridad necesario para guardar los modelos y datos intermedios.
+	\item AWS S3 \citep{aws_s3}: ofrece un servicio de almacenamiento de objetos en la nube de AWS que con alta escalabilidad, disponibilidad, durabilidad y seguridad necesarios para guardar los modelos y datos intermedios.
 	
 	\item Git \citep{git_pro}: sistema de control de versiones distribuido que mantiene un registro histórico de cambios en archivos de código, configuraciones y documentación, esencial para el desarrollo colaborativo y la reproducibilidad de experimentos.
 \end{itemize}
 
 
-\subsection{Exposición de servicios: FastAPI \citep{fastapi}}
+\subsection{Exposición de servicios}
 Para exponer endpoints que permiten consumir resultados, ejecutar procesos o servir modelos se utiliza FastAPI. Este framework destaca por su alto rendimiento y por su arquitectura asíncrona basada en ASGI \citep{asgi}.
 
 Las características más relevantes para este proyecto son:
@@ -108,14 +109,14 @@ Las características más relevantes para este proyecto son:
 \end{itemize}
 
 
-\subsection{Contenerización: Docker}
+\subsection{Contenerización}
 \begin{itemize}
 	\item Docker \citep{docker}: permite definir entornos de ejecución consistentes para los servicios del proyecto. Sus contenedores aseguran reproducibilidad, aislamiento y portabilidad entre distintos entornos.
 	
 	\item Docker compose \citep{docker_compose}: herramienta que simplifica la orquestación de múltiples contenedores Docker mediante archivos de configuración en formato YAML. Permite la definición y ejecución de aplicaciones multi-servicio de manera coordinada, lo que facilita la puesta en marcha de entornos complejos que incluyen la API de FastAPI, la base de datos PostgreSQL y servicios auxiliares de forma integrada. Docker Compose maneja automáticamente las dependencias entre servicios, las redes virtuales y los volúmenes de persistencia.
 \end{itemize}
 
-\subsection{Orquestación y pipelines: Metaflow y Airflow}
+\subsection{Orquestación y pipelines}
 \begin{itemize}
 	\item Metaflow \citep{metaflow}: se utiliza como herramienta principal para estructurar y ejecutar pipelines de datos y experimentos, con registro automático de artefactos y trazabilidad.
 

@@ -78,10 +78,26 @@ Cada una de estas capas se comunica de manera acotada mediante APIs internas o a
 
 \subsection{Capa de recolección de datos}
 
-Esta capa se encarga de conectarse periódicamente a APIs externas para obtener la información necesaria para entrenar y actualizar los modelos. La primera fuente es Shopify, que funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas, incluyendo detalles como estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
+Esta capa se encarga de conectarse periódicamente a APIs externas para obtener la información necesaria para entrenar y actualizar los modelos. Las dos fuentes externas son:
+\begin{itemize}
+	\item Shopify: funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas, que incluye detalles como estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
 
-La segunda fuente de datos es Triple Whale, una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads \citep{tiktokAds}, Instagram Ads \citep{InstagramAds}, Facebook Ads \citep{FacebookAds} y Google Ads \citep{GoogleAds}. En este caso, su API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad considerando todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
+	\item Triple Whale: una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads \citep{tiktokAds}, Instagram Ads \citep{InstagramAds}, Facebook Ads \citep{FacebookAds} y Google Ads \citep{GoogleAds}. En este caso, su API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad considerando todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
+\end{itemize}
 
+Ambas integraciones están preparadas para ejecutarse en un proceso automatizado que consulta las APIs diariamente y almacena la información en una base de datos PostgreSQL \citep{postgresql_docs} interna. Este proceso opera bajo un módulo ETL \citep{microsoft_etl} donde se llevan a cabo tareas de validación, normalización y estandarización para garantizar la coherencia entre fuentes heterogéneas.
+
+La decisión de almacenar localmente los datos en PostgreSQL responde a tres objetivos principales:
+
+\begin{itemize}
+    \item Autonomía del sistema: aunque se dispone de acceso a las APIs de Shopify y Triple Whale, estas pueden presentar interrupciones temporales, límites de tasa de consulta (\textit{rate limits}) o cambios no anunciados en su estructura. Al mantener una copia local de los datos, el sistema de pronóstico continúa funcionando incluso durante caídas de las APIs externas, garantizando disponibilidad continua.
+
+    \item Rendimiento y velocidad: consultar datos históricos desde una base de datos local es significativamente más rápido que realizar múltiples solicitudes HTTP a APIs externas, especialmente cuando se procesan grandes volúmenes de datos durante el entrenamiento de modelos o la generación de informes.
+
+    \item Desacoplamiento y control de datos: al poseer una copia estructurada de los datos, se evita la dependencia directa de la disponibilidad y formato de las APIs externas. Esto permite realizar transformaciones, enriquecimientos y agregaciones previas que optimizan los procesos posteriores de modelado y análisis.
+\end{itemize}
+
+De esta manera, PostgreSQL actúa como una capa de abstracción y resiliencia, que permite que el sistema opere de manera eficiente, predecible y con menor latencia, sin comprometer su funcionalidad ante eventuales fallos externos.
 
 \subsection{Capa de procesamiento y transformación}
 
@@ -98,38 +114,64 @@ Una vez obtenidos los datos desde las APIs externas, se realiza un proceso de tr
 \item Integración de información transaccional con métricas de suscripción.
 
 \item Control de duplicados y estandarización de claves primarias.
+
+\item Creación de agregaciones temporales diarias.
+ 
+\item Creación de variables derivadas de los datos como medias móviles o ratios de inversión.
+
+\item Identificación de picos de campañas.
+
+\item Señalización de eventos especiales tales como: promociones, feriados, lanzamientos.
+
+\item Integración del estado de suscripciones activas e inactivas.
+
 \end{itemize}
 
-Dado que Shopify y Triple Whale estructuran sus datos de manera diferente, se construyó un esquema interno unificado que respeta la granularidad diaria necesaria para los modelos de predicción.
+Este proceso de transformación se implementó mediante DAGs (\textit{Directed Acyclic Graphs}) en Apache Airflow, lo que permite orquestar de manera programada, reproducible y monitorizable cada etapa del pipeline de datos.
+
+Los datos intermedios y finales de este proceso se almacenan temporalmente en disco, en un formato estructurado y accesible llamado Parquet, para permitir su reutilización en ejecuciones posteriores sin necesidad de reprocesar desde cero. Este enfoque no solo optimiza el uso de recursos, sino que también facilita la depuración y auditoría de los datos generados en cada etapa.
+
+Dado que Shopify y Triple Whale estructuran sus datos de manera diferente, se construyó un esquema interno unificado que respeta la granularidad diaria necesaria para los modelos de predicción. Este esquema queda materializado en una tabla consolidada dentro de PostgreSQL, lista para su consumo por el módulo de modelado.
+
+La implementación mediante Airflow permite además:
+
+\begin{itemize}
+\item Ejecución programada o bajo demanda de los flujos de transformación.
+\item Reejecución selectiva de tareas fallidas sin afectar etapas exitosas.
+\item Monitoreo visual del estado del pipeline y alertas ante incidencias.
+\item Versionado y mantenimiento independiente de la lógica de transformación.
+\end{itemize}
+
+Este módulo permite encapsular toda la lógica de preparación del dataset, manteniéndolo desacoplado del motor de predicción para que se pueda actualizar fácilmente sin impactar en la generación de pronósticos.
 
 
 \subsection{Capa de almacenamiento estructurado}
 
 Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQL diseñada específicamente para consultas analíticas y para servir como fuente unificada de información durante el entrenamiento y evaluación de los modelos. Dentro de esta capa se construye la tabla principal denominada \textit{orders}, en la que se almacena la información proveniente de Shopify ya depurada y enriquecida. Esta tabla contiene las columnas fundamentales para caracterizar el comportamiento de compra de los usuarios:
 \begin{itemize}
-	\item created: que registra la fecha de creación de cada orden.
-	\item totalPrice: correspondiente al monto total pagado.
-	\item customerId: que identifica al cliente.
-	\item lineItems: donde se detalla cada producto incluido en la compra junto con sus cantidades.
-	\item channel: que indica el canal por el cual ingresó la orden.
-	\item tags: que permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
-	\item orderNumberForCustomer: que señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
-	\item diffWeeksFromFirstPurchase: que expresa la cantidad de semanas transcurridas desde la primera compra del usuario, permitiendo analizar patrones de frecuencia y retención.
+	\item \textit{created}: registra la fecha de creación de cada orden.
+	\item \textit{totalPrice}: correspondiente al monto total pagado.
+	\item \textit{customerId}: identifica al cliente.
+	\item \textit{lineItems}: donde se detalla cada producto incluido en la compra junto con sus cantidades.
+	\item \textit{channel}: indica el canal por el cual ingresó la orden.
+	\item \textit{tags}: permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
+	\item \textit{orderNumberForCustomer}: señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
+	\item \textit{diffWeeksFromFirstPurchase}: expresa la cantidad de semanas transcurridas desde la primera compra del usuario, lo que permite analizar patrones de frecuencia y retención.
 	
 \end{itemize}
 
 A partir de esta tabla estructurada, se generan columnas derivadas mediante procesos de enriquecimiento en Python, con el objetivo de facilitar el análisis y preparar los datos para su uso en modelos predictivos. Entre estas variables se incluyen:
 \begin{itemize}
-	\item created\_weekday: que identifica el día de la semana de cada orden.
-	\item created\_month: que permite estudiar estacionalidades mensuales. 
-	\item unique\_customers: que calcula la cantidad de clientes distintos por día.
-	\item new\_customers: que contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha.
-	\item returning\_customers: que contabiliza cuántos usuarios realizaron más de una compra. 
+	\item \textit{created\_weekday}: identifica el día de la semana de cada orden.
+	\item \textit{created\_month}: permite estudiar estacionalidades mensuales. 
+	\item \textit{unique\_customers}: calcula la cantidad de clientes distintos por día.
+	\item \textit{new\_customers}: contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha.
+	\item \textit{returning\_customers}: contabiliza cuántos usuarios realizaron más de una compra. 
 \end{itemize}
 
 Estas nuevas columnas permiten construir vistas agregadas y analizar la evolución del comportamiento de los clientes en el tiempo.
 
-Finalmente, otra tabla denominada \textit{forecast} consolida la información diaria extraida de TripleWhale. Esta tabla incorpora, entre otras variables, el monto de inversión publicitaria bajo la columna textit{ad\_spend}. La tabla contiene además otros campos utilizados por el sistema Inventory Tracker, derivados de los datos ya existentes. Sin embargo, dichas columnas no forman parte del alcance del presente trabajo, ya que responden a necesidades operativas específicas del cliente y no intervienen en el proceso de modelado.
+Finalmente, otra tabla denominada \textit{forecast} consolida la información diaria extraida de TripleWhale. Esta tabla incorpora, entre otras variables, el monto de inversión publicitaria bajo la columna \textit{ad\_spend}. La tabla contiene además otros campos utilizados por el sistema Inventory Tracker, derivados de los datos ya existentes. Sin embargo, dichas columnas no forman parte del alcance del presente trabajo, ya que responden a necesidades operativas específicas del cliente y no intervienen en el proceso de modelado.
 
 Este diseño facilita tanto el acceso para entrenamiento de modelos como la consulta rápida desde Inventory Tracker. En la figura \ref{fig:der} se muestran las dos tablas principales del trabajo con las columnas que se tomaron en cuenta para este proceso de almacenamiento.
 
@@ -143,196 +185,107 @@ Este diseño facilita tanto el acceso para entrenamiento de modelos como la cons
 
 \subsection{Capa de modelado predictivo}
 
-Esta capa es responsable del entrenamiento, evaluación y selección de los modelos de pronóstico de ventas. Se implementa un enfoque comparativo donde se ejecutan simultáneamente los modelos mencionados en el Capítulo 2.2 (SARIMA, \textit{Exponential Smoothing}, \textit{Random Forest}, XGBoost, LightGBM, LSTM y \textit{Prophet}), con el objetivo de identificar el que ofrezca el mejor desempeño predictivo según las métricas definidas.
+Esta capa es responsable del entrenamiento, evaluación y selección de los modelos de pronóstico de ventas. Se implementa un enfoque comparativo donde se ejecutan simultáneamente los modelos mencionados en el capítulo \ref{sec:modelo-ia} (SARIMA, Exponential Smoothing, Random Forest, XGBoost, LightGBM, LSTM y Prophet), con el objetivo de identificar el que ofrezca el mejor desempeño predictivo según las métricas definidas.
 
 El proceso de modelado sigue las siguientes etapas:
 
-Entrenamiento múltiple: todos los modelos son entrenados utilizando el mismo conjunto de datos históricos consolidado y enriquecido.
+\begin{enumerate}
+	\item Entrenamiento múltiple: todos los modelos son entrenados utilizando el mismo conjunto de datos históricos consolidado y enriquecido.
+	\item Evaluación y métricas: cada modelo es evaluado con la métrica RMSE para penalizar errores grandes que impactan significativamente en la planificación financiera y de producción.
 
-Evaluación y métricas: cada modelo es evaluado con la métrica RMSE (Raíz del Error Cuadrático Medio)  para penalizar errores grandes que impactan significativamente en la planificación financiera y de producción.
+	\item Selección automática: el modelo que obtiene el menor valor de RMSE en el conjunto de validación es seleccionado automáticamente para su uso en producción.
+	\item Persistencia del modelo: una vez seleccionado, el modelo ganador es serializado y almacenado en un registro de modelos donde queda disponible para su uso en las predicciones futuras.
 
-Selección automática: el modelo que obtiene el menor valor de RMSE en el conjunto de validación es seleccionado automáticamente para su uso en producción.
+	\item Exposición mediante API: el modelo guardado es integrado en un endpoint REST que forma parte del sistema de microservicios para que el sistema Inventory Tracker consulte las predicciones de ventas en tiempo real.
+\end{enumerate}
 
-Persistencia del modelo: una vez seleccionado, el modelo ganador es serializado y almacenado en un registro de modelos donde queda disponible para su uso en las predicciones futuras.
 
-Exposición mediante API: el modelo guardado es integrado en un endpoint REST que forma parte del sistema de microservicios para que el sistema Inventory Tracker consulte las predicciones de ventas en tiempo real.
+
+
+
+
+
 
 Este diseño no solo asegura que siempre se esté utilizando el modelo más preciso disponible, sino que también facilita la actualización periódica del mismo mediante reentrenamientos programados. Con cada actualización se mantiene la capacidad predictiva del sistema ante cambios en el comportamiento de las ventas o en las dinámicas de mercado.
 
 
 
 
-\subsection{Integración operativa con microservicios}
+\subsection{Capa de integración operativa con microservicios}
 
-El sistema se despliega mediante microservicios independientes, cada uno con su función específica:
+La arquitectura del sistema se basa en un enfoque de microservicios, donde cada funcionalidad clave se encapsula en un servicio independiente, desplegado y mantenido de forma aislada. Los microservicios implementados son los siguientes:
 
-Servicio de ingestión (cronjobs + conectores API).
+\begin{itemize}
+	\item Servicio de ingestión (cronjobs + conectores API).
+	\item Servicio de ETL.
+	\item Servicio de predicción.
+	\item Servicio de API interna para Inventory Tracker.
+\end{itemize}
 
-Servicio de ETL.
-
-Servicio de predicción.
-
-Servicio de API interna para Inventory Tracker.
-
-La comunicación se realiza mediante endpoints REST internos y colas de mensajería cuando se requieren procesos asincrónicos.
-
-Este enfoque facilita:
-
-Actualizaciones de componentes sin afectar el sistema completo.
-
-Escalado independiente de módulos según su carga (por ejemplo, ingestión vs. predicción).
-
-Aislamiento de fallas.
+La comunicación entre estos servicios se realiza mediante endpoints REST internos para operaciones síncronas y, cuando se requiere procesamiento asincrónico o desacoplamiento temporal, a través de colas de mensajería (por ejemplo, con RabbitMQ \citep{rabbitmq} o Redis \citep{redis}). Este diseño permite que cada servicio evolucione y escale de forma independiente, sin afectar al resto del sistema.
 
 
-\subsection{Integración en Inventory Tracker}
+Los principales beneficios de esta capa de microservicios son:
 
-El resultado final —las predicciones de ventas— se expone dentro de Inventory Tracker mediante una interfaz que permite:
+\begin{itemize}
+	\item Actualizaciones incrementales: cada servicio puede ser actualizado, modificado o reemplazado sin impactar en el funcionamiento de los demás, lo que facilita la incorporación de mejoras o nuevas fuentes de datos.
 
-Solicitar pronósticos para distintos horizontes temporales.
+	\item Escalabilidad selectiva: los módulos con mayor carga computacional, como el servicio de predicción o de ingestión, pueden escalarse horizontalmente de forma independiente, optimizando el uso de recursos.
 
-Visualizar ventas históricas junto con proyecciones.
+	\item Aislamiento de fallos: un fallo en un servicio (por ejemplo, la indisponibilidad temporal de una API externa) no propaga su error al resto del sistema, gracias al desacoplamiento y a los mecanismos de tolerancia a fallos implementados.
 
-Combinar la predicción con datos operativos del cliente (stock, producción, etc.).
+	\item Facilidad de mantenimiento y despliegue: cada servicio cuenta con su propio repositorio, configuración y ciclo de vida, lo que simplifica las tareas de desarrollo, pruebas y despliegue continuo.
+	
+\end{itemize}
 
-Este componente cierra el ciclo de valor: la información generada por el sistema se transforma en una herramienta de apoyo para la gestión diaria.
+
+\subsection{Capa de visualización y consumo dentro de Inventory Tracker}
+
+Las predicciones de ventas finales se integran en el sistema Inventory Tracker mediante una interfaz intuitiva, la cual permite:
+
+\begin{itemize}
+	\item Solicitar pronósticos para distintos horizontes temporales.
+	\item Visualizar ventas históricas junto con proyecciones.
+	\item Combinar la predicción con datos operativos del cliente como: stock, producción, etc.
+\end{itemize}
+
+Este componente cierra el ciclo de valor al convertir la información generada por el sistema en una herramienta de apoyo para la gestión diaria.
 
 
 \subsection{Justificación global de la arquitectura}
 
 La arquitectura fue diseñada bajo los siguientes principios:
 
-Modularidad, para permitir reemplazar o actualizar partes sin reestructurar toda la solución.
+\begin{itemize}
+	\item Modularidad: permite reemplazar o actualizar partes sin reestructurar toda la solución.
 
-Escalabilidad, considerando el crecimiento en volumen de datos y potencial incorporación de nuevas plataformas.
+	\item Escalabilidad: preparada para el aumento del volumen de datos y la posible integración de nuevas plataformas.
 
-Trazabilidad, indispensable para un sistema basado en machine learning.
+	\item Trazabilidad: indispensable para un sistema basado en machine learning.
 
-Flexibilidad, permitiendo combinar modelos clásicos, modelos de ML y eventualmente servicios administrados en la nube.
+	\item Flexibilidad: permite combinar modelos clásicos, modelos de machine learning y eventualmente servicios administrados en la nube.
+\end{itemize}
 
 
+\section{Automatización mediante tareas programadas}
 
-
-
-
-
-
-
-
-
-\subsection{Capa de adquisición}
-
-El sistema obtiene información desde dos fuentes principales:
-
-Shopify, que provee datos históricos de las ventas a través de sus endpoints de órdenes. Cada orden incluye información detallada como fecha, cantidad, monto, productos vendidos y etiquetas que permiten identificar si corresponde a un usuario nuevo o recurrente. Estas etiquetas son esenciales para analizar el comportamiento de los clientes, ya que permiten distinguir patrones de compra, detectar cohortes, evaluar la retención y comprender la proporción de usuarios que realizan compras únicas versus compras repetidas.
-
-Triple Whale, que entrega el monto de inversión publicitaria de las plataformas (Meta Ads, TikTok Ads, Google Ads, etc.) agrupadas por día.
-
-Ambas integraciones se realizan mediante un proceso automatizado que consulta las APIs diariamente y almacena la información en una base de datos PostgreSQL\citep{postgresql_docs} interna. Este proceso opera bajo un módulo ETL \citep{microsoft_etl} donde se llevan a cabo tareas de validación, normalización y estandarización para garantizar la coherencia entre fuentes heterogéneas.
-
-
-
-\subsection{Capa de procesamiento y generación del dataset final}
-
-Sobre la base de datos unificada se aplica un módulo de procesamiento donde se construye el dataset de entrenamiento. Aquí se realizan:
-
-agregaciones temporales (diarias o semanales),
-
-creación de variables derivadas (lags, medias móviles, ratios de inversión),
-
-identificación de picos de campañas,
-
-señalización de eventos especiales (promociones, feriados, lanzamientos),
-
-integración del estado de suscripciones activas e inactivas.
-
-Este módulo permite encapsular toda la lógica de preparación del dataset, manteniéndolo desacoplado del motor de predicción para que se pueda actualizar fácilmente.
-
-3.1.4 Motor de predicción
-
-El motor de predicción está compuesto por un conjunto de modelos que pueden ejecutarse de manera flexible según los requerimientos. La arquitectura permite evaluar y comparar distintos enfoques:
-
-Modelos clásicos: ARIMA, SARIMA, ETS.
-
-Modelos basados en aprendizaje automático: Random Forest Regressor, Gradient Boosting.
-
-Modelos basados en redes neuronales: RNN y LSTM.
-
-Herramientas externas opcionales: Prophet, Amazon Forecast.
-
-El diseño modular permite cambiar o actualizar el modelo sin afectar los demás componentes del sistema. El modelo seleccionado genera pronósticos sobre la demanda futura considerando tanto el historial de ventas como la inversión publicitaria y la dinámica de suscripciones.
-
-3.1.5 API interna y visualización en Inventory Tracker
-
-Los resultados del modelo se publican a través de una API interna utilizada por la plataforma Inventory Tracker.
-Esta API expone endpoints que permiten:
-
-consultar los pronósticos generados,
-
-obtener métricas auxiliares,
-
-visualizar la contribución de variables,
-
-actualizar manualmente ciertos parámetros.
-
-Los pronósticos son mostrados en una vista dedicada dentro de Inventory Tracker, donde el personal de marketing y operaciones puede utilizarlos directamente para la planificación de producción y campañas.
-
-3.1.6 Automatización mediante cronjobs
-
-Para garantizar el funcionamiento continuo del sistema, se implementaron tareas programadas que ejecutan:
-
-extracción de datos diaria,
-
-actualización del dataset,
-
-reentrenamiento periódico del modelo,
-
-generación de nuevas predicciones,
-
-invalidación y regeneración de caché en Inventory Tracker.
-
-Esto asegura que el cliente cuente siempre con información actualizada sin intervención manual.
-
-
-
-
-
-
-
-
-
-
-
-\subsection{Base de datos unificada}
-
-Una vez obtenidos los datos, el sistema los almacena en una base de datos PostgreSQL diseñada específicamente para consultas analíticas. En esta etapa, se generan tablas fact y dimensiones que permiten relacionar ventas, campañas publicitarias, comportamiento de usuarios y dinámica de suscripciones.
-Este almacenamiento estructurado es fundamental tanto para la exploración inicial como para el entrenamiento del modelo, dado que provee consultas optimizadas y consistencia histórica.
-
-
-
-
-
-
-
-
-
-\subsection{Condiciones del trabajo}
-
-El desarrollo del presente trabajo se realizó bajo las siguientes condiciones:
-
+Para garantizar el funcionamiento continuo y automático del sistema, se diseñó e implementó un conjunto de tareas programadas mediante cronjobs que se ejecutan de manera secuencial y periódica, sin requerir intervención manual. Este flujo automatizado permite mantener la información del sistema actualizada de forma confiable y oportuna. Las principales tareas programadas incluyen:
 
 \begin{itemize}
-    \item La empresa Latech proporcionó acceso completo y continuo a las APIs externas de Shopify y Triple Whale, lo que permitió obtener datos históricos y actualizados.
-
-    \item Se contó con acceso al repositorio de código y a la infraestructura necesaria para integrar el módulo de predicción en el sistema existente Inventory Tracker.
-
-    \item La calidad, integridad y consistencia de los datos obtenidos desde las plataformas externas fue suficiente para entrenar y validar los modelos de predicción.
-
-    \item Durante el período de desarrollo no se produjeron cambios significativos en las políticas de acceso ni en la estructura de datos de las APIs utilizadas.
-
-    \item No existieron restricciones legales o contractuales que impidieran el uso de los datos necesarios para el trabajo.
-
+    \item Extracción diaria de datos: se ejecuta una conexión automatizada a las APIs de Shopify y Triple Whale para obtener los datos más recientes de ventas e inversión publicitaria. Este proceso garantiza que el sistema opere con información actualizada y evita retrasos en la disponibilidad de datos.
+    
+    \item Actualización del dataset consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un dataset integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos.
+    
+    \item Reentrenamiento periódico del modelo: con una frecuencia configurada (por ejemplo, semanal o mensual), el sistema ejecuta automáticamente el proceso de reentrenamiento del modelo de pronóstico utilizando el dataset actualizado. Esto permite que el modelo se adapte a cambios en las tendencias de ventas, comportamiento del mercado o nuevos patrones estacionales.
+    
+    \item Generación de nuevas predicciones: después del reentrenamiento, el modelo genera pronósticos actualizados para los períodos futuros definidos. Estas predicciones reemplazan a las versiones anteriores y se almacenan en la base de datos para su consulta.
+    
+    \item Invalidación y regeneración de caché en Inventory Tracker: Para asegurar que los usuarios accedan siempre a la información más reciente, el sistema invalida automáticamente la caché del Inventory Tracker y la regenera con las nuevas predicciones y datos consolidados. Esto elimina posibles desfases entre los datos mostrados y la realidad del sistema.
 \end{itemize}
+
+Adicionalmente, se implementaron mecanismos de monitoreo y registro (\textit{logging}) para cada tarea programada, lo que permite auditar el correcto funcionamiento del flujo automatizado y detectar posibles fallos de manera temprana. 
+
+Esta automatización integral asegura que el cliente disponga permanentemente de información actualizada, confiable y lista para la toma de decisiones, mientras se reduce significativamente el riesgo de errores humanos y se optimiza el mantenimiento operativo del sistema.
 
 
 \section{Análisis de datos}

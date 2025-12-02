@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  28 NOV 2025 17:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  2 DEC 2025 08:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -992,7 +992,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 
 pdfTeX warning: pdflatex (file ./Figures/fondo.pdf): PDF inclusion: found PDF v
 ersion <1.6>, but at most version <1.5> allowed
-<Figures/fondo.pdf, id=207, 597.55246pt x 845.07718pt>
+<Figures/fondo.pdf, id=199, 597.55246pt x 845.07718pt>
 File: Figures/fondo.pdf Graphic file (type pdf)
 <use Figures/fondo.pdf>
 Package pdftex.def Info: Figures/fondo.pdf  used on input line 51.
@@ -1125,24 +1125,16 @@ Cap\'{\i }tulo 2.
 
 [7]
 
-LaTeX Info: Redefining \. on input line 48.
-LaTeX Info: Redefining \% on input line 48.
+LaTeX Info: Redefining \. on input line 49.
+LaTeX Info: Redefining \% on input line 49.
 [8]
 
-LaTeX Info: Redefining \. on input line 92.
-LaTeX Info: Redefining \% on input line 92.
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
 [9]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\citep' on input line 100.
-
-
-LaTeX Warning: Citation 'airflow_dags' on page 10 undefined on input line 122.
-
-
-
-LaTeX Info: Redefining \. on input line 123.
-LaTeX Info: Redefining \% on input line 123.
+LaTeX Info: Redefining \. on input line 124.
+LaTeX Info: Redefining \% on input line 124.
 [10])
 
 LaTeX Info: Redefining \. on input line 119.
@@ -1168,46 +1160,53 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 
 [13]
 
-LaTeX Info: Redefining \. on input line 109.
-LaTeX Info: Redefining \% on input line 109.
+LaTeX Info: Redefining \. on input line 98.
+LaTeX Info: Redefining \% on input line 98.
 [14]
-Overfull \hbox (5.33679pt too wide) in paragraph at lines 126--127
-[]\T1/ppl/m/n/10.95 new_customers: que con-ta-bi-li-za cuán-tos usua-rios rea-l
-i-za-ron su pri-me-ra com-
+
+LaTeX Info: Redefining \. on input line 143.
+LaTeX Info: Redefining \% on input line 143.
+[15]
+Overfull \hbox (4.81097pt too wide) in paragraph at lines 169--170
+[]\T1/ppl/m/it/10.95 returning_customers\T1/ppl/m/n/10.95 : con-ta-bi-li-za cuá
+n-tos usua-rios rea-li-za-ron más de una com-
  []
 
-<./Figures/der.png, id=481, 703.62875pt x 288.07625pt>
-File: ./Figures/der.png Graphic file (type png)
-<use ./Figures/der.png>
-Package pdftex.def Info: ./Figures/der.png  used on input line 138.
-(pdftex.def)             Requested size: 311.84334pt x 127.67262pt.
 
-
-LaTeX Info: Redefining \. on input line 147.
-LaTeX Info: Redefining \% on input line 147.
-[15]
 
 LaTeX Info: Redefining \. on input line 175.
 LaTeX Info: Redefining \% on input line 175.
-[16 <./Figures/der.png>]
+[16]
+<./Figures/der.png, id=484, 703.62875pt x 288.07625pt>
+File: ./Figures/der.png Graphic file (type png)
+<use ./Figures/der.png>
+Package pdftex.def Info: ./Figures/der.png  used on input line 180.
+(pdftex.def)             Requested size: 311.84334pt x 127.67262pt.
 
-LaTeX Info: Redefining \. on input line 232.
-LaTeX Info: Redefining \% on input line 232.
-[17]
 
-LaTeX Info: Redefining \. on input line 282.
-LaTeX Info: Redefining \% on input line 282.
+LaTeX Info: Redefining \. on input line 210.
+LaTeX Info: Redefining \% on input line 210.
+[17 <./Figures/der.png>]
+
+LaTeX Info: Redefining \. on input line 255.
+LaTeX Info: Redefining \% on input line 255.
 [18]
-<./Figures/diagBloques.png, id=504, 971.63pt x 329.23pt>
+Overfull \hbox (2.16113pt too wide) in paragraph at lines 279--280
+[]\T1/ppl/m/n/10.95 Reentrenamiento pe-rió-di-co del mo-de-lo: con una fre-cuen
+-cia con-fi-gu-ra-da (por
+ []
+
+
+
+LaTeX Info: Redefining \. on input line 288.
+LaTeX Info: Redefining \% on input line 288.
+[19]
+<./Figures/diagBloques.png, id=509, 971.63pt x 329.23pt>
 File: ./Figures/diagBloques.png Graphic file (type png)
 <use ./Figures/diagBloques.png>
-Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 345.
+Package pdftex.def Info: ./Figures/diagBloques.png  used on input line 298.
 (pdftex.def)             Requested size: 389.80269pt x 132.0815pt.
-
-
-LaTeX Info: Redefining \. on input line 349.
-LaTeX Info: Redefining \% on input line 349.
-[19])
+)
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
@@ -1348,8 +1347,17 @@ L3 programming layer <2025-06-09>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: B74A28D515BB32366A3FB9B107C8ABF2;10204.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `memorianueva.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `memorianueva.out':
+(rerunfilecheck)             Before: 8DE1FCE6587C61E63B38DC0FFC1BA0D6;9727
+(rerunfilecheck)             After:  8A82077FD63E49BB8344F6CA0CB7DAFB;9551.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1360,25 +1368,29 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31336 strings out of 468221
- 682995 string characters out of 5432892
- 1430164 words of memory out of 5000000
- 59347 multiletter control sequences out of 15000+600000
+ 31353 strings out of 468221
+ 683913 string characters out of 5432892
+ 1430933 words of memory out of 5000000
+ 59358 multiletter control sequences out of 15000+600000
  679531 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 96i,21n,94p,1971b,3257s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.
-pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb
-8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/u
-hvr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helveti
-c/uhvro8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/pal
-atino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
-palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/u
-rw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type
-1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (41 pages, 347232 bytes).
+ 96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{section.3.7} has been referenced but does not exist
+, replaced by a fixed one
+
+<C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pf
+b><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a
+.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhv
+r8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/
+uhvro8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palat
+ino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/pa
+latino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw
+/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/
+urw/palatino/uplri8a.pfb>
+Output written on memorianueva.pdf (41 pages, 349385 bytes).
 PDF statistics:
- 685 PDF objects out of 1000 (max. 8388607)
- 147 named destinations out of 1000 (max. 500000)
- 424 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 691 PDF objects out of 1000 (max. 8388607)
+ 153 named destinations out of 1000 (max. 500000)
+ 408 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -17,23 +17,11 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global/global}
-  \entry{fastapi}{misc}{}{}
-    \name{author}{1}{}{%
-      {{hash=RS}{%
-         family={Ramírez},
-         familyi={R\bibinitperiod},
-         given={Sebastián},
-         giveni={S\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{RS1}
-    \strng{fullhash}{RS1}
-    \field{labelnamesource}{author}
+  \entry{latechfactory}{misc}{}{}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://fastapi.tiangolo.com/}}
-    \field{note}{Acceso: 2025-11-27}
-    \field{title}{FastAPI Documentation}
-    \field{year}{2024}
+    \field{howpublished}{\url{https://latechfactory.com/}}
+    \field{note}{Accedido: 2025-11-23}
+    \field{title}{LaTechFactory}
   \endentry
 
   \entry{tiktokAds}{misc}{}{}
@@ -1293,11 +1281,32 @@
     \field{year}{2024}
   \endentry
 
+  \entry{airflow_dags}{misc}{}{}
+    \field{labeltitlesource}{title}
+  \field{howpublished}{\url{https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html}}
+    \field{note}{Accedido: 2025-11-27}
+    \field{title}{Directed Acyclic Graphs (DAGs) in Apache Airflow}
+  \endentry
+
   \entry{microsoft_etl}{misc}{}{}
     \field{labeltitlesource}{title}
   \field{howpublished}{\url{https://azure.microsoft.com/es-es/resources/cloud-computing-dictionary/what-is-etl/}}
     \field{note}{Consultado: \today.}
     \field{title}{¿Qué es el proceso ETL?}
+  \endentry
+
+  \entry{rabbitmq}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://www.rabbitmq.com/}}
+    \field{note}{Accedido: 2025-12-02}
+    \field{title}{RabbitMQ: Messaging that just works}
+  \endentry
+
+  \entry{redis}{misc}{}{}
+    \field{labeltitlesource}{title}
+    \field{howpublished}{\url{https://redis.io/}}
+    \field{note}{Accedido: 2025-12-02}
+    \field{title}{Redis: In-memory data structure store}
   \endentry
 \enddatalist
 \endinput
