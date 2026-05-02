@@ -1295,6 +1295,27 @@
     \field{title}{¿Qué es el proceso ETL?}
   \endentry
 
+  \entry{rest_api_stars}{manual}{}{}
+    \name{author}{1}{}{%
+      {{hash=TT}{%
+         family={Team},
+         familyi={T\bibinitperiod},
+         given={Technical},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Swagger API}%
+    }
+    \strng{namehash}{TT1}
+    \strng{fullhash}{TT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Disponible en \url{https://swagger.io/specification/}}
+    \field{title}{REST API Documentation}
+    \field{year}{2026}
+  \endentry
+
   \entry{rabbitmq}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{howpublished}{\url{https://www.rabbitmq.com/}}

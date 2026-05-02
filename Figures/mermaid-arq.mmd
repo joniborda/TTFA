@@ -1,0 +1,39 @@
+graph TD
+    subgraph APIs_Externas [Fuentes de Datos Externas]
+        S[Shopify API]
+        TW[Triple Whale API]
+    end
+
+    subgraph Infraestructura_Docker [Entorno Contenerizado - Docker Compose]
+        subgraph Microservicios [Capa de Microservicios]
+            ING[Servicio de Ingestión]
+            ETL[Servicio ETL / Modelado - Airflow]
+            PRED[Servicio de Predicción - FastAPI]
+            API[API de Integración]
+        end
+
+        subgraph Almacenamiento_y_Seguimiento [Persistencia y Ciclo de Vida ML]
+            DB[(PostgreSQL)]
+            ML[MLflow / Metaflow - Registro de Modelos]
+            S3[AWS S3 - Almacenamiento de Artefactos]
+        end
+    end
+
+    subgraph Cliente [Visualización]
+        IT[Inventory Tracker]
+    end
+
+    %% Flujos de datos
+    S --> ING
+    TW --> ING
+    ING --> DB
+    DB <--> ETL
+    
+    %% Flujo de Modelado y Registro
+    ETL --> ML
+    ML <--> S3
+    
+    %% Flujo de Inferencia
+    ML --> PRED
+    PRED <--> API
+    API <--> IT
