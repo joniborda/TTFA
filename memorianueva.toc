@@ -27,23 +27,29 @@
 \contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{19}{subsection.3.1.7}%
 \contentsline {section}{\numberline {3.2}Automatización mediante tareas programadas}{19}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Análisis de datos}{20}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{20}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Desarrollo de un framework modular}{20}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{20}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos de modelos}{21}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño del modelo}{21}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{21}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{21}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{21}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{21}{section*.7}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{22}{section*.8}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{22}{section*.9}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{23}{section*.10}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{23}{section*.11}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{24}{section*.12}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{24}{section*.13}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados obtenidos}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Trabajo futuro}{27}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{29}{appendix*.15}%
+\contentsline {subsection}{\numberline {3.3.1}Limpieza y Normalización de la Información}{20}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Estrategias de Imputación y Gestión de Inconsistencias}{20}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Ingeniería de Características ( \textit {Feature Engineering} )}{21}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{21}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Modelo base (Baseline): Lógica de Heurística Original}{21}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Implementación del Framework de Modelado}{22}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Estrategia de Entrenamiento y Mitigación de Sobreajuste}{22}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Desarrollo de un framework modular}{22}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{22}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ensayos de modelos}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Desempeño del modelo}{25}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{25}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{25}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{25}{section.4.5}%
+\contentsline {subsubsection}{Requerimiento funcional 1}{25}{section*.7}%
+\contentsline {subsubsection}{Requerimiento funcional 2}{26}{section*.8}%
+\contentsline {subsubsection}{Requerimiento funcional 3}{26}{section*.9}%
+\contentsline {subsubsection}{Requerimiento funcional 4}{27}{section*.10}%
+\contentsline {subsubsection}{Requerimiento funcional 5}{27}{section*.11}%
+\contentsline {subsubsection}{Requerimiento funcional 6}{28}{section*.12}%
+\contentsline {subsubsection}{Requerimiento funcional 7}{28}{section*.13}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados obtenidos}{31}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Trabajo futuro}{31}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{33}{appendix*.15}%

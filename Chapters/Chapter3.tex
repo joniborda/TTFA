@@ -142,7 +142,7 @@ La implementación mediante Airflow permite además:
 \item Versionado y mantenimiento independiente de la lógica de transformación.
 \end{itemize}
 
-Este módulo permite encapsular toda la lógica de preparación del dataset, manteniéndolo desacoplado del motor de predicción para que se pueda actualizar fácilmente sin impactar en la generación de pronósticos.
+Este módulo permite encapsular toda la lógica de preparación del \textit{dataset}, manteniéndolo desacoplado del motor de predicción para que se pueda actualizar fácilmente sin impactar en la generación de pronósticos.
 
 
 \subsection{Capa de almacenamiento estructurado}
@@ -198,9 +198,6 @@ El proceso de modelado sigue las siguientes etapas:
 
 	\item Exposición mediante API: el modelo guardado es integrado en un endpoint REST que forma parte del sistema de microservicios para que el sistema Inventory Tracker consulte las predicciones de ventas en tiempo real.
 \end{enumerate}
-
-
-
 
 
 
@@ -269,27 +266,113 @@ La arquitectura fue diseñada bajo los siguientes principios:
 
 \section{Automatización mediante tareas programadas}
 
-Para garantizar el funcionamiento continuo y automático del sistema, se diseñó e implementó un conjunto de tareas programadas mediante cronjobs que se ejecutan de manera secuencial y periódica, sin requerir intervención manual. Este flujo automatizado permite mantener la información del sistema actualizada de forma confiable y oportuna. Las principales tareas programadas incluyen:
+Para garantizar la operatividad continua y la vigencia de los pronósticos de ventas, se implementó un esquema de automatización integral que elimina la necesidad de intervención manual en los procesos recurrentes. La orquestación de este flujo se fundamenta en el uso de Apache Airflow mediante la definición de Grafos Acíclicos Dirigidos (DAGs), los cuales coordinan la ejecución secuencial y lógica de cada etapa del pipeline de datos
+
+Este flujo automatizado permite mantener la información del sistema actualizada de forma oportuna y confiable. Se divide en las siguientes fases operativas:
 
 \begin{itemize}
     \item Extracción diaria de datos: se ejecuta una conexión automatizada a las APIs de Shopify y Triple Whale para obtener los datos más recientes de ventas e inversión publicitaria. Este proceso garantiza que el sistema opere con información actualizada y evita retrasos en la disponibilidad de datos.
     
-    \item Actualización del dataset consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un dataset integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos.
+    \item Actualización del \textit{dataset} consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un \textit{dataset} integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos.
     
-    \item Reentrenamiento periódico del modelo: con una frecuencia configurada (por ejemplo, semanal o mensual), el sistema ejecuta automáticamente el proceso de reentrenamiento del modelo de pronóstico utilizando el dataset actualizado. Esto permite que el modelo se adapte a cambios en las tendencias de ventas, comportamiento del mercado o nuevos patrones estacionales.
-    
-    \item Generación de nuevas predicciones: después del reentrenamiento, el modelo genera pronósticos actualizados para los períodos futuros definidos. Estas predicciones reemplazan a las versiones anteriores y se almacenan en la base de datos para su consulta.
-    
-    \item Invalidación y regeneración de caché en Inventory Tracker: Para asegurar que los usuarios accedan siempre a la información más reciente, el sistema invalida automáticamente la caché del Inventory Tracker y la regenera con las nuevas predicciones y datos consolidados. Esto elimina posibles desfases entre los datos mostrados y la realidad del sistema.
+	\item Reentrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo
+. En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como Metaflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
+
+	\item Selección del Modelo Óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
+	
+	\item Persistencia y Actualización de Predicciones: el modelo ganador se serializa y se almacena en el registro de modelos para su posterior consumo por la API de FastAPI. Posteriormente, se generan los nuevos pronósticos para los horizontes temporales definidos, los cuales actualizan los módulos de visualización en el sistema Inventory Tracker   
 \end{itemize}
 
-Adicionalmente, se implementaron mecanismos de monitoreo y registro (\textit{logging}) para cada tarea programada, lo que permite auditar el correcto funcionamiento del flujo automatizado y detectar posibles fallos de manera temprana. 
 
-Esta automatización integral asegura que el cliente disponga permanentemente de información actualizada, confiable y lista para la toma de decisiones, mientras se reduce significativamente el riesgo de errores humanos y se optimiza el mantenimiento operativo del sistema.
+La implementación de este ciclo mediante DAGs y herramientas de registro de modelos asegura que el sistema se adapte de forma autónoma a los cambios en las tendencias de ventas o en el comportamiento del mercado. Asimismo, el uso de mecanismos de \textit{logging} en cada tarea permite auditar el funcionamiento del flujo y detectar fallos de manera temprana.
 
 
 \section{Análisis de datos}
+
+
+
+Una vez consolidada la información en la base de datos local, se procedió a realizar un Análisis Exploratorio de Datos (EDA) con el objetivo de identificar patrones, tendencias y estacionalidades críticas para el modelado predictivo. Este proceso permitió transformar los datos crudos en un \textit{dataset} refinado y apto para el entrenamiento de algoritmos de aprendizaje automático.
+
+\subsection{Limpieza y Normalización de la Información}
+
+Se realizó una fase inicial de saneamiento técnico donde se transformaron los campos de fecha al formato datetime y se estandarizaron las magnitudes numéricas para asegurar la coherencia entre las fuentes de Shopify y Triple Whale. Se aplicó un alineamiento temporal exhaustivo para corregir discrepancias de zona horaria entre ambas plataformas y garantizar que la inversión publicitaria diaria correspondiera exactamente al volumen de ventas registrado en el mismo periodo.
+
+\subsection{Estrategias de Imputación y Gestión de Inconsistencias}
+
+La gestión de valores faltantes se abordó mediante criterios diferenciados según la naturaleza de la variable:
+\begin{itemize}
+
+    \item Imputación de valores nulos: en métricas de inversión publicitaria (adSpend), ingresos (totalRevenue) y volumen de productos vendidos, se aplicó la técnica de imputación por cero (fillna(0)). Se determinó que la ausencia de registros en fechas específicas respondía a la inexistencia de actividad comercial o publicitaria, por lo cual el valor cero representó fielmente la realidad del negocio.
+	\item Preservación de registros históricos: en los casos donde una de las fuentes carecía de información, se optó por mantener el registro con valores nulos en lugar de descartarlo, con el fin de evitar la pérdida de información histórica relevante de las demás variables.
+	\item Control de integridad: se implementaron validaciones automáticas para detectar duplicados y campos inconsistentes para asegurar que cada jornada contara con una única entrada consolidada de alta calidad.
+\end{itemize}
+
+
+\subsection{Ingeniería de Características ( \textit{Feature Engineering} )}
+
+Para capturar la dinámica compleja de Latech, se generaron nuevas variables que enriquecieron la capacidad predictiva del sistema:
+
+\begin{itemize}
+    \item Variables de Estacionalidad: se extrajeron componentes temporales como el día de la semana (\textit{created\_weekday}) y el mes (\textit{created\_month}), para analizar la distribución de la demanda en ciclos semanales y mensuales.
+
+    \item Métricas de Comportamiento del Cliente: se derivaron indicadores de fidelidad como la cantidad de clientes únicos diarios, el volumen de nuevos compradores y la antigüedad del usuario en semanas desde su primera interacción (\textit{diffWeeksFromFirstPurchase}).
+    
+    \item Señalización de Eventos Exógenos: se integraron variables binarias para identificar picos de campañas promocionales, lanzamientos de productos y feriados nacionales, factores que históricamente duplicaron las ventas de ciertas variantes.
+
+\end{itemize}
+
+
 \section{Desarrollo de modelos}
+
+Esta fase del proyecto consistió en la implementación técnica y el ajuste de las arquitecturas encargadas de transformar el \textit{dataset} consolidado en proyecciones de demanda. El desarrollo se estructuró a partir de un modelo base heurístico que funcionó como punto de referencia (\textit{baseline}) frente a la aplicación de diversos algoritmos de aprendizaje automático de mayor complejidad.
+
+
+
+\subsection{Modelo base (Baseline): lógica de heurística original}
+
+Para establecer un nivel de desempeño mínimo aceptable, se formalizó la lógica de cálculo utilizada previamente por la empresa en su sistema Inventory Tracker. Este modelo operó bajo un enfoque estadístico descriptivo que no requirió entrenamiento de parámetros, sino que se basó en el comportamiento histórico inmediato mediante tres métodos principales:
+
+\begin{itemize}
+
+	\item Promedio móvil (\textit{Trailing Mean 7}): calcula la media de ventas de los últimos siete días previos a la fecha objetivo. 
+	\item Mediana por día de la semana (\textit{Same Weekday Median}): identifica el día de la semana correspondiente a la predicción y calcula la mediana de los valores observados para ese mismo día en las últimas ocho semanas.
+	\item Método de mezcla (\textit{Blend}): aplica una ponderación combinada, que asigna un 45\% de peso al promedio móvil y un 55\% a la mediana por día de la semana.
+
+\end{itemize}
+
+Este modelo original se utilizó como referencia crítica para validar el valor agregado de la inteligencia artificial. Se determinó que cualquier modelo de \textit{machine learning} propuesto debe superar la precisión de este enfoque heurístico para justificar su puesta en producción.
+
+
+
+
+\subsection{Implementación del Framework de Modelado}
+
+El desarrollo de los modelos avanzados se centralizó en un registro de modelos (Model Registry) que permitió la orquestación de múltiples algoritmos con hiperparámetros específicos
+. Para asegurar la robustez de las predicciones, se implementaron las siguientes configuraciones técnicas:
+Modelos Lineales y de Regularización: Se desarrolló un modelo de Regresión Ridge con un parámetro de regularización (alfa=1,0) para controlar el posible sobreajuste derivado de la alta dimensionalidad de los datos
+.
+Ensambles de Árboles: El modelo de Random Forest se configuró con 300 estimadores, mientras que para XGBoost y Catboost se establecieron 500 iteraciones con una tasa de aprendizaje de 0,05
+. Estos algoritmos se orientaron a capturar las relaciones no lineales entre la inversión publicitaria y el volumen de órdenes
+.
+Modelado de Series Temporales Híbrido: Se integró la biblioteca NeuralProphet para descomponer la serie en tendencia y estacionalidad, lo que facilitó la identificación de patrones recurrentes antes del uso de redes neuronales profundas
+.
+
+
+
+\subsection{Estrategia de Entrenamiento y Mitigación de Sobreajuste}
+El proceso de entrenamiento se ejecutó de forma paralela y automatizada mediante el uso de DAGs. Para evitar que el modelo memorizara el ruido de los datos históricos, se aplicaron las siguientes medidas de control:
+División de Datos: El \textit{dataset} se fragmentó en un 80\% para entrenamiento y un 20\% para validación, manteniendo estrictamente el orden cronológico para evitar la fuga de información del futuro hacia el pasado
+.
+Métricas de Evaluación: Cada arquitectura se evaluó mediante la Raíz del Error Cuadrático Medio (RMSE), métrica que penalizó con mayor severidad los errores de gran magnitud en la planificación de stock
+.
+Selección Automática: El sistema comparó el RMSE de todos los modelos entrenados contra el desempeño del modelo base (blend). Únicamente el algoritmo que presentó el menor error y demostró una capacidad de generalización superior fue serializado para su despliegue mediante la API
+.
+Este enfoque competitivo garantizó que la elección final del modelo no fuera arbitraria, sino el resultado de una validación empírica frente a la realidad operativa de Latech
+.
+
+
+
+
 \section{Desarrollo de un framework modular}
 \section{Despliegue con microservicios e integración con bases de datos}
 
