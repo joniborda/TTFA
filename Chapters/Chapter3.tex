@@ -275,10 +275,10 @@ Este flujo automatizado permite mantener la información del sistema actualizada
     
     \item Actualización del \textit{dataset} consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un \textit{dataset} integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos.
     
-	\item Reentrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo
+	\item Re-entrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo
 . En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como Metaflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
 
-	\item Selección del Modelo Óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
+	\item Selección del modelo óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
 	
 	\item Persistencia y Actualización de Predicciones: el modelo ganador se serializa y se almacena en el registro de modelos para su posterior consumo por la API de FastAPI. Posteriormente, se generan los nuevos pronósticos para los horizontes temporales definidos, los cuales actualizan los módulos de visualización en el sistema Inventory Tracker   
 \end{itemize}
@@ -313,11 +313,12 @@ La gestión de valores faltantes se abordó mediante criterios diferenciados seg
 Para capturar la dinámica compleja de Latech, se generaron nuevas variables que enriquecieron la capacidad predictiva del sistema:
 
 \begin{itemize}
-    \item Variables de Estacionalidad: se extrajeron componentes temporales como el día de la semana (\textit{created\_weekday}) y el mes (\textit{created\_month}), para analizar la distribución de la demanda en ciclos semanales y mensuales.
+    \item Variables de Estacionalidad: se extrajeron componentes temporales como el día de la semana (\textit{created\_weekday}) y el mes (\textit{created\_month}). Estas variables permiten analizar la distribución de la demanda en ciclos semanales y mensuales. Para asegurar una representación exhaustiva, el sistema garantiza la cobertura de los 12 meses del año y los 7 días de la semana, lo que facilita la identificación de patrones de consumo recurrentes en cada periodo.
 
-    \item Métricas de Comportamiento del Cliente: se derivaron indicadores de fidelidad como la cantidad de clientes únicos diarios, el volumen de nuevos compradores y la antigüedad del usuario en semanas desde su primera interacción (\textit{diffWeeksFromFirstPurchase}).
-    
-    \item Señalización de Eventos Exógenos: se integraron variables binarias para identificar picos de campañas promocionales, lanzamientos de productos y feriados nacionales, factores que históricamente duplicaron las ventas de ciertas variantes.
+
+	\item Métricas de comportamiento del cliente: se derivaron indicadores de fidelidad a partir de la actividad transaccional diaria. El sistema identifica el volumen de nuevos compradores mediante el filtrado de registros donde el número de orden del cliente (\textit{order\_number\_for\_customer}) es igual a 1. Esta lógica permite distinguir la primera compra de cada usuario de las adquisiciones recurrentes. Además, se calculó la cantidad de clientes únicos diarios y la antigüedad del usuario en semanas desde su primera interacción (\textit{diffWeeksFromFirstPurchase}), lo que aporta información sobre la retención y el ciclo de vida del cliente.
+
+	\item Señalización de eventos exógenos: se integraron variables binarias para identificar picos de campañas promocionales, lanzamientos de productos y feriados nacionales. El uso de estos indicadores es fundamental, ya que estos eventos duplicaron históricamente las ventas de ciertas variantes y generaron incrementos significativos en la demanda total.
 
 \end{itemize}
 
@@ -334,11 +335,19 @@ Para establecer un nivel de desempeño mínimo aceptable, se formalizó la lógi
 
 \begin{itemize}
 
-	\item Promedio móvil (\textit{Trailing Mean 7}): calcula la media de ventas de los últimos siete días previos a la fecha objetivo. 
-	\item Mediana por día de la semana (\textit{Same Weekday Median}): identifica el día de la semana correspondiente a la predicción y calcula la mediana de los valores observados para ese mismo día en las últimas ocho semanas.
-	\item Método de mezcla (\textit{Blend}): aplica una ponderación combinada, que asigna un 45\% de peso al promedio móvil y un 55\% a la mediana por día de la semana.
+	\item Promedio móvil (\textit{en inglés trailing mean}): calcula la media de ventas de los últimos siete días previos a la fecha objetivo. 
+	\item Mediana por día de la semana (\textit{same weekday median}): identifica el día de la semana correspondiente a la predicción y calcula la mediana de los valores observados para ese mismo día en las últimas ocho semanas.
 
 \end{itemize}
+
+La predicción final se obtiene mediante un método de mezcla, que aplica una combinación lineal ponderada según la expresión: 
+
+\begin{equation}
+    \text{Predicción} = (0{,}45 \times \text{TM}_7) + (0{,}55 \times \text{SW}_8)
+\end{equation}
+
+Donde TM es el promedio móvil y SW es la mediana por día de la semana.
+Este equilibrio permite captar tanto la inercia de la demanda reciente como los patrones de estacionalidad semanal recurrentes.
 
 Este modelo original se utilizó como referencia crítica para validar el valor agregado de la inteligencia artificial. Se determinó que cualquier modelo de \textit{machine learning} propuesto debe superar la precisión de este enfoque heurístico para justificar su puesta en producción.
 
@@ -361,37 +370,47 @@ El desarrollo de los modelos avanzados se centralizó en un registro de modelos 
 \end{itemize}
 
 
-\subsection{Estrategia de Entrenamiento y Mitigación de Sobreajuste}
+\subsection{Estrategia de entrenamiento y mitigación de sobre-ajuste}
 
-El proceso de entrenamiento se ejecutó de forma paralela y automatizada mediante el uso de DAGs. Para evitar que el modelo memorizara el ruido de los datos históricos, se aplicaron las siguientes medidas de control:
+Para fortalecer la estrategia de entrenamiento y mitigación de sobre-ajuste, se incorporaron técnicas específicas que aseguran la robustez del sistema y su capacidad para operar con datos no vistos. A continuación, se detallan las acciones técnicas implementadas:
 
 
 \begin{itemize}
 
-	\item División de datos: el \textit{dataset} se fragmentó en un 80\% para entrenamiento y un 20\% para validación, manteniendo estrictamente el orden cronológico para evitar la fuga de información del futuro hacia el pasado.
-	\item Métricas de evaluación: cada arquitectura se evaluó mediante la raíz del error cuadrático medio (RMSE), métrica que penalizó con mayor severidad los errores de gran magnitud en la planificación de stock.
+	\item Enfoque de ventana deslizante (en inglés \textit{Sliding Window}): para transformar la serie temporal en un problema de aprendizaje supervisado, se implementó una lógica de ventanas deslizantes. Este método genera pares de características históricas (x) y valores objetivo (y), lo cual permite que modelos como LSTM y TFT capturen las dependencias temporales y secuencias de eventos previos al día de la predicción.
+
+	\item División cronológica y preservación del orden temporal: a diferencia de otros problemas de \textit{machine learning} donde se aplica un re-ordenamiento aleatorio (en inglés \textit{shuffling}), en este proyecto se evitó esta práctica para mantener la integridad de la secuencia histórica. Dado que el comportamiento de las ventas en Latech presenta dependencias temporales y estacionalidades, preservar el orden de los registros permite que los modelos capturen correctamente la auto-correlación de la serie.
+
+
+	\item Simulación de escenario productivo: el conjunto de datos se fragmentó mediante un punto de corte (en el código definido como split\_idx), que asigna el primer 80\% de los datos al entrenamiento y el 20\% restante a la validación. Al evaluar el rendimiento exclusivamente sobre el segmento de datos más reciente, se garantiza que el modelo sea puesto a prueba frente a un "futuro" que no conoció durante su entrenamiento, lo que permite medir su verdadera capacidad de generalización en un entorno real.
 	
-	\item Selección automática: el sistema comparó el RMSE de todos los modelos entrenados contra el desempeño del modelo base (blend). Solo el modelo que presenta el menor error cuadrático medio es serializado y almacenado en el registro de modelos para su consumo final a través de la API de FastAPI.
+	\item Mitigación estricta de la fuga de datos (en inglés data leakage): esta estrategia asegura que ninguna información proveniente del conjunto de validación influya en el proceso de aprendizaje. Para reforzar este aislamiento, los parámetros de estandarización técnica (media y desviación estándar) se calcularon únicamente sobre el conjunto de entrenamiento y se aplicaron sobre el conjunto de validación, para evitar así que estadísticas globales del futuro se filtraran en los pesos del modelo.
+	
+	
+	\item Regularización y robustez algorítmica: se seleccionaron arquitecturas con mecanismos internos para combatir el ruido de los datos de Latech. Por ejemplo, se utilizó Random Forest, el cual es intrínsecamente robusto frente a valores atípicos y al sobre-ajuste gracias a su esquema de promediado de múltiples árboles de decisión.
+	
+	\item Evaluación basada en RMSE: se priorizó la métrica RMSE (Raíz del Error Cuadrático Medio) en el conjunto de validación para penalizar con mayor rigor los errores de gran magnitud. Esta métrica sirvió como filtro final para asegurar que el modelo ganador no solo tenga un error bajo en promedio, sino que sea confiable en escenarios de alta volatilidad de demanda.
 
 \end{itemize}
 
 
-Este enfoque competitivo garantizó que la elección final del modelo no fuera arbitraria, sino el resultado de una validación empírica frente a la realidad operativa de Latech.
 
 
+\section{Desarrollo de un \textit{framework} modular}
 
+El diseño del sistema se orientó hacia la creación de una estructura de software modular que permitió la independencia entre los procesos de preparación de datos y las implementaciones de los modelos predictivos. Esta arquitectura se concibió como un entorno extensible, donde la incorporación de nuevas herramientas de inteligencia artificial no requieren alteraciones en el núcleo del \textit{pipeline} de datos.
 
-\section{Desarrollo de un framework modular}
+\subsection{Estandarización de Interfaces y Orquestación mediante DAGs}
 
-El diseño del sistema se orientó hacia la creación de una estructura de software modular que permitió la independencia entre los procesos de preparación de datos y las implementaciones de los modelos predictivos. Esta arquitectura se concibió como un entorno extensible, donde la incorporación de nuevas herramientas de inteligencia artificial no requiere alteraciones en el núcleo del pipeline de datos.
+Para garantizar un bajo acoplamiento entre los componentes, se implementaron interfaces estandarizadas que unificaron el comportamiento de todos los modelos integrados. Este enfoque permitió que algoritmos de bibliotecas heterogéneas, tales como Scikit-learn, XGBoost, Catboost o PyTorch, fueran tratados como objetos intercambiables dentro del flujo de trabajo. El \textit{framework} se organizó en módulos especializados de Python que encapsularon la lógica de entrenamiento, lo cual simplificó la gestión de dependencias y mejoró la legibilidad del código.
 
-\subsection{Estandarización de Interfaces y Diseño de Software}
+La ejecución de estos módulos se coordinó a través de grafos acíclicos dirigidos (DAGs) en Apache Airflow, los cuales orquestaron de manera programada y reproducible cada etapa del \textit{pipeline}, desde la transformación de datos hasta el entrenamiento de modelos. Esta estructura modular facilitó que la lógica de orquestación invocara múltiples arquitecturas de forma paralela, para asegurar que cada tarea se pueda monitorizar y re-ejecutarse ante posibles incidencias técnicas sin afectar el resto del sistema.
 
-Para garantizar un bajo acoplamiento entre los componentes, se implementaron interfaces estandarizadas que unificaron el comportamiento de todos los modelos integrados. Este enfoque permitió que cada algoritmo fuera tratado como un objeto intercambiable, sin importar si su origen técnico reside en bibliotecas heterogéneas como: Scikit-learn, XGBoost, Catboost o PyTorch. El framework se organizó en módulos especializados de Python que encapsularon la lógica de entrenamiento, lo cual simplificó la gestión de dependencias y mejoró la legibilidad del código.
+\subsection{Lógica de Competencia y Selección Automática del Modelo}
 
+Esta organización modular aseguró que el sistema fuera capaz de escalar ante futuras necesidades del negocio. Al definir contratos claros para la entrada y salida de datos, se logró que la lógica de comparación y selección automática funcionara de manera agnóstica a la arquitectura específica de cada modelo.
 
-Esta organización modular aseguró que el sistema fuera capaz de escalar ante futuras necesidades del negocio. Al definir contratos claros para la entrada y salida de datos en cada componente, se logró que la lógica de comparación y selección automática funcionara de manera agnóstica a la arquitectura específica del modelo. De este modo, el sistema quedó preparado para integrar nuevos canales de venta o variables exógenas mediante la simple actualización del registro de modelos, con un esfuerzo de desarrollo mínimo y sin afectar la estabilidad del framework global.
-
+Bajo este enfoque competitivo, el sistema activó el entrenamiento simultáneo de las diversas arquitecturas registradas y evaluó su desempeño mediante la métrica RMSE en el conjunto de validación. El flujo identificó y seleccionó de manera autónoma el modelo que presentó el menor error cuadrático medio, que garantiza así que la versión desplegada fuera siempre la que demostrara la mayor precisión y capacidad de generalización. De este modo, el \textit{framework} quedó preparado para integrar nuevos canales de venta o variables exógenas mediante la simple actualización del registro de modelos, con un esfuerzo de desarrollo mínimo y sin comprometer la estabilidad del sistema global.
 
 
 
@@ -400,8 +419,17 @@ Esta organización modular aseguró que el sistema fuera capaz de escalar ante f
 \section{Despliegue con microservicios e integración con bases de datos}
 
 
-La fase final de la implementación consistió en la orquestación y el despliegue de los módulos desarrollados bajo un esquema de microservicios. Este diseño garantizó que cada componente crítico operara de forma independiente, lo cual facilitó el mantenimiento, el aislamiento de fallos y la escalabilidad selectiva del sistema
-.
+La fase final de la implementación consistió en la orquestación y el despliegue de los módulos desarrollados bajo un esquema de microservicios. Este diseño garantizó que cada componente crítico operara de forma independiente, lo cual facilitó el mantenimiento, el aislamiento de fallos y la escalabilidad selectiva del sistema.
+La interacción entre estos módulos y el flujo de información desde las fuentes externas hasta la visualización final se detalla en la figura \ref{fig:mermaid-arq}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\textwidth]{./Figures/mermaid-arq.png}
+	\caption{Diagrama de arquitectura del sistema.}
+
+	\label{fig:mermaid-arq}
+\end{figure}
+
 \subsection{ Estrategia de contenerización y orquestación}
 
 Se utilizó Docker para definir entornos de ejecución consistentes en todos los servicios del proyecto. Mediante esta herramienta, se generaron contenedores que aseguraron la reproducibilidad y la portabilidad entre las etapas de desarrollo y producción. La coordinación de estos múltiples contenedores se realizó a través de Docker Compose, lo cual simplificó la puesta en marcha de la arquitectura de servicios mediante archivos de configuración en formato YAML. Este mecanismo manejó de forma automática las dependencias entre servicios, las redes virtuales y los volúmenes de persistencia necesarios para la estabilidad de la solución.
@@ -423,40 +451,21 @@ La comunicación entre estos componentes se realizó mediante endpoints REST int
 \subsection{ Integración con la capa de persistencia y servicios externos}
 
 La base de datos PostgreSQL funcionó como el núcleo de almacenamiento estructurado para los datos consolidados. Esta integración permitió que el sistema mantuviera su autonomía ante interrupciones en las APIs externas y optimizó la velocidad de consulta durante el entrenamiento de los modelos
-. Los microservicios interactuaron con las tablas orders y forecast de manera acotada, lo cual protegió la integridad del esquema de datos diseñado
-.
-Para la entrega de pronósticos, se utilizó el framework FastAPI, el cual destacó por su arquitectura asíncrona de alto rendimiento y su capacidad de validación automática de datos mediante Pydantic. Este servicio proporcionó la documentación técnica necesaria para que el sistema Inventory Tracker consultara las estimaciones de ventas en tiempo real, de modo que se integraron las proyecciones con los datos operativos del cliente
-.
+. Los microservicios interactuaron con las tablas orders y forecast de manera acotada, lo cual protegió la integridad del esquema de datos diseñado.
+Para la entrega de pronósticos, se utilizó el framework FastAPI, el cual destacó por su arquitectura asíncrona de alto rendimiento y su capacidad de validación automática de datos mediante Pydantic. Este servicio proporcionó la documentación técnica necesaria para que el sistema Inventory Tracker consultara las estimaciones de ventas en tiempo real, de modo que se integraron las proyecciones con los datos operativos del cliente.
 
 A continuación, se detallan los aspectos clave de esta integración:
 
 \begin{itemize}
 
-	\item Autonomía y Resiliencia de Datos: El almacenamiento local en PostgreSQL actuó como una capa de abstracción que protegió al sistema frente a caídas temporales, límites de tasa (rate limits) o cambios estructurales en las APIs de Shopify y Triple Whale
-. Esta copia local garantizó la disponibilidad continua del servicio de predicción independientemente del estado de los servicios externos
-.
-	\item Persistencia de Datos Enriquecidos: La base de datos no solo almacenó registros crudos, sino que albergó información procesada y enriquecida con variables críticas para el negocio, tales como la distinción entre clientes nuevos y recurrentes, el cálculo de semanas desde la primera compra (diffWeeksFromFirstPurchase) y la identificación de días de la semana o meses para capturar la estacionalidad
-.
-	\item Gestión de Artefactos y Modelos (AWS S3): Complementando a PostgreSQL, se integró AWS S3 para el almacenamiento de objetos de gran tamaño, tales como los modelos serializados, archivos de configuración y datos intermedios en formato Parquet
-. Esta infraestructura aseguró la durabilidad y escalabilidad necesaria para manejar el historial creciente de experimentos y versiones de modelos
-.
-	\item Validación de Datos con Pydantic: El uso de FastAPI permitió implementar esquemas de datos estrictos mediante Pydantic. Esto aseguró que cualquier consulta realizada desde Inventory Tracker cumpliera con los tipos de datos esperados (fechas, magnitudes de ventas), lo cual redujo errores de comunicación entre el frontend y el motor de inteligencia artificial
-.
+	\item Autonomía y Resiliencia de Datos: El almacenamiento local en PostgreSQL actuó como una capa de abstracción que protegió al sistema frente a caídas temporales, límites de tasa (rate limits) o cambios estructurales en las APIs de Shopify y Triple Whale. Esta copia local garantizó la disponibilidad continua del servicio de predicción independientemente del estado de los servicios externos.
+	\item Persistencia de Datos Enriquecidos: La base de datos no solo almacenó registros crudos, sino que albergó información procesada y enriquecida con variables críticas para el negocio, tales como la distinción entre clientes nuevos y recurrentes, el cálculo de semanas desde la primera compra (diffWeeksFromFirstPurchase) y la identificación de días de la semana o meses para capturar la estacionalidad.
+	\item Gestión de Artefactos y Modelos (AWS S3): Complementando a PostgreSQL, se integró AWS S3 para el almacenamiento de objetos de gran tamaño, tales como los modelos serializados, archivos de configuración y datos intermedios en formato Parquet. Esta infraestructura aseguró la durabilidad y escalabilidad necesaria para manejar el historial creciente de experimentos y versiones de modelos.
+	\item Validación de Datos con Pydantic: El uso de FastAPI permitió implementar esquemas de datos estrictos mediante Pydantic. Esto aseguró que cualquier consulta realizada desde Inventory Tracker cumpliera con los tipos de datos esperados (fechas, magnitudes de ventas), lo cual redujo errores de comunicación entre el frontend y el motor de inteligencia artificial.
 	\item Documentación Técnica Automatizada: La integración con FastAPI generó automáticamente documentación interactiva bajo el estándar OpenAPI (Swagger)
-. Esta herramienta facilitó las pruebas de integración para los desarrolladores de Latech, permitiendo probar los endpoints de predicción y refresco de datos de forma aislada y documentada
-.
+. Esta herramienta facilitó las pruebas de integración para los desarrolladores de Latech, permitiendo probar los endpoints de predicción y refresco de datos de forma aislada y documentada.
 	\item Seguridad y Trazabilidad: La capa de persistencia incluyó mecanismos de auditoría mediante logs de ejecución, registrando el volumen de datos procesados, la fecha de la última predicción generada y cualquier incidencia detectada durante la ingesta o el entrenamiento. Además, se contempló la anonimización de datos sensibles para cumplir con la Ley de Protección de Datos Personales.
 
 \end{itemize}
 
 
-
-
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\textwidth]{./Figures/mermaid-arq.png}
-	\caption{Diagrama de arquitectura del sistema.}
-
-	\label{fig:texmaker}
-\end{figure}
