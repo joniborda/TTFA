@@ -30,17 +30,17 @@
 \contentsline {subsection}{\numberline {3.3.1}Limpieza y Normalización de la Información}{20}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Estrategias de Imputación y Gestión de Inconsistencias}{20}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Ingeniería de Características ( \textit {Feature Engineering} )}{21}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{21}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Modelo base (Baseline): lógica de heurística original}{21}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Implementación del Framework de Modelado}{22}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Estrategia de entrenamiento y mitigación de sobre-ajuste}{22}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Desarrollo de un \textit {framework} modular}{23}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Estandarización de Interfaces y Orquestación mediante DAGs}{23}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{22}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Modelo base (Baseline): lógica de heurística original}{22}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Implementación del Framework de Modelado}{23}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Estrategia de entrenamiento y mitigación de sobre-ajuste}{23}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Desarrollo de un \textit {framework} modular}{24}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Estandarización de Interfaces y Orquestación mediante DAGs}{24}{subsection.3.5.1}%
 \contentsline {subsection}{\numberline {3.5.2}Lógica de Competencia y Selección Automática del Modelo}{24}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{24}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{24}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{24}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{26}{subsection.3.6.3}%
+\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{25}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{25}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{25}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{27}{subsection.3.6.3}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{29}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Desempeño del modelo}{29}{section.4.2}%

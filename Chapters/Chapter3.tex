@@ -273,10 +273,9 @@ Este flujo automatizado permite mantener la información del sistema actualizada
 \begin{itemize}
     \item Extracción diaria de datos: se ejecuta una conexión automatizada a las APIs de Shopify y Triple Whale para obtener los datos más recientes de ventas e inversión publicitaria. Este proceso garantiza que el sistema opere con información actualizada y evita retrasos en la disponibilidad de datos.
     
-    \item Actualización del \textit{dataset} consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un \textit{dataset} integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos.
+    \item Actualización del conjunto de datos consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un \textit{dataset} integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos. El sistema incorpora mecanismos de control que evitan la creación de información duplicada para un mismo día. Esta validación automática garantiza que cada jornada cuente con una única entrada consolidada de alta calidad, lo cual previene el doble procesamiento de registros que fueron importados previamente.
     
-	\item Re-entrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo
-. En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como Metaflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
+	\item Re-entrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo. En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como Metaflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
 
 	\item Selección del modelo óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
 	
@@ -313,10 +312,40 @@ La gestión de valores faltantes se abordó mediante criterios diferenciados seg
 Para capturar la dinámica compleja de Latech, se generaron nuevas variables que enriquecieron la capacidad predictiva del sistema:
 
 \begin{itemize}
-    \item Variables de Estacionalidad: se extrajeron componentes temporales como el día de la semana (\textit{created\_weekday}) y el mes (\textit{created\_month}). Estas variables permiten analizar la distribución de la demanda en ciclos semanales y mensuales. Para asegurar una representación exhaustiva, el sistema garantiza la cobertura de los 12 meses del año y los 7 días de la semana, lo que facilita la identificación de patrones de consumo recurrentes en cada periodo.
+    \item Variables de estacionalidad: se extrajeron componentes temporales como: 		
+    
+    \begin{itemize}
+	    \item \textit{created\_weekday}: representa el día de la semana con un valor numérico entre el 0 y el 6, donde 0 equivale el día lunes y el 6 el domingo. Su uso es fundamental para que modelos como Random Forest o XGBoost identifiquen patrones de comportamiento diferenciados entre los días laborables y el fin de semana, periodos donde la actividad comercial de Latech suele presentar variaciones significativas.
+	    \item \textit{created\_month}: representa el mes calendario del 1 al 12, donde 1 representa enero y 12 diciembre. Mediante este indicador, los algoritmos analizan la estacionalidad anual y el impacto de periodos de alta demanda, como las festividades o promociones de largo plazo. Esta característica facilita que el modelo \textit{Temporal Fusion Transformer} correlacionen meses específicos con fluctuaciones históricas, lo cual mejora la precisión de los pronósticos en horizontes temporales extendidos.
+	    
+	\end{itemize}
+
+Estas variables permiten analizar la distribución de la demanda en ciclos semanales y mensuales. Para asegurar una representación exhaustiva, el sistema garantiza la cobertura de los 12 meses del año y los 7 días de la semana, lo que facilita la identificación de patrones de consumo recurrentes en cada periodo.
+
+	\item Indicadores de dinámica financiera: se incorporó la tasa de variación del ingreso diario mediante el cálculo del cambio porcentual: 
+	
+	\texttt{revenue\_growth = totalRevenue.pct\_change()}
+
+	Esta variable permite capturar la aceleración o desaceleración de las ventas en comparación con la jornada previa. Su inclusión facilita la detección de tendencias emergentes y picos de demanda que no siempre resultan evidentes al analizar únicamente los valores absolutos de facturación.
 
 
-	\item Métricas de comportamiento del cliente: se derivaron indicadores de fidelidad a partir de la actividad transaccional diaria. El sistema identifica el volumen de nuevos compradores mediante el filtrado de registros donde el número de orden del cliente (\textit{order\_number\_for\_customer}) es igual a 1. Esta lógica permite distinguir la primera compra de cada usuario de las adquisiciones recurrentes. Además, se calculó la cantidad de clientes únicos diarios y la antigüedad del usuario en semanas desde su primera interacción (\textit{diffWeeksFromFirstPurchase}), lo que aporta información sobre la retención y el ciclo de vida del cliente.
+
+\item Transformación de ventanas deslizantes (en inglés \textit{sliding window}): se aplicó la función \texttt{shift()} para la generación de variables de retraso (conocidas en inglés como \textit{lags}) en el conjunto de datos. A través de este método, el sistema crea pares de características históricas ($x$) y valores objetivo ($y$) como:
+ 
+	\begin{itemize}
+	    \item adSpend \_lag\_7: contiene el gasto en publicidad desplazado 7 días hacia atrás.
+	    \item adSpend\_lag\_30: contiene el gasto en publicidad desplazado 30 días hacia atrás.
+	    \item orders\_lag\_7: contiene la cantidad de pedidos 7 días hacia atrás.
+	    \item orders\_lag\_30: contiene la cantidad de pedidos 30 días hacia atrás.
+	    
+	\end{itemize}
+
+
+
+
+	\item Métricas de comportamiento del cliente: se derivaron indicadores de fidelidad a partir de la actividad transaccional diaria. El sistema identifica el volumen de nuevos compradores mediante el filtrado de registros donde el número de orden del cliente (\textit{order\_number\_for\_customer}) es igual a 1. Esta lógica permite distinguir la primera compra de cada usuario de las adquisiciones recurrentes. Además, se calculó la cantidad de clientes únicos diarios y la antigüedad del usuario en semanas desde su primera interacción reprsentada con la variable \textit{diff\_weeks\_from\_first\_purchase}, lo que aporta información sobre la retención y el ciclo de vida del cliente.
+
+
 
 	\item Señalización de eventos exógenos: se integraron variables binarias para identificar picos de campañas promocionales, lanzamientos de productos y feriados nacionales. El uso de estos indicadores es fundamental, ya que estos eventos duplicaron históricamente las ventas de ciertas variantes y generaron incrementos significativos en la demanda total.
 
@@ -325,7 +354,7 @@ Para capturar la dinámica compleja de Latech, se generaron nuevas variables que
 
 \section{Desarrollo de modelos}
 
-Esta fase del proyecto consistió en la implementación técnica y el ajuste de las arquitecturas encargadas de transformar el \textit{dataset} consolidado en proyecciones de demanda. El desarrollo se estructuró a partir de un modelo base heurístico que funcionó como punto de referencia (\textit{baseline}) frente a la aplicación de diversos algoritmos de aprendizaje automático de mayor complejidad.
+Esta fase del proyecto consistió en la implementación técnica y el ajuste de las arquitecturas encargadas de transformar el conjunto de datos consolidado en proyecciones de demanda. El desarrollo se estructuró a partir de un modelo base heurístico que funcionó como punto de referencia (en inglés \textit{baseline}) frente a la aplicación de diversos algoritmos de aprendizaje automático de mayor complejidad.
 
 
 

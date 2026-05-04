@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.5)  3 MAY 2026 19:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  4 MAY 2026 09:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1192,55 +1192,66 @@ LaTeX Info: Redefining \. on input line 252.
 LaTeX Info: Redefining \% on input line 252.
 [18]
 
-LaTeX Info: Redefining \. on input line 284.
-LaTeX Info: Redefining \% on input line 284.
+LaTeX Info: Redefining \. on input line 281.
+LaTeX Info: Redefining \% on input line 281.
 [19]
 
-LaTeX Info: Redefining \. on input line 316.
-LaTeX Info: Redefining \% on input line 316.
+LaTeX Info: Redefining \. on input line 315.
+LaTeX Info: Redefining \% on input line 315.
 [20]
-Overfull \hbox (4.09924pt too wide) in paragraph at lines 321--322
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 3
+18.
+ (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 32
+7.
+
+(C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+
+LaTeX Info: Redefining \. on input line 347.
+LaTeX Info: Redefining \% on input line 347.
+[21]
+Overfull \hbox (4.09924pt too wide) in paragraph at lines 350--351
 []\T1/ppl/m/n/10.95 Señalización de even-tos exóge-nos: se in-te-gra-ron va-ria
 -bles bi-na-rias pa-ra iden-
  []
 
 
 
-LaTeX Info: Redefining \. on input line 347.
-LaTeX Info: Redefining \% on input line 347.
-[21]
-
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
+LaTeX Info: Redefining \. on input line 393.
+LaTeX Info: Redefining \% on input line 393.
 [22]
 
-LaTeX Info: Redefining \. on input line 408.
-LaTeX Info: Redefining \% on input line 408.
+LaTeX Info: Redefining \. on input line 417.
+LaTeX Info: Redefining \% on input line 417.
 [23]
-<./Figures/mermaid-arq.png, id=586, 1508.63625pt x 2246.3925pt>
+
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
+[24]
+<./Figures/mermaid-arq.png, id=591, 1508.63625pt x 2246.3925pt>
 File: ./Figures/mermaid-arq.png Graphic file (type png)
 <use ./Figures/mermaid-arq.png>
-Package pdftex.def Info: ./Figures/mermaid-arq.png  used on input line 427.
+Package pdftex.def Info: ./Figures/mermaid-arq.png  used on input line 456.
 (pdftex.def)             Requested size: 389.80269pt x 580.4149pt.
 
 
-LaTeX Info: Redefining \. on input line 444.
-LaTeX Info: Redefining \% on input line 444.
-[24]
+LaTeX Info: Redefining \. on input line 485.
+LaTeX Info: Redefining \% on input line 485.
+[25]
 
-LaTeX Info: Redefining \. on input line 444.
-LaTeX Info: Redefining \% on input line 444.
-[25 <./Figures/mermaid-arq.png>]
-Overfull \hbox (2.56627pt too wide) in paragraph at lines 463--464
+LaTeX Info: Redefining \. on input line 485.
+LaTeX Info: Redefining \% on input line 485.
+[26 <./Figures/mermaid-arq.png>]
+Overfull \hbox (2.56627pt too wide) in paragraph at lines 492--493
 []\T1/ppl/m/n/10.95 Gestión de Ar-te-fac-tos y Mo-de-los (AWS S3): Com-ple-men-
 tan-do a Post-greSQL,
  []
 
-
-
-LaTeX Info: Redefining \. on input line 465.
-LaTeX Info: Redefining \% on input line 465.
-[26])
+)
 
 LaTeX Info: Redefining \. on input line 120.
 LaTeX Info: Redefining \% on input line 120.
@@ -1263,11 +1274,6 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 
 [29]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 64
-.
- (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
 Overfull \hbox (47.96642pt too wide) in paragraph at lines 64--65
 []\T1/ppl/m/n/10.95 El con-jun-to de da-tos fi-nal in-clu-ye las si-guien-tes c
 o-lum-nas: \T1/pcr/m/n/10.95 fecha\T1/ppl/m/n/10.95 , \T1/pcr/m/n/10.95 ventas_
@@ -1395,11 +1401,11 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31402 strings out of 468221
- 684364 string characters out of 5432892
+ 31429 strings out of 468221
+ 685185 string characters out of 5432892
  1431324 words of memory out of 5000000
- 59384 multiletter control sequences out of 15000+600000
- 683654 words of font info for 103 fonts, out of 8000000 for 9000
+ 59406 multiletter control sequences out of 15000+600000
+ 684208 words of font info for 105 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -1416,7 +1422,7 @@ ograms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local
 ocal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (49 pages, 529571 bytes).
+Output written on memorianueva.pdf (49 pages, 533640 bytes).
 PDF statistics:
  810 PDF objects out of 1000 (max. 8388607)
  173 named destinations out of 1000 (max. 500000)
