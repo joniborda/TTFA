@@ -1,0 +1,25 @@
+---
+config:
+  layout: fixed
+---
+flowchart TB
+ subgraph subGraph0["Registro de Modelos"]
+        M1["Lineales: Ridge / Regresión"]
+        C{"Entrenamiento en Paralelo"}
+        M2["Ensamble: Random Forest"]
+        M3["Boosting: XGBoost / Catboost"]
+        M4["Series Temporales: SARIMA / ETS / Prophet"]
+        M5["Deep Learning: LSTM / TFT"]
+  end
+    A["Inicio del DAG en Airflow"] --> B["Transformación y Consolidación de Datos ETL"]
+    B --> C
+    C --> M1 & M2 & M3 & M4 & M5
+    M1 --> D["Cálculo de Métricas"]
+    M2 --> D
+    M3 --> D
+    M4 --> D
+    M5 --> D
+    D --> E["Comparación de RMSE en Validación"]
+    E --> F["Selección Automática del Modelo Ganador"]
+    F --> G["Persistencia en Model Registry y AWS S3"]
+    G --> H["Servicio de Predicción en FastAPI"]

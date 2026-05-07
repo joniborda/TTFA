@@ -29,17 +29,17 @@
 \contentsline {section}{\numberline {3.3}Análisis de datos}{20}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Limpieza y Normalización de la Información}{20}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Estrategias de Imputación y Gestión de Inconsistencias}{20}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Ingeniería de Características ( \textit {Feature Engineering} )}{21}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Ingeniería de Características ( \textit {Feature engineering} )}{21}{subsection.3.3.3}%
 \contentsline {section}{\numberline {3.4}Desarrollo de modelos}{22}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Modelo base (Baseline): lógica de heurística original}{22}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.1}Modelo base (\textit {baseline}): lógica de heurística original}{22}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Implementación del Framework de Modelado}{23}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}Estrategia de entrenamiento y mitigación de sobre-ajuste}{23}{subsection.3.4.3}%
 \contentsline {section}{\numberline {3.5}Desarrollo de un \textit {framework} modular}{24}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Estandarización de Interfaces y Orquestación mediante DAGs}{24}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Lógica de Competencia y Selección Automática del Modelo}{24}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.1}Estandarización de interfaces y orquestación mediante DAGs}{24}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Lógica de competencia y selección automática del modelo}{24}{subsection.3.5.2}%
 \contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{25}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{25}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{25}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{27}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{27}{subsection.3.6.2}%
 \contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{27}{subsection.3.6.3}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{29}{section.4.1}%
@@ -47,14 +47,14 @@
 \contentsline {section}{\numberline {4.3}Desempeño de la predicción}{29}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Comparación de algoritmos}{29}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{29}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{29}{section*.7}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{30}{section*.8}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{30}{section*.9}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{31}{section*.10}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{31}{section*.11}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{32}{section*.12}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{32}{section*.13}%
+\contentsline {subsubsection}{Requerimiento funcional 1}{29}{section*.8}%
+\contentsline {subsubsection}{Requerimiento funcional 2}{30}{section*.9}%
+\contentsline {subsubsection}{Requerimiento funcional 3}{30}{section*.10}%
+\contentsline {subsubsection}{Requerimiento funcional 4}{31}{section*.11}%
+\contentsline {subsubsection}{Requerimiento funcional 5}{31}{section*.12}%
+\contentsline {subsubsection}{Requerimiento funcional 6}{32}{section*.13}%
+\contentsline {subsubsection}{Requerimiento funcional 7}{32}{section*.14}%
 \contentsline {chapter}{\numberline {5}Conclusiones}{35}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Resultados obtenidos}{35}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Trabajo futuro}{35}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{37}{appendix*.15}%
+\contentsline {chapter}{Bibliografía}{37}{appendix*.16}%
