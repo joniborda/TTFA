@@ -23,7 +23,7 @@ A continuación, se describen las configuraciones finales de los modelos evaluad
 
 	\item Lineal regression y Ridge: se implementó como modelos base para establecer relaciones lineales entre las variables. En el caso de Ridge, se aplicó un parámetro de regularización $\alpha$=5 para mitigar la complejidad del modelo y controlar el riesgo de sobreajuste.
 
-	\item Random Forest: este algoritmo de ensamble se seleccionó por su robustez intrínseca ante valores atípicos y su capacidad para promediar múltiples árboles de decisión. Su configuración óptima consistió en 100 estimadores, una profundidad máxima de 8, un mínimo de 2 muestras para división y 3 muestras por hoja.
+	\item Random forest: este algoritmo de ensamble se seleccionó por su robustez intrínseca ante valores atípicos y su capacidad para promediar múltiples árboles de decisión. Su configuración óptima consistió en 100 estimadores, una profundidad máxima de 8, un mínimo de 2 muestras para división y 3 muestras por hoja.
 
 	\item XGBoost: este modelo de gradient boosting permite optimizar la precisión de manera iterativa sin memorizar el ruido histórico. Los hiperparámetros finales incluyeron 400 estimadores, una profundidad de 4, una tasa de aprendizaje (\textit{learning rate}) de 0,05 y un submuestreo de filas del 90\%.
 	
@@ -35,7 +35,7 @@ A continuación, se describen las configuraciones finales de los modelos evaluad
 \end{itemize}
 
 
-\section{Desempeño del modelo}
+\section{Desempeño de los modelos}
 
 Una vez finalizada la fase de ensayos, se evaluó cada arquitectura sobre el conjunto de validación donde se utilizó un enfoque de división cronológica. Esta metodología permitió medir la capacidad de generalización de los modelos frente a datos no vistos, siempre se preservó la integridad de la secuencia temporal de las ventas de Latech.
 
@@ -65,46 +65,183 @@ A continuación, la tabla \ref{tab:metricas_modelos} resume el rendimiento alcan
 \end{table}
 
 
+El análisis cuantitativo permite extraer las siguientes conclusiones sobre el comportamiento de las arquitecturas:
+
+\begin{itemize}
+
+	\item Superioridad de modelos de vanguardia: el modelo TFT presentó el mejor desempeño global, con un RMSE de 443,67 y el MAPE más bajo del conjunto (12,8 \%). Estos resultados validan la capacidad de sus mecanismos de atención para filtrar variables exógenas y capturar la complejidad de la demanda de Latech.
+	
+	\item Captura de estacionalidad: modelos como NeuralProphet y SARIMA demostraron una notable precisión en términos de MAPE (19,1 \% y 22,1 \% respectivamente). Esto indica que la lógica de componentes estacionales y de tendencia de estas arquitecturas logra modelar adecuadamente los ciclos de venta mensuales y semanales de la empresa.
+	
+	\item Limitaciones de modelos lineales: las arquitecturas lineales y de suavizado (Ridge, Regresión lineal y Exponential smoothing) exhibieron los errores más elevados. La disparidad en el RMSE, que alcanzó valores superiores a 700, sugiere que estos métodos no logran procesar de forma eficiente las relaciones no lineales provocadas por picos de campañas publicitarias o eventos exógenos.
+	
+	\item Modelos de ensamble: tanto CatBoost como XGBoost mantuvieron una consistencia sólida con RMSEs cercanos a 550. Su robustez intrínseca permitió generalizar las relaciones entre la inversión publicitaria consolidada y el volumen de pedidos, lo cual mitiga el riesgo de sobreajuste detectado en las fases iniciales del proyecto.
+
+\end{itemize}
+
+
+
 
 \section{Desempeño de la predicción}
 
+El rendimiento superior de los modelos de aprendizaje profundo en este estudio se debe a su capacidad para procesar una serie temporal caracterizada por una alta volatilidad y dependencias no lineales complejas. A diferencia de los métodos estadísticos tradicionales, estas arquitecturas logran integrar variables exógenas y capturar cambios estructurales en los datos de manera dinámica.
 
 
+	
 \begin{figure}[htbp]
-     \centering
-     % Primer gráfico (Mezcla/Blend)
-     \begin{subfigure}[b]{0.8\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
-         \caption{Modelo Blend (MAPE: 18.99\%)}
-         \label{fig:grafico_blend}
-     \end{subfigure}
-     \hfill
-     
-     \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}
-     \label{fig:comparativa_modelos}
+    \centering
+    \includegraphics[width=0.9\textwidth]{orders_with_events_3m.png}
+    \caption{Distribución de las ordenes.}
+    \label{fig:orders_with_events_3m}
 \end{figure}
 
 
+Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presenta tres componentes críticos que justifican el uso de modelos avanzados:
+
+\begin{itemize}
+
+	\item Impacto de eventos estocásticos: la presencia de líneas punteadas rojas en el gráfico indica el inicio de eventos clave como ofertas, días feriados o lanzamientos de productos. Existe una correlación visual directa entre estos hitos y el incremento súbito en la cantidad de órdenes por día.
+
+	\item Volatilidad y variabilidad: las órdenes muestran una oscilación constante y agresiva, lo que sugiere que factores externos y estacionalidades de corto plazo influyen fuertemente en el comportamiento diario.
+
+	\item Tendencia ascendente longitunidal: a medida que transcurre el tiempo (desde 2023 hasta la actualidad), se aprecia una clara tendencia al aumento en el volumen base de órdenes.
+\end{itemize}	
+
+
+Para profundiza en el análisis del comportamiento de las arquitecturas Temporal fusion transformer y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech. Se plantea examinar la distribución de los RMSE:\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{rmse_neuralprophet.png}
+    \caption{RMSE Neural prophet.}
+    \label{fig:rmse_neuralprophet}
+\end{figure}
+
 
 \begin{figure}[htbp]
-     \centering
-     % Segundo gráfico (TFT)
-     \begin{subfigure}[b]{0.48\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{true_vs_pred_temporal_fusion_transformer.png}
-         \caption{Modelo TFT (MAPE: 14.46\%)}
-         \label{fig:grafico_tft}
-     \end{subfigure}
-     
-     \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}
-     \label{fig:comparativa_modelos}
+    \centering
+    \includegraphics[width=0.9\textwidth]{rmse_temporal_fusion_transformer.png}
+    \caption{RMSE TFT.}
+    \label{fig:rmse_temporal_fusion_transformer}
 \end{figure}
+
+En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permite verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
+
+
+La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
+
+\subsection{Precisión general y sesgo}
+	
+\begin{itemize}
+
+	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima que supera los 300 casos en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
+	
+	\item NeuralProphet: aunque también concentra la mayoría de sus errores en el rango inicial, su frecuencia máxima es menor (alrededor de 210). Este modelo comete errores de mayor magnitud de forma más frecuente. Esto sugiere que el TFT es, en promedio, más preciso y consistente en sus predicciones.
+
+\end{itemize}
+	
+	
+\subsection{Análisis de \textit{outliers}}
+
+Ambas representaciones gráficas exhiben una asimetría positiva pronunciada, lo que significa que ambos modelos sufren ante eventos atípicos o picos de demanda difíciles de predecir. Sin embargo:
+
+	
+\begin{itemize}
+
+	\item TFT: la curva de densidad decae mucho más rápido. Después del primer bloque de error, la frecuencia cae casi a cero de forma inmediata.
+
+
+	\item NeuralProphet: muestra pequeñas zonas de errores más alejadas (cerca de $1.5 \times 10^6$ y $3.0 \times 10^6$). Esto indica que NeuralProphet comete errores medianos y grandes con mayor frecuencia que el TFT.
+
+\end{itemize}
+
+\subsection{Estabilidad y Confiabilidad}
+
+El modelo TFT demuestra ser más robusto para este conjunto de datos. Su distribución es más estrecha y alta indica una menor varianza en el error. Esto coincide con los resultados de la tabla comparativa, donde el TFT obtuvo un RMSE de 443,67 frente al 568,48 de NeuralProphet.
+
+A continuación, se realiza un análisis de la distribución del RMSE del modelo \textit{baseline} en la figura \ref{fig:rmse_distribution_baseline_tm7_sw8_blend}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{rmse_distribution_baseline_tm7_sw8_blend.png}
+    \caption{RMSE \textit{Baseline}.}
+    \label{fig:rmse_distribution_baseline_tm7_sw8_blend}
+\end{figure}
+ 
+Al contrastar la distribución del error cuadrático del modelo TFT frente al \textit{Baseline}, se evidencia una diferencia sustancial en la consistencia de las predicciones. Mientras que el modelo TFT logra concentrar la gran mayoría de sus residuos en el rango cercano a cero (con una frecuencia superior a los 300 casos), el \textit{Baseline} muestra una dispersión significativamente mayor.
+Este último no solo presenta una menor frecuencia de aciertos precisos, sino que manifiesta errores en magnitudes mucho más elevadas, visibles en la asimetría positiva de la derecha de la distribución.
+
+
+
+
+
+
+
 
 
 
 
 \section{Comparación de algoritmos}
+
+
+
+Para complementar el análisis, se integran visualizaciones que contrastan los valores históricos reales con las proyecciones generadas por cada modelo entrenado. 
+Para entender los gráficos que se presentan a continuación se explica cada eje de coordenadas:
+
+\begin{itemize}
+	\item Eje horizontal: si hay fechas válidas, representa días transcurridos desde la primera fecha del tramo de validación. Cada punto consecutivo es un día (u orden temporal) del subconjunto de validación. 
+
+	\item Eje vertical: magnitud del \textit{target} (\textit{values} en el gráfico), en la misma escala para ambas curvas: línea \textit{True} (\texttt{y\_true}) y línea Prediction (\texttt{y\_pred}).
+
+\end{itemize}
+
+\subsection{Predicciones de Neural prophet}
+
+La Figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralProphet, cuya estructura permite modelar de forma precisa los ciclos de estacionalidad mensual y semanal característicos de la tienda. Estas comparativas visuales aseguran que el modelo seleccionado mantenga una estrecha correlación con la dinámica del negocio antes de su integración final en la plataforma Inventory Tracker.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{true_vs_pred_neuralprophet.png}
+    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}
+    \label{fig:true_vs_pred_neuralprophet}
+\end{figure}
+
+
+\subsection{Predicciones de TFT}
+
+La Figura \ref{fig:grafico_true_tft} muestra el gráfico de realidad en compración con la predicción del modelo TFT. En esta representación se observa la capacidad de sus mecanismos de atención para capturar los picos de demanda asociados a los periodos de mayor inversión publicitaria. 
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{true_vs_pred_temporal_fusion_transformer.png}
+    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a TFT.}
+    \label{fig:grafico_true_tft}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
+    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}
+    \label{fig:grafico_true_baseline}
+\end{figure}
+
+
+
+
+
+
+
+sss
+s
+s
+s
+s
+ss
+
+
+
 
 \begin{table}[h]
     \centering
@@ -119,123 +256,4 @@ A continuación, la tabla \ref{tab:metricas_modelos} resume el rendimiento alcan
         \bottomrule
     \end{tabular}
 \end{table}
-
-\section{Validación de cumplimiento de requerimientos}
-
-A continuación se detalla la descripción técnica y alcance correspondientes a cada uno de los requerimientos especificados anteriormente.
-
-
-\subsubsection{Requerimiento funcional 1}
-
-Para cumplir este requerimiento, se desarrolló un módulo de integración que:
-
-\begin{itemize}
-    \item Establece conexión con la API de Shopify mediante credenciales \textit{API Key} y \textit{Access Token}.
-    \item Obtiene y procesa los siguientes atributos mínimos: fecha de compra, identificador de producto, cantidad vendida, precio unitario y canal de venta.
-    \item Permite especificar intervalos de fechas para la descarga de datos.
-    \item Almacena los datos importados en una base de datos PostgreSQL destinada a su posterior uso en el modelado.
-    \item Implementa validaciones y manejo de errores en caso de fallos de autenticación, pérdida de conexión o respuestas vacías.
-    \item Registra la trazabilidad del proceso de importación mediante un archivo de log que incluye el volumen de datos procesados y errores detectados.
-    \item Verifica duplicidades para evitar el doble procesamiento de registros previamente importados.
-\end{itemize}
-
-\subsubsection{Requerimiento funcional 2}
-
-Para satisfacer este requerimiento se desarrolló un módulo de integración que:
-
-\begin{itemize}
-    \item Establece conexión con la API de Triple Whale con una clave de acceso provista por la organización.
-    \item Recupera la información de inversión por fecha, campaña y plataforma publicitaria.
-    \item Permite seleccionar y configurar el intervalo temporal de los datos a importar.
-    \item Almacena los datos obtenidos en una base de datos PostgreSQL y mantiene una estructura consistente con el modelo de análisis utilizado.
-    \item Implementa mecanismos de manejo de errores ante fallos de autenticación, interrupciones en la conexión o respuestas inválidas provenientes de la API.
-    \item Registra el detalle del proceso mediante un archivo de log que incluya la cantidad de registros importados y los errores detectados durante la ejecución.
-    \item Permite ejecutar el proceso de importación tanto de forma manual como programada mediante tareas periódicas.
-    \item Incluye validaciones para evitar la duplicación de registros en caso de importaciones sobre el mismo rango de fechas.
-\end{itemize}
-
-
-
-\subsubsection{Requerimiento funcional 3}
-
-Para satisfacer este requerimiento se desarrolló un proceso de consolidación que integra los datos provenientes de Shopify (ventas) y Triple Whale (inversión publicitaria), y garantiza la correcta correspondencia temporal entre ambas fuentes. En particular:
-
-\begin{itemize}
-    \item Se generó un único \textit{dataset} en el que las ventas diarias y la inversión total diaria se vinculan a través del campo de fecha.
-    \item Se realizó el alineamiento temporal de las fechas, y se tuvo en cuenta posibles diferencias de zona horaria entre ambas plataformas.
-    \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente utilizando valores nulos para evitar la pérdida de información histórica.
-    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
-    \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
-    \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
-    \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.
-    \item Se registraron las operaciones del proceso mediante archivos de log que incluye la cantidad total de registros consolidados y cualquier incidencia detectada durante la ejecución.
-\end{itemize}
-
-
-
-\subsubsection{Requerimiento funcional 4}
-
-
-Para cumplir con este requerimiento se implementó un proceso de modelado y entrenamiento estructurado que incluyó las siguientes etapas:
-
-\begin{itemize}
-    \item Se empleó el \textit{dataset} consolidado, compuesto por variables de ventas y de inversión publicitaria, como fuente principal para el entrenamiento del modelo.
-    \item El conjunto de datos fue dividido en subconjuntos de entrenamiento y validación con una proporción aproximada de 80\% para entrenamiento y 20\% para validación.
-    \item Se evaluaron distintos modelos de predicción utilizando métricas de error adecuadas para series temporales, tales como MAE, RMSE y MAPE, con el fin de comparar su desempeño.
-    \item Se seleccionó como modelo final aquel que presentó el mejor desempeño sobre el conjunto de validación.
-    \item El modelo entrenado quedó habilitado para generar predicciones futuras a partir de valores recientes de entrada.
-    \item Se garantizó la reproducibilidad del proceso mediante la definición de un \textit{pipeline} de entrenamiento que permite repetir la ejecución bajo las mismas configuraciones.
-    \item El modelo seleccionado y sus parámetros finales fueron almacenados para su posterior uso dentro del sistema Inventory Tracker.
-    \item Se documentó el proceso de entrenamiento de manera detallada donde se incluye la selección de variables, las técnicas de preprocesamiento aplicadas y los métodos de evaluación utilizados.
-    \item Se realizó una validación visual comparando las predicciones generadas frente a los valores reales observados, mediante gráficos que permitieron analizar la coherencia del modelo respecto a la dinámica histórica de las ventas.
-\end{itemize}
-
-
-\subsubsection{Requerimiento funcional 5}
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item Las predicciones de ventas se muestran en la interfaz de Inventory Tracker junto a las fechas correspondientes.
-    \item La visualización integra tanto las predicciones como los datos históricos de ventas para comparaciones temporales y análisis de tendencias.
-    \item La información se presenta de manera clara y entendible, utilizando gráficos de líneas y tablas según corresponda.
-    \item Los usuarios pueden seleccionar rangos de fechas específicos para observar predicciones detalladas de periodos concretos.
-    \item Las predicciones se actualizan automáticamente al entrenarse un nuevo modelo o al actualizarse los datos de entrada y se garantiza que la información refleje siempre el estado más reciente.
-    \item La interfaz muestra un indicador visual de la fecha y hora de generación de la última predicción.
-    \item Se distingue claramente entre valores predichos y datos históricos que evitan confusiones en el análisis.
-    \item La integración de las predicciones no afecta la funcionalidad ni el rendimiento general de la interfaz del módulo Inventory Tracker.
-    \item El rendimiento de la interfaz se mantiene aceptable incluso cuando se manejan conjuntos de datos de gran tamaño.
-\end{itemize}
-
-
-\subsubsection{Requerimiento funcional 6}
-
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item Se incorporó un botón o enlace claramente identificado que permite la descarga de las predicciones en formato CSV.
-    \item El archivo CSV generado incluye las fechas y los valores de predicción correspondientes.
-    \item De manera opcional, el archivo puede incluir los datos históricos de ventas para permitir la comparación con las predicciones.
-    \item El formato del CSV es compatible con herramientas comunes de análisis, con valores separados por comas y codificación UTF-8.
-    \item El nombre del archivo contiene la fecha y hora de generación que lo identifica.
-    \item La descarga se realiza correctamente en navegadores modernos, incluyendo Chrome y Firefox.
-    \item El contenido del archivo refleja exactamente la información presentada en la interfaz del módulo de predicción.
-    \item Si aún no existen predicciones generadas, el botón de descarga se muestra deshabilitado.
-\end{itemize}
-
-\subsubsection{Requerimiento funcional 7}
-
-Para cumplir con este requerimiento se implementaron las siguientes funcionalidades:
-
-\begin{itemize}
-    \item El sistema verifica automáticamente la integridad del \textit{dataset} antes de cada entrenamiento del modelo.
-    \item Si se detectan datos faltantes críticos como fechas sin registros de ventas o de inversión publicitaria se genera una alerta.
-    \item La alerta incluye información detallada sobre el tipo de dato faltante (ventas, inversión, o ambos), el rango de fechas afectado y el nivel de severidad del impacto estimado.
-    \item La alerta se muestra de forma visible dentro del sistema para que los responsables puedan tomar conocimiento inmediato.
-    \item Se envía una notificación por correo electrónico al responsable del sistema, en caso de estar configurada esta opción.
-    \item El sistema no bloquea el entrenamiento del modelo, pero advierte que la precisión de las predicciones puede verse afectada.
-    \item La alerta desaparece únicamente cuando los datos faltantes son completados o cuando se marca como revisada manualmente.
-    \item Se registra un log de todas las alertas emitidas, accesible desde una sección de administración o monitoreo del sistema.
-\end{itemize}
 

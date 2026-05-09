@@ -43,18 +43,15 @@
 \contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{27}{subsection.3.6.3}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño del modelo}{30}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{32}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{32}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{32}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{32}{section*.12}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{32}{section*.13}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{33}{section*.14}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{33}{section*.15}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{34}{section*.16}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{35}{section*.17}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{35}{section*.18}%
+\contentsline {section}{\numberline {4.2}Desempeño de los modelos}{30}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{31}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Precisión general y sesgo}{32}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Análisis de \textit {outliers}}{33}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Estabilidad y Confiabilidad}{33}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{34}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Predicciones de Neural prophet}{34}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Predicciones de TFT}{35}{subsection.4.4.2}%
 \contentsline {chapter}{\numberline {5}Conclusiones}{37}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Resultados obtenidos}{37}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Trabajo futuro}{37}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{39}{appendix*.20}%
+\contentsline {chapter}{Bibliografía}{39}{appendix*.18}%

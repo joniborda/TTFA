@@ -6,6 +6,11 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Flujo lógico de orquestación de DAGs.}}{25}{figure.caption.6}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de arquitectura del sistema.}}{26}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}}{31}{figure.caption.9}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}}{31}{figure.caption.10}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribución de las ordenes.}}{31}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces RMSE Neural prophet.}}{32}{figure.caption.10}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces RMSE TFT.}}{33}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces RMSE \textit {Baseline}.}}{34}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}}{35}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a TFT.}}{35}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}}{36}{figure.caption.15}%
 \addvspace {10\p@ }
