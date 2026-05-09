@@ -3,7 +3,9 @@
 \chapter{Ensayos y resultados} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+
+Este capítulo detalla el conjunto de pruebas experimentales diseñadas para validar la propuesta técnica. Se exponen los resultados cuantitativos obtenidos y se desarrolla un análisis crítico para verificar el cumplimiento de los objetivos establecidos.
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -12,11 +14,112 @@ Todos los capítulos deben comenzar con un breve párrafo introductorio que indi
 \section{Ensayos de modelos}
 \label{sec:pruebasHW}
 
-La idea de esta sección es explicar cómo se hicieron los ensayos, qué resultados se obtuvieron y analizarlos.
+Para garantizar una comparación equitativa entre las arquitecturas, se realizó una búsqueda en rejilla (en ingles \textit{grid search}) sobre cada modelo del registro. Este proceso permitió explorar diferentes combinaciones de hiperparámetros, tales: como el número de estimadores, la profundidad máxima de los árboles y la tasa de aprendizaje en algoritmos de boosting. A través de esta técnica, se buscó que el desempeño reportado se aproximara a la capacidad óptima de cada arquitectura dentro del espacio de búsqueda definido. 
+
+A continuación, se describen las configuraciones finales de los modelos evaluados:
+
+
+\begin{itemize}
+
+	\item Lineal regression y Ridge: se implementó como modelos base para establecer relaciones lineales entre las variables. En el caso de Ridge, se aplicó un parámetro de regularización $\alpha$=5 para mitigar la complejidad del modelo y controlar el riesgo de sobreajuste.
+
+	\item Random Forest: este algoritmo de ensamble se seleccionó por su robustez intrínseca ante valores atípicos y su capacidad para promediar múltiples árboles de decisión. Su configuración óptima consistió en 100 estimadores, una profundidad máxima de 8, un mínimo de 2 muestras para división y 3 muestras por hoja.
+
+	\item XGBoost: este modelo de gradient boosting permite optimizar la precisión de manera iterativa sin memorizar el ruido histórico. Los hiperparámetros finales incluyeron 400 estimadores, una profundidad de 4, una tasa de aprendizaje (\textit{learning rate}) de 0,05 y un submuestreo de filas del 90\%.
+	
+	\item CatBoost: se utilizó esta variante de boosting por su eficiencia en el manejo de variables categóricas y su función de pérdida orientada a minimizar el RMSE. Se configuró con 500 iteraciones, una tasa de aprendizaje de 0,1 y una profundidad de 4.
+	\item Modelos estadísticos clásicos (SARIMA y \textit{Exponential smoothing}): estos métodos se aplicaron para modelar los componentes de tendencia y estacionalidad predominantes en la serie. Para SARIMA, se definieron los parámetros de orden (3,1,2) y un componente estacional de (0,1,1) con un periodo de 12 meses.
+	\item NeuralProphet: este modelo combina la flexibilidad de las redes neuronales con el modelado aditivo de tendencias y días festivos. La configuración ganadora utilizó 40 épocas de entrenamiento y una tasa de aprendizaje de 0,05.
+	\item LSTM (\textit{Long short-term memory}): esta red neuronal recurrente se diseñó para retener información relevante a largo plazo y capturar dependencias temporales complejas. El modelo final integró 3 capas, un tamaño de capa oculta de 256, un dropout de 0,05 para regularización y un entrenamiento de 50 épocas con un tamaño de lote de 128.
+	\item Temporal fusion transformer (TFT): esta arquitectura de vanguardia emplea mecanismos de atención interpretable para filtrar variables exógenas, como la inversión publicitaria, que no aportan valor predictivo real. Su configuración incluyó un largo de codificador de 28 días, 10 épocas, un tamaño de lote de 32 y una tasa de aprendizaje de 0,01.
+\end{itemize}
+
 
 \section{Desempeño del modelo}
+
+Una vez finalizada la fase de ensayos, se evaluó cada arquitectura sobre el conjunto de validación donde se utilizó un enfoque de división cronológica. Esta metodología permitió medir la capacidad de generalización de los modelos frente a datos no vistos, siempre se preservó la integridad de la secuencia temporal de las ventas de Latech.
+
+A continuación, la tabla \ref{tab:metricas_modelos} resume el rendimiento alcanzado por cada modelo en términos de MAE (error absoluto medio), RMSE (raíz del error cuadrático medio) y MAPE (error porcentual absoluto medio).
+
+
+\begin{table}[h]
+    \centering
+    \caption{Comparativa de métricas de desempeño por modelo}
+    \label{tab:metricas_modelos}
+    \begin{tabular}{l l c c c}
+        \toprule
+        \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAPE} \\
+        \midrule
+        TFT & 258,68 & 443,67 & 0,128 \\
+        NeuralProphet & 356,68 & 568,48 & 0,191 \\
+        CatBoost & 349,70 & 549,54 & 0,392 \\
+        XGBoost & 367,31 & 553,82 & 0,400 \\
+        LSTM & 376,89 & 576,42 & 0,359 \\
+        SARIMA & 380,89 & 583,75 & 0,221 \\
+        Random Forest & 375,39 & 589,93 & 0,389 \\
+        Ridge & 521,10 & 728,93 & 0,632 \\
+        Linear Reg. & 549,94 & 761,11 & 0,614 \\
+        Exp. Smoothing & 593,54 & 701,40 & 0,392 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
 \section{Desempeño de la predicción}
+
+
+
+\begin{figure}[htbp]
+     \centering
+     % Primer gráfico (Mezcla/Blend)
+     \begin{subfigure}[b]{0.8\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
+         \caption{Modelo Blend (MAPE: 18.99\%)}
+         \label{fig:grafico_blend}
+     \end{subfigure}
+     \hfill
+     
+     \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}
+     \label{fig:comparativa_modelos}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+     \centering
+     % Segundo gráfico (TFT)
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{true_vs_pred_temporal_fusion_transformer.png}
+         \caption{Modelo TFT (MAPE: 14.46\%)}
+         \label{fig:grafico_tft}
+     \end{subfigure}
+     
+     \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}
+     \label{fig:comparativa_modelos}
+\end{figure}
+
+
+
+
 \section{Comparación de algoritmos}
+
+\begin{table}[h]
+    \centering
+    \caption{Comparativa de métricas de desempeño por modelo}
+    \label{tab:metricas_modelo_baseline}
+    \begin{tabular}{l l c c c}
+        \toprule
+        \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAPE} \\
+        \midrule
+        TFT & 258,68 & 443,67 & 0,128 \\
+        Baseline & 338,04 & 548,02 & 0,18 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 \section{Validación de cumplimiento de requerimientos}
 
 A continuación se detalla la descripción técnica y alcance correspondientes a cada uno de los requerimientos especificados anteriormente.

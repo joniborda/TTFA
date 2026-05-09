@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  4 MAY 2026 19:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  9 MAY 2026 06:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,7 +819,11 @@ LaTeX Info: Redefining \% on input line 16.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported  on input line 16.
  (Chapters/Chapter1.aux) (Chapters/Chapter2.aux) (Chapters/Chapter3.aux) (Chapt
-ers/Chapter4.aux) (Chapters/Chapter5.aux))
+ers/Chapter4.aux
+
+LaTeX Warning: Label `fig:comparativa_modelos' multiply defined.
+
+) (Chapters/Chapter5.aux))
 \openout1 = `memorianueva.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
@@ -1177,7 +1181,7 @@ n-tos usua-rios rea-li-za-ron más de una com-
 LaTeX Info: Redefining \. on input line 175.
 LaTeX Info: Redefining \% on input line 175.
 [16]
-<./Figures/der.png, id=537, 703.62875pt x 288.07625pt>
+<./Figures/der.png, id=547, 703.62875pt x 288.07625pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
 Package pdftex.def Info: ./Figures/der.png  used on input line 180.
@@ -1231,12 +1235,12 @@ LaTeX Info: Redefining \% on input line 416.
 LaTeX Info: Redefining \. on input line 442.
 LaTeX Info: Redefining \% on input line 442.
 [24]
-<./Figures/flujo-dag.png, id=591, 5662.15375pt x 5985.36125pt>
+<./Figures/flujo-dag.png, id=601, 5662.15375pt x 5985.36125pt>
 File: ./Figures/flujo-dag.png Graphic file (type png)
 <use ./Figures/flujo-dag.png>
 Package pdftex.def Info: ./Figures/flujo-dag.png  used on input line 446.
 (pdftex.def)             Requested size: 389.80269pt x 411.98576pt.
-<./Figures/mermaid-arq.png, id=593, 3717.89pt x 5383.11125pt>
+<./Figures/mermaid-arq.png, id=603, 3717.89pt x 5383.11125pt>
 File: ./Figures/mermaid-arq.png Graphic file (type png)
 <use ./Figures/mermaid-arq.png>
 Package pdftex.def Info: ./Figures/mermaid-arq.png  used on input line 464.
@@ -1275,10 +1279,6 @@ LaTeX Info: Redefining \% on input line 120.
  (Chapters/Chapter4.tex
 Cap\'{\i }tulo 4.
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 25.
-
-
 
 [29
 
@@ -1286,7 +1286,45 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 
 ]
-Overfull \hbox (47.96642pt too wide) in paragraph at lines 64--65
+<Figures/true_vs_pred_baseline_tm7_sw8_blend.png, id=628, 1003.75pt x 622.325pt
+>
+File: Figures/true_vs_pred_baseline_tm7_sw8_blend.png Graphic file (type png)
+<use Figures/true_vs_pred_baseline_tm7_sw8_blend.png>
+Package pdftex.def Info: Figures/true_vs_pred_baseline_tm7_sw8_blend.png  used 
+on input line 78.
+(pdftex.def)             Requested size: 311.84334pt x 193.34607pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 79.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 79.
+<Figures/true_vs_pred_temporal_fusion_transformer.png, id=629, 1003.75pt x 622.
+325pt>
+File: Figures/true_vs_pred_temporal_fusion_transformer.png Graphic file (type p
+ng)
+<use Figures/true_vs_pred_temporal_fusion_transformer.png>
+Package pdftex.def Info: Figures/true_vs_pred_temporal_fusion_transformer.png  
+used on input line 95.
+(pdftex.def)             Requested size: 187.10362pt x 116.00194pt.
+
+
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+[30]
+
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+[31 <./Figures/true_vs_pred_baseline_tm7_sw8_blend.png (PNG copy)> <./Figures/t
+rue_vs_pred_temporal_fusion_transformer.png (PNG copy)>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 128.
+
+
+
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
+[32]
+Overfull \hbox (47.96642pt too wide) in paragraph at lines 167--168
 []\T1/ppl/m/n/10.95 El con-jun-to de da-tos fi-nal in-clu-ye las si-guien-tes c
 o-lum-nas: \T1/pcr/m/n/10.95 fecha\T1/ppl/m/n/10.95 , \T1/pcr/m/n/10.95 ventas_
 diarias\T1/ppl/m/n/10.95 ,
@@ -1294,26 +1332,22 @@ diarias\T1/ppl/m/n/10.95 ,
 
 
 
-LaTeX Info: Redefining \. on input line 68.
-LaTeX Info: Redefining \% on input line 68.
-[30]
+LaTeX Info: Redefining \. on input line 185.
+LaTeX Info: Redefining \% on input line 185.
+[33]
 
-LaTeX Info: Redefining \. on input line 99.
-LaTeX Info: Redefining \% on input line 99.
-[31]
-
-LaTeX Info: Redefining \. on input line 131.
-LaTeX Info: Redefining \% on input line 131.
-[32])
+LaTeX Info: Redefining \. on input line 217.
+LaTeX Info: Redefining \% on input line 217.
+[34])
 
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
-[33]
+[35]
 \openout2 = `Chapters/Chapter5.aux'.
 
  (Chapters/Chapter5.tex
 
-[34
+[36
 
 
 
@@ -1322,9 +1356,9 @@ LaTeX Info: Redefining \% on input line 121.
 Cap\'{\i }tulo 5.
 )
 
-[35]
+[37]
 
-[36
+[38
 
 
 
@@ -1354,7 +1388,7 @@ domForestRegressor .
 
 
 
-[37]
+[39]
 Overfull \hbox (9.30952pt too wide) in paragraph at lines 140--140
 []\T1/ppl/m/it/10.95 Amazon Sim-ple Sto-ra-ge Ser-vi-ce (S3) Do-cu-men-ta-tion\
 T1/ppl/m/n/10.95 . Ac-ce-di-do: 2025-02-13. Ama-
@@ -1376,7 +1410,7 @@ Overfull \hbox (4.92946pt too wide) in paragraph at lines 140--140
 
 LaTeX Info: Redefining \. on input line 140.
 LaTeX Info: Redefining \% on input line 140.
-[38]
+[40]
 Overfull \hbox (6.19641pt too wide) in paragraph at lines 140--140
 []\T1/ppl/m/n/10.95 Apache Soft-wa-re Foun-da-tion. \T1/ppl/m/it/10.95 Apa-che 
 Air-flow Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / air^^]ow .
@@ -1386,7 +1420,7 @@ Air-flow Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / air^^]ow .
 
 LaTeX Info: Redefining \. on input line 142.
 LaTeX Info: Redefining \% on input line 142.
-[39] (memorianueva.aux (portada.aux)
+[41] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
 LaTeX Info: Redefining \% on input line 16.
@@ -1401,8 +1435,11 @@ L3 programming layer <2025-06-09>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: C8F453DB0F59DF7B684FACB336F8BB99;13353.
+(rerunfilecheck)             Checksum: DB4861C60694542BD008D9187104936E;13361.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1413,11 +1450,11 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31438 strings out of 468221
- 685427 string characters out of 5432892
- 1431377 words of memory out of 5000000
- 59414 multiletter control sequences out of 15000+600000
- 684208 words of font info for 105 fonts, out of 8000000 for 9000
+ 31496 strings out of 468221
+ 687124 string characters out of 5432892
+ 1432123 words of memory out of 5000000
+ 59461 multiletter control sequences out of 15000+600000
+ 688976 words of font info for 112 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -1434,9 +1471,9 @@ ograms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local
 ocal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (49 pages, 1257036 bytes).
+Output written on memorianueva.pdf (51 pages, 1311834 bytes).
 PDF statistics:
- 814 PDF objects out of 1000 (max. 8388607)
- 174 named destinations out of 1000 (max. 500000)
- 493 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 180 named destinations out of 1000 (max. 500000)
+ 503 words of extra memory for PDF output out of 10000 (max. 10000000)
 

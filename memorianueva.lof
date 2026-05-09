@@ -6,4 +6,6 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Flujo lógico de orquestación de DAGs.}}{25}{figure.caption.6}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de arquitectura del sistema.}}{26}{figure.caption.7}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}}{31}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Temporal Fusion Transformer.}}{31}{figure.caption.10}%
 \addvspace {10\p@ }

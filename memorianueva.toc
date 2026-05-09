@@ -43,18 +43,18 @@
 \contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{27}{subsection.3.6.3}%
 \contentsline {chapter}{\numberline {4}Ensayos y resultados}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño del modelo}{29}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{29}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{29}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{29}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{29}{section*.8}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{30}{section*.9}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{30}{section*.10}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{31}{section*.11}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{31}{section*.12}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{32}{section*.13}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{32}{section*.14}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{35}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Resultados obtenidos}{35}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Trabajo futuro}{35}{section.5.2}%
-\contentsline {chapter}{Bibliografía}{37}{appendix*.16}%
+\contentsline {section}{\numberline {4.2}Desempeño del modelo}{30}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{32}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{32}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{32}{section.4.5}%
+\contentsline {subsubsection}{Requerimiento funcional 1}{32}{section*.12}%
+\contentsline {subsubsection}{Requerimiento funcional 2}{32}{section*.13}%
+\contentsline {subsubsection}{Requerimiento funcional 3}{33}{section*.14}%
+\contentsline {subsubsection}{Requerimiento funcional 4}{33}{section*.15}%
+\contentsline {subsubsection}{Requerimiento funcional 5}{34}{section*.16}%
+\contentsline {subsubsection}{Requerimiento funcional 6}{35}{section*.17}%
+\contentsline {subsubsection}{Requerimiento funcional 7}{35}{section*.18}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Resultados obtenidos}{37}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Trabajo futuro}{37}{section.5.2}%
+\contentsline {chapter}{Bibliografía}{39}{appendix*.20}%
