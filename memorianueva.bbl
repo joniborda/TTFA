@@ -1316,13 +1316,6 @@
     \field{year}{2026}
   \endentry
 
-  \entry{rabbitmq}{misc}{}{}
-    \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://www.rabbitmq.com/}}
-    \field{note}{Accedido: 2025-12-02}
-    \field{title}{RabbitMQ: Messaging that just works}
-  \endentry
-
   \entry{redis}{misc}{}{}
     \field{labeltitlesource}{title}
     \field{howpublished}{\url{https://redis.io/}}

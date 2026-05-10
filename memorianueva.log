@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  10 MAY 2026 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  10 MAY 2026 19:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1500,10 +1500,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31541 strings out of 468221
- 689174 string characters out of 5432892
- 1431981 words of memory out of 5000000
- 59494 multiletter control sequences out of 15000+600000
+ 31536 strings out of 468221
+ 688996 string characters out of 5432892
+ 1431753 words of memory out of 5000000
+ 59490 multiletter control sequences out of 15000+600000
  685761 words of font info for 107 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1521,9 +1521,9 @@ ograms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local
 ocal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (57 pages, 1846461 bytes).
+Output written on memorianueva.pdf (57 pages, 1845926 bytes).
 PDF statistics:
- 915 PDF objects out of 1000 (max. 8388607)
- 196 named destinations out of 1000 (max. 500000)
+ 913 PDF objects out of 1000 (max. 8388607)
+ 195 named destinations out of 1000 (max. 500000)
  568 words of extra memory for PDF output out of 10000 (max. 10000000)
 
