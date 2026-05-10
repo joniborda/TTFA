@@ -45,9 +45,9 @@
 \contentsline {section}{\numberline {4.1}Ensayos de modelos}{31}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Desempeño de los modelos}{32}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Desempeño de la predicción}{33}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Precisión general y sesgo}{35}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.1}Precisión general y sesgo}{34}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Análisis de \textit {outliers}}{35}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Estabilidad y Confiabilidad}{36}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Estabilidad y Confiabilidad}{35}{subsection.4.3.3}%
 \contentsline {section}{\numberline {4.4}Comparación de algoritmos}{36}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Predicciones de Neural prophet}{37}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Predicciones de TFT}{37}{subsection.4.4.2}%

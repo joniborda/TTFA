@@ -14,24 +14,25 @@ Este capítulo detalla el conjunto de pruebas experimentales diseñadas para val
 \section{Ensayos de modelos}
 \label{sec:pruebasHW}
 
-Para garantizar una comparación equitativa entre las arquitecturas, se realizó una búsqueda en rejilla (en ingles \textit{grid search}) sobre cada modelo del registro. Este proceso permitió explorar diferentes combinaciones de hiperparámetros, tales: como el número de estimadores, la profundidad máxima de los árboles y la tasa de aprendizaje en algoritmos de boosting. A través de esta técnica, se buscó que el desempeño reportado se aproximara a la capacidad óptima de cada arquitectura dentro del espacio de búsqueda definido. 
+Para garantizar una comparación equitativa entre las arquitecturas, se realizó una búsqueda en rejilla (\textit{grid search}) sobre cada modelo del registro. Este proceso permitió explorar diferentes combinaciones de hiperparámetros tales como: el número de estimadores, la profundidad máxima de los árboles y la tasa de aprendizaje en algoritmos de potenciación (\textit{boosting}). A través de esta técnica, se buscó que el desempeño reportado se aproximara a la capacidad óptima de cada arquitectura dentro del espacio de búsqueda definido. 
 
 A continuación, se describen las configuraciones finales de los modelos evaluados:
 
 
 \begin{itemize}
 
-	\item Lineal regression y Ridge: se implementó como modelos base para establecer relaciones lineales entre las variables. En el caso de Ridge, se aplicó un parámetro de regularización $\alpha$=5 para mitigar la complejidad del modelo y controlar el riesgo de sobreajuste.
+	\item Linear regression y Ridge: se implementó como modelos base para establecer relaciones lineales entre las variables. En el caso de Ridge, se aplicó un parámetro de regularización $\alpha$=5 para mitigar la complejidad del modelo y controlar el riesgo de sobreajuste.
 
 	\item Random forest: este algoritmo de ensamble se seleccionó por su robustez intrínseca ante valores atípicos y su capacidad para promediar múltiples árboles de decisión. Su configuración óptima consistió en 100 estimadores, una profundidad máxima de 8, un mínimo de 2 muestras para división y 3 muestras por hoja.
 
-	\item XGBoost: este modelo de gradient boosting permite optimizar la precisión de manera iterativa sin memorizar el ruido histórico. Los hiperparámetros finales incluyeron 400 estimadores, una profundidad de 4, una tasa de aprendizaje (\textit{learning rate}) de 0,05 y un submuestreo de filas del 90\%.
+	\item XGBoost: este modelo de \textit{gradient boosting} permite optimizar la precisión de manera iterativa sin memorizar el ruido histórico. Los hiperparámetros finales incluyeron 400 estimadores, una profundidad de 4, una tasa de aprendizaje (\textit{learning rate}) de 0,05 y un submuestreo de filas del 90\%.
 	
 	\item CatBoost: se utilizó esta variante de boosting por su eficiencia en el manejo de variables categóricas y su función de pérdida orientada a minimizar el RMSE. Se configuró con 500 iteraciones, una tasa de aprendizaje de 0,1 y una profundidad de 4.
 	\item Modelos estadísticos clásicos (SARIMA y \textit{Exponential smoothing}): estos métodos se aplicaron para modelar los componentes de tendencia y estacionalidad predominantes en la serie. Para SARIMA, se definieron los parámetros de orden (3,1,2) y un componente estacional de (0,1,1) con un periodo de 12 meses.
 	\item NeuralProphet: este modelo combina la flexibilidad de las redes neuronales con el modelado aditivo de tendencias y días festivos. La configuración ganadora utilizó 40 épocas de entrenamiento y una tasa de aprendizaje de 0,05.
 	\item LSTM (\textit{Long short-term memory}): esta red neuronal recurrente se diseñó para retener información relevante a largo plazo y capturar dependencias temporales complejas. El modelo final integró 3 capas, un tamaño de capa oculta de 256, un dropout de 0,05 para regularización y un entrenamiento de 50 épocas con un tamaño de lote de 128.
-	\item Temporal fusion transformer (TFT): esta arquitectura de vanguardia emplea mecanismos de atención interpretable para filtrar variables exógenas, como la inversión publicitaria, que no aportan valor predictivo real. Su configuración incluyó un largo de codificador de 28 días, 10 épocas, un tamaño de lote de 32 y una tasa de aprendizaje de 0,01.
+	\item TFT (\textit{Temporal fusion transformer}): esta arquitectura de vanguardia emplea mecanismos de atención interpretable para filtrar variables exógenas, como la inversión publicitaria, que no aportan valor predictivo real. Su configuración incluyó un largo de codificador de 28 días, 10 épocas, un tamaño de lote de 32 y una tasa de aprendizaje de 0,01.
+	
 \end{itemize}
 
 
@@ -75,7 +76,7 @@ El análisis cuantitativo permite extraer las siguientes conclusiones sobre el c
 	
 	\item Limitaciones de modelos lineales: las arquitecturas lineales y de suavizado (Ridge, Regresión lineal y Exponential smoothing) exhibieron los errores más elevados. La disparidad en el RMSE, que alcanzó valores superiores a 700, sugiere que estos métodos no logran procesar de forma eficiente las relaciones no lineales provocadas por picos de campañas publicitarias o eventos exógenos.
 	
-	\item Modelos de ensamble: tanto CatBoost como XGBoost mantuvieron una consistencia sólida con RMSEs cercanos a 550. Su robustez intrínseca permitió generalizar las relaciones entre la inversión publicitaria consolidada y el volumen de pedidos, lo cual mitiga el riesgo de sobreajuste detectado en las fases iniciales del proyecto.
+	\item Modelos de ensamble: tanto CatBoost como XGBoost mantuvieron una consistencia sólida con RMSEs cercanos a 550. Su robustez intrínseca permitió generalizar las relaciones entre la inversión publicitaria consolidada y el volumen de pedidos que mitiga el riesgo de sobreajuste detectado en las fases iniciales del proyecto.
 
 \end{itemize}
 
@@ -84,7 +85,7 @@ El análisis cuantitativo permite extraer las siguientes conclusiones sobre el c
 
 \section{Desempeño de la predicción}
 
-El rendimiento superior de los modelos de aprendizaje profundo en este estudio se debe a su capacidad para procesar una serie temporal caracterizada por una alta volatilidad y dependencias no lineales complejas. A diferencia de los métodos estadísticos tradicionales, estas arquitecturas logran integrar variables exógenas y capturar cambios estructurales en los datos de manera dinámica.
+El rendimiento superior de los modelos de aprendizaje profundo en este trabajo se debe a su capacidad para procesar una serie temporal caracterizada por una alta volatilidad y dependencias no lineales complejas. A diferencia de los métodos estadísticos tradicionales, estas arquitecturas logran integrar variables exógenas y capturar cambios estructurales en los datos de manera dinámica.
 
 
 	
@@ -103,7 +104,7 @@ Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presen
 
 \begin{itemize}
 
-	\item Impacto de eventos estocásticos: la presencia de líneas punteadas rojas en el gráfico indica el inicio de eventos clave como ofertas, días feriados o lanzamientos de productos. Existe una correlación visual directa entre estos hitos y el incremento súbito en la cantidad de órdenes por día.
+	\item Impacto de eventos estocásticos: la presencia de líneas punteadas rojas en el gráfico indica el inicio de eventos clave como: ofertas, días feriados o lanzamientos de productos. Existe una correlación visual directa entre estos hitos y el incremento súbito en la cantidad de órdenes por día.
 
 	\item Volatilidad y variabilidad: las órdenes muestran una oscilación constante y agresiva, lo que sugiere que factores externos y estacionalidades de corto plazo influyen fuertemente en el comportamiento diario.
 
@@ -111,7 +112,9 @@ Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presen
 \end{itemize}	
 
 
-Para profundiza en el análisis del comportamiento de las arquitecturas Temporal fusion transformer y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech. Se plantea examinar la distribución de los RMSE:\begin{figure}[htbp]
+Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech. Se plantea examinar la distribución de los RMSE:
+
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=1\textwidth]{rmse_neuralprophet.png}
     \caption{RMSE Neural prophet.}
@@ -126,7 +129,7 @@ Para profundiza en el análisis del comportamiento de las arquitecturas Temporal
     \label{fig:rmse_temporal_fusion_transformer}
 \end{figure}
 
-En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permite verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
+En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
 
 
 La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
@@ -192,7 +195,7 @@ Para entender los gráficos que se presentan a continuación se explica cada eje
 \begin{itemize}
 	\item Eje horizontal: si hay fechas válidas, representa días transcurridos desde la primera fecha del tramo de validación. Cada punto consecutivo es un día (u orden temporal) del subconjunto de validación. 
 
-	\item Eje vertical: magnitud del \textit{target} (\textit{values} en el gráfico), en la misma escala para ambas curvas: línea \textit{True} (\texttt{y\_true}) y línea Prediction (\texttt{y\_pred}).
+	\item Eje vertical: magnitud del \textit{target} (\textit{values} en el gráfico) que representa la cantidad de órdenes, en la misma escala para ambas curvas: línea \textit{True} (valor real) y línea \textit{Prediction} (la predicción del modelo).
 
 \end{itemize}
 
@@ -241,7 +244,7 @@ La función denominada \textit{Baseline} no constituye un modelo de inteligencia
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
-    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}
+    \caption{Predicciones vs. valores reales: \textit{Baseline}.}
     \label{fig:grafico_true_baseline}
 \end{figure}
 
@@ -288,12 +291,11 @@ A continuación se detalla la descripción técnica y alcance correspondientes a
 Para cumplir este requerimiento, se desarrolló un módulo de integración que:
 
 \begin{itemize}
-    \item Establece conexión con la API de Shopify mediante credenciales \textit{API Key} y \textit{Access Token}.
+    \item Establece conexión con la API de Shopify mediante credenciales \textit{API key} y \textit{Access token}.
     \item Obtiene y procesa los siguientes atributos mínimos: fecha de compra, identificador de producto, cantidad vendida, precio unitario y canal de venta.
     \item Permite especificar intervalos de fechas para la descarga de datos.
-    \item Almacena los datos importados en una base de datos PostgreSQL destinada a su posterior uso en el modelado.
+    \item Almacena los datos importados en una base de datos Postgres destinada a su posterior uso en el modelado.
     \item Implementa validaciones y manejo de errores en caso de fallos de autenticación, pérdida de conexión o respuestas vacías.
-    \item Registra la trazabilidad del proceso de importación mediante un archivo de log que incluye el volumen de datos procesados y errores detectados.
     \item Verifica duplicidades para evitar el doble procesamiento de registros previamente importados.
 \end{itemize}
 
@@ -302,10 +304,10 @@ Para cumplir este requerimiento, se desarrolló un módulo de integración que:
 Para satisfacer este requerimiento se desarrolló un módulo de integración que:
 
 \begin{itemize}
-    \item Establece conexión con la API de Triple Whale con una clave de acceso provista por la organización.
+    \item Establece conexión con la API de Triple whale con una clave de acceso provista por la organización.
     \item Recupera la información de inversión por fecha, campaña y plataforma publicitaria.
     \item Permite seleccionar y configurar el intervalo temporal de los datos a importar.
-    \item Almacena los datos obtenidos en una base de datos PostgreSQL y mantiene una estructura consistente con el modelo de análisis utilizado.
+    \item Almacena los datos obtenidos en una base de datos Postgres y mantiene una estructura consistente con el modelo de análisis utilizado.
     \item Implementa mecanismos de manejo de errores ante fallos de autenticación, interrupciones en la conexión o respuestas inválidas provenientes de la API.
     \item Registra el detalle del proceso mediante un archivo de log que incluya la cantidad de registros importados y los errores detectados durante la ejecución.
     \item Permite ejecutar el proceso de importación tanto de forma manual como programada mediante tareas periódicas.
@@ -316,15 +318,12 @@ Para satisfacer este requerimiento se desarrolló un módulo de integración que
 
 \subsubsection{Requerimiento funcional 3}
 
-Para satisfacer este requerimiento se desarrolló un proceso de consolidación que integra los datos provenientes de Shopify (ventas) y Triple Whale (inversión publicitaria), y garantiza la correcta correspondencia temporal entre ambas fuentes. En particular:
+Para satisfacer este requerimiento se desarrolló un proceso de consolidación que integra los datos provenientes de Shopify (ventas) y Triple whale (inversión publicitaria), y garantiza la correcta correspondencia temporal entre ambas fuentes. En particular:
 
 \begin{itemize}
     \item Se generó un único \textit{dataset} en el que las ventas diarias y la inversión total diaria se vinculan a través del campo de fecha.
     \item Se realizó el alineamiento temporal de las fechas, y se tuvo en cuenta posibles diferencias de zona horaria entre ambas plataformas.
-    \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente utilizando valores nulos para evitar la pérdida de información histórica.
-    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  
-
-    \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
+    \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente con valores nulos para evitar la pérdida de información histórica.
     \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
     \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
     \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.
@@ -341,13 +340,13 @@ Para cumplir con este requerimiento se implementó un proceso de modelado y entr
 \begin{itemize}
     \item Se empleó el \textit{dataset} consolidado, compuesto por variables de ventas y de inversión publicitaria, como fuente principal para el entrenamiento del modelo.
     \item El conjunto de datos fue dividido en subconjuntos de entrenamiento y validación con una proporción aproximada de 80\% para entrenamiento y 20\% para validación.
-    \item Se evaluaron distintos modelos de predicción utilizando métricas de error adecuadas para series temporales, tales como MAE, RMSE y MAPE, con el fin de comparar su desempeño.
+    \item Se evaluaron distintos modelos de predicción con métricas de error adecuadas para series temporales, tales como MAE, RMSE y MAPE, con el fin de comparar su desempeño.
     \item Se seleccionó como modelo final aquel que presentó el mejor desempeño sobre el conjunto de validación.
     \item El modelo entrenado quedó habilitado para generar predicciones futuras a partir de valores recientes de entrada.
     \item Se garantizó la reproducibilidad del proceso mediante la definición de un \textit{pipeline} de entrenamiento que permite repetir la ejecución bajo las mismas configuraciones.
     \item El modelo seleccionado y sus parámetros finales fueron almacenados para su posterior uso dentro del sistema Inventory Tracker.
     \item Se documentó el proceso de entrenamiento de manera detallada donde se incluye la selección de variables, las técnicas de preprocesamiento aplicadas y los métodos de evaluación utilizados.
-    \item Se realizó una validación visual comparando las predicciones generadas frente a los valores reales observados, mediante gráficos que permitieron analizar la coherencia del modelo respecto a la dinámica histórica de las ventas.
+    \item Se realizó una validación visual que compara las predicciones generadas frente a los valores reales observados, mediante gráficos que permitieron analizar la coherencia del modelo respecto a la dinámica histórica de las ventas.
 \end{itemize}
 
 
@@ -358,8 +357,7 @@ Para cumplir con este requerimiento se implementaron las siguientes funcionalida
 \begin{itemize}
     \item Las predicciones de ventas se muestran en la interfaz de Inventory Tracker junto a las fechas correspondientes.
     \item La visualización integra tanto las predicciones como los datos históricos de ventas para comparaciones temporales y análisis de tendencias.
-    \item La información se presenta de manera clara y entendible, utilizando gráficos de líneas y tablas según corresponda.
-    \item Los usuarios pueden seleccionar rangos de fechas específicos para observar predicciones detalladas de periodos concretos.
+    \item La información se presenta de manera clara y entendible, con gráficos de líneas y tablas según corresponda.
     \item Las predicciones se actualizan automáticamente al entrenarse un nuevo modelo o al actualizarse los datos de entrada y se garantiza que la información refleje siempre el estado más reciente.
     \item La interfaz muestra un indicador visual de la fecha y hora de generación de la última predicción.
     \item Se distingue claramente entre valores predichos y datos históricos que evitan confusiones en el análisis.
@@ -376,12 +374,10 @@ Para cumplir con este requerimiento se implementaron las siguientes funcionalida
 \begin{itemize}
     \item Se incorporó un botón o enlace claramente identificado que permite la descarga de las predicciones en formato CSV.
     \item El archivo CSV generado incluye las fechas y los valores de predicción correspondientes.
-    \item De manera opcional, el archivo puede incluir los datos históricos de ventas para permitir la comparación con las predicciones.
     \item El formato del CSV es compatible con herramientas comunes de análisis, con valores separados por comas y codificación UTF-8.
     \item El nombre del archivo contiene la fecha y hora de generación que lo identifica.
-    \item La descarga se realiza correctamente en navegadores modernos, incluyendo Chrome y Firefox.
+    \item La descarga se realiza correctamente en navegadores modernos como: Chrome y Firefox.
     \item El contenido del archivo refleja exactamente la información presentada en la interfaz del módulo de predicción.
-    \item Si aún no existen predicciones generadas, el botón de descarga se muestra deshabilitado.
 \end{itemize}
 
 \subsubsection{Requerimiento funcional 7}
@@ -393,9 +389,7 @@ Para cumplir con este requerimiento se implementaron las siguientes funcionalida
     \item Si se detectan datos faltantes críticos como fechas sin registros de ventas o de inversión publicitaria se genera una alerta.
     \item La alerta incluye información detallada sobre el tipo de dato faltante (ventas, inversión, o ambos), el rango de fechas afectado y el nivel de severidad del impacto estimado.
     \item La alerta se muestra de forma visible dentro del sistema para que los responsables puedan tomar conocimiento inmediato.
-    \item Se envía una notificación por correo electrónico al responsable del sistema, en caso de estar configurada esta opción.
     \item El sistema no bloquea el entrenamiento del modelo, pero advierte que la precisión de las predicciones puede verse afectada.
-    \item La alerta desaparece únicamente cuando los datos faltantes son completados o cuando se marca como revisada manualmente.
     \item Se registra un log de todas las alertas emitidas, accesible desde una sección de administración o monitoreo del sistema.
 \end{itemize}
 
