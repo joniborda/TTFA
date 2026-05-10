@@ -4,16 +4,16 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En esta sección se detallan los principales logros alcanzados durante el desarrollo del proyecto, el cual permitió transformar la gestión empírica de la demanda de Latech en un proceso orientado a datos. Los aportes y conclusiones más relevantes son los siguientes:
+En esta sección se detallan los principales logros alcanzados durante el desarrollo del proyecto que permitió transformar la gestión empírica de la demanda de Latech en un proceso orientado a datos. Los aportes y conclusiones más relevantes son los siguientes:
 
 
 
 \begin{itemize} 
 	\item Cumplimiento integral de los requerimientos: se implementaron con éxito los siete requerimientos funcionales definidos, que abarcan desde la ingesta automatizada de datos de Shopify y Triple whale hasta la exportación de reportes en csv y la generación de alertas de integridad.
-	\item Superación del modelo base: el sistema de inteligencia artificial logró reducir significativamente el error predictivo en comparación con la heurística original (\textit{baseline}). El modelo \textbf{Temporal Fusion Transformer (TFT)} demostró la mayor precisión, con un MAPE de solo el 12,8 \%, lo que valida el uso de mecanismos de atención para filtrar la inversión publicitaria.
+	\item Superación del modelo base: el sistema de inteligencia artificial logró reducir significativamente el error predictivo en comparación con la heurística original (\textit{baseline}). El modelo TFT demostró la mayor precisión, con un MAPE de solo el 12,8 \%, lo que valida el uso de mecanismos de atención para filtrar la inversión publicitaria.
 	\item Gestión efectiva de riesgos: se mitigó el riesgo de sobreajuste mediante el uso de algoritmos robustos y protocolos de validación cronológica. Asimismo, la finalización de la cursada académica permitió dedicar el esfuerzo necesario para cumplir con el cronograma y resolver la complejidad técnica sin retrasos.
-	\item Robustez y autonomía técnica: la implementación de una capa de persistencia en PostgreSQL garantizó la disponibilidad continua del sistema frente a posibles caídas de las APIs externas, lo que dotó a la empresa de una herramienta resiliente y de alto rendimiento.
-	\item Eficacia de las técnicas utilizadas: la orquestación mediante DAGs en Apache Airflow y la optimización por búsqueda en rejilla (\textit{grid search}) resultaron fundamentales para estandarizar el flujo de trabajo. En contraste, los modelos lineales simples demostraron ser insuficientes para capturar la volatilidad de la demanda provocada por campañas comerciales. 
+	\item Robustez y autonomía técnica: la implementación de una capa de persistencia en Postgresql garantizó la disponibilidad continua del sistema frente a posibles caídas de las APIs externas, lo que dotó a la empresa de una herramienta resiliente y de alto rendimiento.
+	\item Eficacia de las técnicas utilizadas: la orquestación mediante DAGs en Apache airflow y la optimización por búsqueda en rejilla (\textit{grid search}) resultaron fundamentales para estandarizar el flujo de trabajo. En contraste, los modelos lineales simples demostraron ser insuficientes para capturar la volatilidad de la demanda provocada por campañas comerciales. 
 	\item Integración operativa: se logró una articulación fluida con la plataforma Inventory Tracker, lo cual permite que los usuarios consulten pronósticos actualizados y visualicen la relación entre la inversión publicitaria y las ventas históricas de forma intuitiva.
 	
 \end{itemize}

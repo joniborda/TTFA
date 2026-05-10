@@ -90,7 +90,10 @@ El rendimiento superior de los modelos de aprendizaje profundo en este estudio s
 	
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{orders_with_events_3m.png}
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.05\textwidth]{orders_with_events_3m.png}
+    }
     \caption{Distribución de las ordenes.}
     \label{fig:orders_with_events_3m}
 \end{figure}
@@ -110,7 +113,7 @@ Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presen
 
 Para profundiza en el análisis del comportamiento de las arquitecturas Temporal fusion transformer y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech. Se plantea examinar la distribución de los RMSE:\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{rmse_neuralprophet.png}
+    \includegraphics[width=1\textwidth]{rmse_neuralprophet.png}
     \caption{RMSE Neural prophet.}
     \label{fig:rmse_neuralprophet}
 \end{figure}
@@ -118,7 +121,7 @@ Para profundiza en el análisis del comportamiento de las arquitecturas Temporal
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{rmse_temporal_fusion_transformer.png}
+    \includegraphics[width=1\textwidth]{rmse_temporal_fusion_transformer.png}
     \caption{RMSE TFT.}
     \label{fig:rmse_temporal_fusion_transformer}
 \end{figure}
@@ -195,31 +198,43 @@ Para entender los gráficos que se presentan a continuación se explica cada eje
 
 \subsection{Predicciones de Neural prophet}
 
+
+
 La Figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralProphet, cuya estructura permite modelar de forma precisa los ciclos de estacionalidad mensual y semanal característicos de la tienda. Estas comparativas visuales aseguran que el modelo seleccionado mantenga una estrecha correlación con la dinámica del negocio antes de su integración final en la plataforma Inventory Tracker.
+
 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{true_vs_pred_neuralprophet.png}
-    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a Baseline.}
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+        \includegraphics[width=0.95\textwidth]{true_vs_pred_neuralprophet.png}
+    }
+   \caption{Predicciones vs. valores reales: Neural prophet.}
     \label{fig:true_vs_pred_neuralprophet}
 \end{figure}
 
 
 \subsection{Predicciones de TFT}
 
+
+
 La Figura \ref{fig:grafico_true_tft} muestra el gráfico de realidad en compración con la predicción del modelo TFT. En esta representación se observa la capacidad de sus mecanismos de atención para capturar los picos de demanda asociados a los periodos de mayor inversión publicitaria. 
+
 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{true_vs_pred_temporal_fusion_transformer.png}
-    \caption{Comparativa de predicciones vs. valores reales: Mezcla lineal frente a TFT.}
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+    \includegraphics[width=0.95\textwidth]{true_vs_pred_temporal_fusion_transformer.png}
+    }
+    \caption{Predicciones vs. valores reales: TFT.}
     \label{fig:grafico_true_tft}
 \end{figure}
 
 
-\subsection{Predicciones de Baseline}
+\subsection{Predicciones del modelo baseline}
 
 La función denominada \textit{Baseline} no constituye un modelo de inteligencia artificial basado en aprendizaje automático, sino que se define como una fórmula polinómica de combinación lineal. 
 
@@ -307,7 +322,9 @@ Para satisfacer este requerimiento se desarrolló un proceso de consolidación q
     \item Se generó un único \textit{dataset} en el que las ventas diarias y la inversión total diaria se vinculan a través del campo de fecha.
     \item Se realizó el alineamiento temporal de las fechas, y se tuvo en cuenta posibles diferencias de zona horaria entre ambas plataformas.
     \item En los casos en que alguna de las fuentes no presentaba información para una fecha determinada, se mantuvo el registro correspondiente utilizando valores nulos para evitar la pérdida de información histórica.
-    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
+    \item El conjunto de datos final incluye las siguientes columnas: \texttt{fecha},  
+
+    \texttt{ventas\_diarias}, \texttt{inversion\_diaria} y \texttt{plataforma}.
     \item Se aplicaron validaciones para detectar y corregir duplicados, inconsistencias o formatos inválidos en los registros procesados.
     \item El proceso de consolidación se diseñó de manera automatizada y reproducible para su ejecución periódica sin intervención manual.
     \item El \textit{dataset} resultante se almacenó en un formato estructurado apto para ser consumido directamente en las etapas de modelado y entrenamiento.

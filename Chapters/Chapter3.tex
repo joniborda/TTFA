@@ -42,7 +42,7 @@ En este capítulo se describen los criterios utilizados para la construcción de
 
 \section{Arquitectura del sistema}
 
-La arquitectura diseñada para el sistema de predicción de ventas se basa en un flujo de procesamiento secuencial y automatizado que conecta las fuentes de datos externas con el entorno interno del cliente. El diseño se orientó por tres criterios principales:
+La arquitectura diseñada para el sistema de predicción de ventas se basa en un flujo de procesamiento secuencial y automatizado que conecta las fuentes de datos externas con el entorno interno del cliente (Figura \ref{fig:mermaid-arq}). El diseño se orientó por tres criterios principales:
 
 \begin{itemize}
 
@@ -75,6 +75,14 @@ El sistema se organiza en una arquitectura por capas que separa claramente las r
 
 Cada una de estas capas se comunica de manera acotada mediante APIs internas o a través de la base de datos para garantizar un bajo acoplamiento.
 
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1\textwidth]{./Figures/mermaid-arq.png}
+	\caption{Diagrama de arquitectura del sistema.}
+
+	\label{fig:mermaid-arq}
+\end{figure}
 
 \subsection{Capa de recolección de datos}
 
@@ -149,24 +157,24 @@ Este módulo permite encapsular toda la lógica de preparación del \textit{data
 
 Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQL diseñada específicamente para consultas analíticas y para servir como fuente unificada de información durante el entrenamiento y evaluación de los modelos. Dentro de esta capa se construye la tabla principal denominada \textit{orders}, en la que se almacena la información proveniente de Shopify ya depurada y enriquecida. Esta tabla contiene las columnas fundamentales para caracterizar el comportamiento de compra de los usuarios:
 \begin{itemize}
-	\item \textit{created}: registra la fecha de creación de cada orden.
-	\item \textit{totalPrice}: correspondiente al monto total pagado.
-	\item \textit{customerId}: identifica al cliente.
-	\item \textit{lineItems}: donde se detalla cada producto incluido en la compra junto con sus cantidades.
-	\item \textit{channel}: indica el canal por el cual ingresó la orden.
-	\item \textit{tags}: permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
-	\item \textit{orderNumberForCustomer}: señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
-	\item \textit{diffWeeksFromFirstPurchase}: expresa la cantidad de semanas transcurridas desde la primera compra del usuario, lo que permite analizar patrones de frecuencia y retención.
+	\item \texttt{created}: registra la fecha de creación de cada orden.
+	\item \texttt{total\_price}: correspondiente al monto total pagado.
+	\item \texttt{customer\_id}: identifica al cliente.
+	\item \texttt{lineItems}: donde se detalla cada producto incluido en la compra junto con sus cantidades.
+	\item \texttt{channel}: indica el canal por el que ingresó la orden.
+	\item \texttt{tags}: permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
+	\item \texttt{order\_number\_for\_customer}: señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
+	\item \texttt{diff\_weeks\_from\_first\_purchase}: expresa la cantidad de semanas transcurridas desde la primera compra del usuario, lo que permite analizar patrones de frecuencia y retención.
 	
 \end{itemize}
 
 A partir de esta tabla estructurada, se generan columnas derivadas mediante procesos de enriquecimiento en Python, con el objetivo de facilitar el análisis y preparar los datos para su uso en modelos predictivos. Entre estas variables se incluyen:
 \begin{itemize}
-	\item \textit{created\_weekday}: identifica el día de la semana de cada orden.
-	\item \textit{created\_month}: permite estudiar estacionalidades mensuales. 
-	\item \textit{unique\_customers}: calcula la cantidad de clientes distintos por día.
-	\item \textit{new\_customers}: contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha.
-	\item \textit{returning\_customers}: contabiliza cuántos usuarios realizaron más de una compra. 
+	\item \texttt{created\_weekday}: identifica el día de la semana de cada orden.
+	\item \texttt{created\_month}: permite estudiar estacionalidades mensuales. 
+	\item \texttt{unique\_customers}: calcula la cantidad de clientes distintos por día.
+	\item \texttt{new\_customers}: contabiliza cuántos usuarios realizaron su primera compra dentro de cada fecha.
+	\item \texttt{returning\_customers}: contabiliza cuántos usuarios realizaron más de una compra. 
 \end{itemize}
 
 Estas nuevas columnas permiten construir vistas agregadas y analizar la evolución del comportamiento de los clientes en el tiempo.
@@ -177,8 +185,8 @@ Este diseño facilita tanto el acceso para entrenamiento de modelos como la cons
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{./Figures/der.png}
-    \caption{Diagrama Entidad-Relación. Muestra las dos tablas principales.}
+    \includegraphics[width=0.7\textwidth]{./Figures/der.png}
+    \caption{Diagrama entidad-relación. Muestra las dos tablas principales.}
     \label{fig:der}
 \end{figure}
 
@@ -265,7 +273,7 @@ La arquitectura fue diseñada bajo los siguientes principios:
 
 \section{Automatización mediante tareas programadas}
 
-Para garantizar la operatividad continua y la vigencia de los pronósticos de ventas, se implementó un esquema de automatización integral que elimina la necesidad de intervención manual en los procesos recurrentes. La orquestación de este flujo se fundamenta en el uso de Apache Airflow mediante la definición de grafos acíclicos dirigidos (sus siglas en inglés DAGs), los cuales coordinan la ejecución secuencial y lógica de cada etapa del \textit{pipeline} de datos
+Para garantizar la operatividad continua y la vigencia de los pronósticos de ventas, se implementó un esquema de automatización integral que elimina la necesidad de intervención manual en los procesos recurrentes. La orquestación de este flujo se fundamenta en el uso de Apache Airflow mediante la definición de grafos acíclicos dirigidos (DAGs), que coordinan la ejecución secuencial y lógica de cada etapa del \textit{pipeline} de datos
 
 Este flujo automatizado permite mantener la información del sistema actualizada de forma oportuna y confiable. Se divide en las siguientes fases operativas:
 
@@ -278,7 +286,7 @@ Este flujo automatizado permite mantener la información del sistema actualizada
 
 	\item Selección del modelo óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen: \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
 	
-	\item Persistencia y actualización de predicciones: el modelo ganador se serializa y se almacena en el registro de modelos para su posterior consumo por la API de FastAPI. Posteriormente, se generan los nuevos pronósticos para los horizontes temporales definidos, los cuales actualizan los módulos de visualización en el sistema Inventory Tracker.   
+	\item Persistencia y actualización de predicciones: el modelo ganador se serializa y se almacena en el registro de modelos para su posterior consumo por la API de FastAPI. Posteriormente, se generan los nuevos pronósticos para los horizontes temporales definidos que actualizan los módulos de visualización en el sistema Inventory Tracker.   
 \end{itemize}
 
 
@@ -291,22 +299,22 @@ La implementación de este ciclo mediante DAGs y herramientas de registro de mod
 
 Una vez consolidada la información en la base de datos local, se procedió a realizar un análisis exploratorio de datos con el objetivo de identificar patrones, tendencias y estacionalidades críticas para el modelado predictivo. Este proceso permitió transformar los datos crudos en un \textit{dataset} refinado y apto para el entrenamiento de algoritmos de aprendizaje automático.
 
-\subsection{Limpieza y Normalización de la Información}
+\subsection{Limpieza y normalización de la información}
 
-Se realizó una fase inicial de saneamiento técnico donde se transformaron los campos de fecha al formato \textit{datetime} y se estandarizaron las magnitudes numéricas para asegurar la coherencia entre las fuentes de Shopify y Triple Whale. Se aplicó un alineamiento temporal exhaustivo para corregir discrepancias de zona horaria entre ambas plataformas y garantizar que la inversión publicitaria diaria correspondiera exactamente al volumen de ventas registrado en el mismo periodo.
+Se realizó una fase inicial de saneamiento técnico donde se transformaron los campos de fecha al formato \texttt{date} y se estandarizaron las magnitudes numéricas para asegurar la coherencia entre las fuentes de Shopify y Triple Whale. Se aplicó un alineamiento temporal exhaustivo para corregir discrepancias de zona horaria entre ambas plataformas y garantizar que la inversión publicitaria diaria correspondiera exactamente al volumen de ventas registrado en el mismo periodo.
 
-\subsection{Estrategias de Imputación y Gestión de Inconsistencias}
+\subsection{Estrategias de imputación y gestión de inconsistencias}
 
 La gestión de valores faltantes se abordó mediante criterios diferenciados según la naturaleza de la variable:
 \begin{itemize}
 
-    \item Imputación de valores nulos: en métricas de inversión publicitaria (llamada \texttt{ad\_spend}), ingresos (\texttt{total\_revenue}) y volumen de productos vendidos, se aplicó la técnica de imputación por cero (\texttt{fillna(0)}). Se determinó que la ausencia de registros en fechas específicas respondía a la inexistencia de actividad comercial o publicitaria, por lo cual el valor cero representó fielmente la realidad del negocio.
+    \item Imputación de valores nulos: en métricas de inversión publicitaria (llamada \texttt{ad\_spend}), ingresos (\texttt{total\_revenue}) y volumen de productos vendidos, se aplicó la técnica de imputación por cero (\texttt{fillna(0)}). Se determinó que la ausencia de registros en fechas específicas respondía a la inexistencia de actividad comercial o publicitaria y por este motivo el valor cero representó fielmente la realidad del negocio.
 	\item Preservación de registros históricos: en los casos donde una de las fuentes carecía de información, se optó por mantener el registro con valores nulos en lugar de descartarlo, con el fin de evitar la pérdida de información histórica relevante de las demás variables.
 	\item Control de integridad: se implementaron validaciones automáticas para detectar duplicados y campos inconsistentes para asegurar que cada jornada contara con una única entrada consolidada de alta calidad.
 \end{itemize}
 
 
-\subsection{Ingeniería de Características ( \textit{Feature engineering} )}
+\subsection{Ingeniería de características ( \textit{Feature engineering} )}
 
 Para capturar la dinámica compleja de Latech, se generaron nuevas variables que enriquecieron la capacidad predictiva del sistema:
 
@@ -329,7 +337,7 @@ Estas variables permiten analizar la distribución de la demanda en ciclos seman
 
 
 
-\item Transformación de ventanas deslizantes (en inglés \textit{sliding window}): se aplicó la función \texttt{shift()} para la generación de variables de retraso (conocidas en inglés como \textit{lags}) en el conjunto de datos. A través de este método, el sistema crea pares de características históricas ($x$) y valores objetivo ($y$) como:
+\item Transformación de ventanas deslizantes (\textit{sliding window}): se aplicó la función \texttt{shift()} para la generación de variables de retraso (conocidas en inglés como \textit{lags}) en el conjunto de datos. A través de este método, el sistema crea pares de características históricas ($x$) y valores objetivo ($y$) como:
  
 	\begin{itemize}
 	    \item \texttt{ad\_spend \_lag\_7}: contiene el gasto en publicidad desplazado 7 días hacia atrás.
@@ -374,7 +382,7 @@ La predicción final se obtiene mediante un método de mezcla, que aplica una co
     \text{Predicción} = (0{,}45 \times \text{TM}_7) + (0{,}55 \times \text{SW}_8)
 \end{equation}
 
-Donde TM es el promedio móvil y SW es la mediana por día de la semana.
+donde TM es el promedio móvil y SW es la mediana por día de la semana.
 Este equilibrio permite captar tanto la inercia de la demanda reciente como los patrones de estacionalidad semanal recurrentes.
 
 Este modelo original se utilizó como referencia crítica para validar el valor agregado de la inteligencia artificial. Se determinó que cualquier modelo de \textit{machine learning} propuesto debe superar la precisión de este enfoque heurístico para justificar su puesta en producción.
@@ -382,7 +390,7 @@ Este modelo original se utilizó como referencia crítica para validar el valor 
 
 
 
-\subsection{Implementación del Framework de Modelado}
+\subsection{Implementación del framework de modelado}
 
 El desarrollo de los modelos avanzados se centralizó en un registro de modelos (\textit{Model registry}) que permitió la orquestación de múltiples algoritmos con hiperparámetros específicos. Para asegurar la robustez de las predicciones, se implementaron las siguientes configuraciones técnicas:
 
@@ -392,30 +400,28 @@ El desarrollo de los modelos avanzados se centralizó en un registro de modelos 
 	\item Modelos lineales y de regularización: se desarrolló un modelo de regresión Ridge con un parámetro de regularización ($\alpha$=1,0) para controlar el posible sobreajuste derivado de la alta dimensionalidad de los datos.
 	\item Ensambles de árboles: el modelo de Random Forest se configuró con 300 estimadores, mientras que para XGBoost y Catboost se establecieron 500 iteraciones con una tasa de aprendizaje de 0,05. Estos algoritmos se orientaron a capturar las relaciones no lineales entre la inversión publicitaria y el volumen de pedidos.
 	
-	\item Arquitecturas de \textit{Deep Learning}: se desarrollaron redes LSTM para el manejo de dependencias temporales a largo plazo y el modelo \textit{Temporal Fusion Transformer} (TFT), el cual utiliza mecanismos de atención para filtrar variables exógenas que no aportan valor predictivo real.
+	\item Arquitecturas de \textit{Deep Learning}: se desarrollaron redes LSTM para el manejo de dependencias temporales a largo plazo y el modelo \textit{Temporal Fusion Transformer} (TFT), que utiliza mecanismos de atención para filtrar variables exógenas que no aportan valor predictivo real.
 	
 
 \end{itemize}
 
 
-\subsection{Estrategia de entrenamiento y mitigación de sobre-ajuste}
+\subsection{Estrategia de entrenamiento y mitigación de sobreajuste}
 
 Para fortalecer la estrategia de entrenamiento y mitigación de sobre-ajuste, se incorporaron técnicas específicas que aseguran la robustez del sistema y su capacidad para operar con datos no vistos. A continuación, se detallan las acciones técnicas implementadas:
 
 
 \begin{itemize}
 
-	\item Enfoque de ventana deslizante (en inglés \textit{Sliding Window}): para transformar la serie temporal en un problema de aprendizaje supervisado, se implementó una lógica de ventanas deslizantes. Este método genera pares de características históricas (x) y valores objetivo (y), lo cual permite que modelos como LSTM y TFT capturen las dependencias temporales y secuencias de eventos previos al día de la predicción.
-
-	\item División cronológica y preservación del orden temporal: a diferencia de otros problemas de \textit{machine learning} donde se aplica un re-ordenamiento aleatorio (en inglés \textit{shuffling}), en este proyecto se evitó esta práctica para mantener la integridad de la secuencia histórica. Dado que el comportamiento de las ventas en Latech presenta dependencias temporales y estacionalidades, preservar el orden de los registros permite que los modelos capturen correctamente la auto-correlación de la serie.
+	\item División cronológica y preservación del orden temporal: a diferencia de otros problemas de \textit{machine learning} donde se aplica un reordenamiento aleatorio (en inglés \textit{shuffling}), en este proyecto se evitó esta práctica para mantener la integridad de la secuencia histórica. Dado que el comportamiento de las ventas en Latech presenta dependencias temporales y estacionalidades, preservar el orden de los registros permite que los modelos capturen correctamente la auto-correlación de la serie.
 
 
-	\item Simulación de escenario productivo: el conjunto de datos se fragmentó mediante un punto de corte (en el código definido como \texttt{split\_idx}), que asigna el primer 80\% de los datos al entrenamiento y el 20\% restante a la validación. Al evaluar el rendimiento exclusivamente sobre el segmento de datos más reciente, se garantiza que el modelo sea puesto a prueba frente a un "futuro" que no conoció durante su entrenamiento, lo que permite medir su verdadera capacidad de generalización en un entorno real.
+	\item Simulación de escenario productivo: el conjunto de datos se fragmentó mediante un punto de corte (en el código definido como \texttt{split\_idx}), que asigna el primer 80\% de los datos al entrenamiento y el 20\% restante a la validación. Al evaluar el rendimiento exclusivamente sobre el segmento de datos más reciente, se garantiza que el modelo sea puesto a prueba con datos futuros no conocidos durante su entrenamiento, lo que permite medir su verdadera capacidad de generalización en un entorno real.
 	
-	\item Mitigación estricta de la fuga de datos (en inglés \textit{data leakage}): esta estrategia asegura que ninguna información proveniente del conjunto de validación influya en el proceso de aprendizaje. Para reforzar este aislamiento, los parámetros de estandarización técnica (media y desviación estándar) se calcularon únicamente sobre el conjunto de entrenamiento y se aplicaron sobre el conjunto de validación, para evitar así que estadísticas globales del futuro se filtraran en los pesos del modelo.
+	\item Mitigación estricta de la fuga de datos (\textit{data leakage}): esta estrategia asegura que ninguna información proveniente del conjunto de validación influya en el proceso de aprendizaje. Para reforzar este aislamiento, los parámetros de estandarización técnica (media y desviación estándar) se calcularon únicamente sobre el conjunto de entrenamiento y se aplicaron sobre el conjunto de validación, para evitar así que estadísticas globales del futuro se filtraran en los pesos del modelo.
 	
 	
-	\item Regularización y robustez algorítmica: se seleccionaron arquitecturas con mecanismos internos para combatir el ruido de los datos de Latech. Por ejemplo, se utilizó Random Forest, el cual es intrínsecamente robusto frente a valores atípicos y al sobre-ajuste gracias a su esquema de promediado de múltiples árboles de decisión.
+	\item Regularización y robustez algorítmica: se seleccionaron arquitecturas con mecanismos internos para combatir el ruido de los datos de Latech. Por ejemplo, se utilizó Random Forest que es intrínsecamente robusto frente a valores atípicos y al sobreajuste gracias a su esquema de promediado de múltiples árboles de decisión.
 	
 	\item Evaluación basada en RMSE: se priorizó la métrica RMSE (raíz del error cuadrático medio) en el conjunto de validación para penalizar con mayor rigor los errores de gran magnitud. Esta métrica sirvió como filtro final para asegurar que el modelo ganador no solo tenga un error bajo en promedio, sino que sea confiable en escenarios de alta volatilidad de demanda.
 
@@ -432,7 +438,7 @@ El diseño del sistema se orientó hacia la creación de una estructura de softw
 
 Para garantizar un bajo acoplamiento entre los componentes, se implementaron interfaces estandarizadas que unificaron el comportamiento de todos los modelos integrados. Este enfoque permitió que algoritmos de bibliotecas heterogéneas, tales como: Scikit-learn, XGBoost, Catboost o PyTorch; fueran tratados como objetos intercambiables dentro del flujo de trabajo. El \textit{framework} se organizó en módulos especializados de Python que encapsularon la lógica de entrenamiento, lo cual simplificó la gestión de dependencias y mejoró la legibilidad del código.
 
-La ejecución de estos módulos se coordinó a través de grafos acíclicos dirigidos (DAGs) en Apache Airflow, los cuales orquestaron de manera programada y reproducible cada etapa del \textit{pipeline}, desde la transformación de datos hasta el entrenamiento de modelos. Esta estructura modular facilitó que la lógica de orquestación invocara múltiples arquitecturas de forma paralela, para asegurar que cada tarea se pueda monitorizar y re-ejecutarse ante posibles incidencias técnicas sin afectar el resto del sistema.
+La ejecución de estos módulos se coordinó a través de DAGs en Apache Airflow que orquestaron de manera programada y reproducible cada etapa del \textit{pipeline}, desde la transformación de datos hasta el entrenamiento de modelos. Esta estructura modular facilitó que la lógica de orquestación invocara múltiples arquitecturas de forma paralela, para asegurar que cada tarea se pueda monitorizar y re-ejecutarse ante posibles incidencias técnicas sin afectar el resto del sistema.
 
 \subsection{Lógica de competencia y selección automática del modelo}
 
@@ -443,7 +449,7 @@ En la figura \ref{fig:flujo-dag} se puede ver este enfoque competitivo, donde el
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=1\textwidth]{./Figures/flujo-dag.png}
+	\includegraphics[width=.8\textwidth]{./Figures/flujo-dag.png}
 	\caption{Flujo lógico de orquestación de DAGs.}
 
 	\label{fig:flujo-dag}
@@ -459,13 +465,6 @@ En la figura \ref{fig:flujo-dag} se puede ver este enfoque competitivo, donde el
 La fase final de la implementación consistió en la orquestación y el despliegue de los módulos desarrollados bajo un esquema de microservicios. Este diseño garantizó que cada componente crítico operara de forma independiente, lo cual facilitó el mantenimiento, el aislamiento de fallos y la escalabilidad selectiva del sistema.
 La interacción entre estos módulos y el flujo de información desde las fuentes externas hasta la visualización final se detalla en la figura \ref{fig:mermaid-arq}.
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1\textwidth]{./Figures/mermaid-arq.png}
-	\caption{Diagrama de arquitectura del sistema.}
-
-	\label{fig:mermaid-arq}
-\end{figure}
 
 \subsection{ Estrategia de contenerización y orquestación}
 
@@ -488,7 +487,7 @@ La comunicación entre estos componentes se realizó mediante endpoints REST int
 \subsection{ Integración con la capa de persistencia y servicios externos}
 
 La base de datos PostgreSQL funcionó como el núcleo de almacenamiento estructurado para los datos consolidados. Esta integración permitió que el sistema mantuviera su autonomía ante interrupciones en las APIs externas y optimizó la velocidad de consulta durante el entrenamiento de los modelos. Los microservicios interactuaron con las tablas \texttt{orders} y \texttt{forecast} de manera acotada, lo cual protegió la integridad del esquema de datos diseñado.
-Para la entrega de pronósticos, se utilizó el framework FastAPI, el cual destacó por su arquitectura asíncrona de alto rendimiento y su capacidad de validación automática de datos mediante Pydantic. Este servicio proporcionó la documentación técnica necesaria para que el sistema Inventory Tracker consultara las estimaciones de ventas en tiempo real, de modo que se integraron las proyecciones con los datos operativos del cliente.
+Para la entrega de pronósticos, se utilizó el framework FastAPI que destacó por su arquitectura asíncrona de alto rendimiento y su capacidad de validación automática de datos mediante Pydantic. Este servicio proporcionó la documentación técnica necesaria para que el sistema Inventory Tracker consultara las estimaciones de ventas en tiempo real, de modo que se integraron las proyecciones con los datos operativos del cliente.
 
 A continuación, se detallan los aspectos clave de esta integración:
 

@@ -18,48 +18,48 @@
 \contentsline {subsection}{\numberline {2.3.6}Orquestación y pipelines}{10}{subsection.2.3.6}%
 \contentsline {chapter}{\numberline {3}Diseño e implementación}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Arquitectura del sistema}{13}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Capa de recolección de datos}{14}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Capa de procesamiento y transformación}{15}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Capa de almacenamiento estructurado}{16}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Capa de modelado predictivo}{17}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}Capa de integración operativa con microservicios}{18}{subsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.1.6}Capa de visualización y consumo dentro de Inventory Tracker}{18}{subsection.3.1.6}%
-\contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{19}{subsection.3.1.7}%
-\contentsline {section}{\numberline {3.2}Automatización mediante tareas programadas}{19}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Análisis de datos}{20}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Limpieza y Normalización de la Información}{20}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Estrategias de Imputación y Gestión de Inconsistencias}{20}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Ingeniería de Características ( \textit {Feature engineering} )}{21}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{22}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Modelo base (\textit {baseline}): lógica de heurística original}{22}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Implementación del Framework de Modelado}{23}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Estrategia de entrenamiento y mitigación de sobre-ajuste}{23}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5}Desarrollo de un \textit {framework} modular}{24}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Estandarización de interfaces y orquestación mediante DAGs}{24}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Lógica de competencia y selección automática del modelo}{24}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{25}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{27}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{27}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{27}{subsection.3.6.3}%
-\contentsline {chapter}{\numberline {4}Ensayos y resultados}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Ensayos de modelos}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Desempeño de los modelos}{30}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{31}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Precisión general y sesgo}{32}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Análisis de \textit {outliers}}{33}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Estabilidad y Confiabilidad}{33}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{34}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Predicciones de Neural prophet}{34}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Predicciones de TFT}{35}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Predicciones de Baseline}{35}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{37}{section.4.5}%
-\contentsline {subsubsection}{Requerimiento funcional 1}{37}{section*.17}%
-\contentsline {subsubsection}{Requerimiento funcional 2}{37}{section*.18}%
-\contentsline {subsubsection}{Requerimiento funcional 3}{38}{section*.19}%
-\contentsline {subsubsection}{Requerimiento funcional 4}{38}{section*.20}%
-\contentsline {subsubsection}{Requerimiento funcional 5}{39}{section*.21}%
-\contentsline {subsubsection}{Requerimiento funcional 6}{39}{section*.22}%
-\contentsline {subsubsection}{Requerimiento funcional 7}{40}{section*.23}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{41}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Trabajo futuro}{41}{section.5.1}%
-\contentsline {chapter}{Bibliografía}{43}{appendix*.25}%
+\contentsline {subsection}{\numberline {3.1.1}Capa de recolección de datos}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Capa de procesamiento y transformación}{16}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Capa de almacenamiento estructurado}{17}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Capa de modelado predictivo}{18}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Capa de integración operativa con microservicios}{19}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Capa de visualización y consumo dentro de Inventory Tracker}{20}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Justificación global de la arquitectura}{20}{subsection.3.1.7}%
+\contentsline {section}{\numberline {3.2}Automatización mediante tareas programadas}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Análisis de datos}{21}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Limpieza y normalización de la información}{21}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Estrategias de imputación y gestión de inconsistencias}{22}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Ingeniería de características ( \textit {Feature engineering} )}{22}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Desarrollo de modelos}{23}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Modelo base (\textit {baseline}): lógica de heurística original}{23}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Implementación del framework de modelado}{24}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Estrategia de entrenamiento y mitigación de sobreajuste}{24}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}Desarrollo de un \textit {framework} modular}{25}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Estandarización de interfaces y orquestación mediante DAGs}{25}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Lógica de competencia y selección automática del modelo}{26}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Despliegue con microservicios e integración con bases de datos}{26}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1} Estrategia de contenerización y orquestación}{26}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Arquitectura de microservicios e integración operativa}{26}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3} Integración con la capa de persistencia y servicios externos}{28}{subsection.3.6.3}%
+\contentsline {chapter}{\numberline {4}Ensayos y resultados}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Ensayos de modelos}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Desempeño de los modelos}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Desempeño de la predicción}{33}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Precisión general y sesgo}{35}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Análisis de \textit {outliers}}{35}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Estabilidad y Confiabilidad}{36}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Comparación de algoritmos}{36}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Predicciones de Neural prophet}{37}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Predicciones de TFT}{37}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Predicciones del modelo baseline}{38}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Validación de cumplimiento de requerimientos}{39}{section.4.5}%
+\contentsline {subsubsection}{Requerimiento funcional 1}{39}{section*.17}%
+\contentsline {subsubsection}{Requerimiento funcional 2}{39}{section*.18}%
+\contentsline {subsubsection}{Requerimiento funcional 3}{40}{section*.19}%
+\contentsline {subsubsection}{Requerimiento funcional 4}{40}{section*.20}%
+\contentsline {subsubsection}{Requerimiento funcional 5}{41}{section*.21}%
+\contentsline {subsubsection}{Requerimiento funcional 6}{41}{section*.22}%
+\contentsline {subsubsection}{Requerimiento funcional 7}{42}{section*.23}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Trabajo futuro}{43}{section.5.1}%
+\contentsline {chapter}{Bibliografía}{45}{appendix*.25}%

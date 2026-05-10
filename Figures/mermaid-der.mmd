@@ -1,0 +1,18 @@
+erDiagram
+    Orders ||--|| Forecast : "Vinculación por fecha diaria"
+    
+    Orders {
+        datetime Created PK
+        float Total_price
+        integer Customer_id
+        json Line_items
+        string Channel
+        string Tags
+        int Order_number_for_customer
+        int Diff_weeks_for_first_purchase
+    }
+
+    Forecast {
+        date Created PK
+        float Ad_spend
+    }
