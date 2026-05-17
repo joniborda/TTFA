@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  10 MAY 2026 19:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  17 MAY 2026 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -808,8 +808,8 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@cols=\count470
 \TX@ftn=\toks27
 )
-Package hyperref Info: Option `unicode' set `true' on input line 45.
-Package hyperref Info: Option `colorlinks' set `true' on input line 45.
+Package hyperref Info: Option `unicode' set `true' on input line 46.
+Package hyperref Info: Option `colorlinks' set `true' on input line 46.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 
@@ -822,26 +822,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 ers/Chapter4.aux) (Chapters/Chapter5.aux))
 \openout1 = `memorianueva.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
 
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\tran
 slations-basic-dictionary-spanish.trsl
@@ -849,7 +849,7 @@ File: translations-basic-dictionary-spanish.trsl (spanish translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `spanish'. on input line 67.
+or `spanish'. on input line 68.
 
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -899,44 +899,44 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'memorianueva.bbl' found.
  (memorianueva.bbl)
-Package biblatex Info: Reference section=0 on input line 67.
-Package biblatex Info: Reference segment=0 on input line 67.
-Package hyperref Info: Link coloring ON on input line 67.
+Package biblatex Info: Reference section=0 on input line 68.
+Package biblatex Info: Reference segment=0 on input line 68.
+Package hyperref Info: Link coloring ON on input line 68.
  (memorianueva.out) (memorianueva.out)
 \@outlinefile=\write4
 \openout4 = `memorianueva.out'.
 
-LaTeX Info: Redefining \sptext on input line 67.
-LaTeX Info: Redefining \lsc on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
-LaTeX Info: Redefining \dotlessi on input line 67.
-Package scrbase Info: activating spanish \lstlistingname on input line 67.
-LaTeX Info: Redefining \sptext on input line 67.
-LaTeX Info: Redefining \lsc on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
-LaTeX Info: Redefining \dotlessi on input line 67.
-Package scrbase Info: activating spanish \acknowledgementname on input line 67.
+LaTeX Info: Redefining \sptext on input line 68.
+LaTeX Info: Redefining \lsc on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \dotlessi on input line 68.
+Package scrbase Info: activating spanish \lstlistingname on input line 68.
+LaTeX Info: Redefining \sptext on input line 68.
+LaTeX Info: Redefining \lsc on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \dotlessi on input line 68.
+Package scrbase Info: activating spanish \acknowledgementname on input line 68.
 
-LaTeX Info: Redefining \sptext on input line 67.
-LaTeX Info: Redefining \lsc on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
-LaTeX Info: Redefining \dotlessi on input line 67.
-Package scrbase Info: activating spanish \authorshipname on input line 67.
-LaTeX Info: Redefining \sptext on input line 67.
-LaTeX Info: Redefining \lsc on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
-LaTeX Info: Redefining \dotlessi on input line 67.
-Package scrbase Info: activating spanish \abbrevname on input line 67.
-LaTeX Info: Redefining \sptext on input line 67.
-LaTeX Info: Redefining \lsc on input line 67.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
-LaTeX Info: Redefining \dotlessi on input line 67.
-Package scrbase Info: activating spanish \byname on input line 67.
+LaTeX Info: Redefining \sptext on input line 68.
+LaTeX Info: Redefining \lsc on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \dotlessi on input line 68.
+Package scrbase Info: activating spanish \authorshipname on input line 68.
+LaTeX Info: Redefining \sptext on input line 68.
+LaTeX Info: Redefining \lsc on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \dotlessi on input line 68.
+Package scrbase Info: activating spanish \abbrevname on input line 68.
+LaTeX Info: Redefining \sptext on input line 68.
+LaTeX Info: Redefining \lsc on input line 68.
+LaTeX Info: Redefining \. on input line 68.
+LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \dotlessi on input line 68.
+Package scrbase Info: activating spanish \byname on input line 68.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1016,11 +1016,11 @@ df>])
 
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 106.
+(Font)              <10.95> on input line 107.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 106.
+(Font)              <8> on input line 107.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 106.
+(Font)              <6> on input line 107.
 [1
 
 ]
@@ -1081,23 +1081,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 
+l.28 
       [1
 
 
 ]
 
-LaTeX Info: Redefining \. on input line 73.
-LaTeX Info: Redefining \% on input line 73.
+LaTeX Info: Redefining \. on input line 66.
+LaTeX Info: Redefining \% on input line 66.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported  on input line 73.
+(babel)             Reported  on input line 66.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.73 
-      [2]
+l.66 D
+      e forma mÃ¡s reciente, la literatura destaca los modelos basados en
+[2]
 
 LaTeX Info: Redefining \. on input line 123.
 LaTeX Info: Redefining \% on input line 123.
@@ -1107,8 +1108,8 @@ LaTeX Info: Redefining \. on input line 172.
 LaTeX Info: Redefining \% on input line 172.
 [4])
 
-LaTeX Info: Redefining \. on input line 118.
-LaTeX Info: Redefining \% on input line 118.
+LaTeX Info: Redefining \. on input line 119.
+LaTeX Info: Redefining \% on input line 119.
 [5]
 \openout2 = `Chapters/Chapter2.aux'.
 
@@ -1137,8 +1138,8 @@ LaTeX Info: Redefining \. on input line 124.
 LaTeX Info: Redefining \% on input line 124.
 [10])
 
-LaTeX Info: Redefining \. on input line 119.
-LaTeX Info: Redefining \% on input line 119.
+LaTeX Info: Redefining \. on input line 120.
+LaTeX Info: Redefining \% on input line 120.
 [11]
 \openout2 = `Chapters/Chapter3.aux'.
 
@@ -1157,7 +1158,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-<./Figures/mermaid-arq.png, id=549, 3045.3775pt x 3934.7pt>
+<./Figures/mermaid-arq.png, id=556, 3045.3775pt x 3934.7pt>
 File: ./Figures/mermaid-arq.png Graphic file (type png)
 <use ./Figures/mermaid-arq.png>
 Package pdftex.def Info: ./Figures/mermaid-arq.png  used on input line 81.
@@ -1174,50 +1175,50 @@ LaTeX Info: Redefining \. on input line 106.
 LaTeX Info: Redefining \% on input line 106.
 [15]
 
-LaTeX Info: Redefining \. on input line 151.
-LaTeX Info: Redefining \% on input line 151.
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
 [16]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 16
-0.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 15
+8.
  (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
-LaTeX Info: Redefining \. on input line 183.
-LaTeX Info: Redefining \% on input line 183.
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
 [17]
-<./Figures/der.png, id=588, 1908.12875pt x 2981.1375pt>
+<./Figures/der.png, id=595, 1908.12875pt x 2981.1375pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
-Package pdftex.def Info: ./Figures/der.png  used on input line 188.
+Package pdftex.def Info: ./Figures/der.png  used on input line 186.
 (pdftex.def)             Requested size: 272.86069pt x 426.27214pt.
 
 
-LaTeX Info: Redefining \. on input line 197.
-LaTeX Info: Redefining \% on input line 197.
+LaTeX Info: Redefining \. on input line 195.
+LaTeX Info: Redefining \% on input line 195.
 [18 <./Figures/der.png>]
 
-LaTeX Info: Redefining \. on input line 238.
-LaTeX Info: Redefining \% on input line 238.
+LaTeX Info: Redefining \. on input line 236.
+LaTeX Info: Redefining \% on input line 236.
 [19]
 
-LaTeX Info: Redefining \. on input line 282.
-LaTeX Info: Redefining \% on input line 282.
+LaTeX Info: Redefining \. on input line 280.
+LaTeX Info: Redefining \% on input line 280.
 [20]
 
-LaTeX Info: Redefining \. on input line 306.
-LaTeX Info: Redefining \% on input line 306.
+LaTeX Info: Redefining \. on input line 303.
+LaTeX Info: Redefining \% on input line 303.
 [21]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 3
-25.
+23.
  (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
-LaTeX Info: Redefining \. on input line 337.
-LaTeX Info: Redefining \% on input line 337.
+LaTeX Info: Redefining \. on input line 336.
+LaTeX Info: Redefining \% on input line 336.
 [22]
-Overfull \hbox (4.09924pt too wide) in paragraph at lines 357--358
+Overfull \hbox (4.09924pt too wide) in paragraph at lines 361--362
 []\T1/ppl/m/n/10.95 Señalización de even-tos exóge-nos: se in-te-gra-ron va-ria
 -bles bi-na-rias pa-ra iden-
  []
@@ -1228,46 +1229,46 @@ LaTeX Info: Redefining \. on input line 375.
 LaTeX Info: Redefining \% on input line 375.
 [23]
 
-LaTeX Info: Redefining \. on input line 417.
-LaTeX Info: Redefining \% on input line 417.
+LaTeX Info: Redefining \. on input line 416.
+LaTeX Info: Redefining \% on input line 416.
 [24]
 
-LaTeX Info: Redefining \. on input line 442.
-LaTeX Info: Redefining \% on input line 442.
+LaTeX Info: Redefining \. on input line 444.
+LaTeX Info: Redefining \% on input line 444.
 [25]
-<./Figures/flujo-dag.png, id=640, 2767.33875pt x 5533.67375pt>
+<./Figures/flujo-dag.png, id=647, 2767.33875pt x 5533.67375pt>
 File: ./Figures/flujo-dag.png Graphic file (type png)
 <use ./Figures/flujo-dag.png>
-Package pdftex.def Info: ./Figures/flujo-dag.png  used on input line 452.
+Package pdftex.def Info: ./Figures/flujo-dag.png  used on input line 456.
 (pdftex.def)             Requested size: 311.84334pt x 623.56691pt.
 
 
-LaTeX Info: Redefining \. on input line 481.
-LaTeX Info: Redefining \% on input line 481.
+LaTeX Info: Redefining \. on input line 476.
+LaTeX Info: Redefining \% on input line 476.
 [26]
 
-LaTeX Info: Redefining \. on input line 481.
-LaTeX Info: Redefining \% on input line 481.
+LaTeX Info: Redefining \. on input line 476.
+LaTeX Info: Redefining \% on input line 476.
 [27 <./Figures/flujo-dag.png>]
-Overfull \hbox (5.15042pt too wide) in paragraph at lines 498--499
+Overfull \hbox (5.15042pt too wide) in paragraph at lines 502--503
 []\T1/ppl/m/n/10.95 Gestión de ar-te-fac-tos y mo-de-los (AWS S3): pa-ra com-pl
 e-men-tar a Post-greSQL,
  []
 
 
 
-LaTeX Info: Redefining \. on input line 500.
-LaTeX Info: Redefining \% on input line 500.
+LaTeX Info: Redefining \. on input line 503.
+LaTeX Info: Redefining \% on input line 503.
 [28]
-Overfull \hbox (1.28235pt too wide) in paragraph at lines 500--501
+Overfull \hbox (1.28235pt too wide) in paragraph at lines 504--505
 \T1/ppl/m/n/10.95 au-to-má-ti-ca-men-te do-cu-men-ta-ción in-ter-ac-ti-va ba-jo
  el es-tán-dar Open API (con
  []
 
 )
 
-LaTeX Info: Redefining \. on input line 120.
-LaTeX Info: Redefining \% on input line 120.
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
 [29]
 \openout2 = `Chapters/Chapter4.aux'.
 
@@ -1287,7 +1288,7 @@ Cap\'{\i }tulo 4.
 LaTeX Info: Redefining \. on input line 74.
 LaTeX Info: Redefining \% on input line 74.
 [32]
-<Figures/orders_with_events_3m.png, id=673, 867.24pt x 433.62pt>
+<Figures/orders_with_events_3m.png, id=681, 867.24pt x 433.62pt>
 File: Figures/orders_with_events_3m.png Graphic file (type png)
 <use Figures/orders_with_events_3m.png>
 Package pdftex.def Info: Figures/orders_with_events_3m.png  used on input line 
@@ -1298,97 +1299,97 @@ Package pdftex.def Info: Figures/orders_with_events_3m.png  used on input line
 LaTeX Info: Redefining \. on input line 108.
 LaTeX Info: Redefining \% on input line 108.
 [33 <./Figures/orders_with_events_3m.png>]
-<Figures/rmse_neuralprophet.png, id=681, 650.43pt x 433.62pt>
-File: Figures/rmse_neuralprophet.png Graphic file (type png)
-<use Figures/rmse_neuralprophet.png>
-Package pdftex.def Info: Figures/rmse_neuralprophet.png  used on input line 119
-.
-(pdftex.def)             Requested size: 389.80269pt x 259.87627pt.
-<Figures/rmse_temporal_fusion_transformer.png, id=682, 650.43pt x 433.62pt>
-File: Figures/rmse_temporal_fusion_transformer.png Graphic file (type png)
-<use Figures/rmse_temporal_fusion_transformer.png>
-Package pdftex.def Info: Figures/rmse_temporal_fusion_transformer.png  used on 
-input line 127.
-(pdftex.def)             Requested size: 389.80269pt x 259.87627pt.
 
-
-LaTeX Info: Redefining \. on input line 142.
-LaTeX Info: Redefining \% on input line 142.
-[34 <./Figures/rmse_neuralprophet.png>]
-<Figures/rmse_distribution_baseline_tm7_sw8_blend.png, id=691, 650.43pt x 433.6
-2pt>
+LaTeX Info: Redefining \. on input line 150.
+LaTeX Info: Redefining \% on input line 150.
+[34]
+<Figures/rmse_distribution_baseline_tm7_sw8_blend.png, id=696, 923.45pt x 602.2
+5pt>
 File: Figures/rmse_distribution_baseline_tm7_sw8_blend.png Graphic file (type p
 ng)
 <use Figures/rmse_distribution_baseline_tm7_sw8_blend.png>
 Package pdftex.def Info: Figures/rmse_distribution_baseline_tm7_sw8_blend.png  
-used on input line 170.
-(pdftex.def)             Requested size: 350.82004pt x 233.88664pt.
+used on input line 155.
+(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
+<Figures/rmse_neuralprophet.png, id=697, 923.45pt x 602.25pt>
+File: Figures/rmse_neuralprophet.png Graphic file (type png)
+<use Figures/rmse_neuralprophet.png>
+Package pdftex.def Info: Figures/rmse_neuralprophet.png  used on input line 163
+.
+(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
+<Figures/rmse_temporal_fusion_transformer.png, id=698, 923.45pt x 602.25pt>
+File: Figures/rmse_temporal_fusion_transformer.png Graphic file (type png)
+<use Figures/rmse_temporal_fusion_transformer.png>
+Package pdftex.def Info: Figures/rmse_temporal_fusion_transformer.png  used on 
+input line 171.
+(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
 
 
-LaTeX Info: Redefining \. on input line 173.
-LaTeX Info: Redefining \% on input line 173.
-[35 <./Figures/rmse_temporal_fusion_transformer.png>]
-
-LaTeX Info: Redefining \. on input line 207.
-LaTeX Info: Redefining \% on input line 207.
-[36 <./Figures/rmse_distribution_baseline_tm7_sw8_blend.png>]
-<Figures/true_vs_pred_neuralprophet.png, id=703, 1003.75pt x 577.15625pt>
+LaTeX Info: Redefining \. on input line 190.
+LaTeX Info: Redefining \% on input line 190.
+[35 <./Figures/rmse_distribution_baseline_tm7_sw8_blend.png (PNG copy)> <./Figu
+res/rmse_neuralprophet.png (PNG copy)>]
+<Figures/true_vs_pred_neuralprophet.png, id=704, 1003.75pt x 577.15625pt>
 File: Figures/true_vs_pred_neuralprophet.png Graphic file (type png)
 <use Figures/true_vs_pred_neuralprophet.png>
 Package pdftex.def Info: Figures/true_vs_pred_neuralprophet.png  used on input 
-line 215.
+line 217.
 (pdftex.def)             Requested size: 370.31136pt x 212.928pt.
-<Figures/true_vs_pred_temporal_fusion_transformer.png, id=705, 1003.75pt x 577.
+<Figures/true_vs_pred_temporal_fusion_transformer.png, id=706, 1003.75pt x 577.
 15625pt>
 File: Figures/true_vs_pred_temporal_fusion_transformer.png Graphic file (type p
 ng)
 <use Figures/true_vs_pred_temporal_fusion_transformer.png>
 Package pdftex.def Info: Figures/true_vs_pred_temporal_fusion_transformer.png  
-used on input line 234.
+used on input line 236.
 (pdftex.def)             Requested size: 370.31136pt x 212.928pt.
-<Figures/true_vs_pred_baseline_tm7_sw8_blend.png, id=706, 1003.75pt x 577.15625
+<Figures/true_vs_pred_baseline_tm7_sw8_blend.png, id=707, 1003.75pt x 577.15625
 pt>
 File: Figures/true_vs_pred_baseline_tm7_sw8_blend.png Graphic file (type png)
 <use Figures/true_vs_pred_baseline_tm7_sw8_blend.png>
 Package pdftex.def Info: Figures/true_vs_pred_baseline_tm7_sw8_blend.png  used 
-on input line 246.
+on input line 248.
 (pdftex.def)             Requested size: 350.82004pt x 201.72589pt.
 
 
-LaTeX Info: Redefining \. on input line 249.
-LaTeX Info: Redefining \% on input line 249.
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
+[36 <./Figures/rmse_temporal_fusion_transformer.png (PNG copy)>]
+
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
 [37 <./Figures/true_vs_pred_neuralprophet.png (PNG copy)> <./Figures/true_vs_pr
 ed_temporal_fusion_transformer.png (PNG copy)>]
 
-LaTeX Info: Redefining \. on input line 289.
-LaTeX Info: Redefining \% on input line 289.
+LaTeX Info: Redefining \. on input line 291.
+LaTeX Info: Redefining \% on input line 291.
 [38 <./Figures/true_vs_pred_baseline_tm7_sw8_blend.png (PNG copy)>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 289.
+(hyperref)                than one, level fixed on input line 291.
 
 
 
-LaTeX Info: Redefining \. on input line 322.
-LaTeX Info: Redefining \% on input line 322.
+LaTeX Info: Redefining \. on input line 324.
+LaTeX Info: Redefining \% on input line 324.
 [39]
 
-LaTeX Info: Redefining \. on input line 348.
-LaTeX Info: Redefining \% on input line 348.
+LaTeX Info: Redefining \. on input line 350.
+LaTeX Info: Redefining \% on input line 350.
 [40]
-Overfull \hbox (0.83723pt too wide) in paragraph at lines 379--380
+Overfull \hbox (0.83723pt too wide) in paragraph at lines 381--382
 []\T1/ppl/m/n/10.95 La des-car-ga se rea-li-za co-rrec-ta-men-te en na-ve-ga-do
 -res mo-der-nos co-mo: Chro-
  []
 
 
 
-LaTeX Info: Redefining \. on input line 380.
-LaTeX Info: Redefining \% on input line 380.
+LaTeX Info: Redefining \. on input line 382.
+LaTeX Info: Redefining \% on input line 382.
 [41])
 
-LaTeX Info: Redefining \. on input line 121.
-LaTeX Info: Redefining \% on input line 121.
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
 [42]
 \openout2 = `Chapters/Chapter5.aux'.
 
@@ -1403,30 +1404,24 @@ Cap\'{\i }tulo 5.
 
 ])
 
-LaTeX Info: Redefining \. on input line 122.
-LaTeX Info: Redefining \% on input line 122.
+LaTeX Info: Redefining \. on input line 123.
+LaTeX Info: Redefining \% on input line 123.
 [44]
-Overfull \hbox (2.92465pt too wide) in paragraph at lines 140--140
+Overfull \hbox (2.92465pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Ian Good-fe-llow, Yoshua Ben-gio y Aa-ron Cour-vi-lle. \T1/
 ppl/m/it/10.95 Deep Lear-ning\T1/ppl/m/n/10.95 . MIT Press,
  []
 
 
-Overfull \hbox (2.57994pt too wide) in paragraph at lines 140--140
+Overfull \hbox (2.57994pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Leo Brei-man. ^^S  Ran-dom fo-rests^^T. En: \T1/ppl/m/it/10
 .95 Ma-chi-ne Lear-ning \T1/ppl/m/n/10.95 45.1 (2001), págs. 5[]32. 
  []
 
 
-Overfull \hbox (0.73105pt too wide) in paragraph at lines 140--140
+Overfull \hbox (0.73105pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Kasun Ban-da-ra, Chris-toph Berg-meir y Sla-wek Smyl. ^^S  
 Fo-re-cas-ting sa-les with
- []
-
-
-Overfull \hbox (7.73257pt too wide) in paragraph at lines 140--140
-\T1/ppl/m/n/10.95 org / stable / modules / generated / sklearn . ensemble . Ran
-domForestRegressor .
  []
 
 
@@ -1436,43 +1431,49 @@ domForestRegressor .
 
 
 ]
-Overfull \hbox (9.30952pt too wide) in paragraph at lines 140--140
+Overfull \hbox (7.73257pt too wide) in paragraph at lines 141--141
+\T1/ppl/m/n/10.95 org / stable / modules / generated / sklearn . ensemble . Ran
+domForestRegressor .
+ []
+
+
+Overfull \hbox (9.30952pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/it/10.95 Amazon Sim-ple Sto-ra-ge Ser-vi-ce (S3) Do-cu-men-ta-tion\
 T1/ppl/m/n/10.95 . Ac-ce-di-do: 2025-02-13. Ama-
  []
 
 
-Overfull \hbox (1.85997pt too wide) in paragraph at lines 140--140
+Overfull \hbox (1.85997pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Pydantic Team. \T1/ppl/m/it/10.95 Py-dan-tic Do-cu-men-ta-t
 ion\T1/ppl/m/n/10.95 . [][]$https : / / docs . pydantic . dev / latest/$[][].
  []
 
 
-Overfull \hbox (4.92946pt too wide) in paragraph at lines 140--140
+
+LaTeX Info: Redefining \. on input line 141.
+LaTeX Info: Redefining \% on input line 141.
+[46]
+Overfull \hbox (4.92946pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Swagger API. \T1/ppl/m/it/10.95 Swag-ger: API De-sign Tools
  and Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / swagger .
  []
 
 
-
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
-[46]
-Overfull \hbox (6.19641pt too wide) in paragraph at lines 140--140
+Overfull \hbox (6.19641pt too wide) in paragraph at lines 141--141
 []\T1/ppl/m/n/10.95 Apache Soft-wa-re Foun-da-tion. \T1/ppl/m/it/10.95 Apa-che 
 Air-flow Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / air^^]ow .
  []
 
 
-Overfull \hbox (4.48401pt too wide) in paragraph at lines 140--140
+Overfull \hbox (4.48401pt too wide) in paragraph at lines 141--141
 \T1/ppl/m/n/10.95 cloud -[] computing -[] dictionary / what -[] is -[] etl/$[][
-]. Con-sul-ta-do: 10 de ma-yo de 2026. 
+]. Con-sul-ta-do: 17 de ma-yo de 2026. 
  []
 
 
 
-LaTeX Info: Redefining \. on input line 142.
-LaTeX Info: Redefining \% on input line 142.
+LaTeX Info: Redefining \. on input line 143.
+LaTeX Info: Redefining \% on input line 143.
 [47] (memorianueva.aux (portada.aux)
 LaTeX Info: Redefining \sptext on input line 16.
 LaTeX Info: Redefining \. on input line 16.
@@ -1500,10 +1501,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31536 strings out of 468221
- 688996 string characters out of 5432892
- 1431753 words of memory out of 5000000
- 59490 multiletter control sequences out of 15000+600000
+ 31547 strings out of 468221
+ 689369 string characters out of 5432892
+ 1432771 words of memory out of 5000000
+ 59499 multiletter control sequences out of 15000+600000
  685761 words of font info for 107 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1521,9 +1522,9 @@ ograms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local
 ocal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (57 pages, 1845926 bytes).
+Output written on memorianueva.pdf (57 pages, 1777103 bytes).
 PDF statistics:
- 913 PDF objects out of 1000 (max. 8388607)
- 195 named destinations out of 1000 (max. 500000)
+ 920 PDF objects out of 1000 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
  568 words of extra memory for PDF output out of 10000 (max. 10000000)
 

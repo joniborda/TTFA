@@ -28,7 +28,7 @@ A continuación, se describen las configuraciones finales de los modelos evaluad
 	\item XGBoost: este modelo de \textit{gradient boosting} permite optimizar la precisión de manera iterativa sin memorizar el ruido histórico. Los hiperparámetros finales incluyeron 400 estimadores, una profundidad de 4, una tasa de aprendizaje (\textit{learning rate}) de 0,05 y un submuestreo de filas del 90\%.
 	
 	\item CatBoost: se utilizó esta variante de boosting por su eficiencia en el manejo de variables categóricas y su función de pérdida orientada a minimizar el RMSE. Se configuró con 500 iteraciones, una tasa de aprendizaje de 0,1 y una profundidad de 4.
-	\item Modelos estadísticos clásicos (SARIMA y \textit{Exponential smoothing}): estos métodos se aplicaron para modelar los componentes de tendencia y estacionalidad predominantes en la serie. Para SARIMA, se definieron los parámetros de orden (3,1,2) y un componente estacional de (0,1,1) con un periodo de 12 meses.
+	\item Modelos estadísticos clásicos (SARIMA \citep{boxjenkins1970} y \textit{Exponential smoothing}): estos métodos se aplicaron para modelar los componentes de tendencia y estacionalidad predominantes en la serie. Para SARIMA, se definieron los parámetros de orden (3,1,2) y un componente estacional de (0,1,1) con un periodo de 12 meses.
 	\item NeuralProphet: este modelo combina la flexibilidad de las redes neuronales con el modelado aditivo de tendencias y días festivos. La configuración ganadora utilizó 40 épocas de entrenamiento y una tasa de aprendizaje de 0,05.
 	\item LSTM (\textit{Long short-term memory}): esta red neuronal recurrente se diseñó para retener información relevante a largo plazo y capturar dependencias temporales complejas. El modelo final integró 3 capas, un tamaño de capa oculta de 256, un dropout de 0,05 para regularización y un entrenamiento de 50 épocas con un tamaño de lote de 128.
 	\item TFT (\textit{Temporal fusion transformer}): esta arquitectura de vanguardia emplea mecanismos de atención interpretable para filtrar variables exógenas, como la inversión publicitaria, que no aportan valor predictivo real. Su configuración incluyó un largo de codificador de 28 días, 10 épocas, un tamaño de lote de 32 y una tasa de aprendizaje de 0,01.
@@ -112,22 +112,7 @@ Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presen
 \end{itemize}	
 
 
-Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech. Se plantea examinar la distribución de los RMSE:
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{rmse_neuralprophet.png}
-    \caption{RMSE Neural prophet.}
-    \label{fig:rmse_neuralprophet}
-\end{figure}
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{rmse_temporal_fusion_transformer.png}
-    \caption{RMSE TFT.}
-    \label{fig:rmse_temporal_fusion_transformer}
-\end{figure}
+Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech.
 
 En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
 
@@ -138,7 +123,7 @@ La baja dispersión del error en estas arquitecturas confirma que el sistema man
 	
 \begin{itemize}
 
-	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima que supera los 300 casos en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
+	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima similar a la \textit{Neuralprophet} en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
 	
 	\item NeuralProphet: aunque también concentra la mayoría de sus errores en el rango inicial, su frecuencia máxima es menor (alrededor de 210). Este modelo comete errores de mayor magnitud de forma más frecuente. Esto sugiere que el TFT es, en promedio, más preciso y consistente en sus predicciones.
 
@@ -167,10 +152,27 @@ A continuación, se realiza un análisis de la distribución del RMSE del modelo
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{rmse_distribution_baseline_tm7_sw8_blend.png}
+    \includegraphics[width=0.8\textwidth]{rmse_distribution_baseline_tm7_sw8_blend.png}
     \caption{RMSE \textit{Baseline}.}
     \label{fig:rmse_distribution_baseline_tm7_sw8_blend}
 \end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rmse_neuralprophet.png}
+    \caption{RMSE Neural prophet.}
+    \label{fig:rmse_neuralprophet}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rmse_temporal_fusion_transformer.png}
+    \caption{RMSE TFT.}
+    \label{fig:rmse_temporal_fusion_transformer}
+\end{figure}
+
  
 Al contrastar la distribución del error cuadrático del modelo TFT frente al \textit{Baseline}, se evidencia una diferencia sustancial en la consistencia de las predicciones. Mientras que el modelo TFT logra concentrar la gran mayoría de sus residuos en el rango cercano a cero (con una frecuencia superior a los 300 casos), el \textit{Baseline} muestra una dispersión significativamente mayor.
 Este último no solo presenta una menor frecuencia de aciertos precisos, sino que manifiesta errores en magnitudes mucho más elevadas, visibles en la asimetría positiva de la derecha de la distribución.

@@ -106,6 +106,38 @@
     \field{year}{2015}
   \endentry
 
+  \entry{boxjenkins1970}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=BGEP}{%
+         family={Box},
+         familyi={B\bibinitperiod},
+         given={George E.\bibnamedelima P.},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim
+  P\bibinitperiod},
+      }}%
+      {{hash=JGM}{%
+         family={Jenkins},
+         familyi={J\bibinitperiod},
+         given={Gwilym\bibnamedelima M.},
+         giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Holden-Day}%
+    }
+    \strng{namehash}{BGEPJGM1}
+    \strng{fullhash}{BGEPJGM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Cap\'itulo 9: modelos estacionales (formulaci\'on original de
+  SARIMA)}
+    \field{title}{Time Series Analysis: Forecasting and Control}
+    \list{location}{1}{%
+      {San Francisco, CA}%
+    }
+    \field{year}{1970}
+  \endentry
+
   \entry{BOOK:3}{book}{}{}
     \name{author}{2}{}{%
       {{hash=HRJ}{%
@@ -134,6 +166,36 @@
     \verb https://otexts.com/fpp3/
     \endverb
     \field{year}{2018}
+  \endentry
+
+  \entry{LSTM}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hochreiter},
+         familyi={H\bibinitperiod},
+         given={Sepp},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Schmidhuber},
+         familyi={S\bibinitperiod},
+         given={Jürgen},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HSSJ1}
+    \strng{fullhash}{HSSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1162/neco.1997.9.8.1735
+    \endverb
+    \field{number}{8}
+    \field{pages}{1735\bibrangedash 1780}
+    \field{title}{Long Short-Term Memory}
+    \field{volume}{9}
+    \field{journaltitle}{Neural Computation}
+    \field{year}{1997}
   \endentry
 
   \entry{hochreiter1997lstm}{inproceedings}{}{}
@@ -1247,10 +1309,10 @@
     \field{year}{2025}
   \endentry
 
-  \entry{metaflow}{misc}{}{}
+  \entry{mlflow}{misc}{}{}
     \name{author}{1}{}{%
       {{hash=M}{%
-         family={{Metaflow Team, Netflix}},
+         family={{MLflow Foundation, Databricks}},
          familyi={M\bibinitperiod},
       }}%
     }
@@ -1258,9 +1320,9 @@
     \strng{fullhash}{M1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{howpublished}{\url{https://docs.metaflow.org/}}
+    \field{howpublished}{\url{https://mlflow.org/}}
     \field{note}{Acceso: 2025-11-27}
-    \field{title}{Metaflow: Human-Centric Framework for Data Science}
+    \field{title}{MLflow: Open Source Platform for ML Lifecycle Management}
     \field{year}{2024}
   \endentry
 

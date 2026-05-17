@@ -88,9 +88,9 @@ Cada una de estas capas se comunica de manera acotada mediante APIs internas o a
 
 Esta capa se encarga de conectarse periódicamente a APIs externas para obtener la información necesaria para entrenar y actualizar los modelos. Las dos fuentes externas son:
 \begin{itemize}
-	\item Shopify: funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas, que incluye detalles como: estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para: caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
+	\item Shopify: funciona como el pilar central de la información comercial del sistema. A través de su API es posible acceder a los históricos de ventas con un volumen aproximado de 500 000 órdenes, que incluye detalles como: estado, valor total y descuentos. Además, cada orden incluye etiquetas que permiten distinguir si la compra corresponde a un cliente nuevo o recurrente, lo que posibilita analizar el comportamiento de los usuarios a lo largo del tiempo. Esta distinción es un insumo clave para: caracterizar patrones de fidelidad, frecuencia de compra y recurrencia. A partir de la combinación de órdenes, etiquetas de comportamiento y series temporales de ventas, se logra reconstruir el ciclo completo de los clientes y diferenciar entre la demanda estable generada por suscriptores activos y la demanda variable asociada a compras espontáneas o impulsadas por campañas de marketing.
 
-	\item Triple Whale: una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads \citep{tiktokAds}, Instagram Ads \citep{InstagramAds}, Facebook Ads \citep{FacebookAds} y Google Ads \citep{GoogleAds}. En este caso, la API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad que considera todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
+	\item Triple Whale: una plataforma que centraliza la información de inversión publicitaria proveniente de TikTok Ads \citep{tiktokAds}, Instagram Ads \citep{InstagramAds}, Facebook Ads \citep{FacebookAds} y Google Ads \citep{GoogleAds}. En este caso, la API no provee datos desagregados de campañas individuales, sino únicamente el monto diario total invertido en publicidad que considera todas las campañas activas. A pesar de esta limitación, esta información resulta suficiente para analizar la relación entre los niveles diarios de inversión publicitaria (aproximadamente 1200 días) y las variaciones observadas en las ventas. De esta forma, el gasto diario consolidado funciona como un indicador de la presión publicitaria ejercida en cada jornada, lo que permite estudiar su impacto en el comportamiento de compra y en la demanda general del sistema.
 \end{itemize}
 
 Ambas integraciones están preparadas para ejecutarse en un proceso automatizado que consulta las APIs diariamente y almacena la información en una base de datos PostgreSQL \citep{postgresql_docs} interna. Este proceso opera bajo un módulo ETL \citep{microsoft_etl} donde se llevan a cabo tareas de validación, normalización y estandarización para garantizar la coherencia entre fuentes heterogéneas.
@@ -131,8 +131,6 @@ Una vez obtenidos los datos desde las APIs externas, se realiza un proceso de tr
 
 \item Señalización de eventos especiales tales como: promociones, feriados o lanzamientos de productos.
 
-\item Integración del estado de suscripciones activas e inactivas.
-
 \end{itemize}
 
 Este proceso de transformación se implementó mediante DAGs (\textit{Directed Acyclic Graphs}) en Apache Airflow, lo que permite orquestar de manera programada, reproducible y monitorizable cada etapa del \textit{pipeline} de datos.
@@ -160,10 +158,10 @@ Luego de su procesamiento, los datos se almacenan en una base de datos PostgreSQ
 	\item \texttt{created}: registra la fecha de creación de cada orden.
 	\item \texttt{total\_price}: correspondiente al monto total pagado.
 	\item \texttt{customer\_id}: identifica al cliente.
-	\item \texttt{lineItems}: donde se detalla cada producto incluido en la compra junto con sus cantidades.
+	\item \texttt{line\_items}: donde se detalla cada producto incluido en la compra junto con sus cantidades.
 	\item \texttt{channel}: indica el canal por el que ingresó la orden.
 	\item \texttt{tags}: permite distinguir si la compra corresponde a un cliente nuevo o recurrente mediante etiquetas provistas por Shopify.
-	\item \texttt{order\_number\_for\_customer}: señala el número de orden que representa dentro del historial del cliente (por ejemplo, un valor igual a 1 implica un cliente nuevo).
+	\item \texttt{order\_number\_for\_customer}: al momento de generarse una orden, un disparador (\textit{trigger}) asigna el número de secuencia que representa dentro del historial de ese usuario. Si el usuario es nuevo el sistema asigna el valor 1.
 	\item \texttt{diff\_weeks\_from\_first\_purchase}: expresa la cantidad de semanas transcurridas desde la primera compra del usuario, lo que permite analizar patrones de frecuencia y retención.
 	
 \end{itemize}
@@ -265,7 +263,7 @@ La arquitectura fue diseñada bajo los siguientes principios:
 
 	\item Escalabilidad: preparada para el aumento del volumen de datos y la posible integración de nuevas plataformas.
 
-	\item Trazabilidad: indispensable para un sistema basado en machine learning.
+	\item Trazabilidad: el uso de herramientas como MLflow asegura que cada intento de mejora quede documentado.
 
 	\item Flexibilidad: permite combinar modelos clásicos, modelos de \textit{machine learning} y eventualmente servicios administrados en la nube.
 \end{itemize}
@@ -282,7 +280,7 @@ Este flujo automatizado permite mantener la información del sistema actualizada
     
     \item Actualización del conjunto de datos consolidado: los nuevos datos se procesan, limpian y unifican con el historial existente. Este paso genera un \textit{dataset} integral y consistente que sirve como base para el entrenamiento del modelo y la generación de pronósticos. El sistema incorpora mecanismos de control que evitan la creación de información duplicada para un mismo día. Esta validación automática garantiza que cada jornada cuente con una única entrada consolidada de alta calidad, lo cual previene el doble procesamiento de registros que fueron importados previamente.
     
-	\item Re-entrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo. En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como Metaflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
+	\item Reentrenamiento automatizado y seguimiento de experimentos: con una frecuencia programada, el sistema inicia el ciclo de modelado predictivo. En esta fase, se integra una herramienta de gestión del ciclo de vida de \textit{machine learning} (como MLflow) que registra cada experimento y facilita la trazabilidad de los artefactos generados.
 
 	\item Selección del modelo óptimo: bajo un enfoque comparativo, el DAG activa el entrenamiento paralelo de diversas arquitecturas, entre las que se incluyen: \textit{XGBoost, Catboost, Ridge, LSTM y Temporal Fusion Transformer}. Al finalizar esta etapa, el sistema evalúa el desempeño de cada algoritmo mediante la métrica RMSE. El flujo identifica y selecciona de manera automática el modelo que presenta el menor error cuadrático medio en el conjunto de validación.
 	
@@ -330,12 +328,18 @@ Para capturar la dinámica compleja de Latech, se generaron nuevas variables que
 Estas variables permiten analizar la distribución de la demanda en ciclos semanales y mensuales. Para asegurar una representación exhaustiva, el sistema garantiza la cobertura de los 12 meses del año y los 7 días de la semana, lo que facilita la identificación de patrones de consumo recurrentes en cada periodo.
 
 	\item Indicadores de dinámica financiera: se incorporó la tasa de variación del ingreso diario mediante el cálculo del cambio porcentual: 
+
+	\begin{itemize}
 	
-	\texttt{revenue\_growth = totalRevenue.pct\_change()}
+		\item \texttt{revenue\_growth = total\_revenue.pct\_change()}
 
-	Esta variable permite capturar la aceleración o desaceleración de las ventas en comparación con la jornada previa. Su inclusión facilita la detección de tendencias emergentes y picos de demanda que no siempre resultan evidentes al analizar únicamente los valores absolutos de facturación.
+		esta variable permite capturar la aceleración o desaceleración de las ventas en comparación con la jornada previa. Su inclusión facilita la detección de tendencias emergentes y picos de demanda que no siempre resultan evidentes al analizar únicamente los valores absolutos de facturación.
 
+		\item \texttt{investment\_growth = ad\_spend.pct\_change()}
+	
+		esta variable permite cuantificar las variaciones porcentuales en el gasto publicitario diario capturado desde Triple Whale.
 
+	\end{itemize}
 
 \item Transformación de ventanas deslizantes (\textit{sliding window}): se aplicó la función \texttt{shift()} para la generación de variables de retraso (conocidas en inglés como \textit{lags}) en el conjunto de datos. A través de este método, el sistema crea pares de características históricas ($x$) y valores objetivo ($y$) como:
  

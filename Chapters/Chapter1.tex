@@ -22,11 +22,11 @@ En este capítulo se presenta el contexto general del trabajo y la problemática
 
 El presente trabajo forma parte de la Carrera de Especialización en Inteligencia Artificial y tiene como propósito el desarrollo de un modelo capaz de pronosticar las ventas de una tienda en línea perteneciente a la empresa Latech \citep{latechfactory}. Esta compañía fabrica y comercializa barritas alimenticias en distintos sabores, lo que exige una planificación de producción precisa para evitar tanto faltantes como excedentes de stock. En este contexto, disponer de pronósticos confiables de ventas representa un factor estratégico para las decisiones operativas y comerciales.
 
-La empresa ofrece siete sabores considerados productos base, disponibles de forma permanente, y además introduce ediciones limitadas que agregan entre dos y cuatro variantes nuevas por año. Estas ediciones dependen del nivel de aceptación del público y permanecen activas solo mientras alcanzan un volumen de ventas satisfactorio. El producto se vende en paquetes de 10, 20 y 30 unidades, con un precio por unidad que disminuye a medida que aumenta el tamaño del paquete. Asimismo, el sitio ofrece al usuario la opción de suscribirse, lo que permite recibir el producto mensualmente con un descuento aproximado del 10\%. Este sistema facilita la construcción de patrones de demanda asociados a consumos recurrentes y posibilita el análisis del ciclo de vida de las suscripciones, incluyendo altas, bajas y reactivaciones.
+La empresa ofrece siete sabores considerados productos base, disponibles de forma permanente, y además introduce ediciones limitadas que agregan entre dos y cuatro variantes nuevas por año. Estas ediciones dependen del nivel de aceptación del público y permanecen activas solo mientras alcanzan un volumen de ventas satisfactorio. La planta posee una capacidad de producción de aproximadamente 2000 barritas por día, un volumen que impone un límite operativo estricto y exige una previsibilidad para satisfacer la demanda de todas las variantes. El producto se vende en paquetes de 10, 20 y 30 unidades, con un precio por unidad que disminuye a medida que aumenta el tamaño del paquete. Asimismo, el sitio ofrece al usuario la opción de suscribirse, lo que permite recibir el producto mensualmente con un descuento aproximado del 10\%. Este sistema facilita la construcción de patrones de demanda asociados a consumos recurrentes y posibilita el análisis del ciclo de vida de las suscripciones, incluyendo altas, bajas y reactivaciones.
 
 Latech lanza cada nueva variante de sabor mediante campañas simultáneas en sus canales de comunicación, como TikTok \citep{tiktokAds}, Instagram \citep{InstagramAds}, Facebook \citep{FacebookAds} y Google \citep{GoogleAds}. Estos lanzamientos producen un aumento significativo en la actividad comercial y suelen duplicar las ventas de la nueva variante en comparación con los productos restantes. Un comportamiento similar aparece durante eventos promocionales, como \textit{Black Friday}, donde la aplicación de descuentos generales genera un incremento promedio cercano al 20\% en las ventas totales. Estas fluctuaciones introducen picos marcados en la demanda, cuya anticipación resulta crucial para coordinar producción, logística y abastecimiento.
 
-Antes del desarrollo de este sistema, la empresa no contaba con un mecanismo de pronóstico capaz de anticipar estos cambios de manera sistemática. Las variaciones abruptas en la demanda, especialmente las derivadas de campañas exitosas, superaban en ocasiones la capacidad inmediata de producción. En consecuencia, la organización registraba episodios de quiebre de stock, retrasos en las entregas y deterioro en la experiencia del cliente. La falta de previsión reducía la capacidad de planificar compras de insumos, organizar turnos de producción y definir niveles óptimos de inventario.
+Antes del desarrollo de este sistema, la empresa no contaba con un mecanismo de pronóstico capaz de anticipar estos cambios de manera sistemática. Las variaciones abruptas en la demanda, especialmente las derivadas de campañas exitosas, superaban en ocasiones la capacidad de producción. En consecuencia, la organización registraba episodios de quiebre de stock, retrasos en las entregas y deterioro en la experiencia del cliente. La falta de previsión reducía la capacidad de planificar compras de insumos, organizar turnos de producción y definir niveles óptimos de inventario.
 
 La incorporación de datos provenientes de múltiples fuentes permite construir una visión integral del proceso comercial. 
 La empresa utiliza la API de Triple Whale \citep{triplewhale} para concentrar la información de inversión publicitaria de TikTok, Instagram, Facebook y Google.
@@ -47,7 +47,7 @@ precisión, lo que contribuye a una mejor planificación de la producción,
  la gestión de inventarios y la toma de decisiones estratégicas.
 
 Entre los enfoques más utilizados se encuentran los modelos de series temporales
- clásicos, como ARIMA \citep{BOOK:4}, SARIMA y \textit{Exponential Smoothing}, 
+ clásicos, como ARIMA \citep{BOOK:4}, SARIMA \citep{boxjenkins1970} y \textit{Exponential Smoothing}, 
  que permiten capturar patrones estacionales y tendencias a lo largo del tiempo
   \citep{BOOK:3}. Sin embargo, estos métodos presentan limitaciones cuando los 
   datos incluyen múltiples factores externos, tales como campañas publicitarias,
@@ -58,7 +58,7 @@ En los últimos años se ha observado un aumento significativo en la adopción d
  automático (\textit{Machine Learning}), que ofrecen una mayor capacidad
   para modelar relaciones no lineales y para integrar información proveniente de
    diversas fuentes. Modelos como Redes Neuronales Recurrentes (RNN), LSTM 
-   (\textit{Long Short-Term Memory}) y \textit{Random Forest Regressor} se han 
+   (\textit{Long Short-Term Memory}) \citep{LSTM} y \textit{Random Forest Regressor} se han 
    aplicado con éxito en la predicción de ventas en entornos de comercio 
    electrónico, debido a su habilidad para capturar dependencias temporales y 
    correlaciones entre variables \citep{hochreiter1997lstm, goodfellow2016deep, breiman2001random, bandara2020forecast}.
