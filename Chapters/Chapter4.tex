@@ -51,7 +51,7 @@ A continuación, la tabla \ref{tab:metricas_modelos} resume el rendimiento alcan
         \toprule
         \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAPE} \\
         \midrule
-        TFT & 258,68 & 443,67 & 0,128 \\
+        TFT & \textbf{258,68} & \textbf{443,67} & \textbf{0,128} \\
         NeuralProphet & 356,68 & 568,48 & 0,191 \\
         CatBoost & 349,70 & 549,54 & 0,392 \\
         XGBoost & 367,31 & 553,82 & 0,400 \\
@@ -99,8 +99,18 @@ El rendimiento superior de los modelos de aprendizaje profundo en este trabajo s
     \label{fig:orders_with_events_3m}
 \end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.05\textwidth]{orders_mm7.png}
+    }
+    \caption{Variación de media movil 7 días.}
+    \label{fig:orders_mm7}
+\end{figure}
 
-Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presenta tres componentes críticos que justifican el uso de modelos avanzados:
+\pagebreak
+Como se observa en las figuras \ref{fig:orders_with_events_3m} y \ref{fig:orders_mm7}, la demanda presenta tres componentes críticos que justifican el uso de modelos avanzados:
 
 \begin{itemize}
 
@@ -111,44 +121,6 @@ Como se observa en la Figura \ref{fig:orders_with_events_3m} , la demanda presen
 	\item Tendencia ascendente longitunidal: a medida que transcurre el tiempo (desde 2023 hasta la actualidad), se aprecia una clara tendencia al aumento en el volumen base de órdenes.
 \end{itemize}	
 
-
-Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech.
-
-En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
-
-
-La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
-
-\subsection{Precisión general y sesgo}
-	
-\begin{itemize}
-
-	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima similar a la \textit{Neuralprophet} en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
-	
-	\item NeuralProphet: aunque también concentra la mayoría de sus errores en el rango inicial, su frecuencia máxima es menor (alrededor de 210). Este modelo comete errores de mayor magnitud de forma más frecuente. Esto sugiere que el TFT es, en promedio, más preciso y consistente en sus predicciones.
-
-\end{itemize}
-	
-	
-\subsection{Análisis de \textit{outliers}}
-
-Ambas representaciones gráficas exhiben una asimetría positiva pronunciada, lo que significa que ambos modelos sufren ante eventos atípicos o picos de demanda difíciles de predecir. Sin embargo:
-
-	
-\begin{itemize}
-
-	\item TFT: la curva de densidad decae mucho más rápido. Después del primer bloque de error, la frecuencia cae casi a cero de forma inmediata.
-
-
-	\item NeuralProphet: muestra pequeñas zonas de errores más alejadas (cerca de $1.5 \times 10^6$ y $3.0 \times 10^6$). Esto indica que NeuralProphet comete errores medianos y grandes con mayor frecuencia que el TFT.
-
-\end{itemize}
-
-\subsection{Estabilidad y Confiabilidad}
-
-El modelo TFT demuestra ser más robusto para este conjunto de datos. Su distribución es más estrecha y alta indica una menor varianza en el error. Esto coincide con los resultados de la tabla comparativa, donde el TFT obtuvo un RMSE de 443,67 frente al 568,48 de NeuralProphet.
-
-A continuación, se realiza un análisis de la distribución del RMSE del modelo \textit{baseline} en la figura \ref{fig:rmse_distribution_baseline_tm7_sw8_blend}
 
 \begin{figure}[htbp]
     \centering
@@ -172,6 +144,48 @@ A continuación, se realiza un análisis de la distribución del RMSE del modelo
     \caption{RMSE TFT.}
     \label{fig:rmse_temporal_fusion_transformer}
 \end{figure}
+
+
+\pagebreak
+
+Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech.
+
+En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
+
+
+La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
+
+\subsection{Precisión general y sesgo}
+	
+\begin{itemize}
+
+	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima similar a la \textit{Neuralprophet} en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
+	
+	\item NeuralProphet: aunque también concentra la mayoría de sus errores en el rango inicial, su frecuencia máxima es menor (alrededor de 210). Este modelo comete errores de mayor magnitud de forma más frecuente. Esto sugiere que el TFT es, en promedio, más preciso y consistente en sus predicciones.
+
+\end{itemize}
+	
+	
+\subsection{Análisis de \textit{outliers}}
+
+Ambas representaciones gráficas exhiben una concentración masiva en valores cercanos a cero, lo que significa que ambos modelos sufren ante eventos atípicos o picos de demanda difíciles de predecir. Sin embargo, al analizar la extensión de estas colas, se identifican diferencias claras en la robustez de las arquitecturas:
+
+	
+\begin{itemize}
+
+	\item TFT: la curva de densidad decae de forma abrupta después del primer bloque de error. Esta caída inmediata demuestra que el modelo logra contener la magnitud de sus fallos incluso ante la volatilidad de los datos y limita significativamente la aparición de errores extremos.
+
+
+	\item NeuralProphet: muestra pequeñas zonas de errores más alejadas (cerca de $2.0 \times 10^6$ y $4.0 \times 10^6$). Esto indica que NeuralProphet comete errores medianos y grandes con mayor frecuencia que el TFT.
+
+\end{itemize}
+
+\subsection{Estabilidad y Confiabilidad}
+
+El modelo TFT demuestra ser más robusto para este conjunto de datos. Su distribución es más estrecha y alta indica una menor varianza en el error. Esto coincide con los resultados de la tabla comparativa, donde el TFT obtuvo un RMSE de 443,67 frente al 568,48 de NeuralProphet.
+
+A continuación, se realiza un análisis de la distribución del RMSE del modelo \textit{baseline} en la figura \ref{fig:rmse_distribution_baseline_tm7_sw8_blend}
+
 
  
 Al contrastar la distribución del error cuadrático del modelo TFT frente al \textit{Baseline}, se evidencia una diferencia sustancial en la consistencia de las predicciones. Mientras que el modelo TFT logra concentrar la gran mayoría de sus residuos en el rango cercano a cero (con una frecuencia superior a los 300 casos), el \textit{Baseline} muestra una dispersión significativamente mayor.
@@ -205,7 +219,7 @@ Para entender los gráficos que se presentan a continuación se explica cada eje
 
 
 
-La Figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralProphet, cuya estructura permite modelar de forma precisa los ciclos de estacionalidad mensual y semanal característicos de la tienda. Estas comparativas visuales aseguran que el modelo seleccionado mantenga una estrecha correlación con la dinámica del negocio antes de su integración final en la plataforma Inventory Tracker.
+La figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralProphet, cuya estructura permite modelar de forma precisa los ciclos de estacionalidad mensual y semanal característicos de la tienda. Estas comparativas visuales aseguran que el modelo seleccionado mantenga una estrecha correlación con la dinámica del negocio antes de su integración final en la plataforma Inventory Tracker.
 
 
 
@@ -224,7 +238,7 @@ La Figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralPro
 
 
 
-La Figura \ref{fig:grafico_true_tft} muestra el gráfico de realidad en compración con la predicción del modelo TFT. En esta representación se observa la capacidad de sus mecanismos de atención para capturar los picos de demanda asociados a los periodos de mayor inversión publicitaria. 
+La figura \ref{fig:grafico_true_tft} muestra el gráfico de realidad en compración con la predicción del modelo TFT. En esta representación se observa la capacidad de sus mecanismos de atención para capturar los picos de demanda asociados a los periodos de mayor inversión publicitaria. 
 
 
 
@@ -251,7 +265,7 @@ La función denominada \textit{Baseline} no constituye un modelo de inteligencia
 \end{figure}
 
 
-Como se observa en la Figura \ref{fig:grafico_true_baseline} esta aproximación presenta las siguientes características:
+Como se observa en la figura \ref{fig:grafico_true_baseline} esta aproximación presenta las siguientes características:
 
 
 
@@ -271,12 +285,12 @@ Al analizar los resultados presentados en la Tabla \ref{tab:metricas_modelo_base
     \centering
     \caption{Comparativa de métricas: TFT vs. Baseline}
     \label{tab:metricas_modelo_baseline}
-    \begin{tabular}{l l c c c}
+    \begin{tabular}{l l c c c c c}
         \toprule
-        \textbf{Modelo} & \textbf{MAE} & \textbf{RMSE} & \textbf{MAPE} \\
+        \textbf{Modelo} & \textbf{MAE} & \textbf{NMAE} & \textbf{RMSE} & \textbf{NRMSE} & \textbf{MAPE} \\
         \midrule
-        TFT & 258,68 & 443,67 & 0,128 \\
-        Baseline & 338,04 & 548,02 & 0,18 \\
+        TFT & \textbf{258,68} & \textbf{0,14} & \textbf{443,67} & \textbf{0,24} & \textbf{0,12} \\
+        Baseline & 338,04 & 0,18 & 548,02 & 0,30 & 0,18 \\
         \bottomrule
     \end{tabular}
 \end{table}

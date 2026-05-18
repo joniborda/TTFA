@@ -42,7 +42,7 @@ En este capítulo se describen los criterios utilizados para la construcción de
 
 \section{Arquitectura del sistema}
 
-La arquitectura diseñada para el sistema de predicción de ventas se basa en un flujo de procesamiento secuencial y automatizado que conecta las fuentes de datos externas con el entorno interno del cliente (Figura \ref{fig:mermaid-arq}). El diseño se orientó por tres criterios principales:
+La arquitectura diseñada para el sistema de predicción de ventas se basa en un flujo de procesamiento secuencial y automatizado que conecta las fuentes de datos externas con el entorno interno del cliente (figura \ref{fig:mermaid-arq}). El diseño se orientó por tres criterios principales:
 
 \begin{itemize}
 
@@ -143,7 +143,7 @@ La implementación mediante Airflow permite además:
 
 \begin{itemize}
 \item Ejecución programada o bajo demanda de los flujos de transformación.
-\item Re-ejecución selectiva de tareas fallidas sin afectar etapas exitosas.
+\item Reejecución selectiva de tareas fallidas sin afectar etapas exitosas.
 \item Monitoreo visual del estado del \textit{pipeline} y alertas ante incidencias.
 \item Versionado y mantenimiento independiente de la lógica de transformación.
 \end{itemize}
@@ -224,7 +224,7 @@ La arquitectura del sistema se basa en un enfoque de microservicios, donde cada 
 	\item Servicio de API interna para Inventory Tracker.
 \end{itemize}
 
-La comunicación entre estos servicios se realiza mediante endpoints REST internos para operaciones síncronas y, cuando se requiere procesamiento asincrónico o desacoplamiento temporal, a través de colas de mensajería (por ejemplo, con Redis \citep{redis}). Este diseño permite que cada servicio evolucione y escale de forma independiente, sin afectar al resto del sistema.
+La comunicación entre estos servicios se realiza mediante endpoints REST. Este diseño permite que cada servicio evolucione y escale de forma independiente, sin afectar al resto del sistema.
 
 
 Los principales beneficios de esta capa de microservicios son:
@@ -412,7 +412,7 @@ El desarrollo de los modelos avanzados se centralizó en un registro de modelos 
 
 \subsection{Estrategia de entrenamiento y mitigación de sobreajuste}
 
-Para fortalecer la estrategia de entrenamiento y mitigación de sobre-ajuste, se incorporaron técnicas específicas que aseguran la robustez del sistema y su capacidad para operar con datos no vistos. A continuación, se detallan las acciones técnicas implementadas:
+Para fortalecer la estrategia de entrenamiento y mitigación de sobreajuste, se incorporaron técnicas específicas que aseguran la robustez del sistema y su capacidad para operar con datos no vistos. A continuación, se detallan las acciones técnicas implementadas:
 
 
 \begin{itemize}
@@ -442,7 +442,7 @@ El diseño del sistema se orientó hacia la creación de una estructura de softw
 
 Para garantizar un bajo acoplamiento entre los componentes, se implementaron interfaces estandarizadas que unificaron el comportamiento de todos los modelos integrados. Este enfoque permitió que algoritmos de bibliotecas heterogéneas, tales como: Scikit-learn, XGBoost, Catboost o PyTorch; fueran tratados como objetos intercambiables dentro del flujo de trabajo. El \textit{framework} se organizó en módulos especializados de Python que encapsularon la lógica de entrenamiento, lo cual simplificó la gestión de dependencias y mejoró la legibilidad del código.
 
-La ejecución de estos módulos se coordinó a través de DAGs en Apache Airflow que orquestaron de manera programada y reproducible cada etapa del \textit{pipeline}, desde la transformación de datos hasta el entrenamiento de modelos. Esta estructura modular facilitó que la lógica de orquestación invocara múltiples arquitecturas de forma paralela, para asegurar que cada tarea se pueda monitorizar y re-ejecutarse ante posibles incidencias técnicas sin afectar el resto del sistema.
+La ejecución de estos módulos se coordinó a través de DAGs en Apache Airflow que orquestaron de manera programada y reproducible cada etapa del \textit{pipeline}, desde la transformación de datos hasta el entrenamiento de modelos. Esta estructura modular facilitó que la lógica de orquestación invocara múltiples arquitecturas de forma paralela, para asegurar que cada tarea se pueda monitorizar y reejecutarse ante posibles incidencias técnicas sin afectar el resto del sistema.
 
 \subsection{Lógica de competencia y selección automática del modelo}
 
