@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  17 MAY 2026 19:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.1)  24 MAY 2026 20:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -992,7 +992,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 
 pdfTeX warning: pdflatex (file ./Figures/fondo.pdf): PDF inclusion: found PDF v
 ersion <1.6>, but at most version <1.5> allowed
-<Figures/fondo.pdf, id=259, 597.55246pt x 845.07718pt>
+<Figures/fondo.pdf, id=263, 597.55246pt x 845.07718pt>
 File: Figures/fondo.pdf Graphic file (type pdf)
 <use Figures/fondo.pdf>
 Package pdftex.def Info: Figures/fondo.pdf  used on input line 51.
@@ -1100,12 +1100,12 @@ l.66 D
       e forma mÃ¡s reciente, la literatura destaca los modelos basados en
 [2]
 
-LaTeX Info: Redefining \. on input line 123.
-LaTeX Info: Redefining \% on input line 123.
+LaTeX Info: Redefining \. on input line 116.
+LaTeX Info: Redefining \% on input line 116.
 [3]
 
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
+LaTeX Info: Redefining \. on input line 168.
+LaTeX Info: Redefining \% on input line 168.
 [4])
 
 LaTeX Info: Redefining \. on input line 119.
@@ -1158,7 +1158,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-<./Figures/mermaid-arq.png, id=558, 3045.3775pt x 3934.7pt>
+<./Figures/mermaid-arq.png, id=563, 3045.3775pt x 3934.7pt>
 File: ./Figures/mermaid-arq.png Graphic file (type png)
 <use ./Figures/mermaid-arq.png>
 Package pdftex.def Info: ./Figures/mermaid-arq.png  used on input line 81.
@@ -1187,7 +1187,7 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 LaTeX Info: Redefining \. on input line 181.
 LaTeX Info: Redefining \% on input line 181.
 [17]
-<./Figures/der.png, id=597, 1908.12875pt x 2981.1375pt>
+<./Figures/der.png, id=602, 1908.12875pt x 2981.1375pt>
 File: ./Figures/der.png Graphic file (type png)
 <use ./Figures/der.png>
 Package pdftex.def Info: ./Figures/der.png  used on input line 186.
@@ -1225,18 +1225,18 @@ Overfull \hbox (4.09924pt too wide) in paragraph at lines 361--362
 
 
 
-LaTeX Info: Redefining \. on input line 378.
-LaTeX Info: Redefining \% on input line 378.
+LaTeX Info: Redefining \. on input line 379.
+LaTeX Info: Redefining \% on input line 379.
 [23]
 
-LaTeX Info: Redefining \. on input line 421.
-LaTeX Info: Redefining \% on input line 421.
+LaTeX Info: Redefining \. on input line 423.
+LaTeX Info: Redefining \% on input line 423.
 [24]
 
 LaTeX Info: Redefining \. on input line 446.
 LaTeX Info: Redefining \% on input line 446.
 [25]
-<./Figures/flujo-dag.png, id=647, 2767.33875pt x 5533.67375pt>
+<./Figures/flujo-dag.png, id=652, 2767.33875pt x 5533.67375pt>
 File: ./Figures/flujo-dag.png Graphic file (type png)
 <use ./Figures/flujo-dag.png>
 Package pdftex.def Info: ./Figures/flujo-dag.png  used on input line 456.
@@ -1250,22 +1250,22 @@ LaTeX Info: Redefining \% on input line 485.
 LaTeX Info: Redefining \. on input line 485.
 LaTeX Info: Redefining \% on input line 485.
 [27 <./Figures/flujo-dag.png>]
-Overfull \hbox (5.15042pt too wide) in paragraph at lines 502--503
+Overfull \hbox (5.15042pt too wide) in paragraph at lines 503--504
 []\T1/ppl/m/n/10.95 Gestión de ar-te-fac-tos y mo-de-los (AWS S3): pa-ra com-pl
 e-men-tar a Post-greSQL,
  []
 
 
-
-LaTeX Info: Redefining \. on input line 504.
-LaTeX Info: Redefining \% on input line 504.
-[28]
-Overfull \hbox (1.28235pt too wide) in paragraph at lines 504--505
+Overfull \hbox (1.28235pt too wide) in paragraph at lines 505--506
 \T1/ppl/m/n/10.95 au-to-má-ti-ca-men-te do-cu-men-ta-ción in-ter-ac-ti-va ba-jo
  el es-tán-dar Open API (con
  []
 
-)
+
+
+LaTeX Info: Redefining \. on input line 506.
+LaTeX Info: Redefining \% on input line 506.
+[28])
 
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
@@ -1288,107 +1288,110 @@ Cap\'{\i }tulo 4.
 LaTeX Info: Redefining \. on input line 74.
 LaTeX Info: Redefining \% on input line 74.
 [32]
-<Figures/orders_with_events_3m.png, id=681, 867.24pt x 433.62pt>
+<Figures/orders_with_events_3m.png, id=688, 867.24pt x 433.62pt>
 File: Figures/orders_with_events_3m.png Graphic file (type png)
 <use Figures/orders_with_events_3m.png>
 Package pdftex.def Info: Figures/orders_with_events_3m.png  used on input line 
-97.
+107.
 (pdftex.def)             Requested size: 409.294pt x 204.64833pt.
-<Figures/orders_mm7.png, id=682, 773.289pt x 357.9774pt>
+<Figures/orders_mm7.png, id=689, 773.289pt x 357.9774pt>
 File: Figures/orders_mm7.png Graphic file (type png)
 <use Figures/orders_mm7.png>
-Package pdftex.def Info: Figures/orders_mm7.png  used on input line 107.
+Package pdftex.def Info: Figures/orders_mm7.png  used on input line 117.
 (pdftex.def)             Requested size: 409.294pt x 189.47038pt.
 
 
-LaTeX Info: Redefining \. on input line 113.
-LaTeX Info: Redefining \% on input line 113.
-[33 <./Figures/orders_with_events_3m.png>]
-<Figures/rmse_distribution_baseline_tm7_sw8_blend.png, id=691, 923.45pt x 602.2
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
+[33]
+
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
+[34 <./Figures/orders_with_events_3m.png> <./Figures/orders_mm7.png>]
+<Figures/rmse_neuralprophet.png, id=703, 923.45pt x 602.25pt>
+File: Figures/rmse_neuralprophet.png Graphic file (type png)
+<use Figures/rmse_neuralprophet.png>
+Package pdftex.def Info: Figures/rmse_neuralprophet.png  used on input line 133
+.
+(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
+<Figures/rmse_temporal_fusion_transformer.png, id=704, 923.45pt x 602.25pt>
+File: Figures/rmse_temporal_fusion_transformer.png Graphic file (type png)
+<use Figures/rmse_temporal_fusion_transformer.png>
+Package pdftex.def Info: Figures/rmse_temporal_fusion_transformer.png  used on 
+input line 141.
+(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
+
+
+LaTeX Info: Redefining \. on input line 152.
+LaTeX Info: Redefining \% on input line 152.
+[35 <./Figures/rmse_neuralprophet.png (PNG copy)> <./Figures/rmse_temporal_fusi
+on_transformer.png (PNG copy)>]
+<Figures/rmse_distribution_baseline_tm7_sw8_blend.png, id=710, 923.45pt x 602.2
 5pt>
 File: Figures/rmse_distribution_baseline_tm7_sw8_blend.png Graphic file (type p
 ng)
 <use Figures/rmse_distribution_baseline_tm7_sw8_blend.png>
 Package pdftex.def Info: Figures/rmse_distribution_baseline_tm7_sw8_blend.png  
-used on input line 127.
-(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
-<Figures/rmse_neuralprophet.png, id=692, 923.45pt x 602.25pt>
-File: Figures/rmse_neuralprophet.png Graphic file (type png)
-<use Figures/rmse_neuralprophet.png>
-Package pdftex.def Info: Figures/rmse_neuralprophet.png  used on input line 135
-.
-(pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
-<Figures/rmse_temporal_fusion_transformer.png, id=693, 923.45pt x 602.25pt>
-File: Figures/rmse_temporal_fusion_transformer.png Graphic file (type png)
-<use Figures/rmse_temporal_fusion_transformer.png>
-Package pdftex.def Info: Figures/rmse_temporal_fusion_transformer.png  used on 
-input line 143.
+used on input line 178.
 (pdftex.def)             Requested size: 311.84334pt x 203.37465pt.
 
 
-LaTeX Info: Redefining \. on input line 150.
-LaTeX Info: Redefining \% on input line 150.
-[34 <./Figures/orders_mm7.png> <./Figures/rmse_distribution_baseline_tm7_sw8_bl
-end.png (PNG copy)>]
-
-LaTeX Info: Redefining \. on input line 150.
-LaTeX Info: Redefining \% on input line 150.
-[35 <./Figures/rmse_neuralprophet.png (PNG copy)> <./Figures/rmse_temporal_fusi
-on_transformer.png (PNG copy)>]
-
-LaTeX Info: Redefining \. on input line 193.
-LaTeX Info: Redefining \% on input line 193.
-[36]
-<Figures/true_vs_pred_neuralprophet.png, id=711, 1003.75pt x 577.15625pt>
+LaTeX Info: Redefining \. on input line 186.
+LaTeX Info: Redefining \% on input line 186.
+[36 <./Figures/rmse_distribution_baseline_tm7_sw8_blend.png (PNG copy)>]
+<Figures/true_vs_pred_neuralprophet.png, id=716, 1003.75pt x 577.15625pt>
 File: Figures/true_vs_pred_neuralprophet.png Graphic file (type png)
 <use Figures/true_vs_pred_neuralprophet.png>
 Package pdftex.def Info: Figures/true_vs_pred_neuralprophet.png  used on input 
-line 231.
+line 216.
 (pdftex.def)             Requested size: 370.31136pt x 212.928pt.
-
-
-LaTeX Info: Redefining \. on input line 242.
-LaTeX Info: Redefining \% on input line 242.
-[37 <./Figures/true_vs_pred_neuralprophet.png (PNG copy)>]
-<Figures/true_vs_pred_temporal_fusion_transformer.png, id=717, 1003.75pt x 577.
+<Figures/true_vs_pred_temporal_fusion_transformer.png, id=718, 1003.75pt x 577.
 15625pt>
 File: Figures/true_vs_pred_temporal_fusion_transformer.png Graphic file (type p
 ng)
 <use Figures/true_vs_pred_temporal_fusion_transformer.png>
 Package pdftex.def Info: Figures/true_vs_pred_temporal_fusion_transformer.png  
-used on input line 250.
+used on input line 235.
 (pdftex.def)             Requested size: 370.31136pt x 212.928pt.
-<Figures/true_vs_pred_baseline_tm7_sw8_blend.png, id=718, 1003.75pt x 577.15625
+
+
+LaTeX Info: Redefining \. on input line 238.
+LaTeX Info: Redefining \% on input line 238.
+[37 <./Figures/true_vs_pred_neuralprophet.png (PNG copy)>]
+<Figures/true_vs_pred_baseline_tm7_sw8_blend.png, id=724, 1003.75pt x 577.15625
 pt>
 File: Figures/true_vs_pred_baseline_tm7_sw8_blend.png Graphic file (type png)
 <use Figures/true_vs_pred_baseline_tm7_sw8_blend.png>
 Package pdftex.def Info: Figures/true_vs_pred_baseline_tm7_sw8_blend.png  used 
-on input line 262.
+on input line 259.
 (pdftex.def)             Requested size: 350.82004pt x 201.72589pt.
 
 
-LaTeX Info: Redefining \. on input line 274.
-LaTeX Info: Redefining \% on input line 274.
-[38 <./Figures/true_vs_pred_temporal_fusion_transformer.png (PNG copy)> <./Figu
-res/true_vs_pred_baseline_tm7_sw8_blend.png (PNG copy)>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+LaTeX Info: Redefining \. on input line 288.
+LaTeX Info: Redefining \% on input line 288.
+[38 <./Figures/true_vs_pred_temporal_fusion_transformer.png (PNG copy)>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 305.
+(hyperref)                than one, level fixed on input line 288.
 
 
 
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
-[39]
+LaTeX Info: Redefining \. on input line 307.
+LaTeX Info: Redefining \% on input line 307.
+[39 <./Figures/true_vs_pred_baseline_tm7_sw8_blend.png (PNG copy)>]
 
-LaTeX Info: Redefining \. on input line 357.
-LaTeX Info: Redefining \% on input line 357.
+LaTeX Info: Redefining \. on input line 341.
+LaTeX Info: Redefining \% on input line 341.
 [40]
 
-LaTeX Info: Redefining \. on input line 379.
-LaTeX Info: Redefining \% on input line 379.
+LaTeX Info: Redefining \. on input line 363.
+LaTeX Info: Redefining \% on input line 363.
 [41]
-Overfull \hbox (0.83723pt too wide) in paragraph at lines 395--396
+Overfull \hbox (0.83723pt too wide) in paragraph at lines 379--380
 []\T1/ppl/m/n/10.95 La des-car-ga se rea-li-za co-rrec-ta-men-te en na-ve-ga-do
 -res mo-der-nos co-mo: Chro-
  []
@@ -1474,7 +1477,7 @@ Air-flow Do-cu-men-ta-tion\T1/ppl/m/n/10.95 . [][]$https : / / air^^]ow .
 
 Overfull \hbox (4.48401pt too wide) in paragraph at lines 141--141
 \T1/ppl/m/n/10.95 cloud -[] computing -[] dictionary / what -[] is -[] etl/$[][
-]. Con-sul-ta-do: 17 de ma-yo de 2026. 
+]. Con-sul-ta-do: 24 de ma-yo de 2026. 
  []
 
 
@@ -1496,8 +1499,17 @@ L3 programming layer <2025-06-09>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `memorianueva.out' has not changed.
-(rerunfilecheck)             Checksum: 38BCE6F351B51C9D5B5B5F462B602E9C;14409.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `memorianueva.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `memorianueva.out':
+(rerunfilecheck)             Before: A29ECF407EB67ACB552497AA6A5F0338;14569
+(rerunfilecheck)             After:  EE84663A6B29566440F2F875B62045D4;14559.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                memorianueva
@@ -1508,10 +1520,10 @@ Package logreq Info: Writing requests to 'memorianueva.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31558 strings out of 468221
- 689644 string characters out of 5432892
- 1432838 words of memory out of 5000000
- 59509 multiletter control sequences out of 15000+600000
+ 31560 strings out of 468221
+ 689668 string characters out of 5432892
+ 1432826 words of memory out of 5000000
+ 59510 multiletter control sequences out of 15000+600000
  685761 words of font info for 107 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  96i,21n,94p,1971b,2953s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1529,9 +1541,9 @@ ograms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local
 ocal/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on memorianueva.pdf (57 pages, 1912248 bytes).
+Output written on memorianueva.pdf (57 pages, 1913192 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 198 named destinations out of 1000 (max. 500000)
- 573 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 930 PDF objects out of 1000 (max. 8388607)
+ 199 named destinations out of 1000 (max. 500000)
+ 581 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,14 +4,16 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-En esta sección se detallan los principales logros alcanzados durante el desarrollo del proyecto que permitió transformar la gestión empírica de la demanda de Latech en un proceso orientado a datos. Los aportes y conclusiones más relevantes son los siguientes:
+En este capítulo se presentan las consideraciones finales y las contribuciones más relevantes derivadas de la investigación. Además, se proponen sugerencias para el perfeccionamiento posterior y la expansión del alcance operativo del sistema.
 
+\section{Resultados generales}
 
+En esta sección se detallan los principales logros alcanzados durante el desarrollo del sistema que permitió transformar la gestión empírica de la demanda de Latech en un proceso orientado a datos. Los aportes y conclusiones más relevantes son los siguientes:
 
 \begin{itemize} 
-	\item Cumplimiento integral de los requerimientos: se implementaron con éxito los siete requerimientos funcionales definidos, que abarcan desde la ingesta automatizada de datos de Shopify y Triple whale hasta la exportación de reportes en csv y la generación de alertas de integridad.
+	\item Cumplimiento integral de los requerimientos: se implementaron con éxito los siete requerimientos funcionales definidos, que abarcan desde la ingesta automatizada de datos de Shopify y Triple whale hasta la exportación de reportes en CSV y la generación de alertas de integridad.
 	\item Superación del modelo base: el sistema de inteligencia artificial logró reducir significativamente el error predictivo en comparación con la heurística original (\textit{baseline}). El modelo TFT demostró la mayor precisión, con un MAPE de solo el 12,8 \%, lo que valida el uso de mecanismos de atención para filtrar la inversión publicitaria.
-	\item Gestión efectiva de riesgos: se mitigó el riesgo de sobreajuste mediante el uso de algoritmos robustos y protocolos de validación cronológica. Asimismo, la finalización de la cursada académica permitió dedicar el esfuerzo necesario para cumplir con el cronograma y resolver la complejidad técnica sin retrasos.
+	\item Gestión efectiva de riesgos: se mitigó el riesgo de sobreajuste mediante el uso de algoritmos robustos y protocolos de validación cronológica. Asimismo, se pudo dedicar el esfuerzo necesario para cumplir con el cronograma y resolver la complejidad técnica sin retrasos.
 	\item Robustez y autonomía técnica: la implementación de una capa de persistencia en Postgres garantizó la disponibilidad continua del sistema frente a posibles caídas de las APIs externas, lo que dotó a la empresa de una herramienta resiliente y de alto rendimiento.
 	\item Eficacia de las técnicas utilizadas: la orquestación mediante DAGs en Apache airflow y la optimización por búsqueda en rejilla (\textit{grid search}) resultaron fundamentales para estandarizar el flujo de trabajo. En contraste, los modelos lineales simples demostraron ser insuficientes para capturar la volatilidad de la demanda provocada por campañas comerciales. 
 	\item Integración operativa: se logró una articulación fluida con la plataforma Inventory Tracker que permite que los usuarios consulten pronósticos actualizados y visualicen la relación entre la inversión publicitaria y las ventas históricas de forma intuitiva.
@@ -24,7 +26,7 @@ A partir de la arquitectura modular y los resultados obtenidos, se proponen las 
 \begin{itemize}
 	\item Actualización en tiempo real: el sistema actual opera con ejecuciones periódicas diarias; una evolución lógica consiste en la implementación de \textit{pipelines} que actualicen las predicciones de forma instantánea ante cada nueva orden recibida. 
 	\item Incorporación de nuevas fuentes de datos: se podría extender el registro de modelos para integrar variables de otros canales de venta o métricas de comportamiento de usuarios en el sitio web de forma más granular.
-	\item Recomendaciones de \textit{marketing} accionables: el sistema puede evolucionar para sugerir niveles óptimos de inversión publicitaria en función de los objetivos de venta y el \textit{stock} disponible, lo que transformaría la herramienta en un asistente de decisión estratégica.
-	\item Optimización logística profunda: aunque el proyecto se enfocó en el pronóstico de demanda, existe la posibilidad de integrar estos resultados con modelos de optimización de rutas y turnos de producción para maximizar la eficiencia operativa de la planta.
+	\item Recomendaciones de marketing accionables: el sistema puede evolucionar para sugerir niveles óptimos de inversión publicitaria en función de los objetivos de venta y el \textit{stock} disponible, lo que transformaría la herramienta en un asistente de decisión estratégica.
+	\item Optimización logística profunda: aunque el trabajo se enfocó en el pronóstico de demanda, existe la posibilidad de integrar estos resultados con modelos de optimización de rutas y turnos de producción para maximizar la eficiencia operativa de la planta.
 	
 \end{itemize}

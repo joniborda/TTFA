@@ -6,12 +6,12 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama entidad-relación. Muestra las dos tablas principales.}}{18}{figure.caption.6}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Flujo lógico de orquestación de DAGs.}}{27}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribución de las ordenes.}}{33}{figure.caption.9}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Variación de media movil 7 días.}}{34}{figure.caption.10}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces RMSE \textit {Baseline}.}}{34}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces RMSE Neural prophet.}}{35}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces RMSE TFT.}}{35}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Predicciones vs. valores reales: Neural prophet.}}{37}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribución de las órdenes.}}{34}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Variación de media móvil 7 días.}}{34}{figure.caption.10}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces RMSE NeuralProphet.}}{35}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces RMSE TFT.}}{35}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces RMSE \textit {baseline}.}}{36}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Predicciones vs. valores reales: NeuralProphet.}}{37}{figure.caption.14}%
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Predicciones vs. valores reales: TFT.}}{38}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Predicciones vs. valores reales: \textit {Baseline}.}}{38}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Predicciones vs. valores reales: \textit {Baseline}.}}{39}{figure.caption.16}%
 \addvspace {10\p@ }

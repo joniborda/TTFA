@@ -40,12 +40,12 @@ A continuación, se describen las configuraciones finales de los modelos evaluad
 
 Una vez finalizada la fase de ensayos, se evaluó cada arquitectura sobre el conjunto de validación donde se utilizó un enfoque de división cronológica. Esta metodología permitió medir la capacidad de generalización de los modelos frente a datos no vistos, siempre se preservó la integridad de la secuencia temporal de las ventas de Latech.
 
-A continuación, la tabla \ref{tab:metricas_modelos} resume el rendimiento alcanzado por cada modelo en términos de MAE (error absoluto medio), RMSE (raíz del error cuadrático medio) y MAPE (error porcentual absoluto medio).
+En la tabla \ref{tab:metricas_modelos} se resume el rendimiento alcanzado por cada modelo en términos de MAE (error absoluto medio), RMSE (raíz del error cuadrático medio) y MAPE (error porcentual absoluto medio).
 
 
 \begin{table}[h]
     \centering
-    \caption{Comparativa de métricas de desempeño por modelo}
+    \caption{Comparativa de métricas de desempeño por modelo.}
     \label{tab:metricas_modelos}
     \begin{tabular}{l l c c c}
         \toprule
@@ -74,7 +74,7 @@ El análisis cuantitativo permite extraer las siguientes conclusiones sobre el c
 	
 	\item Captura de estacionalidad: modelos como NeuralProphet y SARIMA demostraron una notable precisión en términos de MAPE (19,1 \% y 22,1 \% respectivamente). Esto indica que la lógica de componentes estacionales y de tendencia de estas arquitecturas logra modelar adecuadamente los ciclos de venta mensuales y semanales de la empresa.
 	
-	\item Limitaciones de modelos lineales: las arquitecturas lineales y de suavizado (Ridge, Regresión lineal y Exponential smoothing) exhibieron los errores más elevados. La disparidad en el RMSE, que alcanzó valores superiores a 700, sugiere que estos métodos no logran procesar de forma eficiente las relaciones no lineales provocadas por picos de campañas publicitarias o eventos exógenos.
+	\item Limitaciones de modelos lineales: las arquitecturas lineales y de suavizado (Ridge, Regresión lineal y \textit{Exponential smoothing}) exhibieron los errores más elevados. La disparidad en el RMSE, que alcanzó valores superiores a 700, sugiere que estos métodos no logran procesar de forma eficiente las relaciones no lineales provocadas por picos de campañas publicitarias o eventos exógenos.
 	
 	\item Modelos de ensamble: tanto CatBoost como XGBoost mantuvieron una consistencia sólida con RMSEs cercanos a 550. Su robustez intrínseca permitió generalizar las relaciones entre la inversión publicitaria consolidada y el volumen de pedidos que mitiga el riesgo de sobreajuste detectado en las fases iniciales del proyecto.
 
@@ -87,29 +87,6 @@ El análisis cuantitativo permite extraer las siguientes conclusiones sobre el c
 
 El rendimiento superior de los modelos de aprendizaje profundo en este trabajo se debe a su capacidad para procesar una serie temporal caracterizada por una alta volatilidad y dependencias no lineales complejas. A diferencia de los métodos estadísticos tradicionales, estas arquitecturas logran integrar variables exógenas y capturar cambios estructurales en los datos de manera dinámica.
 
-
-	
-\begin{figure}[htbp]
-    \centering
-    % El makebox centra cualquier contenido que sea más ancho que el texto
-    \makebox[\textwidth][c]{
-        \includegraphics[width=1.05\textwidth]{orders_with_events_3m.png}
-    }
-    \caption{Distribución de las ordenes.}
-    \label{fig:orders_with_events_3m}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    % El makebox centra cualquier contenido que sea más ancho que el texto
-    \makebox[\textwidth][c]{
-        \includegraphics[width=1.05\textwidth]{orders_mm7.png}
-    }
-    \caption{Variación de media movil 7 días.}
-    \label{fig:orders_mm7}
-\end{figure}
-
-\pagebreak
 Como se observa en las figuras \ref{fig:orders_with_events_3m} y \ref{fig:orders_mm7}, la demanda presenta tres componentes críticos que justifican el uso de modelos avanzados:
 
 \begin{itemize}
@@ -124,16 +101,37 @@ Como se observa en las figuras \ref{fig:orders_with_events_3m} y \ref{fig:orders
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{rmse_distribution_baseline_tm7_sw8_blend.png}
-    \caption{RMSE \textit{Baseline}.}
-    \label{fig:rmse_distribution_baseline_tm7_sw8_blend}
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.05\textwidth]{orders_with_events_3m.png}
+    }
+    \caption{Distribución de las órdenes.}
+    \label{fig:orders_with_events_3m}
 \end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    % El makebox centra cualquier contenido que sea más ancho que el texto
+    \makebox[\textwidth][c]{
+        \includegraphics[width=1.05\textwidth]{orders_mm7.png}
+    }
+    \caption{Variación de media móvil 7 días.}
+    \label{fig:orders_mm7}
+\end{figure}
+
+
+Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech.
+
+En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
+
+
+La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{rmse_neuralprophet.png}
-    \caption{RMSE Neural prophet.}
+    \caption{RMSE NeuralProphet.}
     \label{fig:rmse_neuralprophet}
 \end{figure}
 
@@ -146,20 +144,11 @@ Como se observa en las figuras \ref{fig:orders_with_events_3m} y \ref{fig:orders
 \end{figure}
 
 
-\pagebreak
-
-Para profundiza en el análisis del comportamiento de las arquitecturas TFT y NeuralProphet, seleccionadas por su desempeño superior en las fases de ensayo previas. El enfoque se centra en validar la estabilidad de sus predicciones y su capacidad para replicar la dinámica real de las ventas de Latech.
-
-En las figuras \ref{fig:rmse_neuralprophet} y \ref{fig:rmse_temporal_fusion_transformer} se ilustran la distribución del RMSE para ambos algoritmos. Estos gráficos permiten verificar la consistencia de los modelos y la concentración del error en rangos reducidos, lo que demuestra la robustez de ambas soluciones ante la volatilidad de la demanda histórica. 
-
-
-La baja dispersión del error en estas arquitecturas confirma que el sistema mantiene una precisión estable, un factor crítico para la confiabilidad de los pronósticos de inventario.
-
 \subsection{Precisión general y sesgo}
 	
 \begin{itemize}
 
-	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima similar a la \textit{Neuralprophet} en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
+	\item TFT: muestra una mayor concentración de errores cerca del cero, con una frecuencia máxima similar a la Neuralprophet en el primer \textit{bin}. Este fenómeno es atribuible a la falta de profundidad histórica en las primeras observaciones, lo que limita la capacidad de los modelos para establecer una ventana de contexto adecuada y capturar la inercia de la demanda de manera efectiva. A su vez, esto indica que para la gran mayoría de las predicciones, el error es significativamente bajo. 
 	
 	\item NeuralProphet: aunque también concentra la mayoría de sus errores en el rango inicial, su frecuencia máxima es menor (alrededor de 210). Este modelo comete errores de mayor magnitud de forma más frecuente. Esto sugiere que el TFT es, en promedio, más preciso y consistente en sus predicciones.
 
@@ -180,24 +169,20 @@ Ambas representaciones gráficas exhiben una concentración masiva en valores ce
 
 \end{itemize}
 
-\subsection{Estabilidad y Confiabilidad}
+\subsection{Estabilidad y confiabilidad}
 
-El modelo TFT demuestra ser más robusto para este conjunto de datos. Su distribución es más estrecha y alta indica una menor varianza en el error. Esto coincide con los resultados de la tabla comparativa, donde el TFT obtuvo un RMSE de 443,67 frente al 568,48 de NeuralProphet.
+El modelo TFT demuestra ser más robusto para este conjunto de datos. Su distribución es más estrecha y alta indica una menor varianza en el error. Esto coincide con los resultados de la tabla comparativa, donde el TFT obtuvo un RMSE de 443,67 frente al 568,48 de NeuralProphet. A continuación, se realiza un análisis de la distribución del RMSE del modelo \textit{baseline} en la figura \ref{fig:rmse_distribution_baseline_tm7_sw8_blend}. 
 
-A continuación, se realiza un análisis de la distribución del RMSE del modelo \textit{baseline} en la figura \ref{fig:rmse_distribution_baseline_tm7_sw8_blend}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rmse_distribution_baseline_tm7_sw8_blend.png}
+    \caption{RMSE \textit{baseline}.}
+    \label{fig:rmse_distribution_baseline_tm7_sw8_blend}
+\end{figure}
 
 
- 
 Al contrastar la distribución del error cuadrático del modelo TFT frente al \textit{Baseline}, se evidencia una diferencia sustancial en la consistencia de las predicciones. Mientras que el modelo TFT logra concentrar la gran mayoría de sus residuos en el rango cercano a cero (con una frecuencia superior a los 300 casos), el \textit{Baseline} muestra una dispersión significativamente mayor.
 Este último no solo presenta una menor frecuencia de aciertos precisos, sino que manifiesta errores en magnitudes mucho más elevadas, visibles en la asimetría positiva de la derecha de la distribución.
-
-
-
-
-
-
-
-
 
 
 
@@ -215,7 +200,7 @@ Para entender los gráficos que se presentan a continuación se explica cada eje
 
 \end{itemize}
 
-\subsection{Predicciones de Neural prophet}
+\subsection{Predicciones de NeuralProphet}
 
 
 
@@ -229,7 +214,7 @@ La figura \ref{fig:true_vs_pred_neuralprophet} expone el desempeño de NeuralPro
     \makebox[\textwidth][c]{
         \includegraphics[width=0.95\textwidth]{true_vs_pred_neuralprophet.png}
     }
-   \caption{Predicciones vs. valores reales: Neural prophet.}
+   \caption{Predicciones vs. valores reales: NeuralProphet.}
     \label{fig:true_vs_pred_neuralprophet}
 \end{figure}
 
@@ -257,17 +242,7 @@ La figura \ref{fig:grafico_true_tft} muestra el gráfico de realidad en compraci
 
 La función denominada \textit{Baseline} no constituye un modelo de inteligencia artificial basado en aprendizaje automático, sino que se define como una fórmula polinómica de combinación lineal. 
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.9\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
-    \caption{Predicciones vs. valores reales: \textit{Baseline}.}
-    \label{fig:grafico_true_baseline}
-\end{figure}
-
-
-Como se observa en la figura \ref{fig:grafico_true_baseline} esta aproximación presenta las siguientes características:
-
-
+Como se observa en la figura \ref{fig:grafico_true_baseline}, esta aproximación presenta las siguientes características:
 
 \begin{itemize}
 	\item Punto de partida sólido: al basarse en promedios históricos, la fórmula ofrece un rendimiento inicial estable que permite captar la inercia general de la demanda y la tendencia a largo plazo.
@@ -278,12 +253,20 @@ Como se observa en la figura \ref{fig:grafico_true_baseline} esta aproximación 
 
 \end{itemize}
 
-Al analizar los resultados presentados en la Tabla \ref{tab:metricas_modelo_baseline}, se observa que la función \textit{Baseline} manifiesta una degradación en todas las métricas de evaluación en comparación con el modelo TFT. Específicamente, el incremento en el MAE y el RMSE evidencia que la naturaleza lineal y determinista de esta fórmula no logra absorber la volatilidad de la demanda con la misma eficacia que una arquitectura de aprendizaje profundo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{true_vs_pred_baseline_tm7_sw8_blend.png}
+    \caption{Predicciones vs. valores reales: \textit{Baseline}.}
+    \label{fig:grafico_true_baseline}
+\end{figure}
+
+Al analizar los resultados presentados en la tabla \ref{tab:metricas_modelo_baseline}, se observa que la función \textit{Baseline} manifiesta una degradación en todas las métricas de evaluación en comparación con el modelo TFT. Específicamente, el incremento en el MAE y el RMSE evidencia que la naturaleza lineal y determinista de esta fórmula no logra absorber la volatilidad de la demanda con la misma eficacia que una arquitectura de aprendizaje profundo.
 
 
 \begin{table}[h]
     \centering
-    \caption{Comparativa de métricas: TFT vs. Baseline}
+    \caption{Comparativa de métricas: TFT vs. Baseline.}
     \label{tab:metricas_modelo_baseline}
     \begin{tabular}{l l c c c c c}
         \toprule
@@ -317,11 +300,12 @@ Para cumplir este requerimiento, se desarrolló un módulo de integración que:
 
 \subsubsection{Requerimiento funcional 2}
 
-Para satisfacer este requerimiento se desarrolló un módulo de integración que:
+Se implementó un componente de ingesta especializado en métricas de marketing que:
 
 \begin{itemize}
-    \item Establece conexión con la API de Triple whale con una clave de acceso provista por la organización.
-    \item Recupera la información de inversión por fecha, campaña y plataforma publicitaria.
+    \item Gestiona la vinculación con la plataforma Triple Whale mediante protocolos de autenticación seguros basados en claves de acceso provistas por la organización.
+    
+    \item Centraliza el gasto publicitario diario de canales críticos como TikTok, Instagram, Facebook y Google Ads.
     \item Permite seleccionar y configurar el intervalo temporal de los datos a importar.
     \item Almacena los datos obtenidos en una base de datos Postgres y mantiene una estructura consistente con el modelo de análisis utilizado.
     \item Implementa mecanismos de manejo de errores ante fallos de autenticación, interrupciones en la conexión o respuestas inválidas provenientes de la API.
