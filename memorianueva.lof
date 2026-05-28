@@ -4,14 +4,14 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de arquitectura del sistema.}}{14}{figure.caption.5}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama entidad-relación. Muestra las dos tablas principales.}}{18}{figure.caption.6}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Flujo lógico de orquestación de DAGs.}}{27}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Flujo lógico de orquestación de DAGs.}}{26}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribución de las órdenes.}}{34}{figure.caption.9}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Variación de media móvil 7 días.}}{34}{figure.caption.10}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces RMSE NeuralProphet.}}{35}{figure.caption.11}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces RMSE TFT.}}{35}{figure.caption.12}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces RMSE \textit {baseline}.}}{36}{figure.caption.13}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Predicciones vs. valores reales: NeuralProphet.}}{37}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Predicciones vs. valores reales: TFT.}}{38}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Predicciones vs. valores reales: \textit {Baseline}.}}{39}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Distribución de las órdenes.}}{32}{figure.caption.9}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Variación de media móvil 7 días.}}{32}{figure.caption.10}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces RMSE NeuralProphet.}}{33}{figure.caption.11}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces RMSE TFT.}}{33}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces RMSE \textit {baseline}.}}{34}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Predicciones vs. valores reales: NeuralProphet.}}{35}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Predicciones vs. valores reales: TFT.}}{36}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Predicciones vs. valores reales: \textit {Baseline}.}}{37}{figure.caption.16}%
 \addvspace {10\p@ }

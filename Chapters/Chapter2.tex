@@ -15,7 +15,7 @@ En esta sección se presentan algunos requerimientos establecidos para el trabaj
 		\item Consolidación de datos provenientes de Shopify y Triple Whale: el sistema debe unificar la información de ventas y de inversión publicitaria en un único conjunto de datos, con el fin de preparar una base consistente para el entrenamiento del modelo de predicción.
 		\item Desarrollo y entrenamiento del modelo predictivo: el sistema debe implementar y entrenar un modelo de inteligencia artificial capaz de generar predicciones de ventas precisas sobre los datos históricos consolidados.
 		\item Visualización de predicciones de ventas en Inventory Tracker: el sistema debe presentar las predicciones de ventas generadas por el modelo dentro de la plataforma Inventory Tracker, integradas con los datos históricos para facilitar el análisis y la planificación de producción.
-		\item Descarga de predicciones de ventas en formato CSV: el sistema debe permitir la exportación de las predicciones de ventas a archivos CSV para su análisis externo o integración con otras herramientas de planificación.
+		\item Descarga de predicciones de ventas en formato \texttt{CSV}: el sistema debe permitir la exportación de las predicciones de ventas a archivos \texttt{CSV} para su análisis externo o integración con otras herramientas de planificación.
 	\end{itemize}
 
 
@@ -41,7 +41,7 @@ A continuación, se describen los tipos de modelos aplicados:
 
 	\item GRU (\textit{Gated Recurrent Unit}) \citep{cho2014gru}: se evaluó como una variante más simple y computacionalmente eficiente de las LSTM, útil cuando los recursos de entrenamiento son limitados. Además, mantienen la capacidad esencial de capturar dependencias temporales a largo plazo y manejar el problema del gradiente \textit{vanishing}, que en ocasiones demuestra un desempeño comparable al de las LSTM.
 
-	\item \textit{Temporal Fusion Transformer} (TFT) \citep{lim2021temporal}: Se implementó este modelo de vanguardia por su capacidad de atención interpretable, que permite identificar qué variables exógenas y qué períodos históricos influyen en cada predicción. El TFT resulta particularmente adecuado para el contexto de Latech, donde es crucial entender el impacto de las inversiones publicitarias en diferentes horizontes temporales.
+	\item \textit{Temporal Fusion Transformer} (TFT) \citep{lim2021temporal}: se implementó este modelo de vanguardia por su capacidad de atención interpretable, que permite identificar qué variables exógenas y qué períodos históricos influyen en cada predicción. El TFT resulta particularmente adecuado para el contexto de Latech, donde es crucial entender el impacto de las inversiones publicitarias en diferentes horizontes temporales.
 
 	\item Enfoque híbrido: se exploró la combinación de modelos clásicos (como SARIMA) con redes neuronales (como LSTM o TFT), con el fin de aprovechar la capacidad de los primeros para modelar componentes estacionales y de tendencia, y la flexibilidad de las segundas para capturar relaciones no lineales y efectos de variables externas.
 
@@ -101,7 +101,7 @@ En este a sección se describen los procesos y herramientas utilizadas para la l
 \subsection{Exposición de servicios}
 Para exponer endpoints que permiten consumir resultados, ejecutar procesos o servir modelos se utiliza FastAPI. Este framework destaca por su alto rendimiento y por su arquitectura asíncrona basada en ASGI \citep{asgi}.
 
-Las características más relevantes para este proyecto son:
+Las características más relevantes para este trabajo son:
 \begin{itemize}
 	\item Alto rendimiento: maneja múltiples solicitudes de manera eficiente gracias a su soporte nativo para operaciones asíncronas.
 	\item Validación y documentación automática: incorpora Pydantic  \citep{pydantic} para validar estructuras de entrada y genera documentación OpenAPI/Swagger \citep{swagger} sin requerir configuraciones adicionales.
